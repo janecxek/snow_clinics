@@ -246,7 +246,7 @@
   var slabWrap = $('#slabs');
   var slabs = $$('.slab');
   var spines = slabs.map(function (s) { return $('.slab__spine', s); });
-  var WIDE = window.matchMedia('(min-width: 1000px)');
+  var WIDE = window.matchMedia('(min-width: 1180px)');
 
   // A grid track cannot animate from a flex factor to a pixel length, so both
   // states are expressed in fr. Eleven to one puts the closed spines at about
@@ -259,13 +259,58 @@
     }).join(' ');
   }
 
+  // An opened panel is as tall as its longest area, which is taller than a
+  // card at most desktop widths and taller again in German. Rather than hide
+  // the overflow behind a scrollbar, the row is told how tall the tallest
+  // panel wants to be at the width it will actually occupy. Measuring a copy
+  // off-screen keeps the live panels out of it, so nothing flickers.
+  var probe = null;
+  var probeCache = {};
+
+  function tallestPanel() {
+    var wrapWidth = slabWrap.clientWidth;
+    var panel = $('.slab__panel', slabs[0]);
+    var ps = getComputedStyle(panel);
+    var gaps = parseFloat(getComputedStyle(slabWrap).columnGap || 10) * (slabs.length - 1);
+    var openTrack = (wrapWidth - gaps) * OPEN_FR / (OPEN_FR + slabs.length - 1);
+    var inner = openTrack - parseFloat(ps.left) - parseFloat(ps.right);
+    var key = Math.round(inner) + ':' + (window.SnowI18n ? window.SnowI18n.lang : 'en');
+    if (probeCache[key]) return probeCache[key];
+
+    if (!probe) {
+      probe = document.createElement('div');
+      probe.setAttribute('aria-hidden', 'true');
+      probe.style.cssText = 'position:absolute;left:-10000px;top:0;visibility:hidden;';
+      slabWrap.appendChild(probe);
+    }
+    probe.style.width = inner + 'px';
+    var tallest = 0;
+    slabs.forEach(function (s) {
+      probe.innerHTML = '';
+      probe.appendChild($('.slab__inner', s).cloneNode(true));
+      tallest = Math.max(tallest, probe.firstChild.getBoundingClientRect().height);
+    });
+    probe.innerHTML = '';
+    probeCache[key] = Math.ceil(tallest + parseFloat(ps.paddingTop) + parseFloat(ps.paddingBottom));
+    return probeCache[key];
+  }
+
   function layoutSlabs() {
     if (!slabWrap) return;
     var openIndex = -1;
     slabs.forEach(function (s, i) { if (s.classList.contains('is-open')) openIndex = i; });
     slabWrap.classList.toggle('has-open', openIndex >= 0);
-    if (!WIDE.matches) { slabWrap.style.gridTemplateColumns = ''; return; }
+    if (!WIDE.matches) {
+      slabWrap.style.gridTemplateColumns = '';
+      slabWrap.style.removeProperty('--slabs-h');
+      return;
+    }
     slabWrap.style.gridTemplateColumns = columnsFor(openIndex);
+    if (openIndex < 0) { slabWrap.style.removeProperty('--slabs-h'); return; }
+    // With the variable cleared, min-height reports the closed card height.
+    slabWrap.style.removeProperty('--slabs-h');
+    var closed = parseFloat(getComputedStyle(slabWrap).minHeight) || 0;
+    slabWrap.style.setProperty('--slabs-h', Math.max(closed, tallestPanel()) + 'px');
   }
 
   function openSlab(index, moveFocus) {
@@ -306,7 +351,8 @@
 
   if (slabWrap) {
     WIDE.addEventListener('change', layoutSlabs);
-    window.addEventListener('resize', layoutSlabs);
+    window.addEventListener('resize', function () { probeCache = {}; layoutSlabs(); });
+    document.addEventListener('snow:languagechange', layoutSlabs);
     layoutSlabs();
   }
 

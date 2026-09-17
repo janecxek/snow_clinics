@@ -555,10 +555,13 @@ ul, ol { list-style: none; padding: 0; }
   display: grid;
   gap: 10px;
   grid-template-columns: 1fr;
-  transition: grid-template-columns 720ms var(--ease);
+  transition: grid-template-columns 720ms var(--ease), min-height 720ms var(--ease);
 }
-@media (min-width: 1000px) {
-  .slabs { grid-template-columns: repeat(4, minmax(0, 1fr)); min-height: clamp(27rem, 34vw, 32rem); }
+@media (min-width: 1180px) {
+  .slabs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    min-height: var(--slabs-h, clamp(27rem, 34vw, 32rem));
+  }
 }
 /* Writing-mode cannot tween, so the area name is hidden for the frame in
    which it turns on its side, then fades back in under the moving widths. */
@@ -586,6 +589,7 @@ ul, ol { list-style: none; padding: 0; }
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;   /* decoration; the spine underneath takes the tap */
   background: linear-gradient(to top, rgba(10, 22, 30, .88) 0%, rgba(10, 22, 30, .3) 52%, rgba(10, 22, 30, .1) 100%);
   transition: background var(--t-mid) var(--ease);
 }
@@ -634,7 +638,7 @@ ul, ol { list-style: none; padding: 0; }
 .slab.is-open .slab__mark::after { opacity: 0; }
 
 /* At rest: a card. The name sits on the photograph, the number above it. */
-@media (min-width: 1000px) {
+@media (min-width: 1180px) {
   .slabs:not(.has-open) .slab__spine {
     flex-direction: row;
     align-items: flex-end;
@@ -661,10 +665,11 @@ ul, ol { list-style: none; padding: 0; }
 .slab__panel { position: relative; z-index: 2; }
 .slab__inner { display: grid; align-content: start; gap: var(--s-4); }
 
-/* Under a thousand the cards stack and open downwards instead. */
-@media (max-width: 999.98px) {
+/* Below that the cards stack and open downwards instead. */
+@media (max-width: 1179.98px) {
   .slab__spine {
-    position: static;
+    position: relative;
+    z-index: 2;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -682,12 +687,11 @@ ul, ol { list-style: none; padding: 0; }
   .slab.is-open .slab__panel { grid-template-rows: 1fr; padding-bottom: clamp(1.2rem, 2.4vw, 1.6rem); }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1180px) {
   .slab__panel {
     position: absolute;
     inset: 0 var(--s-5) 0 5.5rem;
     padding-block: var(--s-5);
-    overflow-y: auto;
     opacity: 0;
     visibility: hidden;
     transition: opacity 320ms var(--ease), visibility 0s linear 360ms;
