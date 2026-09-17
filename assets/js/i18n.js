@@ -17,7 +17,6 @@
     'a11y.next': 'Nächste Bewertung',
     'a11y.reviews': 'Bewertungen von Patientinnen und Patienten',
     'a11y.topics': 'Themen der Fragen',
-    'a11y.dock': 'Schnellzugriff',
     'a11y.top': 'Nach oben',
 
     'brand.tag': 'Ästhetische Medizin',
@@ -33,9 +32,7 @@
     'cta.treatments': 'Behandlungen ansehen',
     'cta.ask': 'Dazu fragen',
     'cta.bookWith': 'Termin bei Dr. Snow',
-    'dock.call': 'Anrufen',
 
-    'hero.eyebrow': 'Ästhetische Medizin<span class="hero__cities"> · Zürich · Konstanz · Paris · Marbella</span>',
     'hero.h1': 'Natürliche Resultate sind der ganze Punkt.',
     'hero.lede': 'Ärztlich geführte Behandlungen, zurückhaltend dosiert und nach zwei Wochen kontrolliert. Eine Ärztin führt jede einzelne davon durch.',
     'hero.badge': 'Antwort meist innerhalb weniger Stunden',
@@ -145,6 +142,9 @@
     'faq.eyebrow': 'Klare Antworten',
     'faq.h': 'Was gefragt wird, sobald die Tür zu ist.',
     'faq.lede': 'Dr. Snow beantwortet diese Fragen selbst. Fehlt Ihre, schicken Sie sie über WhatsApp.',
+    'faq.s1': 'Komfort',
+    'faq.s2': 'Kosten',
+    'faq.s3': 'Termine',
     'faq.g1': 'Schmerz & Komfort',
     'faq.g2': 'Kosten & Planung',
     'faq.g3': 'Termine & Zugang',
@@ -253,10 +253,29 @@
     return (navigator.language || 'en').toLowerCase().indexOf('de') === 0 ? 'de' : 'en';
   }
 
+  // Switching language rewrites every string on the page at once, which reads
+  // as a flicker. The curtain covers the swap and gives the wait a shape: the
+  // brand colour, the name behind it, one bar that fills.
+  var STILL = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function switchTo(lang) {
+    if (lang === current) return;
+    var curtain = document.getElementById('langload');
+    if (!curtain || STILL.matches) { apply(lang); return; }
+
+    curtain.classList.add('is-on');
+    window.setTimeout(function () {
+      apply(lang);                                   // swapped behind the curtain
+      window.setTimeout(function () {
+        curtain.classList.remove('is-on');
+      }, 180);
+    }, 460);                                         // as long as the bar takes
+  }
+
   function init() {
     captureEnglish();
     Array.prototype.forEach.call(document.querySelectorAll('[data-lang]'), function (btn) {
-      btn.addEventListener('click', function () { apply(btn.getAttribute('data-lang')); });
+      btn.addEventListener('click', function () { switchTo(btn.getAttribute('data-lang')); });
     });
     var lang = preferred();
     if (lang !== 'en') apply(lang);

@@ -122,7 +122,6 @@
 
   <div class="shell hero__grid">
     <div class="hero__title reveal">
-      <p class="eyebrow" data-i18n="hero.eyebrow">Aesthetic medicine<span class="hero__cities"> · Zürich · Konstanz · Paris · Marbella</span></p>
       <h1 class="display h-hero" data-i18n="hero.h1">Natural results are the whole point.</h1>
     </div>
 
@@ -555,9 +554,9 @@
     </div>
 
     <div class="segments reveal" role="tablist" aria-label="Question topics" data-i18n-attr="aria-label" data-i18n="a11y.topics">
-      <button class="segment" type="button" role="tab" id="seg-comfort" aria-selected="true"  tabindex="0"  data-group="comfort" data-i18n="faq.g1">Pain &amp; comfort</button>
-      <button class="segment" type="button" role="tab" id="seg-cost"    aria-selected="false" tabindex="-1" data-group="cost"    data-i18n="faq.g2">Cost &amp; planning</button>
-      <button class="segment" type="button" role="tab" id="seg-access"  aria-selected="false" tabindex="-1" data-group="access"  data-i18n="faq.g3">Booking &amp; access</button>
+      <button class="segment" type="button" role="tab" id="seg-comfort" aria-selected="true"  tabindex="0"  data-group="comfort"><span class="segment__long" data-i18n="faq.g1">Pain &amp; comfort</span><span class="segment__short" data-i18n="faq.s1">Comfort</span></button>
+      <button class="segment" type="button" role="tab" id="seg-cost"    aria-selected="false" tabindex="-1" data-group="cost"><span class="segment__long" data-i18n="faq.g2">Cost &amp; planning</span><span class="segment__short" data-i18n="faq.s2">Cost</span></button>
+      <button class="segment" type="button" role="tab" id="seg-access"  aria-selected="false" tabindex="-1" data-group="access"><span class="segment__long" data-i18n="faq.g3">Booking &amp; access</span><span class="segment__short" data-i18n="faq.s3">Booking</span></button>
     </div>
 
     <div class="faq reveal" id="faq-list">
@@ -834,10 +833,17 @@
   </div>
 </dialog>
 
-<nav class="dock" id="dock" aria-label="Quick actions" data-i18n-attr="aria-label" data-i18n="a11y.dock">
-  <a class="dock__call" href="tel:+34637479715" data-i18n="dock.call">Call</a>
-  <a class="dock__book" href="#book" data-track="book-dock" data-i18n="cta.whatsapp" data-book="a consultation">Book on WhatsApp</a>
-</nav>
+<div class="dock" id="dock">
+  <a class="dock__book" href="#book" data-track="book-dock" data-book="a consultation">
+    <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span data-i18n="cta.book">Book a consultation</span>
+  </a>
+</div>
+
+<div class="langload" id="langload" aria-hidden="true">
+  <p class="langload__mark">SNOW CLINICS</p>
+  <div class="langload__bar"><span></span></div>
+</div>
 
 <button class="to-top" type="button" id="to-top" aria-label="Back to top" data-i18n-attr="aria-label" data-i18n="a11y.top">
   <svg class="ring" viewBox="0 0 54 54" aria-hidden="true">

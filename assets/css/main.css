@@ -334,7 +334,7 @@ ul, ol { list-style: none; padding: 0; }
   box-shadow: 0 1px 0 rgba(14, 25, 34, .08), 0 14px 34px -28px rgba(14, 25, 34, .5);
 }
 .nav.is-stuck .nav__pill { background: transparent; box-shadow: none; backdrop-filter: none; }
-.nav.is-stuck .burger { background: transparent; box-shadow: none; backdrop-filter: none; }
+.nav.is-stuck .burger { background: transparent; box-shadow: none; }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); }
 
 /* Over the hero photograph the lock-up and the language switch are the only
@@ -418,24 +418,27 @@ ul, ol { list-style: none; padding: 0; }
   width: 48px; height: 48px;
   display: grid;
   place-items: center;
-  gap: 5px;
-  grid-auto-rows: 1.5px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .8);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 1px 2px rgba(14, 25, 34, .05), 0 10px 26px -16px rgba(14, 25, 34, .4);
+  gap: 5.5px;
+  grid-auto-rows: 2px;
+  background: transparent;
 }
 @media (min-width: 1080px) { .burger { display: none; } }
 .burger span {
   display: block;
-  width: 18px; height: 1.5px;
+  width: 22px; height: 2px;
   border-radius: 2px;
-  background: var(--ink);
-  transition: transform var(--t-mid) var(--ease), opacity var(--t-fast) var(--ease);
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(14, 25, 34, .45);
+  transition: transform var(--t-mid) var(--ease), opacity var(--t-fast) var(--ease),
+              background var(--t-mid) var(--ease);
 }
-.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(3.25px) rotate(45deg); }
+/* White reads over the photograph and over the open menu. Against the frosted
+   bar further down the page it would disappear, so there it turns dark. */
+.nav.is-stuck .burger span { background: var(--ink); box-shadow: none; }
+.nav.is-stuck .burger[aria-expanded="true"] span { background: #FFFFFF; }
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
 .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-3.25px) rotate(-45deg); }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
 .menu {
   position: fixed;
@@ -513,7 +516,6 @@ ul, ol { list-style: none; padding: 0; }
 @media (max-width: 720px) {
   .hero__media img { object-position: 68% 20%; }
   /* Two lines of eyebrow land across her eye at this crop; one does not. */
-  .hero__cities { display: none; }
   .hero__scrim {
     background: linear-gradient(to bottom,
       rgba(10, 22, 30, .42) 0%,
@@ -530,8 +532,6 @@ ul, ol { list-style: none; padding: 0; }
 }
 .hero__title { display: grid; gap: var(--s-4); }
 .hero__title h1 { max-width: 13ch; }
-.hero .eyebrow { color: rgba(255, 255, 255, .82); }
-.hero .eyebrow::before { background: var(--frost); }
 
 .hero__copy { display: grid; gap: var(--s-4); align-content: end; }
 .hero__copy .lede { color: rgba(255, 255, 255, .86); max-width: 42ch; }
@@ -910,7 +910,6 @@ ul, ol { list-style: none; padding: 0; }
    -------------------------------------------------------------------------- */
 .segments {
   display: inline-flex;
-  flex-wrap: wrap;
   gap: .25rem;
   padding: .3rem;
   margin-bottom: var(--s-5);
@@ -923,8 +922,19 @@ ul, ol { list-style: none; padding: 0; }
   border-radius: var(--r-pill);
   font-size: .94rem;
   font-weight: 500;
+  white-space: nowrap;
   color: var(--fg-muted);
   transition: background var(--t-mid) var(--ease), color var(--t-mid) var(--ease);
+}
+.segment__short { display: none; }
+/* Three full labels will not sit on one line on a phone — in German least of
+   all — so below this width each tab shows its short form and the strip
+   spreads across the column instead of hugging its text. */
+@media (max-width: 599.98px) {
+  .segments { display: flex; }
+  .segment { flex: 1 1 0; padding: .6rem .5rem; text-align: center; }
+  .segment__long { display: none; }
+  .segment__short { display: inline; }
 }
 .segment:hover { color: var(--fg); }
 .segment[aria-selected="true"] { background: var(--ink); color: var(--porcelain); }
@@ -1088,6 +1098,58 @@ html.no-js .faq__item.is-filtered { display: block; }
 }
 .footer__bottom nav { display: flex; flex-wrap: wrap; gap: var(--s-4); }
 
+/* The swap of every string on the page is covered rather than watched: the
+   brand colour, the name behind it, and a bar that fills once. */
+.langload {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: var(--brand-deep);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 260ms var(--ease), visibility 0s linear 260ms;
+}
+.langload.is-on {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 180ms var(--ease), visibility 0s;
+}
+.langload__mark {
+  grid-area: 1 / 1;
+  font-size: clamp(2rem, 11vw, 7rem);
+  font-weight: 700;
+  letter-spacing: -.04em;
+  line-height: 1;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, .12);
+  user-select: none;
+}
+.langload__bar {
+  grid-area: 1 / 1;
+  /* Clear of the wordmark, which scales with the viewport, or the bar reads as
+     a line struck through it on a phone and as its underline on a desktop. */
+  transform: translateY(clamp(2.6rem, 8vw, 7rem));
+  width: min(62vw, 18rem);
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, .2);
+  overflow: hidden;
+}
+.langload__bar span {
+  display: block;
+  width: 100%; height: 100%;
+  border-radius: inherit;
+  background: #FFFFFF;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.langload.is-on .langload__bar span { animation: langfill 460ms var(--ease) forwards; }
+@keyframes langfill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
 /* --------------------------------------------------------------------------
    17. Persistent actions
    -------------------------------------------------------------------------- */
@@ -1120,33 +1182,40 @@ html.no-js .faq__item.is-filtered { display: block; }
   left: 0; right: 0; bottom: 0;
   z-index: 95;
   display: none;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 1px;
-  background: rgba(14, 25, 34, .12);
-  border-top: 1px solid rgba(14, 25, 34, .12);
-  backdrop-filter: blur(16px) saturate(1.4);
-  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  padding: .7rem var(--gutter) calc(.7rem + env(safe-area-inset-bottom));
+  background: rgba(244, 246, 247, .82);
+  border-top: 1px solid rgba(14, 25, 34, .1);
+  backdrop-filter: blur(18px) saturate(1.5);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
   transform: translateY(101%);
   transition: transform var(--t-mid) var(--ease);
-  padding-bottom: env(safe-area-inset-bottom);
 }
-@media (max-width: 859.98px) { .dock { display: grid; } }
-.dock.is-visible { transform: none; }
-.dock a {
+.dock__book {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: .5rem;
-  min-height: 58px;
-  padding-inline: 1.4rem;
-  font-size: .95rem;
+  gap: .7rem;
+  width: 100%;
+  min-height: 54px;
+  border-radius: var(--r-pill);
+  background: var(--brand);
+  color: #FFFFFF;
   font-weight: 600;
+  letter-spacing: -.01em;
+  box-shadow: 0 12px 26px -16px rgba(14, 25, 34, .6);
 }
-.dock__call { background: rgba(244, 246, 247, .95); color: var(--ink); }
-.dock__book { background: #2FA36B; color: #FFFFFF; }
+.dock__book .btn__badge {
+  display: grid;
+  place-items: center;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .16);
+}
+@media (max-width: 859.98px) { .dock { display: block; } }
+.dock.is-visible { transform: none; }
 @media (max-width: 859.98px) {
   .to-top { display: none; }
-  .footer { padding-bottom: calc(var(--s-5) + 58px + env(safe-area-inset-bottom)); }
+  .footer { padding-bottom: calc(var(--s-5) + 70px + env(safe-area-inset-bottom)); }
 }
 
 /* Footer links are dense by design; they gain height where a finger is the
