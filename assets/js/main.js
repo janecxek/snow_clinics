@@ -155,6 +155,12 @@
     if (nav) {
       var descending = y > lastY && y > window.innerHeight * 0.8;
       nav.classList.toggle('is-hidden', descending && !menuOpen);
+
+      var hero = document.getElementById('home');
+      if (hero) {
+        var overHero = y < hero.offsetHeight - nav.offsetHeight - 24;
+        nav.classList.toggle('nav--light', overHero && !menuOpen);
+      }
     }
 
     var top = $('#to-top');
@@ -231,9 +237,10 @@
   });
 
   /* ----------------------------------------------------------------------
-     5. Treatment slabs
-        One area is open at a time. On a wide screen the open slab takes the
-        width the others give up; stacked, it opens downwards instead.
+     5. Treatment areas
+        Four equal cards until one is chosen. The chosen card takes the width
+        the others give up — an animated grid, not a jump — and they fall back
+        to a spine. Clicking the open one closes it and the row is even again.
      ---------------------------------------------------------------------- */
   var slabWrap = $('#slabs');
   var slabs = $$('.slab');
@@ -242,20 +249,23 @@
 
   function layoutSlabs() {
     if (!slabWrap) return;
-    if (!WIDE.matches) { slabWrap.style.gridTemplateColumns = ''; return; }
+    var anyOpen = slabs.some(function (s) { return s.classList.contains('is-open'); });
+    slabWrap.classList.toggle('has-open', anyOpen);
+    if (!WIDE.matches || !anyOpen) { slabWrap.style.gridTemplateColumns = ''; return; }
     slabWrap.style.gridTemplateColumns = slabs.map(function (s) {
       return s.classList.contains('is-open') ? 'minmax(0, 1fr)' : '5.5rem';
     }).join(' ');
   }
 
   function openSlab(index, moveFocus) {
+    var wasOpen = index !== null && slabs[index].classList.contains('is-open');
     slabs.forEach(function (s, i) {
-      var on = i === index;
+      var on = !wasOpen && i === index;
       s.classList.toggle('is-open', on);
       spines[i].setAttribute('aria-expanded', String(on));
     });
     layoutSlabs();
-    if (moveFocus) spines[index].focus();
+    if (moveFocus && index !== null) spines[index].focus();
   }
 
   spines.forEach(function (spine, i) {
@@ -268,17 +278,14 @@
       if (e.key === 'End') next = slabs.length - 1;
       if (next === null) return;
       e.preventDefault();
-      openSlab(next, true);
+      spines[next].focus();
     });
   });
 
   if (slabWrap) {
-    var prevTransition = slabWrap.style.transition;
-    slabWrap.style.transition = 'none';
-    layoutSlabs();
-    requestAnimationFrame(function () { slabWrap.style.transition = prevTransition; });
     WIDE.addEventListener('change', layoutSlabs);
     window.addEventListener('resize', layoutSlabs);
+    layoutSlabs();
   }
 
   /* ----------------------------------------------------------------------
@@ -361,6 +368,40 @@
         onScroll();
       }, { rootMargin: '0px 0px -20% 0px' }).observe(bookEl);
     }
+  }
+
+  /* ----------------------------------------------------------------------
+     9. Booking dialog
+        Every "book" control opens it and hands it the subject, so the
+        WhatsApp message is already written by the time it opens. With JS off
+        the same links fall through to the booking section below.
+     ---------------------------------------------------------------------- */
+  var modal = $('#book-modal');
+  if (modal && typeof modal.showModal === 'function') {
+    var waLink = $('#modal-wa');
+    var waBase = 'https://wa.me/34637479715?text=';
+
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest && e.target.closest('[data-book]');
+      if (!trigger) return;
+      e.preventDefault();
+      e.stopPropagation();
+      closeMenu();
+      if (waLink) {
+        var subject = trigger.getAttribute('data-book') || 'a consultation';
+        var lead = window.SnowI18n && window.SnowI18n.lang === 'de'
+          ? 'Guten Tag Snow Clinics, ich interessiere mich für '
+          : 'Hello Snow Clinics, I would like to ask about ';
+        waLink.href = waBase + encodeURIComponent(lead + subject + '.');
+      }
+      modal.showModal();
+    }, true);
+
+    var closeBtn = $('#modal-close');
+    if (closeBtn) closeBtn.addEventListener('click', function () { modal.close(); });
+
+    // A click on the backdrop lands on the dialog itself, not on its box.
+    modal.addEventListener('click', function (e) { if (e.target === modal) modal.close(); });
   }
 
   var top = $('#to-top');

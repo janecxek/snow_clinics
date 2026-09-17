@@ -10,36 +10,31 @@ python3 build-preview.py       # → jeden plik HTML do wysyłki
 
 ---
 
-## Psychologia: co MUSI być na tym landing page'u
+## Psychologia: co jest na tym landing page'u
 
-Zabieg estetyczny to zakup wysokiego ryzyka emocjonalnego — obcy człowiek wstrzykuje coś
-w twarz. Zaufanie nie jest dodatkiem, jest całym mechanizmem konwersji. Stąd taka kolejność:
+Zabieg estetyczny to zakup wysokiego ryzyka emocjonalnego. Zaufanie nie jest dodatkiem,
+jest całym mechanizmem konwersji. Stąd taka kolejność:
 
-| # | Sekcja | Pytanie w głowie odwiedzającej | Mechanizm |
-|---|---|---|---|
-| 1 | **Hero** | „Czy to dla mnie?" | Obietnica w pięciu słowach + CTA w zasięgu wzroku |
-| 2 | **Pasek faktów** | „Kto mnie dotknie i czym?" | Autorytet natychmiast po obietnicy, zanim pojawi się wątpliwość |
-| 3 | **Zabiegi** | „Czy macie to, czego potrzebuję?" | Prawo Hicka — 4 obszary zamiast 9 kart |
-| 4 | **Dlaczego my** | „Czym się różnicie?" | Cztery decyzje, które klinika musi podjąć — i zwykle podejmuje inaczej |
-| 5 | **Dr. Snow** | „Komu ufam?" | Autorytet z twarzą i kwalifikacjami |
-| 6 | **Kliniki** | „Gdzie i kiedy?" | Dostępność + naturalna rzadkość (Paryż i Marbella mają ograniczone dni) |
-| 7 | **Pas dowodu** | „Czy to działa u innych?" | Trzy zobowiązania + opinie z konkretami |
-| 8 | **FAQ** | „A co jeśli…?" | Obsługa obiekcji w pierwszej osobie |
-| 9 | **Booking** | „Co teraz?" | Trzy kanały, zero tarcia |
+| # | Sekcja | Pytanie w głowie odwiedzającej |
+|---|---|---|
+| 1 | **Hero** | „Czy to dla mnie?" — obietnica i booking w jednym ekranie |
+| 2 | **Zabiegi** | „Czy macie to, czego potrzebuję?" — 4 kafle zamiast listy |
+| 3 | **Dlaczego my** | „Czym się różnicie?" — cztery decyzje, które klinika musi podjąć |
+| 4 | **Dr. Snow** | „Komu ufam?" |
+| 5 | **Kliniki** | „Gdzie i kiedy?" + naturalna rzadkość dni w Paryżu i Marbelli |
+| 6 | **Opinie** | „Czy to działa u innych?" |
+| 7 | **FAQ** | „A co jeśli…?" — obiekcje w pierwszej osobie |
+| 8 | **Booking** | „Co teraz?" — trzy kanały, zero tarcia |
 
-**Czego celowo NIE ma:**
+**Czego celowo NIE ma:** formularza kontaktowego (obietnica bez terminu — WhatsApp to
+rozmowa, którą widać), przed/po (marka obiecuje, że *nikt nie zauważy* — pokazywanie
+transformacji przeczy pozycjonowaniu), procesu 01–04 (to jedno zdanie, nie sekcja),
+paska faktów i kart zobowiązań (powtarzały to, co i tak mówi sekcja „dlaczego my").
 
-- **Formularza kontaktowego.** Formularz to obietnica bez terminu — wysyłasz w pustkę
-  i czekasz. WhatsApp to rozmowa, którą widać. Mniejszy próg, szybsza odpowiedź.
-- **Przed/po.** Zdjęcia przed/po to język taniej kliniki. Marka obiecuje, że *nikt nie
-  zauważy* — pokazywanie transformacji przeczy samemu pozycjonowaniu.
-- **Procesu 01–04.** Pacjentka nie potrzebuje diagramu ścieżki, potrzebuje pewności, że
-  przy pierwszym terminie nic się nie stanie. To jedno zdanie, nie sekcja.
-
-**CTA jest wszędzie:** navbar, hero, każdy otwarty obszar zabiegów, sekcja Dr. Snow,
-stopka, pasek mobilny. Siedem punktów wejścia, wszystkie prowadzą w to samo miejsce.
-
----
+**Booking jest wszędzie:** navbar, hero, każdy otwarty obszar zabiegów, sekcja Dr. Snow,
+stopka, pasek mobilny. Wszystkie otwierają **ten sam popup** z trzema kanałami —
+i podają mu temat, więc wiadomość na WhatsAppie jest już napisana. Przy wyłączonym JS
+te same linki prowadzą do sekcji bookingu, która ma te same trzy kanały.
 
 ## Kierunek wizualny
 
@@ -76,11 +71,13 @@ badge'em — strzałka przy najechaniu wylatuje z kadru, druga wjeżdża na jej 
 
 ---
 
-## Zabiegi — pionowe słupki, które otwierają się w bok
+## Zabiegi — cztery kafle, które otwierają się w bok
 
-Cztery pionowe prostokąty. Zamknięty słupek to grzbiet z nazwą biegnącą w górę.
-Kliknięcie oddaje mu szerokość, którą oddają pozostałe — w CSS to animowana zmiana
-`grid-template-columns`, nie przeskok.
+W spoczynku cztery równe kafle, każdy z własnym zdjęciem i nazwą obszaru. Kliknięcie
+oddaje jednemu szerokość, którą oddają pozostałe — animowana zmiana
+`grid-template-columns`, nie przeskok. Zamknięte spadają do słupka z nazwą biegnącą
+w górę, ale **zachowują swoje zdjęcie**, więc rząd nadal czyta się jako zestaw.
+Drugie kliknięcie zamyka i rząd znów jest równy.
 
 | | Obszar | Zabiegi |
 |---|---|---|
@@ -89,19 +86,21 @@ Kliknięcie oddaje mu szerokość, którą oddają pozostałe — w CSS to animo
 | 03 | Skin quality / Hautqualität | 3 |
 | 04 | Body & hair / Körper & Haar | 2 |
 
-Każdy otwarty obszar pokazuje: jedno zdanie opisu, chipy **„to brzmi jak ja"** (dawna
-sekcja obaw, złożona tutaj), zabiegi z czasem i trwałością, oraz CTA do WhatsAppa.
+Każdy otwarty obszar: zdanie opisu, chipy **„to brzmi jak ja"**, zabiegi z czasem
+i trwałością, oraz CTA otwierające popup z tematem tego obszaru.
 
-Poniżej 1000 px słupki układają się w pionie i otwierają w dół. Sterowanie strzałkami,
-`aria-expanded`, a bez JS wszystkie cztery obszary są w treści.
-
----
+Poniżej 1000 px kafle układają się w pionie i otwierają w dół.
 
 ## Reszta
 
+**Hero:** jedno zdjęcie na całość, obietnica napisana w poprzek dołu, booking po prawej.
+Navbar nad zdjęciem przechodzi w biały wariant i wraca do ciemnego po zejściu z hero.
+
 **Scroll:** kółko myszy wygładzane lerpem; skok do sekcji to osobny, timowany ruch —
-380–720 ms zależnie od dystansu, `easeInOutCubic`. Wcześniej kotwice dziedziczyły lerp
-i przelatywały przez stronę.
+380–720 ms zależnie od dystansu, `easeInOutCubic`.
+
+**Booking:** natywny `<dialog>` — pułapka focusu, Escape i backdrop działają bez
+dopisywania niczego. Trzy kanały: WhatsApp, DM na Instagramie, telefon.
 
 **FAQ:** dziewięć pytań w trzech grupach, **żadne nie jest otwarte na wejściu**.
 Zmiana grupy zamyka wszystko.
@@ -123,7 +122,8 @@ w słupkach i w grupach FAQ, `prefers-reduced-motion`, cele dotykowe ≥ 44 px,
 
 | Co | Gdzie |
 |---|---|
-| **Zdjęcie do hero** — brand-kolorowe tło za modelką; slot 4:3 czeka | `assets/img/hero-portrait.svg` |
+| **Zdjęcie do hero** — pełnoekranowe, brand-kolorowe tło za modelką | `assets/img/hero-portrait.svg` |
+| **Cztery zdjęcia kafli zabiegów** — proporcje 3:4 | `assets/img/area-*.svg` |
 | **Portret Dr. Snow** — slot 4:5 | `assets/img/portrait-physician.svg` |
 | **Domena** — wszędzie `https://snow-clinics.com` | `index.html`, `sitemap.xml`, `robots.txt` |
 | **Opinie pacjentek** — treści przykładowe, wymagają realnych za zgodą osób | `#proof`, klucze `q*` |

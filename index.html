@@ -70,7 +70,7 @@
         <span class="lang__sep" aria-hidden="true">/</span>
         <button class="lang__btn" type="button" data-lang="de" aria-pressed="false" lang="de">DE</button>
       </div>
-      <a class="btn btn--sm" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-nav">
+      <a class="btn btn--sm" href="#book" data-track="book-nav" data-book="a consultation">
         <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span data-i18n="cta.book">Book a consultation</span>
       </a>
@@ -95,7 +95,7 @@
     </ul>
   </nav>
   <div class="menu__cta">
-    <a class="btn" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-menu">
+    <a class="btn" href="#book" data-track="book-menu" data-book="a consultation">
       <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <span data-i18n="cta.whatsapp">Book on WhatsApp</span>
     </a>
@@ -107,53 +107,31 @@
 
 <!-- ══ Hero ════════════════════════════════════════════════════════════════ -->
 <section class="hero" id="home">
-  <div class="shell">
-    <div class="hero__grid">
+  <div class="hero__media">
+    <img src="/assets/img/hero-portrait.svg" alt="" width="2400" height="1600" fetchpriority="high" decoding="async">
+  </div>
+  <div class="hero__scrim" aria-hidden="true"></div>
 
-      <figure class="hero__media reveal" style="margin:0">
-        <img src="/assets/img/hero-portrait.svg" alt="" width="1600" height="1200" fetchpriority="high" decoding="async">
-        <figcaption class="hero__badge" data-i18n="hero.badge">Usually replies within a few hours</figcaption>
-      </figure>
-
-      <div class="hero__copy reveal" style="--reveal-delay:120ms">
-        <p class="eyebrow" data-i18n="hero.eyebrow">Aesthetic medicine · Zürich · Konstanz · Paris · Marbella</p>
-        <p class="lede" data-i18n="hero.lede">
-          Physician-led treatments, dosed conservatively and reviewed at two weeks.
-          One doctor performs every one of them.
-        </p>
-        <div class="hero__cta">
-          <a class="btn" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-hero">
-            <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span data-i18n="cta.whatsapp">Book on WhatsApp</span>
-          </a>
-          <a class="btn btn--ghost" href="#treatments" data-i18n="cta.treatments">See treatments</a>
-        </div>
-      </div>
-
-      <div class="hero__title reveal" style="--reveal-delay:60ms">
-        <h1 class="display h-hero" data-i18n="hero.h1">Still your face. <em>Only rested.</em></h1>
-      </div>
-
+  <div class="shell hero__grid">
+    <div class="hero__title reveal">
+      <p class="eyebrow" data-i18n="hero.eyebrow">Aesthetic medicine · Zürich · Konstanz · Paris · Marbella</p>
+      <h1 class="display h-hero" data-i18n="hero.h1">Natural results are the whole point.</h1>
     </div>
 
-    <ul class="hero__facts reveal" style="--reveal-delay:240ms">
-      <li class="fact">
-        <span class="fact__k" data-i18n="facts.k1">Performed by</span>
-        <span class="fact__v" data-i18n="facts.v1">Dr. Snow, personally</span>
-      </li>
-      <li class="fact">
-        <span class="fact__k" data-i18n="facts.k2">Products</span>
-        <span class="fact__v" data-i18n="facts.v2">CE-marked, batch traceable</span>
-      </li>
-      <li class="fact">
-        <span class="fact__k" data-i18n="facts.k3">Always included</span>
-        <span class="fact__v" data-i18n="facts.v3">Two-week review</span>
-      </li>
-      <li class="fact">
-        <span class="fact__k" data-i18n="facts.k4">Consultations in</span>
-        <span class="fact__v">EN · DE · ES · PL</span>
-      </li>
-    </ul>
+    <div class="hero__copy reveal" style="--reveal-delay:140ms">
+      <p class="hero__badge" data-i18n="hero.badge">Usually replies within a few hours</p>
+      <p class="lede" data-i18n="hero.lede">
+        Physician-led treatments, dosed conservatively and reviewed at two weeks.
+        One doctor performs every one of them.
+      </p>
+      <div class="hero__cta">
+        <a class="btn" href="#book" data-book="a consultation" data-track="book-hero">
+          <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span data-i18n="cta.book">Book a consultation</span>
+        </a>
+        <a class="btn btn--ghost" href="#treatments" data-i18n="cta.treatments">See treatments</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -174,8 +152,10 @@
     </div>
 
     <div class="slabs reveal" id="slabs">
-      <section class="slab is-open" id="slab-lines">
-        <button class="slab__spine" type="button" id="tab-lines" aria-expanded="true" aria-controls="panel-lines">
+      <section class="slab" id="slab-lines">
+        <img class="slab__img" src="/assets/img/area-lines.svg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+        <span class="slab__veil" aria-hidden="true"></span>
+        <button class="slab__spine" type="button" id="tab-lines" aria-expanded="false" aria-controls="panel-lines">
           <span class="slab__n numeral" aria-hidden="true">01</span>
           <span class="slab__label"><span class="slab__name" data-i18n="area.lines.n">Expression lines</span></span>
           <span class="slab__mark" aria-hidden="true"></span>
@@ -205,7 +185,7 @@
             </ol>
 
             <div class="slab__foot">
-              <a class="btn btn--sm" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20ask%20about%20expression%20lines." rel="noopener" data-track="ask-lines">
+              <a class="btn btn--sm" href="#book" data-book="expression lines" data-track="ask-lines">
                 <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="cta.ask">Ask about this</span>
               </a>
               <p class="slab__note" data-i18n="slab.note">Costs are set out in your written plan after the consultation.</p>
@@ -214,6 +194,8 @@
         </div>
       </section>
       <section class="slab" id="slab-contour">
+        <img class="slab__img" src="/assets/img/area-contour.svg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+        <span class="slab__veil" aria-hidden="true"></span>
         <button class="slab__spine" type="button" id="tab-contour" aria-expanded="false" aria-controls="panel-contour">
           <span class="slab__n numeral" aria-hidden="true">02</span>
           <span class="slab__label"><span class="slab__name" data-i18n="area.contour.n">Volume & contour</span></span>
@@ -244,7 +226,7 @@
             </ol>
 
             <div class="slab__foot">
-              <a class="btn btn--sm" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20ask%20about%20volume%20and%20contour." rel="noopener" data-track="ask-contour">
+              <a class="btn btn--sm" href="#book" data-book="volume and contour" data-track="ask-contour">
                 <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="cta.ask">Ask about this</span>
               </a>
               <p class="slab__note" data-i18n="slab.note">Costs are set out in your written plan after the consultation.</p>
@@ -253,6 +235,8 @@
         </div>
       </section>
       <section class="slab" id="slab-skin">
+        <img class="slab__img" src="/assets/img/area-skin.svg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+        <span class="slab__veil" aria-hidden="true"></span>
         <button class="slab__spine" type="button" id="tab-skin" aria-expanded="false" aria-controls="panel-skin">
           <span class="slab__n numeral" aria-hidden="true">03</span>
           <span class="slab__label"><span class="slab__name" data-i18n="area.skin.n">Skin quality</span></span>
@@ -288,7 +272,7 @@
             </ol>
 
             <div class="slab__foot">
-              <a class="btn btn--sm" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20ask%20about%20skin%20quality." rel="noopener" data-track="ask-skin">
+              <a class="btn btn--sm" href="#book" data-book="skin quality" data-track="ask-skin">
                 <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="cta.ask">Ask about this</span>
               </a>
               <p class="slab__note" data-i18n="slab.note">Costs are set out in your written plan after the consultation.</p>
@@ -297,6 +281,8 @@
         </div>
       </section>
       <section class="slab" id="slab-body">
+        <img class="slab__img" src="/assets/img/area-body.svg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+        <span class="slab__veil" aria-hidden="true"></span>
         <button class="slab__spine" type="button" id="tab-body" aria-expanded="false" aria-controls="panel-body">
           <span class="slab__n numeral" aria-hidden="true">04</span>
           <span class="slab__label"><span class="slab__name" data-i18n="area.body.n">Body & hair</span></span>
@@ -327,7 +313,7 @@
             </ol>
 
             <div class="slab__foot">
-              <a class="btn btn--sm" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20ask%20about%20body%20and%20hair." rel="noopener" data-track="ask-body">
+              <a class="btn btn--sm" href="#book" data-book="body and hair treatments" data-track="ask-body">
                 <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="cta.ask">Ask about this</span>
               </a>
               <p class="slab__note" data-i18n="slab.note">Costs are set out in your written plan after the consultation.</p>
@@ -413,7 +399,7 @@
         <li data-i18n="physician.c4">Consultations in English, German, Spanish and Polish</li>
       </ul>
       <div class="hero__cta">
-        <a class="btn" href="https://wa.me/34637479715?text=Hello%20Dr.%20Snow%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-physician">
+        <a class="btn" href="#book" data-track="book-physician" data-book="a consultation with Dr. Snow">
           <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span data-i18n="cta.bookWith">Book with Dr. Snow</span>
         </a>
@@ -470,24 +456,6 @@
 <!-- ══ Proof ═══════════════════════════════════════════════════════════════ -->
 <section class="section section--brand" id="proof" aria-labelledby="proof-h">
   <div class="shell">
-
-    <ul class="pledges">
-      <li class="pledge reveal">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.4"/></svg>
-        <span class="pledge__n numeral">4</span>
-        <span class="pledge__d" data-i18n="pledge.1">Clinics in three countries, all run to one standard by one physician.</span>
-      </li>
-      <li class="pledge reveal" style="--reveal-delay:70ms">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 3v4M16 3v4M3.5 10h17M9 15l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="pledge__n numeral" data-i18n="pledge.2n">2 weeks</span>
-        <span class="pledge__d" data-i18n="pledge.2">Every result reviewed before it is called finished. That appointment is included.</span>
-      </li>
-      <li class="pledge reveal" style="--reveal-delay:140ms">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.4"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="pledge__n numeral" data-i18n="pledge.3n">48 hours</span>
-        <span class="pledge__d" data-i18n="pledge.3">Notice is all it takes to move or cancel, at no charge and without a reason.</span>
-      </li>
-    </ul>
 
     <div class="section-head">
       <div class="section-head__row">
@@ -714,7 +682,7 @@
 
     <div class="footer__cta">
       <h2 class="display" data-i18n="footer.cta">Built on second opinions, small doses and patients who came back.</h2>
-      <a class="btn btn--light" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-footer">
+      <a class="btn btn--light" href="#book" data-track="book-footer" data-book="a consultation">
         <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span data-i18n="cta.whatsapp">Book on WhatsApp</span>
       </a>
@@ -778,9 +746,69 @@
   </div>
 </footer>
 
+<!-- ══ Booking dialog ══════════════════════════════════════════════════════ -->
+<dialog class="modal" id="book-modal" aria-labelledby="modal-h">
+  <div class="modal__box">
+    <button class="modal__close" type="button" id="modal-close" aria-label="Close" data-i18n-attr="aria-label" data-i18n="a11y.close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+
+    <p class="eyebrow" data-i18n="modal.eyebrow">Book</p>
+    <h2 class="display h-sub" id="modal-h" data-i18n="modal.h">How would you like to reach us?</h2>
+    <p class="modal__sub" data-i18n="modal.p">Tell us the city and what is bothering you. You get available dates back, usually the same day.</p>
+
+    <ul class="routes">
+      <li>
+        <a class="route route--wa" id="modal-wa" href="https://wa.me/34637479715" rel="noopener" data-track="modal-whatsapp">
+          <span class="route__i" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.25-4.38c0-4.54 3.7-8.23 8.23-8.23 2.2 0 4.26.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.65-1.23-1.46-1.38-1.71-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.07.15-1.18-.06-.1-.23-.17-.48-.29Z"/></svg>
+          </span>
+          <span>
+            <span class="route__t" data-i18n="route.wa.t">WhatsApp</span>
+            <span class="route__d" data-i18n="route.wa.d">+34 637 479 715 · fastest reply</span>
+          </span>
+          <span class="route__go" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M14 4H6M14 4v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="route" href="https://ig.me/m/snow_clinics" rel="noopener" data-track="modal-instagram">
+          <span class="route__i" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.1" stroke="currentColor" stroke-width="1.6"/><circle cx="17.1" cy="6.9" r="1.2" fill="currentColor"/></svg>
+          </span>
+          <span>
+            <span class="route__t" data-i18n="route.ig.t">Instagram</span>
+            <span class="route__d" data-i18n="route.ig.d">@snow_clinics · send a direct message</span>
+          </span>
+          <span class="route__go" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M14 4H6M14 4v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="route" href="tel:+34637479715" data-track="modal-phone">
+          <span class="route__i" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7.5 3.8h-2A2.5 2.5 0 0 0 3 6.4c0 7.8 6.3 14.1 14.1 14.1a2.5 2.5 0 0 0 2.5-2.5v-2a1.3 1.3 0 0 0-1-1.3l-3-.7a1.3 1.3 0 0 0-1.3.5l-.8 1a10.6 10.6 0 0 1-5-5l1-.8c.4-.3.6-.8.5-1.3l-.7-3a1.3 1.3 0 0 0-1.3-1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </span>
+          <span>
+            <span class="route__t" data-i18n="route.tel.t">Telephone</span>
+            <span class="route__d" data-i18n="route.tel.d">+34 637 479 715 · Monday to Friday</span>
+          </span>
+          <span class="route__go" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M14 4H6M14 4v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="modal__note" data-i18n="modal.note">The first appointment is a consultation. Nothing is injected on the day, and you can move or cancel free of charge with 48 hours' notice.</p>
+  </div>
+</dialog>
+
 <nav class="dock" id="dock" aria-label="Quick actions" data-i18n-attr="aria-label" data-i18n="a11y.dock">
   <a class="dock__call" href="tel:+34637479715" data-i18n="dock.call">Call</a>
-  <a class="dock__book" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-dock" data-i18n="cta.whatsapp">Book on WhatsApp</a>
+  <a class="dock__book" href="#book" data-track="book-dock" data-i18n="cta.whatsapp" data-book="a consultation">Book on WhatsApp</a>
 </nav>
 
 <button class="to-top" type="button" id="to-top" aria-label="Back to top" data-i18n-attr="aria-label" data-i18n="a11y.top">

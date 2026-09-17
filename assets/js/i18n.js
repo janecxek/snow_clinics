@@ -36,17 +36,9 @@
     'dock.call': 'Anrufen',
 
     'hero.eyebrow': 'Ästhetische Medizin · Zürich · Konstanz · Paris · Marbella',
-    'hero.h1': 'Immer noch Ihr Gesicht. <em>Nur ausgeruht.</em>',
+    'hero.h1': 'Natürliche Resultate sind der ganze Punkt.',
     'hero.lede': 'Ärztlich geführte Behandlungen, zurückhaltend dosiert und nach zwei Wochen kontrolliert. Eine Ärztin führt jede einzelne davon durch.',
     'hero.badge': 'Antwort meist innerhalb weniger Stunden',
-
-    'facts.k1': 'Durchgeführt von',
-    'facts.v1': 'Dr. Snow, persönlich',
-    'facts.k2': 'Produkte',
-    'facts.v2': 'CE-zertifiziert, rückverfolgbar',
-    'facts.k3': 'Immer inbegriffen',
-    'facts.v3': 'Kontrolle nach zwei Wochen',
-    'facts.k4': 'Beratung auf',
 
     'treatments.eyebrow': 'Behandlungen',
     'treatments.h': 'Beginnen Sie bei dem, was Sie stört.',
@@ -135,12 +127,6 @@
     'loc.marbella.r': 'Saisonale Klinik',
     'loc.marbella': 'Hautregeneration nach dem Sommer, Pigmentierung und regenerative Protokolle.',
 
-    'pledge.1': 'Kliniken in drei Ländern, alle nach einem Standard von einer Ärztin geführt.',
-    'pledge.2n': '2 Wochen',
-    'pledge.2': 'Jedes Resultat wird kontrolliert, bevor es als fertig gilt. Dieser Termin ist inbegriffen.',
-    'pledge.3n': '48 Stunden',
-    'pledge.3': 'Vorlauf genügt, um kostenfrei zu verschieben oder abzusagen — ohne Begründung.',
-
     'proof.eyebrow': 'Beruhigend zu wissen',
     'proof.h': 'Von Patientinnen, die mit Ihrer Frage kamen.',
     'proof.lede': 'Mit Einverständnis bei der Kontrolle nach zwei Wochen erhoben.',
@@ -181,6 +167,11 @@
     'faq.q9': 'Kann ich kostenfrei verschieben oder absagen?',
     'faq.a9': 'Ja, mit 48 Stunden Vorlauf, und Sie müssen keinen Grund nennen. Die Kliniktage in Paris und Marbella sind begrenzt — früher abgesagt heisst, jemand anders bekommt den Platz.',
 
+    'a11y.close': 'Schliessen',
+    'modal.eyebrow': 'Termin',
+    'modal.h': 'Wie möchten Sie uns erreichen?',
+    'modal.p': 'Nennen Sie die Stadt und was Sie stört. Sie bekommen freie Termine zurück, meist noch am selben Tag.',
+    'modal.note': 'Der erste Termin ist eine Beratung. An diesem Tag wird nichts injiziert, und Sie können mit 48 Stunden Vorlauf kostenfrei verschieben oder absagen.',
     'book.eyebrow': 'Termin',
     'book.h': 'Ein Satz genügt. Das ist der ganze erste Schritt.',
     'book.p': 'Keine Formulare. Nennen Sie die Stadt und was Sie stört — Sie bekommen freie Termine zurück, meist noch am selben Tag.',
