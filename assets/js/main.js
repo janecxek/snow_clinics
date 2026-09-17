@@ -267,6 +267,19 @@
     });
   });
 
+  // A concern is a question; the area is the answer. Clicking one opens the
+  // other and takes you to it, so the connection is made for the reader.
+  $$('[data-goto]').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var tab = document.getElementById(card.getAttribute('data-goto'));
+      if (!tab) return;
+      selectArea(tab);
+      var section = document.getElementById('treatments');
+      var offset = (nav ? nav.offsetHeight : 0) + 16;
+      scroller.to(section.getBoundingClientRect().top + window.scrollY - offset);
+    });
+  });
+
   if (panelWrap) {
     // The opening measurement must not animate from zero.
     panelWrap.style.transition = 'none';
@@ -353,11 +366,47 @@
   }
 
   /* ----------------------------------------------------------------------
-     8. FAQ
+     8. FAQ — grouped by the kind of worry, one group shown at a time
      ---------------------------------------------------------------------- */
   $$('.faq__q').forEach(function (btn) {
     btn.addEventListener('click', function () {
       btn.setAttribute('aria-expanded', btn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+    });
+  });
+
+  var segments = $$('.segment');
+  var faqItems = $$('.faq__item');
+
+  function selectGroup(seg, moveFocus) {
+    var group = seg.getAttribute('data-group');
+    segments.forEach(function (s2) {
+      var on = s2 === seg;
+      s2.setAttribute('aria-selected', String(on));
+      s2.tabIndex = on ? 0 : -1;
+    });
+    faqItems.forEach(function (item, i) {
+      var match = item.getAttribute('data-group') === group;
+      item.classList.toggle('is-filtered', !match);
+      // Only the first question of a group stays open; the rest start closed
+      // so the group reads as a list rather than a wall.
+      var q = item.querySelector('.faq__q');
+      if (q) q.setAttribute('aria-expanded', String(match && !faqItems.slice(0, i)
+        .some(function (prev) { return prev.getAttribute('data-group') === group; })));
+    });
+    if (moveFocus) seg.focus();
+  }
+
+  segments.forEach(function (seg, i) {
+    seg.addEventListener('click', function () { selectGroup(seg); });
+    seg.addEventListener('keydown', function (e) {
+      var next = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = segments[(i + 1) % segments.length];
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = segments[(i - 1 + segments.length) % segments.length];
+      if (e.key === 'Home') next = segments[0];
+      if (e.key === 'End') next = segments[segments.length - 1];
+      if (!next) return;
+      e.preventDefault();
+      selectGroup(next, true);
     });
   });
 

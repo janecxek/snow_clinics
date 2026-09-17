@@ -16,6 +16,9 @@
   --slate:        #4A5B67;
   --frost:        #A9C5D6;
   --frost-deep:   #3E6076;
+  --brand:        #2E6B85;
+  --brand-deep:   #24576D;
+  --brand-tint:   #EDF3F6;
   --frost-light:  #D6E4EC;
   --porcelain:    #F3F5F6;
   --snow:         #FFFFFF;
@@ -50,7 +53,10 @@
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
   --measure: 62ch;
   --shell: 1320px;
-  --radius: 2px;
+  --r-sm:   12px;
+  --r-md:   20px;
+  --r-lg:   28px;
+  --r-pill: 999px;
 
   /* Motion */
   --ease: cubic-bezier(.22, 1, .36, 1);
@@ -94,9 +100,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 button { background: none; border: 0; padding: 0; cursor: pointer; }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--brand);
   outline-offset: 3px;
-  border-radius: 1px;
+  border-radius: 4px;
 }
 
 ::selection { background: var(--frost); color: var(--ink); }
@@ -164,12 +170,13 @@ body::after {
 }
 .eyebrow::before {
   content: "";
-  width: clamp(1.5rem, 4vw, 3rem);
-  height: 1px;
-  background: currentColor;
-  opacity: .5;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
   flex: none;
 }
+.eyebrow--center { justify-content: center; }
 
 .lede {
   font-size: var(--step-1);
@@ -273,63 +280,93 @@ body::after {
 }
 
 /* --------------------------------------------------------------------------
-   6. Buttons
+   6. Buttons — a pill carrying a circular badge, as the references do.
+   Sentence case rather than wide caps: it reads faster at button size.
    -------------------------------------------------------------------------- */
 .btn {
-  --btn-fg: var(--snow);
-  --btn-bg: var(--ink);
+  --btn-bg: var(--brand);
+  --btn-fg: #FFFFFF;
+  --badge-bg: #FFFFFF;
+  --badge-fg: var(--brand);
   position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: .7rem;
-  padding: 1.05rem 2rem;
-  border-radius: 100px;
+  gap: .8rem;
+  min-height: 56px;
+  padding: .45rem 1.7rem .45rem .45rem;
+  border-radius: var(--r-pill);
   background: var(--btn-bg);
   color: var(--btn-fg);
-  font-size: var(--step--1);
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: .16em;
-  text-transform: uppercase;
+  letter-spacing: -.002em;
+  line-height: 1.2;
   white-space: nowrap;
-  overflow: hidden;
-  isolation: isolate;
-  transition: color var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease);
+  transition: background var(--t-mid) var(--ease), color var(--t-mid) var(--ease),
+              border-color var(--t-mid) var(--ease), transform var(--t-fast) var(--ease);
 }
-.btn::before {
+.btn:hover { background: var(--brand-deep); transform: translateY(-1px); }
+.btn:active { transform: none; }
+
+.btn__badge {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+  overflow: hidden;
+}
+.btn__badge svg { transition: transform var(--t-mid) var(--ease); }
+.btn:hover .btn__badge svg { transform: translate3d(140%, -140%, 0); }
+
+/* A second arrow waits below-left so the first can leave the badge. */
+.btn__badge::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
-  background: var(--frost);
-  transform: translate3d(0, 101%, 0);
+  border-radius: 50%;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 15 15' fill='none'%3E%3Cpath d='M3 12L12 3M12 3H5M12 3V10' stroke='%232E6B85' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translate3d(-140%, 140%, 0);
   transition: transform var(--t-mid) var(--ease);
 }
-.btn:hover::before, .btn:focus-visible::before { transform: none; }
-.btn:hover, .btn:focus-visible { color: var(--ink); }
+.btn:hover .btn__badge::after { transform: none; }
 
+.btn--dark  { --btn-bg: var(--ink); --badge-fg: var(--ink); }
+.btn--dark:hover { background: #1B2E3C; }
+.btn--light { --btn-bg: #FFFFFF; --btn-fg: var(--ink); --badge-bg: var(--brand); --badge-fg: #FFFFFF; }
+.btn--light:hover { background: #FFFFFF; }
+.btn--light .btn__badge::after { display: none; }
 .btn--ghost {
   --btn-bg: transparent;
   --btn-fg: var(--fg);
+  --badge-bg: transparent;
+  --badge-fg: var(--fg);
   border: 1px solid var(--line-strong);
+  padding-inline: 1.7rem;
 }
-.btn--light { --btn-bg: var(--snow); --btn-fg: var(--ink); }
-.btn--light::before { background: var(--frost); }
-
-.btn__arrow { transition: transform var(--t-mid) var(--ease); }
-.btn:hover .btn__arrow { transform: translateX(4px); }
+.btn--ghost .btn__badge { display: none; }
+.btn--ghost:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.btn--sm { min-height: 48px; font-size: .95rem; padding: .35rem 1.4rem .35rem .35rem; }
+.btn--sm .btn__badge { width: 38px; height: 38px; }
+.btn--sm .btn__badge::after { background-size: 13px 13px; }
 
 /* Text link with an underline that wipes in */
 .link {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: .55rem;
-  font-size: var(--step--1);
+  gap: .5rem;
+  font-size: .95rem;
   font-weight: 500;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  padding-bottom: .35rem;
+  padding-bottom: .3rem;
+  color: var(--accent);
 }
 .link::after {
   content: "";
@@ -338,7 +375,6 @@ body::after {
   height: 1px;
   background: currentColor;
   transform-origin: right;
-  transform: scaleX(1);
   transition: transform var(--t-mid) var(--ease);
 }
 .link:hover::after, .link:focus-visible::after {
@@ -346,6 +382,28 @@ body::after {
   animation: link-wipe var(--t-mid) var(--ease);
 }
 @keyframes link-wipe { 0% { transform: scaleX(0); } 100% { transform: scaleX(1); } }
+
+/* --------------------------------------------------------------------------
+   6b. Chips — the sub-items behind a heading, listed rather than hidden
+   -------------------------------------------------------------------------- */
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0; list-style: none; }
+.chips__label {
+  width: 100%;
+  margin-bottom: .35rem;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.chip {
+  padding: .45rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  font-size: .9rem;
+  line-height: 1.3;
+  color: var(--fg);
+  background: var(--surface);
+}
 
 /* --------------------------------------------------------------------------
    7. Navigation
@@ -720,6 +778,8 @@ body::after {
    make. The area is the choice; the procedures are the detail behind it.
    -------------------------------------------------------------------------- */
 .categories {
+  border-radius: var(--r-lg);
+  overflow: hidden;
   list-style: none;
   padding: 0;
   margin: 0 0 clamp(2rem, 4vw, 3rem);
@@ -743,7 +803,7 @@ body::after {
   color: var(--fg);
   transition: background var(--t-mid) var(--ease), color var(--t-mid) var(--ease);
 }
-@media (min-width: 640px) { .category { aspect-ratio: 1 / 1; } }
+@media (min-width: 640px) { .category { min-height: clamp(14rem, 17vw, 16rem); } }
 .category:hover { background: #E9EEF1; }
 .category[aria-selected="true"] { background: var(--ink); color: var(--porcelain); }
 .category[aria-selected="true"]:hover { background: var(--ink); }
@@ -821,19 +881,22 @@ html.no-js .panel { position: static; opacity: 1; visibility: visible; transform
 .protocols { list-style: none; padding: 0; margin: 0; display: grid; }
 .protocol {
   display: grid;
-  gap: var(--s-2) var(--s-6);
-  padding-block: clamp(1.4rem, 2.6vw, 2rem);
-  border-bottom: 1px solid var(--line);
+  gap: var(--s-3) var(--s-5);
+  padding: clamp(1.4rem, 2.6vw, 1.9rem) clamp(1.2rem, 2.4vw, 1.8rem);
+  margin-bottom: .75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
   opacity: 0;
   transform: translate3d(0, 14px, 0);
   transition: opacity 500ms var(--ease) var(--d, 0ms), transform 500ms var(--ease) var(--d, 0ms);
 }
 .panel.is-active .protocol { opacity: 1; transform: none; }
-.protocol:first-child { border-top: 1px solid var(--line); }
 @media (min-width: 880px) {
-  .protocol { grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) minmax(0, 23rem); align-items: start; }
+  .protocol { grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) minmax(0, 17rem); align-items: start; }
 }
 
+.protocol__head { display: grid; gap: var(--s-3); align-content: start; }
 .protocol__name { font-size: var(--step-1); font-weight: 500; line-height: 1.3; letter-spacing: -.004em; }
 .protocol__desc { color: var(--fg-muted); max-width: 46ch; text-wrap: pretty; }
 
@@ -880,6 +943,7 @@ html.no-js .panel { position: static; opacity: 1; visibility: visible; transform
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border: 1px solid var(--line);
+  border-radius: var(--r-lg);
   touch-action: pan-y;
   cursor: ew-resize;
   user-select: none;
@@ -939,8 +1003,9 @@ html.no-js .panel { position: static; opacity: 1; visibility: visible; transform
 
 .results__aside { display: grid; gap: var(--s-4); align-content: start; }
 .results__note {
-  padding: var(--s-4);
+  padding: var(--s-5);
   border: 1px solid var(--line);
+  border-radius: var(--r-md);
   background: var(--surface);
   font-size: var(--step--1);
   line-height: 1.7;
@@ -986,7 +1051,7 @@ html.no-js .panel { position: static; opacity: 1; visibility: visible; transform
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: 999px 999px var(--radius) var(--radius);
+  border-radius: var(--r-pill) var(--r-pill) var(--r-lg) var(--r-lg);
 }
 .physician__body { display: grid; gap: var(--s-4); align-content: start; }
 .credentials { list-style: none; padding: 0; display: grid; gap: .85rem; margin-top: var(--s-2); }
@@ -1013,6 +1078,8 @@ html.no-js .panel { position: static; opacity: 1; visibility: visible; transform
    14. Locations — set in type, so the cities carry the section
    -------------------------------------------------------------------------- */
 .locations {
+  border-radius: var(--r-lg);
+  overflow: hidden;
   list-style: none;
   padding: 0;
   display: grid;
@@ -1082,6 +1149,7 @@ html.no-js .panel { position: static; opacity: 1; visibility: visible; transform
   padding: clamp(1.5rem, 3vw, var(--s-5));
   background: var(--surface);
   border: 1px solid var(--line);
+  border-radius: var(--r-md);
 }
 .quote__mark {
   font-family: var(--font-display);
@@ -1096,14 +1164,6 @@ html.no-js .panel { position: static; opacity: 1; visibility: visible; transform
   line-height: 1.5;
   letter-spacing: -.002em;
   text-wrap: pretty;
-}
-.quote__by {
-  font-size: var(--step--1);
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  padding-top: var(--s-3);
-  border-top: 1px solid var(--line);
 }
 .carousel-nav { display: flex; gap: .5rem; }
 .carousel-btn {
@@ -1120,11 +1180,43 @@ html.no-js .panel { position: static; opacity: 1; visibility: visible; transform
 .carousel-btn:disabled { opacity: .3; cursor: not-allowed; }
 
 /* --------------------------------------------------------------------------
-   16. FAQ
+   16. FAQ — grouped by the kind of worry, phrased as the worry itself
    -------------------------------------------------------------------------- */
-.faq { display: grid; }
-.faq__item { border-top: 1px solid var(--line); }
-.faq__item:last-child { border-bottom: 1px solid var(--line); }
+.segments {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+  padding: .3rem;
+  margin-bottom: var(--s-5);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+}
+.segment {
+  padding: .65rem 1.25rem;
+  border-radius: var(--r-pill);
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--fg-muted);
+  transition: background var(--t-mid) var(--ease), color var(--t-mid) var(--ease);
+}
+.segment:hover { color: var(--fg); }
+.segment[aria-selected="true"] { background: var(--ink); color: var(--porcelain); }
+
+.faq { display: grid; gap: .75rem; }
+.faq__item {
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  overflow: hidden;
+  transition: background var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease);
+}
+.faq__item.is-filtered { display: none; }
+/* Without JS there is nothing to switch groups with, so show every answer. */
+html.no-js .segments { display: none; }
+html.no-js .faq__item.is-filtered { display: block; }
+.faq__item:has(.faq__q[aria-expanded="true"]) { background: var(--brand-tint); border-color: transparent; }
+
 .faq__q {
   width: 100%;
   display: grid;
@@ -1132,30 +1224,41 @@ html.no-js .panel { position: static; opacity: 1; visibility: visible; transform
   gap: var(--s-4);
   align-items: center;
   text-align: left;
-  padding-block: clamp(1.25rem, 2.6vw, 1.75rem);
-  font-family: var(--font-body);
+  padding: clamp(1.1rem, 2.2vw, 1.5rem) clamp(1.1rem, 2.2vw, 1.6rem);
   font-size: var(--step-1);
   font-weight: 500;
   line-height: 1.35;
   letter-spacing: -.004em;
   transition: color var(--t-fast) var(--ease);
 }
-.faq__q:hover { color: var(--accent); }
+.faq__q:hover { color: var(--brand); }
+
 .faq__icon {
   position: relative;
-  width: 18px; height: 18px;
+  width: 44px; height: 44px;
   flex: none;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  transition: background var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease),
+              color var(--t-mid) var(--ease);
 }
 .faq__icon::before, .faq__icon::after {
   content: "";
   position: absolute;
-  top: 50%; left: 0;
-  width: 100%; height: 1px;
+  top: 50%; left: 50%;
+  width: 15px; height: 1.5px;
+  margin: -.75px 0 0 -7.5px;
   background: currentColor;
   transition: transform var(--t-mid) var(--ease);
 }
 .faq__icon::after { transform: rotate(90deg); }
+.faq__q[aria-expanded="true"] .faq__icon {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #FFFFFF;
+}
 .faq__q[aria-expanded="true"] .faq__icon::after { transform: rotate(0deg); }
+
 .faq__a {
   display: grid;
   grid-template-rows: 0fr;
@@ -1164,8 +1267,8 @@ html.no-js .panel { position: static; opacity: 1; visibility: visible; transform
 .faq__q[aria-expanded="true"] + .faq__a { grid-template-rows: 1fr; }
 .faq__a > div { overflow: hidden; }
 .faq__a p {
-  max-width: 68ch;
-  padding-bottom: clamp(1.25rem, 2.6vw, 1.75rem);
+  max-width: 72ch;
+  padding: 0 clamp(1.1rem, 2.2vw, 1.6rem) clamp(1.2rem, 2.4vw, 1.6rem);
   color: var(--fg-muted);
   text-wrap: pretty;
 }
@@ -1228,7 +1331,7 @@ a.channel__v:hover { color: var(--accent); }
 }
 .field select {
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234A5B67' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%232E6B85' stroke-width='1.2'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right .25rem center;
   padding-right: 2rem;
@@ -1285,6 +1388,7 @@ a.channel__v:hover { color: var(--accent); }
   gap: var(--s-3);
   padding: var(--s-5);
   border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
   background: var(--surface);
 }
 
@@ -1292,7 +1396,7 @@ a.channel__v:hover { color: var(--accent); }
    18. Footer
    -------------------------------------------------------------------------- */
 .footer { background: var(--ink); color: var(--porcelain); padding-block: var(--s-7) var(--s-5); }
-.footer a { color: inherit; }
+.footer a:not(.btn) { color: inherit; }
 .footer__top {
   display: grid;
   gap: var(--s-6);
@@ -1371,6 +1475,8 @@ a.channel__v:hover { color: var(--accent); }
    where the doubt arrives: immediately under the promise.
    -------------------------------------------------------------------------- */
 .facts {
+  border-radius: var(--r-lg);
+  overflow: hidden;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1402,8 +1508,9 @@ a.channel__v:hover { color: var(--accent); }
 .assurance {
   display: grid;
   gap: var(--s-3);
-  padding: var(--s-4);
+  padding: var(--s-5);
   border: 1px solid var(--line);
+  border-radius: var(--r-md);
   background: var(--surface);
   list-style: none;
   margin: 0;
@@ -1475,4 +1582,157 @@ a.channel__v:hover { color: var(--accent); }
 }
 .dock__call { background: rgba(243, 245, 246, .92); color: var(--ink); }
 .dock__book { background: var(--ink); color: var(--snow); }
-@media (max-width: 859.98px) { .to-top { display: none; } }
+@media (max-width: 859.98px) {
+  .to-top { display: none; }
+  .footer { padding-bottom: calc(var(--s-5) + 56px + env(safe-area-inset-bottom)); }
+}
+
+/* --------------------------------------------------------------------------
+   24. Concerns — name the thing that bothers someone before offering a fix.
+   Each card routes into the treatment area that answers it.
+   -------------------------------------------------------------------------- */
+.concerns {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: clamp(.75rem, 1.5vw, 1rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+@media (min-width: 900px) { .concerns { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.concern {
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+  width: 100%;
+  height: 100%;
+  padding: clamp(1.3rem, 2.4vw, 1.75rem);
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  transition: background var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease),
+              transform var(--t-mid) var(--ease);
+}
+.concern:hover {
+  background: var(--brand-tint);
+  border-color: transparent;
+  transform: translateY(-3px);
+}
+.concern__n {
+  display: grid;
+  place-items: center;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--brand-tint);
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  transition: background var(--t-mid) var(--ease), color var(--t-mid) var(--ease);
+}
+.concern:hover .concern__n { background: var(--brand); color: #FFFFFF; }
+.concern__t { font-size: var(--step-1); font-weight: 500; line-height: 1.32; letter-spacing: -.004em; }
+.concern__d { font-size: var(--step--1); line-height: 1.6; color: var(--fg-muted); }
+.concern__go {
+  margin-top: .25rem;
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+.concern__go span { transition: transform var(--t-mid) var(--ease); }
+.concern:hover .concern__go span { transform: translateX(4px); }
+
+/* --------------------------------------------------------------------------
+   25. Brand band — the one saturated surface on the page. It carries the
+   proof: what the clinic commits to, and what patients say afterwards.
+   -------------------------------------------------------------------------- */
+.section--brand {
+  --bg: var(--brand);
+  --surface: rgba(255, 255, 255, .08);
+  --fg: #FFFFFF;
+  --fg-muted: #F2F8FA;
+  --accent: #FFFFFF;
+  --line: rgba(255, 255, 255, .22);
+  --line-strong: rgba(255, 255, 255, .42);
+  background: var(--bg);
+  color: var(--fg);
+}
+.section--brand .btn { --btn-bg: #FFFFFF; --btn-fg: var(--brand-deep); --badge-bg: var(--brand); --badge-fg: #FFFFFF; }
+.section--brand .btn:hover { background: #FFFFFF; }
+.section--brand .btn .btn__badge::after { display: none; }
+
+.pledges {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 clamp(2.5rem, 5vw, var(--s-7));
+  display: grid;
+  gap: clamp(.75rem, 1.5vw, 1rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+.pledge {
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+.pledge svg { color: rgba(255, 255, 255, .7); }
+.pledge__n {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin-top: var(--s-4);
+}
+.pledge__d { font-size: var(--step--1); line-height: 1.6; color: var(--fg-muted); }
+
+/* --------------------------------------------------------------------------
+   26. Footer — a last, plain invitation, then the practical details
+   -------------------------------------------------------------------------- */
+.footer__cta {
+  display: grid;
+  gap: var(--s-5);
+  align-items: center;
+  padding-bottom: var(--s-7);
+}
+@media (min-width: 860px) {
+  .footer__cta { grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-6); }
+}
+.footer__cta h2 { font-size: var(--step-3); max-width: 20ch; }
+
+.footer__grid {
+  display: grid;
+  gap: var(--s-6);
+  padding-block: var(--s-6);
+  border-top: 1px solid rgba(214, 228, 236, .16);
+}
+@media (min-width: 720px)  { .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .footer__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.footer__hours { display: grid; gap: .55rem; font-size: var(--step-0); color: #C4D3DB; }
+.footer__hours span { display: block; }
+.footer__hours b { font-weight: 500; color: var(--porcelain); }
+
+/* The wordmark, ghosted, closing the page the way a letterhead would. */
+.footer__mark {
+  margin-top: var(--s-5);
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 15vw, 11rem);
+  line-height: .85;
+  letter-spacing: -.03em;
+  color: rgba(169, 197, 214, .13);
+  user-select: none;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.protocol__body { display: grid; gap: var(--s-4); align-content: start; }
+
+.quote__meta { display: grid; gap: .6rem; margin: 0; padding-top: var(--s-3); border-top: 1px solid var(--line); }
+.quote__meta > div { display: flex; justify-content: space-between; gap: var(--s-3); align-items: baseline; }
+.quote__meta dt { font-size: .8rem; color: var(--fg-muted); }
+.quote__meta dd { margin: 0; font-size: .88rem; font-weight: 500; text-align: right; }
