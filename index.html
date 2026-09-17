@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title data-i18n="meta.title">Snow Clinics — Aesthetic Medicine in Zürich, Konstanz, Paris &amp; Marbella</title>
-<meta name="description" data-i18n-attr="content" data-i18n="meta.description" content="Physician-led aesthetic medicine by Dr. Snow. Botulinum toxin, fillers, mesotherapy, skin boosters and thread lifting in Zürich, Konstanz, Paris and Marbella. Conservative dosing, natural results.">
-<meta name="author" content="Snow Clinics">
+<meta name="description" data-i18n-attr="content" data-i18n="meta.description" content="Physician-led aesthetic medicine by Dr. Snow. Botulinum toxin, lip contouring, vector lifting, mesotherapy and skin boosters in Zürich, Konstanz, Paris and Marbella. Conservative dosing, natural results.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<meta name="theme-color" content="#0E1922">
+<meta name="theme-color" content="#2E6B85">
 <link rel="canonical" href="https://snow-clinics.com/">
 
 <link rel="alternate" hreflang="en" href="https://snow-clinics.com/">
@@ -21,7 +20,7 @@
 <meta property="og:locale:alternate" content="de_CH">
 <meta property="og:url" content="https://snow-clinics.com/">
 <meta property="og:title" data-i18n-attr="content" data-i18n="meta.ogTitle" content="Snow Clinics — Aesthetic Medicine">
-<meta property="og:description" data-i18n-attr="content" data-i18n="meta.description" content="Physician-led aesthetic medicine by Dr. Snow. Conservative dosing, natural results. Zürich · Konstanz · Paris · Marbella.">
+<meta property="og:description" data-i18n-attr="content" data-i18n="meta.description" content="Physician-led aesthetic medicine. Zürich · Konstanz · Paris · Marbella.">
 <meta property="og:image" content="https://snow-clinics.com/assets/img/og-cover.svg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -36,8 +35,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="/assets/img/hero-atmosphere.svg" fetchpriority="high">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap">
 <link rel="stylesheet" href="/assets/css/main.css">
 
 <script>document.documentElement.classList.remove('no-js');</script>
@@ -48,7 +46,7 @@
 
 <!-- ══ Navigation ══════════════════════════════════════════════════════════ -->
 <header class="nav" id="nav">
-  <div class="shell shell--wide nav__inner">
+  <div class="shell nav__inner">
 
     <a class="brand" href="#home" aria-label="Snow Clinics — home">
       <span class="brand__mark" aria-hidden="true">D</span>
@@ -58,13 +56,12 @@
       </span>
     </a>
 
-    <nav class="nav__links" aria-label="Primary">
-      <a class="nav__link" href="#approach"   data-i18n="nav.approach">Approach</a>
-      <a class="nav__link" href="#concerns"   data-i18n="nav.concerns">Concerns</a>
+    <nav class="nav__pill" aria-label="Primary">
       <a class="nav__link" href="#treatments" data-i18n="nav.treatments">Treatments</a>
-      <a class="nav__link" href="#results"    data-i18n="nav.results">Results</a>
+      <a class="nav__link" href="#why"        data-i18n="nav.why">Why us</a>
       <a class="nav__link" href="#physician"  data-i18n="nav.physician">Dr. Snow</a>
-      <a class="nav__link" href="#locations"  data-i18n="nav.locations">Clinics</a>
+      <a class="nav__link" href="#clinics"    data-i18n="nav.clinics">Clinics</a>
+      <a class="nav__link" href="#faq"        data-i18n="nav.faq">Questions</a>
     </nav>
 
     <div class="nav__actions">
@@ -73,7 +70,10 @@
         <span class="lang__sep" aria-hidden="true">/</span>
         <button class="lang__btn" type="button" data-lang="de" aria-pressed="false" lang="de">DE</button>
       </div>
-      <a class="btn btn--sm" href="#contact"><span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="cta.book">Book a consultation</span></a>
+      <a class="btn btn--sm" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-nav">
+        <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span data-i18n="cta.book">Book a consultation</span>
+      </a>
       <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="menu">
         <span></span><span></span><span></span>
         <span class="visually-hidden" data-i18n="a11y.menu">Open menu</span>
@@ -87,19 +87,19 @@
 <div class="menu" id="menu" hidden>
   <nav aria-label="Mobile">
     <ul class="menu__list">
-      <li><a class="menu__link" href="#approach"   style="--d:60ms"  data-i18n="nav.approach">Approach</a></li>
-      <li><a class="menu__link" href="#concerns"   style="--d:110ms" data-i18n="nav.concerns">Concerns</a></li>
-      <li><a class="menu__link" href="#treatments" style="--d:150ms" data-i18n="nav.treatments">Treatments</a></li>
-      <li><a class="menu__link" href="#results"    style="--d:180ms" data-i18n="nav.results">Results</a></li>
-      <li><a class="menu__link" href="#physician"  style="--d:240ms" data-i18n="nav.physician">Dr. Snow</a></li>
-      <li><a class="menu__link" href="#locations"  style="--d:300ms" data-i18n="nav.locations">Clinics</a></li>
-      <li><a class="menu__link" href="#contact"    style="--d:360ms" data-i18n="nav.contact">Contact</a></li>
+      <li><a class="menu__link" href="#treatments" style="--d:60ms"  data-i18n="nav.treatments">Treatments</a></li>
+      <li><a class="menu__link" href="#why"        style="--d:110ms" data-i18n="nav.why">Why us</a></li>
+      <li><a class="menu__link" href="#physician"  style="--d:160ms" data-i18n="nav.physician">Dr. Snow</a></li>
+      <li><a class="menu__link" href="#clinics"    style="--d:210ms" data-i18n="nav.clinics">Clinics</a></li>
+      <li><a class="menu__link" href="#faq"        style="--d:260ms" data-i18n="nav.faq">Questions</a></li>
     </ul>
   </nav>
-  <div class="menu__meta">
-    <a href="tel:+34637479715">+34 637 479 715</a>
-    <a href="https://www.instagram.com/snow_clinics/" rel="noopener">Instagram — @snow_clinics</a>
-    <span>Zürich · Konstanz · Paris · Marbella</span>
+  <div class="menu__cta">
+    <a class="btn" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-menu">
+      <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span data-i18n="cta.whatsapp">Book on WhatsApp</span>
+    </a>
+    <a class="btn btn--ghost" href="https://ig.me/m/snow_clinics" rel="noopener" style="--btn-fg:#F4F6F7;border-color:rgba(244,246,247,.4)" data-i18n="cta.instagram">Message on Instagram</a>
   </div>
 </div>
 
@@ -107,172 +107,51 @@
 
 <!-- ══ Hero ════════════════════════════════════════════════════════════════ -->
 <section class="hero" id="home">
-  <div class="hero__media" data-parallax="0.18">
-    <img src="/assets/img/hero-atmosphere.svg" alt="" width="2400" height="1500" fetchpriority="high" decoding="async">
-  </div>
-  <div class="hero__scrim" aria-hidden="true"></div>
-
-  <div class="shell hero__body">
-    <p class="eyebrow reveal" data-i18n="hero.eyebrow">Aesthetic medicine · Since 2016</p>
-
-    <h1 class="display h-hero" data-lines>
-      <span class="line" style="--line-delay:120ms"><span data-i18n="hero.l1">Aesthetic medicine</span></span>
-      <span class="line" style="--line-delay:240ms"><span data-i18n="hero.l2">that keeps you</span></span>
-      <span class="line" style="--line-delay:360ms"><span><em data-i18n="hero.l3">looking like you.</em></span></span>
-    </h1>
-
-    <p class="lede reveal" style="--reveal-delay:620ms" data-i18n="hero.lede">
-      Physician-led treatments in four European clinics. Conservative dosing,
-      a plan measured in years rather than appointments, and results nobody
-      can point to.
-    </p>
-
-    <div class="hero__cta reveal" style="--reveal-delay:760ms">
-      <a class="btn" href="#contact"><span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="cta.book">Book a consultation</span></a>
-      <a class="btn btn--ghost" href="#treatments" style="--btn-fg:#fff;border-color:rgba(255,255,255,.45)" data-i18n="cta.treatments">See treatments</a>
-    </div>
-  </div>
-
-  <div class="shell hero__foot">
-    <a class="scroll-cue" href="#approach">
-      <span class="scroll-cue__rail" aria-hidden="true"></span>
-      <span data-i18n="hero.scroll">Scroll</span>
-    </a>
-    <ul class="cities">
-      <li>Zürich</li><li>Konstanz</li><li>Paris</li><li>Marbella</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ══ Facts ══════════════════════════════════════════════════════════════ -->
-<ul class="facts">
-  <li class="fact reveal">
-    <span class="fact__k" data-i18n="facts.k1">Performed by</span>
-    <span class="fact__v" data-i18n="facts.v1">Dr. Snow, personally</span>
-  </li>
-  <li class="fact reveal" style="--reveal-delay:70ms">
-    <span class="fact__k" data-i18n="facts.k2">Products</span>
-    <span class="fact__v" data-i18n="facts.v2">CE-marked, batch traceable</span>
-  </li>
-  <li class="fact reveal" style="--reveal-delay:140ms">
-    <span class="fact__k" data-i18n="facts.k3">Always included</span>
-    <span class="fact__v" data-i18n="facts.v3">Two-week review</span>
-  </li>
-  <li class="fact reveal" style="--reveal-delay:210ms">
-    <span class="fact__k" data-i18n="facts.k4">Consultations in</span>
-    <span class="fact__v">EN · DE · ES · PL</span>
-  </li>
-</ul>
-
-<!-- ══ Approach ════════════════════════════════════════════════════════════ -->
-<section class="section" id="approach" aria-labelledby="approach-h">
-  <div class="shell statement">
-
-    <div class="reveal">
-      <p class="eyebrow" style="margin-bottom:var(--s-4)" data-i18n="approach.eyebrow">The approach</p>
-      <h2 class="display h-section" id="approach-h" data-i18n="approach.h">We treat in millimetres.</h2>
-      <p class="prose" style="margin-top:var(--s-5)" data-i18n="approach.p1">
-        Overfilling is easy to do and slow to undo. Every plan here starts under-dosed
-        on purpose: we place less than the face can take, review it at two weeks, and
-        add only what the result asks for. It takes one more appointment. It is the
-        difference between looking rested and looking treated.
-      </p>
-      <p class="prose" data-i18n="approach.p2">
-        Anatomy decides the plan, not a menu. Dr. Snow assesses the face at rest and in
-        movement, maps the vectors that have shifted, and treats the cause of the change
-        rather than the line it left behind.
-      </p>
-    </div>
-
-    <aside class="statement__aside reveal" style="--reveal-delay:160ms">
-      <p class="signature">
-        Dr. Snow
-        <small data-i18n="approach.role">Founder · Aesthetic physician</small>
-      </p>
-      <ul class="figures" style="list-style:none;padding:0;margin:0">
-        <li class="figure">
-          <span class="numeral figure__n">4</span>
-          <span class="figure__l" data-i18n="figures.clinics">Clinics</span>
-        </li>
-        <li class="figure">
-          <span class="numeral figure__n">3</span>
-          <span class="figure__l" data-i18n="figures.countries">Countries</span>
-        </li>
-        <li class="figure">
-          <span class="numeral figure__n">1</span>
-          <span class="figure__l" data-i18n="figures.physician">Physician, every treatment</span>
-        </li>
-      </ul>
-    </aside>
-
-  </div>
-</section>
-
-<!-- ══ Concerns ════════════════════════════════════════════════════════════ -->
-<section class="section" id="concerns" aria-labelledby="concerns-h">
   <div class="shell">
+    <div class="hero__grid">
 
-    <div class="section-head">
-      <div class="section-head__row">
-        <div class="reveal">
-          <p class="eyebrow" style="margin-bottom:var(--s-4)" data-i18n="concerns.eyebrow">What brings people in</p>
-          <h2 class="display h-section" id="concerns-h" data-i18n="concerns.h">Say what bothers you. We'll take it from there.</h2>
-        </div>
-        <p class="lede reveal" style="--reveal-delay:140ms" data-i18n="concerns.lede">
-          Six things we are asked about most. Pick the one that sounds like you
-          and we'll show you what answers it.
+      <figure class="hero__media reveal" style="margin:0">
+        <img src="/assets/img/hero-portrait.svg" alt="" width="1600" height="1200" fetchpriority="high" decoding="async">
+        <figcaption class="hero__badge" data-i18n="hero.badge">Usually replies within a few hours</figcaption>
+      </figure>
+
+      <div class="hero__copy reveal" style="--reveal-delay:120ms">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Aesthetic medicine · Zürich · Konstanz · Paris · Marbella</p>
+        <p class="lede" data-i18n="hero.lede">
+          Physician-led treatments, dosed conservatively and reviewed at two weeks.
+          One doctor performs every one of them.
         </p>
+        <div class="hero__cta">
+          <a class="btn" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-hero">
+            <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span data-i18n="cta.whatsapp">Book on WhatsApp</span>
+          </a>
+          <a class="btn btn--ghost" href="#treatments" data-i18n="cta.treatments">See treatments</a>
+        </div>
       </div>
+
+      <div class="hero__title reveal" style="--reveal-delay:60ms">
+        <h1 class="display h-hero" data-i18n="hero.h1">Still your face. <em>Only rested.</em></h1>
+      </div>
+
     </div>
 
-    <ul class="concerns">
-      <li class="reveal">
-        <button class="concern" type="button" data-goto="tab-lines">
-          <span class="concern__n numeral" aria-hidden="true">01</span>
-          <span class="concern__t" data-i18n="cn.1.t">Lines that stay after the expression goes</span>
-          <span class="concern__d" data-i18n="cn.1.d">The forehead and the outer eye keep the fold once the face relaxes.</span>
-          <span class="concern__go"><span data-i18n="cn.see">See what helps</span> <span aria-hidden="true">→</span></span>
-        </button>
+    <ul class="hero__facts reveal" style="--reveal-delay:240ms">
+      <li class="fact">
+        <span class="fact__k" data-i18n="facts.k1">Performed by</span>
+        <span class="fact__v" data-i18n="facts.v1">Dr. Snow, personally</span>
       </li>
-      <li class="reveal" style="--reveal-delay:60ms">
-        <button class="concern" type="button" data-goto="tab-lines">
-          <span class="concern__n numeral" aria-hidden="true">02</span>
-          <span class="concern__t" data-i18n="cn.2.t">A brow that has grown heavy</span>
-          <span class="concern__d" data-i18n="cn.2.d">The eyes read tired in photographs even on a morning you feel rested.</span>
-          <span class="concern__go"><span data-i18n="cn.see">See what helps</span> <span aria-hidden="true">→</span></span>
-        </button>
+      <li class="fact">
+        <span class="fact__k" data-i18n="facts.k2">Products</span>
+        <span class="fact__v" data-i18n="facts.v2">CE-marked, batch traceable</span>
       </li>
-      <li class="reveal" style="--reveal-delay:120ms">
-        <button class="concern" type="button" data-goto="tab-contour">
-          <span class="concern__n numeral" aria-hidden="true">03</span>
-          <span class="concern__t" data-i18n="cn.3.t">Lips that have lost their border</span>
-          <span class="concern__d" data-i18n="cn.3.d">Not smaller, exactly — less defined, and lipstick no longer stays put.</span>
-          <span class="concern__go"><span data-i18n="cn.see">See what helps</span> <span aria-hidden="true">→</span></span>
-        </button>
+      <li class="fact">
+        <span class="fact__k" data-i18n="facts.k3">Always included</span>
+        <span class="fact__v" data-i18n="facts.v3">Two-week review</span>
       </li>
-      <li class="reveal" style="--reveal-delay:180ms">
-        <button class="concern" type="button" data-goto="tab-contour">
-          <span class="concern__n numeral" aria-hidden="true">04</span>
-          <span class="concern__t" data-i18n="cn.4.t">A jawline that has softened</span>
-          <span class="concern__d" data-i18n="cn.4.d">The line you used to have is still there — it has simply moved down.</span>
-          <span class="concern__go"><span data-i18n="cn.see">See what helps</span> <span aria-hidden="true">→</span></span>
-        </button>
-      </li>
-      <li class="reveal" style="--reveal-delay:240ms">
-        <button class="concern" type="button" data-goto="tab-skin">
-          <span class="concern__n numeral" aria-hidden="true">05</span>
-          <span class="concern__t" data-i18n="cn.5.t">Skin that photographs flat</span>
-          <span class="concern__d" data-i18n="cn.5.d">Texture, dullness or pigment that make-up covers rather than corrects.</span>
-          <span class="concern__go"><span data-i18n="cn.see">See what helps</span> <span aria-hidden="true">→</span></span>
-        </button>
-      </li>
-      <li class="reveal" style="--reveal-delay:300ms">
-        <button class="concern" type="button" data-goto="tab-body">
-          <span class="concern__n numeral" aria-hidden="true">06</span>
-          <span class="concern__t" data-i18n="cn.6.t">Thinning where the hair parts</span>
-          <span class="concern__d" data-i18n="cn.6.d">More scalp showing than a year ago, and more hair left in the brush.</span>
-          <span class="concern__go"><span data-i18n="cn.see">See what helps</span> <span aria-hidden="true">→</span></span>
-        </button>
+      <li class="fact">
+        <span class="fact__k" data-i18n="facts.k4">Consultations in</span>
+        <span class="fact__v">EN · DE · ES · PL</span>
       </li>
     </ul>
   </div>
@@ -286,479 +165,326 @@
       <div class="section-head__row">
         <div class="reveal">
           <p class="eyebrow" style="margin-bottom:var(--s-4)" data-i18n="treatments.eyebrow">Treatments</p>
-          <h2 class="display h-section" id="treatments-h" data-i18n="treatments.h">Start with the concern, not the procedure.</h2>
+          <h2 class="display h-section" id="treatments-h" data-i18n="treatments.h">Start with what bothers you.</h2>
         </div>
-        <p class="lede reveal" style="--reveal-delay:140ms" data-i18n="treatments.lede">
-          Most people arrive naming a product. It is more useful to name what
-          bothers you and let the anatomy decide the rest.
+        <p class="lede reveal" style="--reveal-delay:120ms" data-i18n="treatments.lede">
+          Four areas. Open one and you see only what belongs to it.
         </p>
       </div>
     </div>
 
-    <div class="categories reveal" role="tablist" aria-label="Treatment areas" data-i18n-attr="aria-label" data-i18n="a11y.areas">
-      <button class="category" type="button" role="tab" id="tab-lines" aria-controls="area-lines" aria-selected="true" tabindex="0">
-        <span class="category__index numeral">01</span>
-        <span>
-          <span class="category__name" data-i18n="cat.lines.n">Expression lines</span>
-          <span class="category__desc" data-i18n="cat.lines.d">Frown lines, crow's feet, a brow that has grown heavy</span>
-        </span>
-        <span class="category__foot">
-          <span data-i18n="cat.lines.c">Two treatments</span>
-          <span class="category__mark" aria-hidden="true"></span>
-        </span>
-      </button>
-
-      <button class="category" type="button" role="tab" id="tab-contour" aria-controls="area-contour" aria-selected="false" tabindex="-1">
-        <span class="category__index numeral">02</span>
-        <span>
-          <span class="category__name" data-i18n="cat.contour.n">Volume &amp; contour</span>
-          <span class="category__desc" data-i18n="cat.contour.d">Lips, cheeks, jawline, and tissue that has descended</span>
-        </span>
-        <span class="category__foot">
-          <span data-i18n="cat.contour.c">Two treatments</span>
-          <span class="category__mark" aria-hidden="true"></span>
-        </span>
-      </button>
-
-      <button class="category" type="button" role="tab" id="tab-skin" aria-controls="area-skin" aria-selected="false" tabindex="-1">
-        <span class="category__index numeral">03</span>
-        <span>
-          <span class="category__name" data-i18n="cat.skin.n">Skin quality</span>
-          <span class="category__desc" data-i18n="cat.skin.d">Texture, dullness, pigmentation, early laxity</span>
-        </span>
-        <span class="category__foot">
-          <span data-i18n="cat.skin.c">Three treatments</span>
-          <span class="category__mark" aria-hidden="true"></span>
-        </span>
-      </button>
-
-      <button class="category" type="button" role="tab" id="tab-body" aria-controls="area-body" aria-selected="false" tabindex="-1">
-        <span class="category__index numeral">04</span>
-        <span>
-          <span class="category__name" data-i18n="cat.body.n">Body &amp; hair</span>
-          <span class="category__desc" data-i18n="cat.body.d">Localised contouring and thinning density</span>
-        </span>
-        <span class="category__foot">
-          <span data-i18n="cat.body.c">Two treatments</span>
-          <span class="category__mark" aria-hidden="true"></span>
-        </span>
-      </button>
-    </div>
-
-    <div class="panels" id="panels">
-
-      <div class="panel is-active" id="area-lines" role="tabpanel" aria-labelledby="tab-lines">
-        <ol class="protocols">
-          <li class="protocol" style="--d:60ms">
-            <div class="protocol__head">
-              <h3 class="protocol__name" data-i18n="p.botox.n">Botulinum toxin</h3>
-              <a class="link" href="#contact" data-i18n="cta.ask">Ask about this <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="protocol__body">
-            <p class="protocol__desc" data-i18n="p.botox.d">Softens the lines your expressions leave behind while the expressions themselves stay yours. Dosed low, reviewed at two weeks, topped up only where the result asks for it.</p>
-            <dl class="protocol__facts">
-              <div><dt data-i18n="fact.appt">Appointment</dt><dd data-i18n="p.botox.f1">15 minutes</dd></div>
-              <div><dt data-i18n="fact.down">Downtime</dt><dd data-i18n="p.botox.f2">None</dd></div>
-              <div><dt data-i18n="fact.holds">Holds</dt><dd data-i18n="p.botox.f3">3–4 months</dd></div>
-            </dl>
-            </div>
-            <ul class="chips">
-              <li class="chips__label" data-i18n="chips.label">Treats</li>
-              <li class="chip" data-i18n="p.botox.c1">Forehead</li>
-              <li class="chip" data-i18n="p.botox.c2">Frown lines</li>
-              <li class="chip" data-i18n="p.botox.c3">Crow's feet</li>
-              <li class="chip" data-i18n="p.botox.c4">Brow lift</li>
-            </ul>
-          </li>
-          <li class="protocol" style="--d:140ms">
-            <div class="protocol__head">
-              <h3 class="protocol__name" data-i18n="p.men.n">Men's protocols</h3>
-              <a class="link" href="#contact" data-i18n="cta.ask">Ask about this <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="protocol__body">
-            <p class="protocol__desc" data-i18n="p.men.d">A male brow and jaw need different dosing and different placement. Structural, low-maintenance work that nobody at the office is meant to notice.</p>
-            <dl class="protocol__facts">
-              <div><dt data-i18n="fact.appt">Appointment</dt><dd data-i18n="p.men.f1">20–45 minutes</dd></div>
-              <div><dt data-i18n="fact.down">Downtime</dt><dd data-i18n="p.men.f2">Minimal</dd></div>
-              <div><dt data-i18n="fact.holds">Holds</dt><dd data-i18n="p.men.f3">6–12 months</dd></div>
-            </dl>
-            </div>
-            <ul class="chips">
-              <li class="chips__label" data-i18n="chips.label">Treats</li>
-              <li class="chip" data-i18n="p.men.c1">Jawline</li>
-              <li class="chip" data-i18n="p.men.c2">Tired eyes</li>
-              <li class="chip" data-i18n="p.men.c3">Heavy brow</li>
-            </ul>
-          </li>
-        </ol>
-        <p class="panel__note">
-          <span data-i18n="panel.note">Costs are set out in your written plan after the consultation, never before it.</span>
-          <a class="link" href="#contact" data-i18n="cta.discuss">Discuss this <span aria-hidden="true">→</span></a>
-        </p>
-      </div>
-
-      <div class="panel" id="area-contour" role="tabpanel" aria-labelledby="tab-contour">
-        <ol class="protocols">
-          <li class="protocol" style="--d:60ms">
-            <div class="protocol__head">
-              <h3 class="protocol__name" data-i18n="p.lips.n">Lip contouring</h3>
-              <a class="link" href="#contact" data-i18n="cta.ask">Ask about this <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="protocol__body">
-            <p class="protocol__desc" data-i18n="p.lips.d">Shape, border and hydration built across two or three sessions instead of one. The aim is a lip that reads as yours when your face is at rest.</p>
-            <dl class="protocol__facts">
-              <div><dt data-i18n="fact.appt">Appointment</dt><dd data-i18n="p.lips.f1">30 minutes</dd></div>
-              <div><dt data-i18n="fact.down">Downtime</dt><dd data-i18n="p.lips.f2">2–3 days</dd></div>
-              <div><dt data-i18n="fact.holds">Holds</dt><dd data-i18n="p.lips.f3">6–12 months</dd></div>
-            </dl>
-            </div>
-            <ul class="chips">
-              <li class="chips__label" data-i18n="chips.label">Treats</li>
-              <li class="chip" data-i18n="p.lips.c1">Border</li>
-              <li class="chip" data-i18n="p.lips.c2">Volume</li>
-              <li class="chip" data-i18n="p.lips.c3">Hydration</li>
-              <li class="chip" data-i18n="p.lips.c4">Lip lines</li>
-            </ul>
-          </li>
-          <li class="protocol" style="--d:140ms">
-            <div class="protocol__head">
-              <h3 class="protocol__name" data-i18n="p.threads.n">Vector lifting</h3>
-              <a class="link" href="#contact" data-i18n="cta.ask">Ask about this <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="protocol__body">
-            <p class="protocol__desc" data-i18n="p.threads.d">Absorbable threads placed along the vectors the face has actually travelled, to reposition tissue rather than add volume to it.</p>
-            <dl class="protocol__facts">
-              <div><dt data-i18n="fact.appt">Appointment</dt><dd data-i18n="p.threads.f1">45–60 minutes</dd></div>
-              <div><dt data-i18n="fact.down">Downtime</dt><dd data-i18n="p.threads.f2">3–5 days</dd></div>
-              <div><dt data-i18n="fact.holds">Holds</dt><dd data-i18n="p.threads.f3">12–18 months</dd></div>
-            </dl>
-            </div>
-            <ul class="chips">
-              <li class="chips__label" data-i18n="chips.label">Treats</li>
-              <li class="chip" data-i18n="p.threads.c1">Midface</li>
-              <li class="chip" data-i18n="p.threads.c2">Jawline</li>
-              <li class="chip" data-i18n="p.threads.c3">Neck</li>
-              <li class="chip" data-i18n="p.threads.c4">Brow</li>
-            </ul>
-          </li>
-        </ol>
-        <p class="panel__note">
-          <span data-i18n="panel.note">Costs are set out in your written plan after the consultation, never before it.</span>
-          <a class="link" href="#contact" data-i18n="cta.discuss">Discuss this <span aria-hidden="true">→</span></a>
-        </p>
-      </div>
-
-      <div class="panel" id="area-skin" role="tabpanel" aria-labelledby="tab-skin">
-        <ol class="protocols">
-          <li class="protocol" style="--d:60ms">
-            <div class="protocol__head">
-              <h3 class="protocol__name" data-i18n="p.meso.n">Mesotherapy</h3>
-              <a class="link" href="#contact" data-i18n="cta.ask">Ask about this <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="protocol__body">
-            <p class="protocol__desc" data-i18n="p.meso.d">Micro-injections of hyaluronic acid, vitamins and amino acids placed just under the surface. A course of four, spaced to match how skin actually renews.</p>
-            <dl class="protocol__facts">
-              <div><dt data-i18n="fact.appt">Appointment</dt><dd data-i18n="p.meso.f1">30 minutes</dd></div>
-              <div><dt data-i18n="fact.down">Downtime</dt><dd data-i18n="p.meso.f2">Redness, hours</dd></div>
-              <div><dt data-i18n="fact.holds">Holds</dt><dd data-i18n="p.meso.f3">Course of 4</dd></div>
-            </dl>
-            </div>
-            <ul class="chips">
-              <li class="chips__label" data-i18n="chips.label">Treats</li>
-              <li class="chip" data-i18n="p.meso.c1">Face</li>
-              <li class="chip" data-i18n="p.meso.c2">Neck</li>
-              <li class="chip" data-i18n="p.meso.c3">Décolletage</li>
-              <li class="chip" data-i18n="p.meso.c4">Hands</li>
-            </ul>
-          </li>
-          <li class="protocol" style="--d:140ms">
-            <div class="protocol__head">
-              <h3 class="protocol__name" data-i18n="p.boosters.n">Skin boosters &amp; polynucleotides</h3>
-              <a class="link" href="#contact" data-i18n="cta.ask">Ask about this <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="protocol__body">
-            <p class="protocol__desc" data-i18n="p.boosters.d">Regenerative injectables that prompt your own collagen. They change how skin holds light — not the shape of anything.</p>
-            <dl class="protocol__facts">
-              <div><dt data-i18n="fact.appt">Appointment</dt><dd data-i18n="p.boosters.f1">30 minutes</dd></div>
-              <div><dt data-i18n="fact.down">Downtime</dt><dd data-i18n="p.boosters.f2">1 day</dd></div>
-              <div><dt data-i18n="fact.holds">Holds</dt><dd data-i18n="p.boosters.f3">6–9 months</dd></div>
-            </dl>
-            </div>
-            <ul class="chips">
-              <li class="chips__label" data-i18n="chips.label">Treats</li>
-              <li class="chip" data-i18n="p.boosters.c1">Fine lines</li>
-              <li class="chip" data-i18n="p.boosters.c2">Dullness</li>
-              <li class="chip" data-i18n="p.boosters.c3">Elasticity</li>
-              <li class="chip" data-i18n="p.boosters.c4">Under-eye</li>
-            </ul>
-          </li>
-          <li class="protocol" style="--d:220ms">
-            <div class="protocol__head">
-              <h3 class="protocol__name" data-i18n="p.cleansing.n">Medical facial cleansing</h3>
-              <a class="link" href="#contact" data-i18n="cta.ask">Ask about this <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="protocol__body">
-            <p class="protocol__desc" data-i18n="p.cleansing.d">Deep cleansing under clinical conditions, followed by an active protocol chosen for the skin in front of us rather than a fixed routine.</p>
-            <dl class="protocol__facts">
-              <div><dt data-i18n="fact.appt">Appointment</dt><dd data-i18n="p.cleansing.f1">60 minutes</dd></div>
-              <div><dt data-i18n="fact.down">Downtime</dt><dd data-i18n="p.cleansing.f2">None</dd></div>
-              <div><dt data-i18n="fact.holds">Holds</dt><dd data-i18n="p.cleansing.f3">Every 6 weeks</dd></div>
-            </dl>
-            </div>
-            <ul class="chips">
-              <li class="chips__label" data-i18n="chips.label">Treats</li>
-              <li class="chip" data-i18n="p.cleansing.c1">Congestion</li>
-              <li class="chip" data-i18n="p.cleansing.c2">Blackheads</li>
-              <li class="chip" data-i18n="p.cleansing.c3">Texture</li>
-            </ul>
-          </li>
-        </ol>
-        <p class="panel__note">
-          <span data-i18n="panel.note">Costs are set out in your written plan after the consultation, never before it.</span>
-          <a class="link" href="#contact" data-i18n="cta.discuss">Discuss this <span aria-hidden="true">→</span></a>
-        </p>
-      </div>
-
-      <div class="panel" id="area-body" role="tabpanel" aria-labelledby="tab-body">
-        <ol class="protocols">
-          <li class="protocol" style="--d:60ms">
-            <div class="protocol__head">
-              <h3 class="protocol__name" data-i18n="p.body.n">Body contouring</h3>
-              <a class="link" href="#contact" data-i18n="cta.ask">Ask about this <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="protocol__body">
-            <p class="protocol__desc" data-i18n="p.body.d">Localised treatment for the areas that stay put through diet and training. Assessed honestly — if it will not work on you, you will be told in the consultation.</p>
-            <dl class="protocol__facts">
-              <div><dt data-i18n="fact.appt">Appointment</dt><dd data-i18n="p.body.f1">45 minutes</dd></div>
-              <div><dt data-i18n="fact.down">Downtime</dt><dd data-i18n="p.body.f2">2–4 days</dd></div>
-              <div><dt data-i18n="fact.holds">Holds</dt><dd data-i18n="p.body.f3">Course of 3</dd></div>
-            </dl>
-            </div>
-            <ul class="chips">
-              <li class="chips__label" data-i18n="chips.label">Treats</li>
-              <li class="chip" data-i18n="p.body.c1">Abdomen</li>
-              <li class="chip" data-i18n="p.body.c2">Flanks</li>
-              <li class="chip" data-i18n="p.body.c3">Thighs</li>
-              <li class="chip" data-i18n="p.body.c4">Arms</li>
-            </ul>
-          </li>
-          <li class="protocol" style="--d:140ms">
-            <div class="protocol__head">
-              <h3 class="protocol__name" data-i18n="p.hair.n">Hair mesotherapy</h3>
-              <a class="link" href="#contact" data-i18n="cta.ask">Ask about this <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="protocol__body">
-            <p class="protocol__desc" data-i18n="p.hair.d">For thinning density and a depleted scalp. Growth factors placed at follicle depth, on a schedule tied to the hair cycle rather than the calendar.</p>
-            <dl class="protocol__facts">
-              <div><dt data-i18n="fact.appt">Appointment</dt><dd data-i18n="p.hair.f1">30 minutes</dd></div>
-              <div><dt data-i18n="fact.down">Downtime</dt><dd data-i18n="p.hair.f2">None</dd></div>
-              <div><dt data-i18n="fact.holds">Holds</dt><dd data-i18n="p.hair.f3">Course of 6</dd></div>
-            </dl>
-            </div>
-            <ul class="chips">
-              <li class="chips__label" data-i18n="chips.label">Treats</li>
-              <li class="chip" data-i18n="p.hair.c1">Density</li>
-              <li class="chip" data-i18n="p.hair.c2">Scalp health</li>
-              <li class="chip" data-i18n="p.hair.c3">Post-partum loss</li>
-            </ul>
-          </li>
-        </ol>
-        <p class="panel__note">
-          <span data-i18n="panel.note">Costs are set out in your written plan after the consultation, never before it.</span>
-          <a class="link" href="#contact" data-i18n="cta.discuss">Discuss this <span aria-hidden="true">→</span></a>
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══ Results ═════════════════════════════════════════════════════════════ -->
-<section class="section section--ink" id="results" aria-labelledby="results-h">
-  <div class="shell results">
-
-    <div class="reveal">
-      <div class="compare" id="compare" style="--pos:50%">
-        <img class="compare__before" src="/assets/img/result-before.svg" alt="" width="1200" height="900" loading="lazy" decoding="async">
-        <img class="compare__after"  src="/assets/img/result-after.svg"  alt="" width="1200" height="900" loading="lazy" decoding="async">
-        <span class="compare__label compare__label--before" data-i18n="results.before">Before</span>
-        <span class="compare__label compare__label--after"  data-i18n="results.after">After · 4 weeks</span>
-        <div class="compare__handle" aria-hidden="true"></div>
-        <button class="compare__grip" type="button" id="compare-grip"
-                role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"
-                aria-label="Reveal the result — drag or use arrow keys"
-                data-i18n-attr="aria-label" data-i18n="results.sliderLabel">
-          <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true">
-            <path d="M6 1L1 7l5 6M14 1l5 6-5 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+    <div class="slabs reveal" id="slabs">
+      <section class="slab is-open" id="slab-lines">
+        <button class="slab__spine" type="button" id="tab-lines" aria-expanded="true" aria-controls="panel-lines">
+          <span class="slab__n numeral" aria-hidden="true">01</span>
+          <span class="slab__label"><span class="slab__name" data-i18n="area.lines.n">Expression lines</span></span>
+          <span class="slab__mark" aria-hidden="true"></span>
         </button>
-      </div>
-    </div>
 
-    <div class="results__aside reveal" style="--reveal-delay:160ms">
-      <p class="eyebrow" data-i18n="results.eyebrow">Results</p>
-      <h2 class="display h-sub" id="results-h" data-i18n="results.h">The test is whether anyone notices the treatment.</h2>
-      <p class="prose" data-i18n="results.p">
-        Photographs are taken at the same distance, in the same light, at every visit.
-        They are how we decide whether to add, hold or stop — and the only honest way
-        to judge a result four weeks later.
-      </p>
-      <p class="results__note" data-i18n="results.note">
-        Outcomes differ from person to person. Anatomy, skin quality, age and lifestyle all
-        change what is achievable, and every plan is agreed in consultation before anything
-        is booked.
-      </p>
-    </div>
+        <div class="slab__panel" id="panel-lines" role="region" aria-labelledby="tab-lines">
+          <div class="slab__inner">
+            <div class="slab__intro">
+              <p data-i18n="area.lines.d">Frown lines, crow's feet, and a brow that has grown heavy.</p>
+              <ul class="fits">
+                <li data-i18n="fit.lines.1">Lines that stay when my face relaxes</li>
+                <li data-i18n="fit.lines.2">I look tired in photographs</li>
+              </ul>
+            </div>
 
+            <ol class="procs">
+              <li class="proc">
+                <h3 class="proc__n" data-i18n="p.botox.n">Botulinum toxin</h3>
+                <p class="proc__d" data-i18n="p.botox.d">Softens the lines your expressions leave behind, while the expressions stay yours.</p>
+                <p class="proc__t" data-i18n="p.botox.t">15 min · holds 3–4 months</p>
+              </li>
+              <li class="proc">
+                <h3 class="proc__n" data-i18n="p.men.n">Men's protocols</h3>
+                <p class="proc__d" data-i18n="p.men.d">A male brow and jaw need different dosing and different placement. Discreet by design.</p>
+                <p class="proc__t" data-i18n="p.men.t">20–45 min · holds 6–12 months</p>
+              </li>
+            </ol>
+
+            <div class="slab__foot">
+              <a class="btn btn--sm" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20ask%20about%20expression%20lines." rel="noopener" data-track="ask-lines">
+                <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="cta.ask">Ask about this</span>
+              </a>
+              <p class="slab__note" data-i18n="slab.note">Costs are set out in your written plan after the consultation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="slab" id="slab-contour">
+        <button class="slab__spine" type="button" id="tab-contour" aria-expanded="false" aria-controls="panel-contour">
+          <span class="slab__n numeral" aria-hidden="true">02</span>
+          <span class="slab__label"><span class="slab__name" data-i18n="area.contour.n">Volume & contour</span></span>
+          <span class="slab__mark" aria-hidden="true"></span>
+        </button>
+
+        <div class="slab__panel" id="panel-contour" role="region" aria-labelledby="tab-contour">
+          <div class="slab__inner">
+            <div class="slab__intro">
+              <p data-i18n="area.contour.d">Lips, cheeks, jawline, and tissue that has descended.</p>
+              <ul class="fits">
+                <li data-i18n="fit.contour.1">My lips have lost their border</li>
+                <li data-i18n="fit.contour.2">My jawline has softened</li>
+              </ul>
+            </div>
+
+            <ol class="procs">
+              <li class="proc">
+                <h3 class="proc__n" data-i18n="p.lips.n">Lip contouring</h3>
+                <p class="proc__d" data-i18n="p.lips.d">Shape, border and hydration built over two or three sessions instead of one.</p>
+                <p class="proc__t" data-i18n="p.lips.t">30 min · holds 6–12 months</p>
+              </li>
+              <li class="proc">
+                <h3 class="proc__n" data-i18n="p.threads.n">Vector lifting</h3>
+                <p class="proc__d" data-i18n="p.threads.d">Absorbable threads along the vectors the face has actually travelled. Repositions rather than adds.</p>
+                <p class="proc__t" data-i18n="p.threads.t">45–60 min · holds 12–18 months</p>
+              </li>
+            </ol>
+
+            <div class="slab__foot">
+              <a class="btn btn--sm" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20ask%20about%20volume%20and%20contour." rel="noopener" data-track="ask-contour">
+                <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="cta.ask">Ask about this</span>
+              </a>
+              <p class="slab__note" data-i18n="slab.note">Costs are set out in your written plan after the consultation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="slab" id="slab-skin">
+        <button class="slab__spine" type="button" id="tab-skin" aria-expanded="false" aria-controls="panel-skin">
+          <span class="slab__n numeral" aria-hidden="true">03</span>
+          <span class="slab__label"><span class="slab__name" data-i18n="area.skin.n">Skin quality</span></span>
+          <span class="slab__mark" aria-hidden="true"></span>
+        </button>
+
+        <div class="slab__panel" id="panel-skin" role="region" aria-labelledby="tab-skin">
+          <div class="slab__inner">
+            <div class="slab__intro">
+              <p data-i18n="area.skin.d">Texture, dullness, pigmentation and early laxity.</p>
+              <ul class="fits">
+                <li data-i18n="fit.skin.1">My skin photographs flat</li>
+                <li data-i18n="fit.skin.2">Make-up covers it, nothing corrects it</li>
+              </ul>
+            </div>
+
+            <ol class="procs">
+              <li class="proc">
+                <h3 class="proc__n" data-i18n="p.meso.n">Mesotherapy</h3>
+                <p class="proc__d" data-i18n="p.meso.d">Micro-injections of hyaluronic acid, vitamins and amino acids placed just under the surface.</p>
+                <p class="proc__t" data-i18n="p.meso.t">30 min · course of 4</p>
+              </li>
+              <li class="proc">
+                <h3 class="proc__n" data-i18n="p.boosters.n">Skin boosters & polynucleotides</h3>
+                <p class="proc__d" data-i18n="p.boosters.d">Regenerative injectables that prompt your own collagen. They change how skin holds light.</p>
+                <p class="proc__t" data-i18n="p.boosters.t">30 min · holds 6–9 months</p>
+              </li>
+              <li class="proc">
+                <h3 class="proc__n" data-i18n="p.cleansing.n">Medical facial cleansing</h3>
+                <p class="proc__d" data-i18n="p.cleansing.d">Deep cleansing under clinical conditions, then an active protocol chosen for your skin.</p>
+                <p class="proc__t" data-i18n="p.cleansing.t">60 min · every 6 weeks</p>
+              </li>
+            </ol>
+
+            <div class="slab__foot">
+              <a class="btn btn--sm" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20ask%20about%20skin%20quality." rel="noopener" data-track="ask-skin">
+                <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="cta.ask">Ask about this</span>
+              </a>
+              <p class="slab__note" data-i18n="slab.note">Costs are set out in your written plan after the consultation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="slab" id="slab-body">
+        <button class="slab__spine" type="button" id="tab-body" aria-expanded="false" aria-controls="panel-body">
+          <span class="slab__n numeral" aria-hidden="true">04</span>
+          <span class="slab__label"><span class="slab__name" data-i18n="area.body.n">Body & hair</span></span>
+          <span class="slab__mark" aria-hidden="true"></span>
+        </button>
+
+        <div class="slab__panel" id="panel-body" role="region" aria-labelledby="tab-body">
+          <div class="slab__inner">
+            <div class="slab__intro">
+              <p data-i18n="area.body.d">Localised contouring and thinning density.</p>
+              <ul class="fits">
+                <li data-i18n="fit.body.1">Areas that stay through diet and training</li>
+                <li data-i18n="fit.body.2">More scalp showing than a year ago</li>
+              </ul>
+            </div>
+
+            <ol class="procs">
+              <li class="proc">
+                <h3 class="proc__n" data-i18n="p.body.n">Body contouring</h3>
+                <p class="proc__d" data-i18n="p.body.d">Localised treatment for the areas diet and training do not reach. Assessed honestly.</p>
+                <p class="proc__t" data-i18n="p.body.t">45 min · course of 3</p>
+              </li>
+              <li class="proc">
+                <h3 class="proc__n" data-i18n="p.hair.n">Hair mesotherapy</h3>
+                <p class="proc__d" data-i18n="p.hair.d">Growth factors at follicle depth, on a schedule tied to the hair cycle.</p>
+                <p class="proc__t" data-i18n="p.hair.t">30 min · course of 6</p>
+              </li>
+            </ol>
+
+            <div class="slab__foot">
+              <a class="btn btn--sm" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20ask%20about%20body%20and%20hair." rel="noopener" data-track="ask-body">
+                <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="cta.ask">Ask about this</span>
+              </a>
+              <p class="slab__note" data-i18n="slab.note">Costs are set out in your written plan after the consultation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </section>
 
-<!-- ══ Process ═════════════════════════════════════════════════════════════ -->
-<section class="section" id="process" aria-labelledby="process-h">
-  <div class="shell">
-    <div class="section-head">
-      <div class="section-head__row">
-        <div class="reveal">
-          <p class="eyebrow" style="margin-bottom:var(--s-4)" data-i18n="process.eyebrow">How it works</p>
-          <h2 class="display h-section" id="process-h" data-i18n="process.h">Four appointments, in order.</h2>
-        </div>
-        <p class="lede reveal" style="--reveal-delay:140ms" data-i18n="process.lede">
-          Nothing is injected on a first visit. The sequence exists so that you can
-          change your mind at any point before it matters.
-        </p>
-      </div>
+<!-- ══ Why Snow Clinics ════════════════════════════════════════════════════ -->
+<section class="section section--sand" id="why" aria-labelledby="why-h">
+  <div class="shell reasons">
+
+    <div class="reasons__aside reveal">
+      <p class="eyebrow" data-i18n="why.eyebrow">Why people choose us</p>
+      <h2 class="display h-section" id="why-h" data-i18n="why.h">Four reasons people travel for this.</h2>
+      <p class="prose" data-i18n="why.p">
+        None of them is a machine or a product name. They are the things a
+        clinic has to decide, and mostly decides the other way.
+      </p>
+      <p><a class="link" href="#physician" data-i18n="why.cta">Meet Dr. Snow <span aria-hidden="true">→</span></a></p>
     </div>
 
-    <ol class="process">
-      <li class="step reveal">
-        <span class="numeral step__n">01</span>
-        <h3 class="step__t" data-i18n="process.s1.h">Consultation</h3>
-        <p class="step__d" data-i18n="process.s1.d">Forty-five minutes. Medical history, facial assessment at rest and in movement, photographs, and a frank conversation about what treatment can and cannot do for you.</p>
+    <ol class="reasons__list">
+      <li class="reason reveal">
+        <span class="reason__i" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.5"/><path d="M4.8 20c.6-3.6 3.6-5.6 7.2-5.6s6.6 2 7.2 5.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <h3 class="reason__t" data-i18n="why.1.t">One physician, every treatment</h3>
+        <span class="reason__n numeral" aria-hidden="true">01</span>
+        <p class="reason__d" data-i18n="why.1.d">The person who assesses you is the person who treats you. Nothing is handed to a nurse or an aesthetician after the consultation.</p>
       </li>
-      <li class="step reveal" style="--reveal-delay:80ms">
-        <span class="numeral step__n">02</span>
-        <h3 class="step__t" data-i18n="process.s2.h">Plan</h3>
-        <p class="step__d" data-i18n="process.s2.d">A written plan with sequence, intervals and total cost, sent to you before you commit. If a treatment is not right for your anatomy, it is not on the plan.</p>
+      <li class="reason reveal" style="--reveal-delay:70ms">
+        <span class="reason__i" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M7 8l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180 12 12)"/></svg>
+        </span>
+        <h3 class="reason__t" data-i18n="why.2.t">Under-dosed on purpose</h3>
+        <span class="reason__n numeral" aria-hidden="true">02</span>
+        <p class="reason__d" data-i18n="why.2.d">We place less than your face can take, look again at two weeks, and add only what the result asks for. Overfilling is fast to do and slow to undo.</p>
       </li>
-      <li class="step reveal" style="--reveal-delay:160ms">
-        <span class="numeral step__n">03</span>
-        <h3 class="step__t" data-i18n="process.s3.h">Treatment</h3>
-        <p class="step__d" data-i18n="process.s3.d">Performed by Dr. Snow, never delegated. Topical anaesthetic as standard, CE-marked products only, and every batch number recorded in your file.</p>
+      <li class="reason reveal" style="--reveal-delay:140ms">
+        <span class="reason__i" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="3.5" width="14" height="17" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 9h7M8.5 13h7M8.5 17h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <h3 class="reason__t" data-i18n="why.3.t">A written plan before you commit</h3>
+        <span class="reason__n numeral" aria-hidden="true">03</span>
+        <p class="reason__d" data-i18n="why.3.d">Sequence, intervals and the full cost, in writing, after the consultation. Nothing is injected on a first visit.</p>
       </li>
-      <li class="step reveal" style="--reveal-delay:240ms">
-        <span class="numeral step__n">04</span>
-        <h3 class="step__t" data-i18n="process.s4.h">Review</h3>
-        <p class="step__d" data-i18n="process.s4.d">A follow-up at two weeks, included. This is where a result is finished — small corrections now are the reason the outcome looks unremarkable later.</p>
+      <li class="reason reveal" style="--reveal-delay:210ms">
+        <span class="reason__i" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg>
+        </span>
+        <h3 class="reason__t" data-i18n="why.4.t">Four clinics, one standard</h3>
+        <span class="reason__n numeral" aria-hidden="true">04</span>
+        <p class="reason__d" data-i18n="why.4.d">Zürich, Konstanz, Paris and Marbella, on a fixed rotation. Same hands, same protocol, in English, German, Spanish or Polish.</p>
       </li>
     </ol>
   </div>
 </section>
 
 <!-- ══ Physician ═══════════════════════════════════════════════════════════ -->
-<section class="section section--sand" id="physician" aria-labelledby="physician-h">
+<section class="section" id="physician" aria-labelledby="physician-h">
   <div class="shell physician">
 
     <figure class="physician__media reveal" style="margin:0">
       <img src="/assets/img/portrait-physician.svg" alt="" width="1000" height="1300" loading="lazy" decoding="async">
     </figure>
 
-    <div class="physician__body reveal" style="--reveal-delay:140ms">
+    <div class="physician__body reveal" style="--reveal-delay:120ms">
       <p class="eyebrow" data-i18n="physician.eyebrow">The physician</p>
       <h2 class="display h-section" id="physician-h" data-i18n="physician.h">Dr. Snow</h2>
-      <p class="prose" data-i18n="physician.p1">
-        Aesthetic physician and founder of Snow Clinics. She works across four cities
-        on a fixed rotation, which means a patient in Marbella and a patient in Zürich
-        are treated by the same hands to the same standard.
+      <p class="prose" data-i18n="physician.p">
+        Aesthetic physician and founder. Her reputation rests on restraint:
+        patients arrive asking for a procedure and frequently leave with a
+        smaller one — or with a skincare protocol and an appointment in six months.
       </p>
-      <p class="prose" data-i18n="physician.p2">
-        Her reputation rests on restraint. Patients arrive asking for a procedure and
-        frequently leave with a smaller one — or with a skincare protocol and an
-        appointment in six months.
-      </p>
-      <ul class="credentials">
-        <li data-i18n="physician.c1">Consultations and treatments in English, German, Spanish and Polish</li>
-        <li data-i18n="physician.c2">CE-marked injectables only, with batch traceability in every patient file</li>
-        <li data-i18n="physician.c3">Every treatment performed personally — no delegation to non-medical staff</li>
-        <li data-i18n="physician.c4">Complication protocol and emergency contact given to every patient</li>
+      <ul class="creds">
+        <li data-i18n="physician.c1">Every treatment performed personally, never delegated</li>
+        <li data-i18n="physician.c2">CE-marked injectables only, with batch traceability in each patient file</li>
+        <li data-i18n="physician.c3">Complication protocol and a direct emergency contact for every patient</li>
+        <li data-i18n="physician.c4">Consultations in English, German, Spanish and Polish</li>
       </ul>
-      <p><a class="link" href="#contact" data-i18n="cta.bookWith">Book with Dr. Snow <span aria-hidden="true">→</span></a></p>
+      <div class="hero__cta">
+        <a class="btn" href="https://wa.me/34637479715?text=Hello%20Dr.%20Snow%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-physician">
+          <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span data-i18n="cta.bookWith">Book with Dr. Snow</span>
+        </a>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- ══ Locations ═══════════════════════════════════════════════════════════ -->
-<section class="section" id="locations" aria-labelledby="locations-h">
+<!-- ══ Clinics ═════════════════════════════════════════════════════════════ -->
+<section class="section" id="clinics" aria-labelledby="clinics-h">
   <div class="shell">
     <div class="section-head">
       <div class="section-head__row">
         <div class="reveal">
-          <p class="eyebrow" style="margin-bottom:var(--s-4)" data-i18n="locations.eyebrow">Clinics</p>
-          <h2 class="display h-section" id="locations-h" data-i18n="locations.h">Four cities, one standard.</h2>
+          <p class="eyebrow" style="margin-bottom:var(--s-4)" data-i18n="clinics.eyebrow">Clinics</p>
+          <h2 class="display h-section" id="clinics-h" data-i18n="clinics.h">Four cities, one standard.</h2>
         </div>
-        <p class="lede reveal" style="--reveal-delay:140ms" data-i18n="locations.lede">
-          Dr. Snow rotates between the clinics on a fixed schedule. Dates for the next
-          three months are confirmed when you book.
+        <p class="lede reveal" style="--reveal-delay:120ms" data-i18n="clinics.lede">
+          Dates for the next three months are confirmed when you write.
         </p>
       </div>
     </div>
 
-    <ul class="locations">
-      <li class="location reveal">
-        <h3 class="location__city">Zürich</h3>
-        <p class="location__country" data-i18n="loc.ch">Switzerland</p>
-        <p class="location__rhythm" data-i18n="loc.zurich.r">Consultations Monday to Friday</p>
-        <p class="location__detail" data-i18n="loc.zurich">The main clinic. Injectables, regenerative treatments and thread lifting.</p>
+    <ul class="clinics">
+      <li class="clinic reveal">
+        <h3 class="clinic__city">Zürich</h3>
+        <p class="clinic__country" data-i18n="loc.ch">Switzerland</p>
+        <p class="clinic__rhythm" data-i18n="loc.zurich.r">Monday to Friday</p>
+        <p class="clinic__d" data-i18n="loc.zurich">The main clinic. Injectables, regenerative treatments and thread lifting.</p>
       </li>
-      <li class="location reveal" style="--reveal-delay:80ms">
-        <h3 class="location__city">Konstanz</h3>
-        <p class="location__country" data-i18n="loc.de">Germany</p>
-        <p class="location__rhythm" data-i18n="loc.konstanz.r">Weekly clinic days</p>
-        <p class="location__detail" data-i18n="loc.konstanz">Twenty minutes from Zürich. The full treatment list, with skin and hair protocols.</p>
+      <li class="clinic reveal" style="--reveal-delay:70ms">
+        <h3 class="clinic__city">Konstanz</h3>
+        <p class="clinic__country" data-i18n="loc.de">Germany</p>
+        <p class="clinic__rhythm" data-i18n="loc.konstanz.r">Weekly clinic days</p>
+        <p class="clinic__d" data-i18n="loc.konstanz">Twenty minutes from Zürich. The full treatment list, with skin and hair protocols.</p>
       </li>
-      <li class="location reveal" style="--reveal-delay:160ms">
-        <h3 class="location__city">Paris</h3>
-        <p class="location__country" data-i18n="loc.fr">France</p>
-        <p class="location__rhythm" data-i18n="loc.paris.r">Monthly clinic days</p>
-        <p class="location__detail" data-i18n="loc.paris">Dates are released at the start of each quarter and fill quickly.</p>
+      <li class="clinic reveal" style="--reveal-delay:140ms">
+        <h3 class="clinic__city">Paris</h3>
+        <p class="clinic__country" data-i18n="loc.fr">France</p>
+        <p class="clinic__rhythm" data-i18n="loc.paris.r">Monthly clinic days</p>
+        <p class="clinic__d" data-i18n="loc.paris">Dates are released at the start of each quarter and fill quickly.</p>
       </li>
-      <li class="location reveal" style="--reveal-delay:240ms">
-        <h3 class="location__city">Marbella</h3>
-        <p class="location__country" data-i18n="loc.es">Spain</p>
-        <p class="location__rhythm" data-i18n="loc.marbella.r">Seasonal clinic</p>
-        <p class="location__detail" data-i18n="loc.marbella">Post-summer skin repair, pigmentation and regenerative protocols.</p>
+      <li class="clinic reveal" style="--reveal-delay:210ms">
+        <h3 class="clinic__city">Marbella</h3>
+        <p class="clinic__country" data-i18n="loc.es">Spain</p>
+        <p class="clinic__rhythm" data-i18n="loc.marbella.r">Seasonal clinic</p>
+        <p class="clinic__d" data-i18n="loc.marbella">Post-summer skin repair, pigmentation and regenerative protocols.</p>
       </li>
     </ul>
   </div>
 </section>
 
-<!-- ══ Pledges & testimonials ══════════════════════════════════════════════ -->
-<section class="section section--brand" id="reviews" aria-labelledby="reviews-h">
+<!-- ══ Proof ═══════════════════════════════════════════════════════════════ -->
+<section class="section section--brand" id="proof" aria-labelledby="proof-h">
   <div class="shell">
 
     <ul class="pledges">
       <li class="pledge reveal">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-          <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.3"/>
-        </svg>
-        <span class="numeral pledge__n">4</span>
-        <span class="pledge__d" data-i18n="pledge.1">Clinics across three countries, all run to one standard by one physician.</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.4"/></svg>
+        <span class="pledge__n numeral">4</span>
+        <span class="pledge__d" data-i18n="pledge.1">Clinics in three countries, all run to one standard by one physician.</span>
       </li>
-      <li class="pledge reveal" style="--reveal-delay:80ms">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.3"/>
-          <path d="M8 3v4M16 3v4M3.5 10h17M9 15l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="numeral pledge__n" data-i18n="pledge.2n">2 weeks</span>
-        <span class="pledge__d" data-i18n="pledge.2">Every result is reviewed before it is called finished. The appointment is included.</span>
+      <li class="pledge reveal" style="--reveal-delay:70ms">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 3v4M16 3v4M3.5 10h17M9 15l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="pledge__n numeral" data-i18n="pledge.2n">2 weeks</span>
+        <span class="pledge__d" data-i18n="pledge.2">Every result reviewed before it is called finished. That appointment is included.</span>
       </li>
-      <li class="pledge reveal" style="--reveal-delay:160ms">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.3"/>
-          <path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="numeral pledge__n" data-i18n="pledge.3n">48 hours</span>
+      <li class="pledge reveal" style="--reveal-delay:140ms">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.4"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="pledge__n numeral" data-i18n="pledge.3n">48 hours</span>
         <span class="pledge__d" data-i18n="pledge.3">Notice is all it takes to move or cancel, at no charge and without a reason.</span>
       </li>
     </ul>
@@ -766,17 +492,17 @@
     <div class="section-head">
       <div class="section-head__row">
         <div class="reveal">
-          <p class="eyebrow" style="margin-bottom:var(--s-4)" data-i18n="reviews.eyebrow">Peace of mind</p>
-          <h2 class="display h-section" id="reviews-h" data-i18n="reviews.h">From patients who arrived with your question.</h2>
+          <p class="eyebrow" style="margin-bottom:var(--s-4)" data-i18n="proof.eyebrow">Peace of mind</p>
+          <h2 class="display h-section" id="proof-h" data-i18n="proof.h">From patients who arrived with your question.</h2>
         </div>
-        <div class="reveal" style="--reveal-delay:140ms;display:grid;gap:var(--s-4);justify-items:start;align-content:end">
-          <p class="lede" data-i18n="reviews.lede">Collected with consent at the two-week review.</p>
+        <div class="reveal" style="--reveal-delay:120ms;display:grid;gap:var(--s-4);justify-items:start;align-content:end">
+          <p class="lede" data-i18n="proof.lede">Collected with consent at the two-week review.</p>
           <div class="carousel-nav">
             <button class="carousel-btn" type="button" id="quotes-prev" aria-label="Previous review" aria-controls="quotes" data-i18n-attr="aria-label" data-i18n="a11y.prev">
-              <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M6 1L1 6l5 5M1 6h14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M6 1L1 6l5 5M1 6h14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <button class="carousel-btn" type="button" id="quotes-next" aria-label="Next review" aria-controls="quotes" data-i18n-attr="aria-label" data-i18n="a11y.next">
-              <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M10 1l5 5-5 5M15 6H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M10 1l5 5-5 5M15 6H1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
           </div>
         </div>
@@ -787,37 +513,33 @@
   <div class="shell">
     <div class="quotes reveal" id="quotes" tabindex="0" role="region" aria-label="Patient reviews" data-i18n-attr="aria-label" data-i18n="a11y.reviews">
       <figure class="quote">
-        <span class="quote__mark" aria-hidden="true">“</span>
-        <blockquote class="quote__text"><p data-i18n="q1.t">I booked for filler and left with a plan that started with skin. Six months on, nobody has asked what I had done — which was exactly the point.</p></blockquote>
+        <blockquote class="quote__text"><p data-i18n="q1.t">“I booked for filler and left with a plan that started with skin. Six months on, nobody has asked what I had done — which was exactly the point.”</p></blockquote>
         <dl class="quote__meta">
-          <div><dt data-i18n="meta.treat">Treatment</dt><dd data-i18n="q1.m1">Skin boosters</dd></div>
+          <div><dt data-i18n="meta.treat">Treatment</dt><dd data-i18n="q1.m">Skin boosters</dd></div>
           <div><dt data-i18n="meta.clinic">Clinic</dt><dd>Zürich</dd></div>
           <div><dt data-i18n="meta.since">Patient since</dt><dd>2024</dd></div>
         </dl>
       </figure>
       <figure class="quote">
-        <span class="quote__mark" aria-hidden="true">“</span>
-        <blockquote class="quote__text"><p data-i18n="q2.t">She talked me out of half of what I asked for. I have never had a doctor do that, and it is the reason I have stayed for four years.</p></blockquote>
+        <blockquote class="quote__text"><p data-i18n="q2.t">“She talked me out of half of what I asked for. I have never had a doctor do that, and it is the reason I have stayed for four years.”</p></blockquote>
         <dl class="quote__meta">
-          <div><dt data-i18n="meta.treat">Treatment</dt><dd data-i18n="q2.m1">Botulinum toxin</dd></div>
+          <div><dt data-i18n="meta.treat">Treatment</dt><dd data-i18n="q2.m">Botulinum toxin</dd></div>
           <div><dt data-i18n="meta.clinic">Clinic</dt><dd>Paris</dd></div>
           <div><dt data-i18n="meta.since">Patient since</dt><dd>2022</dd></div>
         </dl>
       </figure>
       <figure class="quote">
-        <span class="quote__mark" aria-hidden="true">“</span>
-        <blockquote class="quote__text"><p data-i18n="q3.t">The two-week review changed everything for me. Small adjustment, completely different result, and no pressure to book anything else.</p></blockquote>
+        <blockquote class="quote__text"><p data-i18n="q3.t">“The two-week review changed everything for me. Small adjustment, completely different result, and no pressure to book anything else.”</p></blockquote>
         <dl class="quote__meta">
-          <div><dt data-i18n="meta.treat">Treatment</dt><dd data-i18n="q3.m1">Lip contouring</dd></div>
+          <div><dt data-i18n="meta.treat">Treatment</dt><dd data-i18n="q3.m">Lip contouring</dd></div>
           <div><dt data-i18n="meta.clinic">Clinic</dt><dd>Marbella</dd></div>
           <div><dt data-i18n="meta.since">Patient since</dt><dd>2023</dd></div>
         </dl>
       </figure>
       <figure class="quote">
-        <span class="quote__mark" aria-hidden="true">“</span>
-        <blockquote class="quote__text"><p data-i18n="q4.t">First time I have been treated by the doctor who did the consultation, start to finish. That alone was worth the drive from Konstanz.</p></blockquote>
+        <blockquote class="quote__text"><p data-i18n="q4.t">“First time I have been treated by the doctor who did the consultation, start to finish. That alone was worth the drive from Konstanz.”</p></blockquote>
         <dl class="quote__meta">
-          <div><dt data-i18n="meta.treat">Treatment</dt><dd data-i18n="q4.m1">Men's protocol</dd></div>
+          <div><dt data-i18n="meta.treat">Treatment</dt><dd data-i18n="q4.m">Men's protocol</dd></div>
           <div><dt data-i18n="meta.clinic">Clinic</dt><dd>Konstanz</dd></div>
           <div><dt data-i18n="meta.since">Patient since</dt><dd>2023</dd></div>
         </dl>
@@ -835,8 +557,8 @@
           <p class="eyebrow" style="margin-bottom:var(--s-4)" data-i18n="faq.eyebrow">Straight answers</p>
           <h2 class="display h-section" id="faq-h" data-i18n="faq.h">The things people ask once the door is closed.</h2>
         </div>
-        <p class="lede reveal" style="--reveal-delay:140ms" data-i18n="faq.lede">
-          Dr. Snow answers these herself. If yours is not here, put it in the form below.
+        <p class="lede reveal" style="--reveal-delay:120ms" data-i18n="faq.lede">
+          Dr. Snow answers these herself. If yours is not here, send it on WhatsApp.
         </p>
       </div>
     </div>
@@ -849,25 +571,25 @@
 
     <div class="faq reveal" id="faq-list">
       <div class="faq__item" data-group="comfort">
-        <button class="faq__q" type="button" aria-expanded="true" aria-controls="faq-1">
+        <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-1">
           <span data-i18n="faq.q1">I'm worried it will hurt more than I can handle.</span>
           <span class="faq__icon" aria-hidden="true"></span>
         </button>
-        <div class="faq__a" id="faq-1"><div><p data-i18n="faq.a1">Most people describe injectables as uncomfortable rather than painful. Topical anaesthetic goes on as standard and is left for twenty minutes; fillers contain lidocaine; thread lifting is done under local anaesthetic. You can ask to stop at any point, and stopping is never treated as a problem.</p></div></div>
+        <div class="faq__a" id="faq-1"><div><p data-i18n="faq.a1">Most people describe injectables as uncomfortable rather than painful. Topical anaesthetic goes on as standard and is left for twenty minutes; fillers contain lidocaine; thread lifting is done under local anaesthetic. You can ask to stop at any point.</p></div></div>
       </div>
       <div class="faq__item" data-group="comfort">
         <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-2">
           <span data-i18n="faq.q2">I don't want to end up looking overdone.</span>
           <span class="faq__icon" aria-hidden="true"></span>
         </button>
-        <div class="faq__a" id="faq-2"><div><p data-i18n="faq.a2">Neither do we — it is the single thing this practice is built to avoid. Every plan starts deliberately under-dosed, gets reviewed at two weeks, and is topped up only where the result asks for it. If what you are asking for would change your features rather than restore them, Dr. Snow will say so and offer something smaller, or decline.</p></div></div>
+        <div class="faq__a" id="faq-2"><div><p data-i18n="faq.a2">Neither do we — it is what this practice is built to avoid. Every plan starts deliberately under-dosed and is reviewed at two weeks. If what you are asking for would change your features rather than restore them, Dr. Snow will say so and offer something smaller, or decline.</p></div></div>
       </div>
       <div class="faq__item" data-group="comfort">
         <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-3">
           <span data-i18n="faq.q3">How much downtime do I actually need to plan for?</span>
           <span class="faq__icon" aria-hidden="true"></span>
         </button>
-        <div class="faq__a" id="faq-3"><div><p data-i18n="faq.a3">Botulinum toxin and mesotherapy: nothing beyond an hour of redness. Lips: two to three days of swelling. Threads: three to five days of tenderness and possible bruising. You will be told which week to keep clear before you choose a date, not after.</p></div></div>
+        <div class="faq__a" id="faq-3"><div><p data-i18n="faq.a3">Botulinum toxin and mesotherapy: nothing beyond an hour of redness. Lips: two to three days of swelling. Threads: three to five days of tenderness and possible bruising. You are told which week to keep clear before you choose a date.</p></div></div>
       </div>
 
       <div class="faq__item is-filtered" data-group="cost">
@@ -875,21 +597,21 @@
           <span data-i18n="faq.q4">Why won't you quote me a price over the phone?</span>
           <span class="faq__icon" aria-hidden="true"></span>
         </button>
-        <div class="faq__a" id="faq-4"><div><p data-i18n="faq.a4">Because the honest answer depends on your anatomy, and a number given before anyone has looked at your face is a guess. After the consultation you get a written plan with the sequence, the intervals and the total, and you decide from there with nothing booked.</p></div></div>
+        <div class="faq__a" id="faq-4"><div><p data-i18n="faq.a4">Because the honest answer depends on your anatomy, and a number given before anyone has looked at your face is a guess. After the consultation you receive a written plan with the sequence, the intervals and the total.</p></div></div>
       </div>
       <div class="faq__item is-filtered" data-group="cost">
         <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-5">
           <span data-i18n="faq.q5">What if I only want one small thing?</span>
           <span class="faq__icon" aria-hidden="true"></span>
         </button>
-        <div class="faq__a" id="faq-5"><div><p data-i18n="faq.a5">Then that is what you get. A consultation is not a sales appointment, and a good number of people leave with a skincare protocol and a review in six months rather than a treatment. You will never be quoted for something you did not ask about.</p></div></div>
+        <div class="faq__a" id="faq-5"><div><p data-i18n="faq.a5">Then that is what you get. A consultation is not a sales appointment, and many people leave with a skincare protocol and a review in six months rather than a treatment.</p></div></div>
       </div>
       <div class="faq__item is-filtered" data-group="cost">
         <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-6">
           <span data-i18n="faq.q6">How long before I have to do this again?</span>
           <span class="faq__icon" aria-hidden="true"></span>
         </button>
-        <div class="faq__a" id="faq-6"><div><p data-i18n="faq.a6">Botulinum toxin holds three to four months, lips six to twelve, threads twelve to eighteen. Regenerative treatments run as a course and then a top-up once or twice a year. The written plan sets out the intervals so you can see the yearly cost before you start, not after.</p></div></div>
+        <div class="faq__a" id="faq-6"><div><p data-i18n="faq.a6">Botulinum toxin holds three to four months, lips six to twelve, threads twelve to eighteen. Regenerative treatments run as a course, then a top-up once or twice a year. The plan sets out the intervals so the yearly cost is visible before you start.</p></div></div>
       </div>
 
       <div class="faq__item is-filtered" data-group="access">
@@ -897,137 +619,89 @@
           <span data-i18n="faq.q7">What actually happens at the first appointment?</span>
           <span class="faq__icon" aria-hidden="true"></span>
         </button>
-        <div class="faq__a" id="faq-7"><div><p data-i18n="faq.a7">Forty-five minutes of consultation. Medical history, an assessment of your face at rest and in movement, standardised photographs, and a written plan. Nothing is injected on the day, so you leave with time to read it and change your mind.</p></div></div>
+        <div class="faq__a" id="faq-7"><div><p data-i18n="faq.a7">Forty-five minutes of consultation: medical history, an assessment of your face at rest and in movement, standardised photographs, and a written plan. Nothing is injected on the day.</p></div></div>
       </div>
       <div class="faq__item is-filtered" data-group="access">
         <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-8">
           <span data-i18n="faq.q8">Which language will my appointment be in?</span>
           <span class="faq__icon" aria-hidden="true"></span>
         </button>
-        <div class="faq__a" id="faq-8"><div><p data-i18n="faq.a8">English, German, Spanish or Polish — whichever you say when you book. Consent forms and your written plan come in the same language.</p></div></div>
+        <div class="faq__a" id="faq-8"><div><p data-i18n="faq.a8">English, German, Spanish or Polish — whichever you say when you write. Consent forms and your written plan come in the same language.</p></div></div>
       </div>
       <div class="faq__item is-filtered" data-group="access">
         <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-9">
           <span data-i18n="faq.q9">Can I move or cancel without being charged?</span>
           <span class="faq__icon" aria-hidden="true"></span>
         </button>
-        <div class="faq__a" id="faq-9"><div><p data-i18n="faq.a9">Yes, with 48 hours' notice, and you do not need to give a reason. Clinic days in Paris and Marbella are limited, so earlier notice simply means someone else can take the slot.</p></div></div>
+        <div class="faq__a" id="faq-9"><div><p data-i18n="faq.a9">Yes, with 48 hours' notice, and you do not need to give a reason. Clinic days in Paris and Marbella are limited, so earlier notice means someone else can take the slot.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ Contact ═════════════════════════════════════════════════════════════ -->
-<section class="section" id="contact" aria-labelledby="contact-h">
-  <div class="shell contact">
+<!-- ══ Booking ═════════════════════════════════════════════════════════════ -->
+<section class="section" id="book" aria-labelledby="book-h">
+  <div class="shell book">
 
-    <div class="contact__aside reveal">
-      <p class="eyebrow" data-i18n="contact.eyebrow">Book</p>
-      <h2 class="display h-section" id="contact-h" data-i18n="contact.h">Start with a consultation.</h2>
-      <p class="prose" data-i18n="contact.p">
-        Send the form and you will hear back within one working day with available
-        dates at your chosen clinic. For anything urgent, call or write on WhatsApp.
+    <div class="book__aside reveal">
+      <p class="eyebrow" data-i18n="book.eyebrow">Book</p>
+      <h2 class="display h-section" id="book-h" data-i18n="book.h">Write a sentence. That's the whole first step.</h2>
+      <p class="prose" data-i18n="book.p">
+        No forms. Tell us the city and what is bothering you, and you get
+        available dates back — usually the same day.
       </p>
+
       <ul class="assurance">
         <li data-i18n="assure.1">The first appointment is a consultation. <strong>Nothing is injected on the day.</strong></li>
         <li data-i18n="assure.2">You receive a <strong>written plan with the full cost</strong> before you commit to anything.</li>
         <li data-i18n="assure.3">Move or cancel <strong>free of charge</strong> with 48 hours' notice.</li>
       </ul>
-
-      <figure class="vouch" style="margin:0">
-        <blockquote data-i18n="vouch.t">“She talked me out of half of what I asked for. I have never had a doctor do that, and it is the reason I have stayed for four years.”</blockquote>
-        <figcaption data-i18n="vouch.b">Marie · Patient since 2022 · Paris</figcaption>
-      </figure>
-
-      <div class="contact__channels">
-        <p class="channel">
-          <span class="channel__l" data-i18n="contact.phone">Phone &amp; WhatsApp</span>
-          <a class="channel__v" href="tel:+34637479715">+34 637 479 715</a>
-        </p>
-        <p class="channel">
-          <span class="channel__l" data-i18n="contact.social">Instagram</span>
-          <a class="channel__v" href="https://www.instagram.com/snow_clinics/" rel="noopener">@snow_clinics</a>
-        </p>
-        <p class="channel">
-          <span class="channel__l" data-i18n="contact.cities">Clinics</span>
-          <span class="channel__v">Zürich · Konstanz<br>Paris · Marbella</span>
-        </p>
-      </div>
     </div>
 
-    <form class="form reveal" id="booking-form" style="--reveal-delay:140ms" novalidate>
-      <div class="form__fields" style="display:grid;gap:var(--s-4)">
-
-        <div class="field__row">
-          <div class="field">
-            <label for="f-name" data-i18n="form.name">Name <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required>
-            <span class="field__error" data-error-for="f-name" aria-live="polite"></span>
-          </div>
-          <div class="field">
-            <label for="f-email" data-i18n="form.email">Email <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required>
-            <span class="field__error" data-error-for="f-email" aria-live="polite"></span>
-          </div>
-        </div>
-
-        <div class="field__row">
-          <div class="field">
-            <label for="f-phone" data-i18n="form.phone">Phone</label>
-            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
-            <span class="field__hint" data-i18n="form.phoneHint">Include the country code if you are outside Switzerland.</span>
-          </div>
-          <div class="field">
-            <label for="f-clinic" data-i18n="form.clinic">Preferred clinic <span class="req" aria-hidden="true">*</span></label>
-            <select id="f-clinic" name="clinic" required>
-              <option value="" data-i18n="form.choose">Choose a clinic</option>
-              <option value="zurich">Zürich</option>
-              <option value="konstanz">Konstanz</option>
-              <option value="paris">Paris</option>
-              <option value="marbella">Marbella</option>
-            </select>
-            <span class="field__error" data-error-for="f-clinic" aria-live="polite"></span>
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="f-interest" data-i18n="form.interest">What are you considering?</label>
-          <select id="f-interest" name="interest">
-            <option value="" data-i18n="form.undecided">Not sure yet — advise me</option>
-            <option value="botulinum" data-i18n="p.botox.n">Botulinum toxin</option>
-            <option value="lips" data-i18n="p.lips.n">Lip contouring</option>
-            <option value="threads" data-i18n="p.threads.n">Vector lifting</option>
-            <option value="mesotherapy" data-i18n="p.meso.n">Mesotherapy</option>
-            <option value="boosters" data-i18n="p.boosters.n">Skin boosters &amp; polynucleotides</option>
-            <option value="hair" data-i18n="p.hair.n">Hair mesotherapy</option>
-            <option value="body" data-i18n="p.body.n">Body contouring</option>
-            <option value="cleansing" data-i18n="p.cleansing.n">Medical facial cleansing</option>
-            <option value="men" data-i18n="p.men.n">Men's protocols</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="f-message" data-i18n="form.message">Anything we should know</label>
-          <textarea id="f-message" name="message" rows="4"></textarea>
-        </div>
-
-        <div class="consent field">
-          <input id="f-consent" name="consent" type="checkbox" required>
-          <label for="f-consent" data-i18n="form.consent">I agree that Snow Clinics may store the details above in order to answer my enquiry.</label>
-          <span class="field__error" data-error-for="f-consent" aria-live="polite" style="grid-column:1/-1"></span>
-        </div>
-
-        <div style="display:flex;flex-wrap:wrap;gap:var(--s-4);align-items:center">
-          <button class="btn" type="submit"><span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="form.submit">Request an appointment</span></button>
-          <span class="form__status" id="form-status" role="status"></span>
-        </div>
-      </div>
-
-      <div class="form__sent" id="form-sent" role="status">
-        <p class="h-card" data-i18n="form.sentH">Request received.</p>
-        <p class="prose" data-i18n="form.sentP">We will come back to you within one working day with available dates. If it is urgent, call or write on WhatsApp: +34 637 479 715.</p>
-      </div>
-    </form>
+    <ul class="routes reveal" style="--reveal-delay:120ms">
+      <li>
+        <a class="route route--wa" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-whatsapp">
+          <span class="route__i" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.25-4.38c0-4.54 3.7-8.23 8.23-8.23 2.2 0 4.26.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.65-1.23-1.46-1.38-1.71-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.07.15-1.18-.06-.1-.23-.17-.48-.29Z"/></svg>
+          </span>
+          <span>
+            <span class="route__t" data-i18n="route.wa.t">WhatsApp</span>
+            <span class="route__d" data-i18n="route.wa.d">+34 637 479 715 · fastest reply</span>
+          </span>
+          <span class="route__go" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M14 4H6M14 4v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="route" href="https://ig.me/m/snow_clinics" rel="noopener" data-track="book-instagram">
+          <span class="route__i" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.1" stroke="currentColor" stroke-width="1.6"/><circle cx="17.1" cy="6.9" r="1.2" fill="currentColor"/></svg>
+          </span>
+          <span>
+            <span class="route__t" data-i18n="route.ig.t">Instagram</span>
+            <span class="route__d" data-i18n="route.ig.d">@snow_clinics · send a direct message</span>
+          </span>
+          <span class="route__go" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M14 4H6M14 4v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="route" href="tel:+34637479715" data-track="book-phone">
+          <span class="route__i" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7.5 3.8h-2A2.5 2.5 0 0 0 3 6.4c0 7.8 6.3 14.1 14.1 14.1a2.5 2.5 0 0 0 2.5-2.5v-2a1.3 1.3 0 0 0-1-1.3l-3-.7a1.3 1.3 0 0 0-1.3.5l-.8 1a10.6 10.6 0 0 1-5-5l1-.8c.4-.3.6-.8.5-1.3l-.7-3a1.3 1.3 0 0 0-1.3-1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </span>
+          <span>
+            <span class="route__t" data-i18n="route.tel.t">Telephone</span>
+            <span class="route__d" data-i18n="route.tel.d">+34 637 479 715 · Monday to Friday</span>
+          </span>
+          <span class="route__go" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M14 4H6M14 4v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </li>
+    </ul>
 
   </div>
 </section>
@@ -1036,11 +710,14 @@
 
 <!-- ══ Footer ══════════════════════════════════════════════════════════════ -->
 <footer class="footer">
-  <div class="shell shell--wide">
+  <div class="shell">
 
     <div class="footer__cta">
       <h2 class="display" data-i18n="footer.cta">Built on second opinions, small doses and patients who came back.</h2>
-      <a class="btn btn--light" href="#contact"><span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="cta.book">Book a consultation</span></a>
+      <a class="btn btn--light" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-footer">
+        <span class="btn__badge" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 12L12 3M12 3H5M12 3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span data-i18n="cta.whatsapp">Book on WhatsApp</span>
+      </a>
     </div>
 
     <div class="footer__grid">
@@ -1061,11 +738,10 @@
       <div class="footer__col">
         <p class="footer__h" data-i18n="footer.explore">Explore</p>
         <ul>
-          <li><a href="#approach"   data-i18n="nav.approach">Approach</a></li>
-          <li><a href="#concerns"   data-i18n="nav.concerns">Concerns</a></li>
           <li><a href="#treatments" data-i18n="nav.treatments">Treatments</a></li>
+          <li><a href="#why"        data-i18n="nav.why">Why us</a></li>
           <li><a href="#physician"  data-i18n="nav.physician">Dr. Snow</a></li>
-          <li><a href="#locations"  data-i18n="nav.locations">Clinics</a></li>
+          <li><a href="#clinics"    data-i18n="nav.clinics">Clinics</a></li>
           <li><a href="#faq"        data-i18n="nav.faq">Questions</a></li>
         </ul>
       </div>
@@ -1073,9 +749,9 @@
       <div class="footer__col">
         <p class="footer__h" data-i18n="footer.contact">Contact</p>
         <ul>
+          <li><a href="https://wa.me/34637479715" rel="noopener" data-i18n="route.wa.t">WhatsApp</a></li>
+          <li><a href="https://ig.me/m/snow_clinics" rel="noopener">@snow_clinics</a></li>
           <li><a href="tel:+34637479715">+34 637 479 715</a></li>
-          <li><a href="https://www.instagram.com/snow_clinics/" rel="noopener">@snow_clinics</a></li>
-          <li><a href="#contact" data-i18n="cta.book">Book a consultation</a></li>
         </ul>
       </div>
 
@@ -1104,17 +780,15 @@
 
 <nav class="dock" id="dock" aria-label="Quick actions" data-i18n-attr="aria-label" data-i18n="a11y.dock">
   <a class="dock__call" href="tel:+34637479715" data-i18n="dock.call">Call</a>
-  <a class="dock__book" href="#contact" data-i18n="cta.book">Book a consultation</a>
+  <a class="dock__book" href="https://wa.me/34637479715?text=Hello%20Snow%20Clinics%2C%20I%27d%20like%20to%20book%20a%20consultation." rel="noopener" data-track="book-dock" data-i18n="cta.whatsapp">Book on WhatsApp</a>
 </nav>
 
 <button class="to-top" type="button" id="to-top" aria-label="Back to top" data-i18n-attr="aria-label" data-i18n="a11y.top">
-  <svg viewBox="0 0 54 54" aria-hidden="true">
+  <svg class="ring" viewBox="0 0 54 54" aria-hidden="true">
     <circle class="track" cx="27" cy="27" r="25"></circle>
     <circle class="bar"   cx="27" cy="27" r="25"></circle>
   </svg>
-  <span class="to-top__icon" aria-hidden="true">
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 13V1M1 7l6-6 6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </span>
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 13V1M1 7l6-6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
 <!-- ══ Structured data ═════════════════════════════════════════════════════ -->
@@ -1146,14 +820,21 @@
       "url": "https://snow-clinics.com/",
       "logo": "https://snow-clinics.com/assets/img/favicon.svg",
       "image": "https://snow-clinics.com/assets/img/og-cover.svg",
-      "description": "Physician-led aesthetic medicine in Zürich, Konstanz, Paris and Marbella. Botulinum toxin, dermal fillers, mesotherapy, skin boosters and thread lifting.",
+      "description": "Physician-led aesthetic medicine in Zürich, Konstanz, Paris and Marbella.",
       "telephone": "+34637479715",
       "sameAs": [
-        "https://www.instagram.com/snow_clinics/"
+        "https://www.instagram.com/snow_clinics/",
+        "https://wa.me/34637479715"
       ],
       "founder": {
         "@id": "https://snow-clinics.com/#physician"
       },
+      "knowsLanguage": [
+        "en",
+        "de",
+        "es",
+        "pl"
+      ],
       "areaServed": [
         {
           "@type": "Country",
@@ -1171,12 +852,6 @@
           "@type": "Country",
           "name": "Spain"
         }
-      ],
-      "knowsLanguage": [
-        "en",
-        "de",
-        "es",
-        "pl"
       ]
     },
     {
@@ -1203,7 +878,6 @@
         "@id": "https://snow-clinics.com/#organization"
       },
       "telephone": "+34637479715",
-      "image": "https://snow-clinics.com/assets/img/location-zurich.svg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Zürich",
@@ -1241,13 +915,34 @@
         "@id": "https://snow-clinics.com/#organization"
       },
       "telephone": "+34637479715",
-      "image": "https://snow-clinics.com/assets/img/location-konstanz.svg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Konstanz",
         "addressCountry": "DE"
       },
-      "medicalSpecialty": "https://schema.org/Dermatology"
+      "medicalSpecialty": "https://schema.org/Dermatology",
+      "availableService": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Botulinum toxin treatment"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Lip contouring"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Vector lifting"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Mesotherapy"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Skin boosters and polynucleotides"
+        }
+      ]
     },
     {
       "@type": "MedicalClinic",
@@ -1257,13 +952,34 @@
         "@id": "https://snow-clinics.com/#organization"
       },
       "telephone": "+34637479715",
-      "image": "https://snow-clinics.com/assets/img/location-paris.svg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Paris",
         "addressCountry": "FR"
       },
-      "medicalSpecialty": "https://schema.org/Dermatology"
+      "medicalSpecialty": "https://schema.org/Dermatology",
+      "availableService": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Botulinum toxin treatment"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Lip contouring"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Vector lifting"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Mesotherapy"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Skin boosters and polynucleotides"
+        }
+      ]
     },
     {
       "@type": "MedicalClinic",
@@ -1273,13 +989,34 @@
         "@id": "https://snow-clinics.com/#organization"
       },
       "telephone": "+34637479715",
-      "image": "https://snow-clinics.com/assets/img/location-marbella.svg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Marbella",
         "addressCountry": "ES"
       },
-      "medicalSpecialty": "https://schema.org/Dermatology"
+      "medicalSpecialty": "https://schema.org/Dermatology",
+      "availableService": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Botulinum toxin treatment"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Lip contouring"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Vector lifting"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Mesotherapy"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Skin boosters and polynucleotides"
+        }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -1290,7 +1027,7 @@
           "name": "I'm worried it will hurt more than I can handle.",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most people describe injectables as uncomfortable rather than painful. Topical anaesthetic goes on as standard and is left for twenty minutes; fillers contain lidocaine; thread lifting is done under local anaesthetic. You can ask to stop at any point, and stopping is never treated as a problem."
+            "text": "Most people describe injectables as uncomfortable rather than painful. Topical anaesthetic goes on as standard and is left for twenty minutes; fillers contain lidocaine; thread lifting is done under local anaesthetic. You can ask to stop at any point."
           }
         },
         {
@@ -1298,7 +1035,7 @@
           "name": "I don't want to end up looking overdone.",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Neither do we — it is the single thing this practice is built to avoid. Every plan starts deliberately under-dosed, gets reviewed at two weeks, and is topped up only where the result asks for it. If what you are asking for would change your features rather than restore them, Dr. Snow will say so and offer something smaller, or decline."
+            "text": "Neither do we — it is what this practice is built to avoid. Every plan starts deliberately under-dosed and is reviewed at two weeks. If what you are asking for would change your features rather than restore them, Dr. Snow will say so and offer something smaller, or decline."
           }
         },
         {
@@ -1306,7 +1043,7 @@
           "name": "How much downtime do I actually need to plan for?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Botulinum toxin and mesotherapy: nothing beyond an hour of redness. Lips: two to three days of swelling. Threads: three to five days of tenderness and possible bruising. You will be told which week to keep clear before you choose a date, not after."
+            "text": "Botulinum toxin and mesotherapy: nothing beyond an hour of redness. Lips: two to three days of swelling. Threads: three to five days of tenderness and possible bruising. You are told which week to keep clear before you choose a date."
           }
         },
         {
@@ -1314,7 +1051,7 @@
           "name": "Why won't you quote me a price over the phone?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Because the honest answer depends on your anatomy, and a number given before anyone has looked at your face is a guess. After the consultation you get a written plan with the sequence, the intervals and the total, and you decide from there with nothing booked."
+            "text": "Because the honest answer depends on your anatomy, and a number given before anyone has looked at your face is a guess. After the consultation you receive a written plan with the sequence, the intervals and the total."
           }
         },
         {
@@ -1322,7 +1059,7 @@
           "name": "What if I only want one small thing?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Then that is what you get. A consultation is not a sales appointment, and a good number of people leave with a skincare protocol and a review in six months rather than a treatment. You will never be quoted for something you did not ask about."
+            "text": "Then that is what you get. A consultation is not a sales appointment, and many people leave with a skincare protocol and a review in six months rather than a treatment."
           }
         },
         {
@@ -1330,7 +1067,7 @@
           "name": "How long before I have to do this again?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Botulinum toxin holds three to four months, lips six to twelve, threads twelve to eighteen. Regenerative treatments run as a course and then a top-up once or twice a year. The written plan sets out the intervals so you can see the yearly cost before you start, not after."
+            "text": "Botulinum toxin holds three to four months, lips six to twelve, threads twelve to eighteen. Regenerative treatments run as a course, then a top-up once or twice a year. The plan sets out the intervals so the yearly cost is visible before you start."
           }
         },
         {
@@ -1338,7 +1075,7 @@
           "name": "What actually happens at the first appointment?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Forty-five minutes of consultation. Medical history, an assessment of your face at rest and in movement, standardised photographs, and a written plan. Nothing is injected on the day, so you leave with time to read it and change your mind."
+            "text": "Forty-five minutes of consultation: medical history, an assessment of your face at rest and in movement, standardised photographs, and a written plan. Nothing is injected on the day."
           }
         },
         {
@@ -1346,7 +1083,7 @@
           "name": "Which language will my appointment be in?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "English, German, Spanish or Polish — whichever you say when you book. Consent forms and your written plan come in the same language."
+            "text": "English, German, Spanish or Polish — whichever you say when you write. Consent forms and your written plan come in the same language."
           }
         },
         {
@@ -1354,7 +1091,7 @@
           "name": "Can I move or cancel without being charged?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, with 48 hours' notice, and you do not need to give a reason. Clinic days in Paris and Marbella are limited, so earlier notice simply means someone else can take the slot."
+            "text": "Yes, with 48 hours' notice, and you do not need to give a reason. Clinic days in Paris and Marbella are limited, so earlier notice means someone else can take the slot."
           }
         }
       ]

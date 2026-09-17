@@ -7,21 +7,23 @@
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var finePointer = window.matchMedia('(pointer: fine)').matches;
-  var clamp = function (v, min, max) { return v < min ? min : v > max ? max : v; };
+  var clamp = function (v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; };
   var $  = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
   /* ----------------------------------------------------------------------
-     1. Smooth scroll — a lerped virtual position over the native scroller.
-        Native scrolling stays authoritative for touch, keyboard and
-        assistive technology; only the wheel is smoothed.
+     1. Scrolling
+        The wheel is smoothed by lerping the native scroll position. Jumping
+        to a section is a separate, timed move: long enough to keep the page
+        oriented, short enough that nobody waits for it.
      ---------------------------------------------------------------------- */
   var scroller = (function () {
-    var enabled = finePointer && !reduced;
+    var smoothWheel = finePointer && !reduced;
     var target = window.scrollY;
     var current = target;
     var raf = null;
     var smoothing = false;
+    var jumping = false;
     var locked = false;
 
     function limit() {
@@ -46,30 +48,45 @@
       if (raf === null) { smoothing = true; raf = requestAnimationFrame(frame); }
     }
 
-    function to(y, instant) {
+    // Anchor jumps: eased over a distance-scaled duration, capped so that a
+    // trip to the footer never feels like a journey.
+    function jumpTo(y) {
       y = clamp(y, 0, limit());
-      if (!enabled || instant) {
-        window.scrollTo({ top: y, behavior: instant || reduced ? 'auto' : 'smooth' });
+      var startY = window.scrollY;
+      var dist = y - startY;
+      if (reduced || Math.abs(dist) < 2) {
+        window.scrollTo(0, y);
         target = current = y;
         return;
       }
-      target = y;
-      run();
+      var duration = clamp(Math.abs(dist) * 0.28, 380, 720);
+      var t0 = performance.now();
+      jumping = true;
+      if (raf !== null) { cancelAnimationFrame(raf); raf = null; smoothing = false; }
+
+      (function step(now) {
+        var p = Math.min(1, (now - t0) / duration);
+        var e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+        window.scrollTo(0, startY + dist * e);
+        if (p < 1) { requestAnimationFrame(step); }
+        else { jumping = false; target = current = window.scrollY; }
+      })(performance.now());
     }
 
-    if (enabled) {
+    if (smoothWheel) {
       document.documentElement.classList.add('has-smooth-scroll');
 
       window.addEventListener('wheel', function (e) {
         if (locked || e.ctrlKey || e.defaultPrevented) return;
         e.preventDefault();
+        if (jumping) { jumping = false; target = current = window.scrollY; }
         var d = e.deltaY * (e.deltaMode === 1 ? 24 : e.deltaMode === 2 ? window.innerHeight : 1);
         target = clamp(target + d, 0, limit());
         run();
       }, { passive: false });
 
       window.addEventListener('scroll', function () {
-        if (!smoothing) { target = current = window.scrollY; }
+        if (!smoothing && !jumping) { target = current = window.scrollY; }
       }, { passive: true });
 
       window.addEventListener('resize', function () {
@@ -79,15 +96,17 @@
     }
 
     return {
-      to: to,
-      lock: function (v) {
-        locked = v;
-        if (v) { target = current = window.scrollY; }
-      }
+      to: jumpTo,
+      lock: function (v) { locked = v; if (v) { target = current = window.scrollY; } }
     };
   })();
 
-  /* Anchor links route through the scroller so every jump feels the same. */
+  function sectionTop(el) {
+    var nav = $('#nav');
+    var offset = (nav ? nav.offsetHeight : 0) + 12;
+    return el.getBoundingClientRect().top + window.scrollY - offset;
+  }
+
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href^="#"]');
     if (!a) return;
@@ -98,18 +117,14 @@
 
     e.preventDefault();
     closeMenu();
-
-    var nav = $('#nav');
-    var offset = id === '#home' ? 0 : (nav ? nav.offsetHeight : 0) + 8;
-    scroller.to(el.getBoundingClientRect().top + window.scrollY - offset);
-
+    scroller.to(id === '#home' ? 0 : sectionTop(el));
     if (history.replaceState) { history.replaceState(null, '', id); }
     el.setAttribute('tabindex', '-1');
     el.focus({ preventScroll: true });
   });
 
   /* ----------------------------------------------------------------------
-     2. Frost reveal
+     2. Reveal
      ---------------------------------------------------------------------- */
   if ('IntersectionObserver' in window && !reduced) {
     var io = new IntersectionObserver(function (entries) {
@@ -118,31 +133,26 @@
         entry.target.classList.add('is-in');
         io.unobserve(entry.target);
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
     $$('.reveal').forEach(function (el) { io.observe(el); });
   } else {
     $$('.reveal').forEach(function (el) { el.classList.add('is-in'); });
   }
-
-  /* Hero headline plays on load, not on scroll. */
   requestAnimationFrame(function () {
-    $$('[data-lines] .line').forEach(function (l) { l.classList.add('is-in'); });
-    $$('.hero .reveal').forEach(function (l) { l.classList.add('is-in'); });
+    $$('.hero .reveal').forEach(function (el) { el.classList.add('is-in'); });
   });
 
   /* ----------------------------------------------------------------------
-     3. Navigation — stuck state, hide on descent, active section
+     3. Navigation
      ---------------------------------------------------------------------- */
   var nav = $('#nav');
   var lastY = window.scrollY;
-  var navTicking = false;
+  var ticking = false;
 
   function onScroll() {
     var y = window.scrollY;
 
     if (nav) {
-      nav.classList.toggle('is-stuck', y > 40);
       var descending = y > lastY && y > window.innerHeight * 0.8;
       nav.classList.toggle('is-hidden', descending && !menuOpen);
     }
@@ -156,22 +166,19 @@
       top.classList.toggle('is-visible', y > window.innerHeight * 0.9);
     }
 
-    var hero = $('[data-parallax]');
-    if (hero && !reduced) {
-      var rate = parseFloat(hero.getAttribute('data-parallax')) || 0.15;
-      hero.style.transform = 'translate3d(0,' + (y * rate).toFixed(2) + 'px,0)';
+    if (dock) {
+      dock.classList.toggle('is-visible', !atBooking && y > window.innerHeight * 0.55);
     }
 
     lastY = y;
-    navTicking = false;
+    ticking = false;
   }
 
   window.addEventListener('scroll', function () {
-    if (navTicking) return;
-    navTicking = true;
+    if (ticking) return;
+    ticking = true;
     requestAnimationFrame(onScroll);
   }, { passive: true });
-  onScroll();
 
   if ('IntersectionObserver' in window) {
     var links = $$('.nav__link');
@@ -183,7 +190,7 @@
         });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['approach', 'treatments', 'results', 'physician', 'locations'].forEach(function (id) {
+    ['treatments', 'why', 'physician', 'clinics', 'faq'].forEach(function (id) {
       var s = document.getElementById(id);
       if (s) spy.observe(s);
     });
@@ -215,132 +222,67 @@
     burger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
     scroller.lock(false);
-    window.setTimeout(function () { if (!menuOpen) menu.hidden = true; }, 700);
+    window.setTimeout(function () { if (!menuOpen) menu.hidden = true; }, 640);
   }
 
-  if (burger) {
-    burger.addEventListener('click', function () { menuOpen ? closeMenu() : openMenu(); });
-  }
+  if (burger) burger.addEventListener('click', function () { menuOpen ? closeMenu() : openMenu(); });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && menuOpen) { closeMenu(); burger.focus(); }
   });
 
   /* ----------------------------------------------------------------------
-     5. Treatment areas — a tablist, so one area is open at a time and the
-        panel morphs to its height instead of jumping to it.
+     5. Treatment slabs
+        One area is open at a time. On a wide screen the open slab takes the
+        width the others give up; stacked, it opens downwards instead.
      ---------------------------------------------------------------------- */
-  var tabs = $$('.category');
-  var panels = $$('.panel');
-  var panelWrap = $('#panels');
+  var slabWrap = $('#slabs');
+  var slabs = $$('.slab');
+  var spines = slabs.map(function (s) { return $('.slab__spine', s); });
+  var WIDE = window.matchMedia('(min-width: 1000px)');
 
-  function sizePanels() {
-    if (!panelWrap) return;
-    var active = panelWrap.querySelector('.panel.is-active');
-    if (active) panelWrap.style.height = active.offsetHeight + 'px';
+  function layoutSlabs() {
+    if (!slabWrap) return;
+    if (!WIDE.matches) { slabWrap.style.gridTemplateColumns = ''; return; }
+    slabWrap.style.gridTemplateColumns = slabs.map(function (s) {
+      return s.classList.contains('is-open') ? 'minmax(0, 1fr)' : '5.5rem';
+    }).join(' ');
   }
 
-  function selectArea(tab, moveFocus) {
-    var id = tab.getAttribute('aria-controls');
-    tabs.forEach(function (t) {
-      var on = t === tab;
-      t.setAttribute('aria-selected', String(on));
-      t.tabIndex = on ? 0 : -1;
+  function openSlab(index, moveFocus) {
+    slabs.forEach(function (s, i) {
+      var on = i === index;
+      s.classList.toggle('is-open', on);
+      spines[i].setAttribute('aria-expanded', String(on));
     });
-    panels.forEach(function (panel) {
-      panel.classList.toggle('is-active', panel.id === id);
-    });
-    sizePanels();
-    if (moveFocus) tab.focus();
+    layoutSlabs();
+    if (moveFocus) spines[index].focus();
   }
 
-  tabs.forEach(function (tab, i) {
-    tab.addEventListener('click', function () { selectArea(tab); });
-    tab.addEventListener('keydown', function (e) {
+  spines.forEach(function (spine, i) {
+    spine.addEventListener('click', function () { openSlab(i); });
+    spine.addEventListener('keydown', function (e) {
       var next = null;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
-      if (e.key === 'Home') next = tabs[0];
-      if (e.key === 'End') next = tabs[tabs.length - 1];
-      if (!next) return;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % slabs.length;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + slabs.length) % slabs.length;
+      if (e.key === 'Home') next = 0;
+      if (e.key === 'End') next = slabs.length - 1;
+      if (next === null) return;
       e.preventDefault();
-      selectArea(next, true);
+      openSlab(next, true);
     });
   });
 
-  // A concern is a question; the area is the answer. Clicking one opens the
-  // other and takes you to it, so the connection is made for the reader.
-  $$('[data-goto]').forEach(function (card) {
-    card.addEventListener('click', function () {
-      var tab = document.getElementById(card.getAttribute('data-goto'));
-      if (!tab) return;
-      selectArea(tab);
-      var section = document.getElementById('treatments');
-      var offset = (nav ? nav.offsetHeight : 0) + 16;
-      scroller.to(section.getBoundingClientRect().top + window.scrollY - offset);
-    });
-  });
-
-  if (panelWrap) {
-    // The opening measurement must not animate from zero.
-    panelWrap.style.transition = 'none';
-    sizePanels();
-    requestAnimationFrame(function () { panelWrap.style.transition = ''; });
-
-    var resizeTimer;
-    window.addEventListener('resize', function () {
-      window.clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(sizePanels, 120);
-    });
-    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(sizePanels); }
-    window.addEventListener('load', sizePanels);
+  if (slabWrap) {
+    var prevTransition = slabWrap.style.transition;
+    slabWrap.style.transition = 'none';
+    layoutSlabs();
+    requestAnimationFrame(function () { slabWrap.style.transition = prevTransition; });
+    WIDE.addEventListener('change', layoutSlabs);
+    window.addEventListener('resize', layoutSlabs);
   }
 
   /* ----------------------------------------------------------------------
-     6. Before / after comparison
-     ---------------------------------------------------------------------- */
-  var compare = $('#compare');
-  if (compare) {
-    var grip = $('#compare-grip');
-    var pos = 50;
-
-    function setPos(next) {
-      pos = clamp(next, 0, 100);
-      compare.style.setProperty('--pos', pos + '%');
-      if (grip) grip.setAttribute('aria-valuenow', Math.round(pos));
-    }
-
-    function fromEvent(e) {
-      var rect = compare.getBoundingClientRect();
-      setPos(((e.clientX - rect.left) / rect.width) * 100);
-    }
-
-    compare.addEventListener('pointerdown', function (e) {
-      compare.setPointerCapture(e.pointerId);
-      compare.classList.add('is-dragging');
-      fromEvent(e);
-    });
-    compare.addEventListener('pointermove', function (e) {
-      if (!compare.classList.contains('is-dragging')) return;
-      fromEvent(e);
-    });
-    ['pointerup', 'pointercancel'].forEach(function (type) {
-      compare.addEventListener(type, function () { compare.classList.remove('is-dragging'); });
-    });
-
-    if (grip) {
-      grip.addEventListener('keydown', function (e) {
-        var step = e.shiftKey ? 10 : 2;
-        if (e.key === 'ArrowLeft')  { e.preventDefault(); setPos(pos - step); }
-        if (e.key === 'ArrowRight') { e.preventDefault(); setPos(pos + step); }
-        if (e.key === 'Home')       { e.preventDefault(); setPos(0); }
-        if (e.key === 'End')        { e.preventDefault(); setPos(100); }
-      });
-    }
-    setPos(50);
-  }
-
-  /* ----------------------------------------------------------------------
-     7. Reviews carousel — manual only, never auto-advancing
+     6. Reviews carousel — manual only, never auto-advancing
      ---------------------------------------------------------------------- */
   var quotes = $('#quotes');
   if (quotes) {
@@ -366,7 +308,7 @@
   }
 
   /* ----------------------------------------------------------------------
-     8. FAQ — grouped by the kind of worry, one group shown at a time
+     7. FAQ — grouped by the kind of worry, every answer closed on arrival
      ---------------------------------------------------------------------- */
   $$('.faq__q').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -379,19 +321,15 @@
 
   function selectGroup(seg, moveFocus) {
     var group = seg.getAttribute('data-group');
-    segments.forEach(function (s2) {
-      var on = s2 === seg;
-      s2.setAttribute('aria-selected', String(on));
-      s2.tabIndex = on ? 0 : -1;
+    segments.forEach(function (s) {
+      var on = s === seg;
+      s.setAttribute('aria-selected', String(on));
+      s.tabIndex = on ? 0 : -1;
     });
-    faqItems.forEach(function (item, i) {
-      var match = item.getAttribute('data-group') === group;
-      item.classList.toggle('is-filtered', !match);
-      // Only the first question of a group stays open; the rest start closed
-      // so the group reads as a list rather than a wall.
-      var q = item.querySelector('.faq__q');
-      if (q) q.setAttribute('aria-expanded', String(match && !faqItems.slice(0, i)
-        .some(function (prev) { return prev.getAttribute('data-group') === group; })));
+    faqItems.forEach(function (item) {
+      item.classList.toggle('is-filtered', item.getAttribute('data-group') !== group);
+      var q = $('.faq__q', item);
+      if (q) q.setAttribute('aria-expanded', 'false');
     });
     if (moveFocus) seg.focus();
   }
@@ -411,88 +349,25 @@
   });
 
   /* ----------------------------------------------------------------------
-     9. Booking form
-     ---------------------------------------------------------------------- */
-  var form = $('#booking-form');
-  if (form) {
-    var validated = false;
-
-    function messageFor(input) {
-      var t = window.SnowI18n ? window.SnowI18n.t.bind(window.SnowI18n) : function (k, f) { return f; };
-      if (input.type === 'checkbox') return t('form.errConsent', 'Please tick the box so we can reply.');
-      if (!input.value.trim()) return t('form.errRequired', 'This field is required.');
-      if (input.type === 'email') return t('form.errEmail', 'Enter an email address we can reach you at.');
-      return t('form.errRequired', 'This field is required.');
-    }
-
-    function check(input) {
-      var wrap = input.closest('.field');
-      var slot = form.querySelector('[data-error-for="' + input.id + '"]');
-      var ok = input.checkValidity();
-      if (wrap) wrap.classList.toggle('is-invalid', !ok);
-      if (slot) slot.textContent = ok ? '' : messageFor(input);
-      return ok;
-    }
-
-    $$('input, select, textarea', form).forEach(function (input) {
-      input.addEventListener('blur', function () { if (validated) check(input); });
-      input.addEventListener('input', function () { if (validated) check(input); });
-      input.addEventListener('change', function () { if (validated) check(input); });
-    });
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      validated = true;
-
-      var invalid = null;
-      $$('input, select, textarea', form).forEach(function (input) {
-        if (!check(input) && !invalid) invalid = input;
-      });
-
-      var status = $('#form-status');
-      if (invalid) {
-        if (status) {
-          status.textContent = window.SnowI18n
-            ? window.SnowI18n.t('form.errSummary', 'Check the highlighted fields.')
-            : 'Check the highlighted fields.';
-        }
-        invalid.focus();
-        return;
-      }
-
-      if (status) status.textContent = '';
-      form.classList.add('is-sent');
-      var sent = $('#form-sent');
-      if (sent) { sent.setAttribute('tabindex', '-1'); sent.focus({ preventScroll: true }); }
-    });
-  }
-
-  /* ----------------------------------------------------------------------
-     10. Mobile action dock — present once the hero is past, absent once the
-         booking form is on screen and the offer is already in front of you.
+     8. Persistent actions
      ---------------------------------------------------------------------- */
   var dock = $('#dock');
-  if (dock) {
-    var atContact = false;
-    if ('IntersectionObserver' in window) {
-      var contactWatch = new IntersectionObserver(function (entries) {
-        atContact = entries[0].isIntersecting;
-        dock.classList.toggle('is-visible', !atContact && window.scrollY > window.innerHeight * 0.6);
-      }, { rootMargin: '0px 0px -25% 0px' });
-      var contactEl = document.getElementById('contact');
-      if (contactEl) contactWatch.observe(contactEl);
+  var atBooking = false;
+  if (dock && 'IntersectionObserver' in window) {
+    var bookEl = document.getElementById('book');
+    if (bookEl) {
+      new IntersectionObserver(function (entries) {
+        atBooking = entries[0].isIntersecting;
+        onScroll();
+      }, { rootMargin: '0px 0px -20% 0px' }).observe(bookEl);
     }
-    window.addEventListener('scroll', function () {
-      dock.classList.toggle('is-visible', !atContact && window.scrollY > window.innerHeight * 0.6);
-    }, { passive: true });
   }
 
-  document.addEventListener('snow:languagechange', sizePanels);
-
-  /* ---------------------------------------------------------------------- */
   var top = $('#to-top');
   if (top) top.addEventListener('click', function () { scroller.to(0); });
 
   var year = $('#year');
   if (year) year.textContent = String(new Date().getFullYear());
+
+  onScroll();
 })();
