@@ -417,7 +417,10 @@ ul, ol { list-style: none; padding: 0; }
 .burger {
   width: 48px; height: 48px;
   display: grid;
+  /* place-items centres each bar in its own row; the rows themselves need
+     align-content, or all three pack against the top of the button. */
   place-items: center;
+  align-content: center;
   gap: 5.5px;
   grid-auto-rows: 2px;
   background: transparent;
