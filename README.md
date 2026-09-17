@@ -118,6 +118,51 @@ w słupkach i w grupach FAQ, `prefers-reduced-motion`, cele dotykowe ≥ 44 px,
 
 ---
 
+## Brief na zdjęcie do hero
+
+Zdjęcie idzie na całą szerokość, a nagłówek ląduje na **dolnej połowie po lewej** —
+ta część kadru musi zostać pusta i ciemna. Proporcje 3:2 poziomo.
+
+```
+Editorial beauty photograph for a premium aesthetic medicine clinic website hero.
+Full-frame camera, 85mm lens, f/2.0.
+
+SUBJECT: a beautiful young Latina woman, late twenties, sun-kissed tanned olive
+skin, long dark brown hair worn loose with a natural wave, warm brown eyes
+looking straight into the lens, defined cheekbones, full natural lips, relaxed
+confident expression with the hint of a smile. Head and shoulders, body turned
+slightly away, face toward camera. Bare shoulders or a simple ivory silk strap.
+Minimal makeup: groomed brows, soft bronze tone, glossy neutral lip, no heavy
+contour, no false lashes.
+
+BACKGROUND: seamless studio backdrop in desaturated glacial blue-teal, gradient
+from #4E8299 in the upper left to #15303F in the lower right. No props, no text,
+no logos, no furniture.
+
+LIGHT: one large softbox high on the left, a subtle warm rim light on the right
+edge of her hair and shoulder to separate her from the backdrop. Soft falloff,
+gentle shadow under the cheekbone. Cool daylight balance against warm skin.
+
+FRAMING: she sits in the UPPER RIGHT THIRD of a 3:2 horizontal frame. The entire
+bottom half and the left side stay clean, dark and empty — headline text goes
+there. Generous negative space. Do not centre her.
+
+MOOD: quiet, expensive, clinical. Restrained editorial, not a glamour or
+fashion shoot.
+
+SKIN: natural retouching only. Keep real pores, fine texture and the faint
+lines around the eyes. No beauty filter, no plastic smoothing, no airbrushing,
+no HDR, no vignette, no bokeh balls, no lens flare. Photorealistic.
+
+3:2 aspect ratio, high resolution.
+```
+
+**Gdyby wyszła zbyt wygładzona** (ChatGPT ma taką tendencję), dopisz na końcu:
+*„Shot on Kodak Portra 400, visible film grain, unretouched skin."*
+
+**Gdyby ustawił ją centralnie**, powtórz sam warunek kadru jako pierwsze zdanie
+promptu — modele traktują początek jako ważniejszy.
+
 ## Do podmiany przed publikacją
 
 | Co | Gdzie |
