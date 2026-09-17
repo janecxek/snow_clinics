@@ -35,7 +35,7 @@
     'cta.bookWith': 'Termin bei Dr. Snow',
     'dock.call': 'Anrufen',
 
-    'hero.eyebrow': 'Ästhetische Medizin · Zürich · Konstanz · Paris · Marbella',
+    'hero.eyebrow': 'Ästhetische Medizin<span class="hero__cities"> · Zürich · Konstanz · Paris · Marbella</span>',
     'hero.h1': 'Natürliche Resultate sind der ganze Punkt.',
     'hero.lede': 'Ärztlich geführte Behandlungen, zurückhaltend dosiert und nach zwei Wochen kontrolliert. Eine Ärztin führt jede einzelne davon durch.',
     'hero.badge': 'Antwort meist innerhalb weniger Stunden',

@@ -477,6 +477,23 @@ ul, ol { list-style: none; padding: 0; }
     linear-gradient(to right, rgba(10, 22, 30, .45) 0%, rgba(10, 22, 30, 0) 62%);
 }
 
+/* A phone crops a 3:2 frame to roughly 1:2, so whatever slice it takes, the
+   subject lands over the copy instead of beside it. The ramp therefore starts
+   higher and goes darker here, leaving the face legible in the upper third. */
+@media (max-width: 720px) {
+  .hero__media img { object-position: 68% 20%; }
+  /* Two lines of eyebrow land across her eye at this crop; one does not. */
+  .hero__cities { display: none; }
+  .hero__scrim {
+    background: linear-gradient(to bottom,
+      rgba(10, 22, 30, .42) 0%,
+      rgba(10, 22, 30, .10) 16%,
+      rgba(10, 22, 30, .56) 34%,
+      rgba(10, 22, 30, .88) 58%,
+      rgba(10, 22, 30, .94) 100%);
+  }
+}
+
 .hero__grid { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); align-items: end; }
 @media (min-width: 1000px) {
   .hero__grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: clamp(2rem, 4vw, 4rem); }

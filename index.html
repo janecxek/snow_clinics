@@ -21,13 +21,13 @@
 <meta property="og:url" content="https://snow-clinics.com/">
 <meta property="og:title" data-i18n-attr="content" data-i18n="meta.ogTitle" content="Snow Clinics — Aesthetic Medicine">
 <meta property="og:description" data-i18n-attr="content" data-i18n="meta.description" content="Physician-led aesthetic medicine. Zürich · Konstanz · Paris · Marbella.">
-<meta property="og:image" content="https://snow-clinics.com/assets/img/og-cover.svg">
+<meta property="og:image" content="https://snow-clinics.com/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" data-i18n-attr="content" data-i18n="meta.ogTitle" content="Snow Clinics — Aesthetic Medicine">
 <meta name="twitter:description" data-i18n-attr="content" data-i18n="meta.description" content="Physician-led aesthetic medicine. Zürich · Konstanz · Paris · Marbella.">
-<meta name="twitter:image" content="https://snow-clinics.com/assets/img/og-cover.svg">
+<meta name="twitter:image" content="https://snow-clinics.com/assets/img/og-cover.jpg">
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/img/favicon.svg">
@@ -108,13 +108,16 @@
 <!-- ══ Hero ════════════════════════════════════════════════════════════════ -->
 <section class="hero" id="home">
   <div class="hero__media">
-    <img src="/assets/img/hero-portrait.svg" alt="" width="2400" height="1600" fetchpriority="high" decoding="async">
+    <picture>
+      <source srcset="/assets/img/hero-portrait.webp" type="image/webp">
+      <img src="/assets/img/hero-portrait.jpg" alt="" width="1536" height="1024" fetchpriority="high" decoding="async">
+    </picture>
   </div>
   <div class="hero__scrim" aria-hidden="true"></div>
 
   <div class="shell hero__grid">
     <div class="hero__title reveal">
-      <p class="eyebrow" data-i18n="hero.eyebrow">Aesthetic medicine · Zürich · Konstanz · Paris · Marbella</p>
+      <p class="eyebrow" data-i18n="hero.eyebrow">Aesthetic medicine<span class="hero__cities"> · Zürich · Konstanz · Paris · Marbella</span></p>
       <h1 class="display h-hero" data-i18n="hero.h1">Natural results are the whole point.</h1>
     </div>
 
@@ -847,7 +850,7 @@
       "alternateName": "Dr. Snow",
       "url": "https://snow-clinics.com/",
       "logo": "https://snow-clinics.com/assets/img/favicon.svg",
-      "image": "https://snow-clinics.com/assets/img/og-cover.svg",
+      "image": "https://snow-clinics.com/assets/img/og-cover.jpg",
       "description": "Physician-led aesthetic medicine in Zürich, Konstanz, Paris and Marbella.",
       "telephone": "+34637479715",
       "sameAs": [

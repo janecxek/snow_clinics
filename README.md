@@ -163,17 +163,24 @@ przy portrecie wypada ramię modelki. Ściemnienie hero startuje od 55% wysokoś
 w dół i omija twarz, która mieści się w górnej połowie kadru. Jeśli kolejny wariant
 będzie miał modelkę niżej, trzeba przesunąć `object-position` w `.hero__media img`.
 
+> Zdjęcie jest już na stronie. Poniższe uwagi dotyczą kolejnych wariantów.
+
 **Gdyby wyszła zbyt wygładzona** (ChatGPT ma taką tendencję), dopisz na końcu:
 *„Shot on Kodak Portra 400, visible film grain, unretouched skin."*
 
 **Gdyby ustawił ją centralnie**, powtórz sam warunek kadru jako pierwsze zdanie
 promptu — modele traktują początek jako ważniejszy.
 
+**Kontrast białego tekstu na zdjęciu jest mierzony, nie szacowany.** Skrypt ukrywa
+tekst hero, zrzuca samo tło i szuka najjaśniejszego piksela pod każdym blokiem.
+Wyniki przy obecnym zdjęciu: desktop 8.5–14.9:1, mobile 6.4–16.3:1 — wszystko
+z zapasem ponad progiem WCAG. Po podmianie zdjęcia trzeba to przeliczyć.
+
 ## Do podmiany przed publikacją
 
 | Co | Gdzie |
 |---|---|
-| **Zdjęcie do hero** — pełnoekranowe, 3:2 | podmień `assets/img/hero-portrait.svg` na `.jpg` i zmień `src` + `width`/`height` w `index.html` |
+| ~~Zdjęcie do hero~~ — **wstawione**, 1536×1024, WebP 64 KB + JPEG 133 KB | `assets/img/hero-portrait.*` |
 | **Cztery zdjęcia kafli zabiegów** — proporcje 3:4 | `assets/img/area-*.svg` |
 | **Portret Dr. Snow** — slot 4:5 | `assets/img/portrait-physician.svg` |
 | **Domena** — wszędzie `https://snow-clinics.com` | `index.html`, `sitemap.xml`, `robots.txt` |
