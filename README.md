@@ -7,6 +7,12 @@ Bez frameworka i bez build stepu — otwierasz `index.html` i działa.
 python3 -m http.server 8000    # http://localhost:8000
 ```
 
+Do wysłania komuś — jeden plik z wbudowanym CSS, JS i grafikami, otwierany dwuklikiem:
+
+```bash
+python3 build-preview.py       # → snow-clinics-preview.html
+```
+
 ---
 
 ## Kierunek wizualny
@@ -106,4 +112,5 @@ assets/js/main.js       smooth scroll, reveal, nawigacja, filtr, przed/po, karuz
 assets/js/i18n.js       słownik niemiecki + przełącznik języka
 assets/img/             grafiki SVG, favicon, znak graficzny
 robots.txt  sitemap.xml  site.webmanifest
+build-preview.py        sklejka do jednego pliku HTML (do wysyłki)
 ```
