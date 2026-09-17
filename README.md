@@ -157,6 +157,12 @@ no HDR, no vignette, no bokeh balls, no lens flare. Photorealistic.
 3:2 aspect ratio, high resolution.
 ```
 
+**Kadr jest wymaganiem technicznym, nie estetycznym.** Nagłówek siedzi na dolnej
+połowie po lewej, a lead i przyciski na dolnej prawej — czyli dokładnie tam, gdzie
+przy portrecie wypada ramię modelki. Ściemnienie hero startuje od 55% wysokości
+w dół i omija twarz, która mieści się w górnej połowie kadru. Jeśli kolejny wariant
+będzie miał modelkę niżej, trzeba przesunąć `object-position` w `.hero__media img`.
+
 **Gdyby wyszła zbyt wygładzona** (ChatGPT ma taką tendencję), dopisz na końcu:
 *„Shot on Kodak Portra 400, visible film grain, unretouched skin."*
 
@@ -167,7 +173,7 @@ promptu — modele traktują początek jako ważniejszy.
 
 | Co | Gdzie |
 |---|---|
-| **Zdjęcie do hero** — pełnoekranowe, brand-kolorowe tło za modelką | `assets/img/hero-portrait.svg` |
+| **Zdjęcie do hero** — pełnoekranowe, 3:2 | podmień `assets/img/hero-portrait.svg` na `.jpg` i zmień `src` + `width`/`height` w `index.html` |
 | **Cztery zdjęcia kafli zabiegów** — proporcje 3:4 | `assets/img/area-*.svg` |
 | **Portret Dr. Snow** — slot 4:5 | `assets/img/portrait-physician.svg` |
 | **Domena** — wszędzie `https://snow-clinics.com` | `index.html`, `sitemap.xml`, `robots.txt` |
