@@ -146,16 +146,12 @@
      3. Navigation
      ---------------------------------------------------------------------- */
   var nav = $('#nav');
-  var lastY = window.scrollY;
   var ticking = false;
 
   function onScroll() {
     var y = window.scrollY;
 
     if (nav) {
-      var descending = y > lastY && y > window.innerHeight * 0.8;
-      nav.classList.toggle('is-hidden', descending && !menuOpen);
-
       var hero = document.getElementById('home');
       if (hero) {
         var overHero = y < hero.offsetHeight - nav.offsetHeight - 24;
@@ -177,7 +173,6 @@
       dock.classList.toggle('is-visible', !atBooking && y > window.innerHeight * 0.55);
     }
 
-    lastY = y;
     ticking = false;
   }
 

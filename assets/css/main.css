@@ -323,7 +323,7 @@ ul, ol { list-style: none; padding: 0; }
   inset: 0 0 auto 0;
   z-index: 100;
   padding-block: clamp(.9rem, 1.8vw, 1.4rem);
-  transition: transform var(--t-mid) var(--ease), padding var(--t-mid) var(--ease),
+  transition: padding var(--t-mid) var(--ease),
               background var(--t-mid) var(--ease), box-shadow var(--t-mid) var(--ease);
 }
 .nav.is-stuck {
@@ -335,7 +335,6 @@ ul, ol { list-style: none; padding: 0; }
 }
 .nav.is-stuck .nav__pill { background: transparent; box-shadow: none; backdrop-filter: none; }
 .nav.is-stuck .burger { background: transparent; box-shadow: none; backdrop-filter: none; }
-.nav.is-hidden { transform: translateY(-140%); }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); }
 
 /* Over the hero photograph the lock-up and the language switch are the only
