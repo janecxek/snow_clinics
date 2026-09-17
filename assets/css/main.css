@@ -293,6 +293,15 @@ ul, ol { list-style: none; padding: 0; }
   transition: transform var(--t-mid) var(--ease);
 }
 .link:hover::after { transform-origin: left; animation: wipe var(--t-mid) var(--ease); }
+@media (pointer: coarse) {
+  .link::before { content: ""; position: absolute; inset: -9px -8px; }
+}
+
+/* A word as short as "Terms" makes a target narrower than a fingertip. */
+@media (pointer: coarse) {
+  .footer__bottom nav a, .footer__col a { padding-block: .35rem; }
+  .footer__bottom nav a { min-width: 44px; text-align: center; }
+}
 @keyframes wipe { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
 /* Chips */
@@ -355,7 +364,8 @@ ul, ol { list-style: none; padding: 0; }
   line-height: 1;
   padding-top: .08em;
 }
-.brand__name { font-size: 1.1rem; font-weight: 700; letter-spacing: -.022em; line-height: 1.1; }
+.brand__name { font-size: 1.1rem; font-weight: 700; letter-spacing: -.022em; line-height: 1.1; white-space: nowrap; }
+@media (max-width: 359.98px) { .brand { gap: .5rem; } .brand__name { font-size: 1rem; } }
 .brand__tag {
   display: none;
   font-size: .6rem;
@@ -394,7 +404,14 @@ ul, ol { list-style: none; padding: 0; }
 
 .nav__actions { display: flex; align-items: center; gap: var(--s-2); }
 .lang { display: flex; align-items: center; gap: .1rem; font-size: .9rem; font-weight: 500; }
-.lang__btn { padding: .5rem .4rem; color: var(--fg-muted); transition: color var(--t-fast) var(--ease); }
+.lang__btn {
+  display: grid;
+  place-items: center;
+  min-width: 44px; min-height: 44px;
+  padding: .5rem .4rem;
+  color: var(--fg-muted);
+  transition: color var(--t-fast) var(--ease);
+}
 .lang__btn:hover { color: var(--fg); }
 .lang__btn[aria-pressed="true"] { color: var(--fg); text-decoration: underline; text-underline-offset: 5px; }
 .lang__sep { opacity: .35; }
@@ -431,7 +448,7 @@ ul, ol { list-style: none; padding: 0; }
   background: var(--ink);
   color: var(--porcelain);
   display: grid;
-  align-content: center;
+  align-content: safe center;
   padding: 6rem var(--gutter) var(--gutter);
   clip-path: inset(0 0 100% 0);
   transition: clip-path 620ms var(--ease);
@@ -453,6 +470,13 @@ ul, ol { list-style: none; padding: 0; }
 .menu.is-open .menu__link { opacity: 1; transform: none; }
 .menu__link:hover { color: var(--frost); }
 .menu__cta { margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); }
+/* A phone on its side leaves about 390px of height for all of this. */
+@media (max-height: 560px) {
+  .menu { align-content: start; padding-top: 5rem; }
+  .menu__link { font-size: clamp(1.35rem, 6.5vh, 1.9rem); }
+  .menu__cta { margin-top: var(--s-4); }
+  .menu__cta .btn { padding-block: .7rem; }
+}
 
 /* --------------------------------------------------------------------------
    8. Hero — one photograph, full bleed, with the promise written across it
@@ -667,6 +691,15 @@ ul, ol { list-style: none; padding: 0; }
 
 /* Below that the cards stack and open downwards instead. */
 @media (max-width: 1179.98px) {
+  .slab__veil {
+    background: linear-gradient(to right,
+      rgba(10, 22, 30, .92) 0%, rgba(10, 22, 30, .78) 38%,
+      rgba(10, 22, 30, .5) 72%, rgba(10, 22, 30, .34) 100%);
+  }
+  #slab-lines .slab__img   { object-position: 50% 16%; }
+  #slab-contour .slab__img { object-position: 50% 40%; }
+  #slab-skin .slab__img    { object-position: 50% 54%; }
+  #slab-body .slab__img    { object-position: 50% 22%; }
   .slab__spine {
     position: relative;
     z-index: 2;
@@ -769,6 +802,7 @@ ul, ol { list-style: none; padding: 0; }
 .reason:hover .reason__i { background: var(--brand); color: #FFFFFF; }
 .reason__t { font-size: var(--step-1); font-weight: 600; letter-spacing: -.018em; line-height: 1.3; }
 .reason__d { grid-column: 2; font-size: var(--step--1); line-height: 1.6; color: var(--fg-muted); }
+@media (max-width: 560px) { .reason__d { grid-column: 1 / -1; } }
 .reason__n { font-size: .85rem; font-weight: 600; color: var(--fg-muted); }
 
 /* --------------------------------------------------------------------------
@@ -776,6 +810,7 @@ ul, ol { list-style: none; padding: 0; }
    -------------------------------------------------------------------------- */
 .physician { display: grid; gap: clamp(2rem, 4vw, var(--s-7)); align-items: center; }
 @media (min-width: 980px) { .physician { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); } }
+@media (max-width: 979.98px) { .physician__media { max-width: 24rem; } }
 .physician__media img {
   width: 100%;
   aspect-ratio: 4 / 5;
@@ -993,6 +1028,11 @@ html.no-js .faq__item.is-filtered { display: block; }
 .route__t { display: block; font-size: var(--step-1); font-weight: 600; letter-spacing: -.018em; line-height: 1.3; }
 .route__d { display: block; margin-top: .2rem; font-size: var(--step--1); color: var(--fg-muted); line-height: 1.5; }
 .route__go { color: var(--fg-muted); transition: transform var(--t-mid) var(--ease); }
+@media (max-width: 400px) {
+  .route { gap: var(--s-2) var(--s-3); padding: 1rem .9rem; }
+  .route__i { width: 40px; height: 40px; }
+  .route__i svg { width: 19px; height: 19px; }
+}
 .route:hover .route__go { transform: translateX(4px); }
 
 .assurance { display: grid; gap: var(--s-3); padding: var(--s-5); border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
@@ -1032,7 +1072,7 @@ html.no-js .faq__item.is-filtered { display: block; }
 .footer__hours b { display: block; font-weight: 600; color: var(--porcelain); }
 .footer__mark {
   margin-top: var(--s-4);
-  font-size: clamp(3rem, 14vw, 10rem);
+  font-size: clamp(2rem, 13vw, 10rem);
   font-weight: 700;
   line-height: .85;
   letter-spacing: -.045em;
