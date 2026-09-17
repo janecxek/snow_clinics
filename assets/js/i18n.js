@@ -7,6 +7,110 @@
   'use strict';
 
   var DE = {
+    'a11y.areas': 'Behandlungsbereiche',
+    'a11y.dock': 'Schnellzugriff',
+
+    'treatments.h': 'Beginnen Sie beim Anliegen, nicht beim Produkt.',
+    'treatments.lede': 'Die meisten kommen mit dem Namen eines Präparats. Hilfreicher ist es zu benennen, was stört — über den Rest entscheidet die Anatomie.',
+
+    'cat.lines.n': 'Mimikfalten',
+    'cat.lines.d': 'Zornesfalte, Krähenfüsse, eine schwer gewordene Braue',
+    'cat.lines.c': 'Zwei Behandlungen',
+    'cat.contour.n': 'Volumen & Kontur',
+    'cat.contour.d': 'Lippen, Wangen, Kieferlinie und abgesunkenes Gewebe',
+    'cat.contour.c': 'Zwei Behandlungen',
+    'cat.skin.n': 'Hautqualität',
+    'cat.skin.d': 'Textur, Fahlheit, Pigmentierung, beginnende Erschlaffung',
+    'cat.skin.c': 'Drei Behandlungen',
+    'cat.body.n': 'Körper & Haar',
+    'cat.body.d': 'Lokale Konturierung und nachlassende Dichte',
+    'cat.body.c': 'Zwei Behandlungen',
+
+    'fact.appt': 'Termin',
+    'fact.down': 'Ausfallzeit',
+    'fact.holds': 'Hält',
+    'panel.note': 'Die Kosten stehen nach der Beratung in Ihrem schriftlichen Plan — nie davor.',
+    'cta.discuss': 'Dazu beraten lassen <span aria-hidden="true">→</span>',
+
+    'p.botox.n': 'Botulinumtoxin',
+    'p.botox.d': 'Mildert die Linien, die Ihre Mimik hinterlässt, während die Mimik Ihre bleibt. Niedrig dosiert, nach zwei Wochen kontrolliert, nur dort ergänzt, wo das Resultat es verlangt.',
+    'p.botox.f1': '15 Minuten',
+    'p.botox.f2': 'Keine',
+    'p.botox.f3': '3–4 Monate',
+
+    'p.men.n': 'Protokolle für Männer',
+    'p.men.d': 'Männliche Brauen und Kieferpartien brauchen andere Dosierung und andere Platzierung. Strukturelle, pflegeleichte Arbeit, die im Büro niemandem auffallen soll.',
+    'p.men.f1': '20–45 Minuten',
+    'p.men.f2': 'Minimal',
+    'p.men.f3': '6–12 Monate',
+
+    'p.lips.n': 'Lippenkonturierung',
+    'p.lips.d': 'Form, Kontur und Feuchtigkeit über zwei bis drei Sitzungen aufgebaut statt in einer. Ziel ist eine Lippe, die im entspannten Gesicht als Ihre eigene gelesen wird.',
+    'p.lips.f1': '30 Minuten',
+    'p.lips.f2': '2–3 Tage',
+    'p.lips.f3': '6–12 Monate',
+
+    'p.threads.n': 'Vektorlifting',
+    'p.threads.d': 'Resorbierbare Fäden entlang der Vektoren, die das Gesicht tatsächlich genommen hat — um Gewebe zu reponieren statt Volumen hinzuzufügen.',
+    'p.threads.f1': '45–60 Minuten',
+    'p.threads.f2': '3–5 Tage',
+    'p.threads.f3': '12–18 Monate',
+
+    'p.meso.n': 'Mesotherapie',
+    'p.meso.d': 'Mikroinjektionen mit Hyaluronsäure, Vitaminen und Aminosäuren dicht unter der Oberfläche. Eine Kur mit vier Sitzungen, im Rhythmus der Hauterneuerung.',
+    'p.meso.f1': '30 Minuten',
+    'p.meso.f2': 'Rötung, Stunden',
+    'p.meso.f3': 'Kur mit 4 Sitzungen',
+
+    'p.boosters.n': 'Skinbooster & Polynukleotide',
+    'p.boosters.d': 'Regenerative Injektionen, die Ihr eigenes Kollagen anregen. Sie verändern, wie die Haut das Licht hält — und die Form von nichts.',
+    'p.boosters.f1': '30 Minuten',
+    'p.boosters.f2': '1 Tag',
+    'p.boosters.f3': '6–9 Monate',
+
+    'p.cleansing.n': 'Medizinische Gesichtsreinigung',
+    'p.cleansing.d': 'Tiefenreinigung unter klinischen Bedingungen, danach ein Wirkstoffprotokoll für die Haut, die vor uns sitzt — nicht nach Schema.',
+    'p.cleansing.f1': '60 Minuten',
+    'p.cleansing.f2': 'Keine',
+    'p.cleansing.f3': 'Alle 6 Wochen',
+
+    'p.body.n': 'Körperkonturierung',
+    'p.body.d': 'Lokale Behandlung für die Areale, die Diät und Training nicht erreichen. Ehrlich beurteilt — wenn es bei Ihnen nicht wirkt, erfahren Sie das in der Beratung.',
+    'p.body.f1': '45 Minuten',
+    'p.body.f2': '2–4 Tage',
+    'p.body.f3': 'Kur mit 3 Sitzungen',
+
+    'p.hair.n': 'Haarmesotherapie',
+    'p.hair.d': 'Bei nachlassender Dichte und erschöpfter Kopfhaut. Wachstumsfaktoren in Follikeltiefe, nach dem Haarzyklus getaktet statt nach dem Kalender.',
+    'p.hair.f1': '30 Minuten',
+    'p.hair.f2': 'Keine',
+    'p.hair.f3': 'Kur mit 6 Sitzungen',
+
+    'facts.k1': 'Durchgeführt von',
+    'facts.v1': 'Dr. Snow, persönlich',
+    'facts.k2': 'Produkte',
+    'facts.v2': 'CE-zertifiziert, rückverfolgbar',
+    'facts.k3': 'Immer inbegriffen',
+    'facts.v3': 'Kontrolle nach zwei Wochen',
+    'facts.k4': 'Beratung auf',
+
+    'loc.zurich.r': 'Beratung Montag bis Freitag',
+    'loc.konstanz.r': 'Wöchentliche Kliniktage',
+    'loc.paris.r': 'Monatliche Kliniktage',
+    'loc.marbella.r': 'Saisonale Klinik',
+    'loc.zurich': 'Der Hauptstandort. Injektionen, regenerative Behandlungen und Fadenlifting.',
+    'loc.konstanz': 'Zwanzig Minuten von Zürich. Das vollständige Angebot inklusive Haut- und Haarprotokollen.',
+    'loc.paris': 'Die Termine werden zu Beginn jedes Quartals freigegeben und sind schnell vergeben.',
+    'loc.marbella': 'Hautregeneration nach dem Sommer, Pigmentierung und regenerative Protokolle.',
+
+    'assure.1': 'Der erste Termin ist eine Beratung. <strong>An diesem Tag wird nichts injiziert.</strong>',
+    'assure.2': 'Sie erhalten einen <strong>schriftlichen Plan mit den Gesamtkosten</strong>, bevor Sie sich festlegen.',
+    'assure.3': 'Verschieben oder absagen <strong>kostenfrei</strong> mit 48 Stunden Vorlauf.',
+    'vouch.t': '„Sie hat mir die Hälfte von dem ausgeredet, wonach ich gefragt habe. Das hat noch nie eine Ärztin getan, und deshalb bin ich seit vier Jahren hier."',
+    'vouch.b': 'Marie · Patientin seit 2022 · Paris',
+
+    'dock.call': 'Anrufen',
+
     'meta.title': 'Snow Clinics — Ästhetische Medizin in Zürich, Konstanz, Paris & Marbella',
     'meta.description': 'Ärztlich geführte ästhetische Medizin von Dr. Snow. Botulinumtoxin, Filler, Mesotherapie, Skinbooster und Fadenlifting in Zürich, Konstanz, Paris und Marbella. Zurückhaltende Dosierung, natürliche Resultate.',
     'meta.ogTitle': 'Snow Clinics — Ästhetische Medizin',
@@ -51,66 +155,6 @@
     'treatments.eyebrow': 'Behandlungen',
     'treatments.h': 'Eine kurze Liste, sauber ausgeführt.',
     'treatments.lede': 'Neun Verfahren, ausgewählt, weil sie über Jahre Bestand haben. Alles, was eine andere Fachrichtung braucht, überweisen wir.',
-    'treatments.empty': 'In diesem Bereich noch nichts.',
-    'filter.all': 'Alle',
-    'filter.face': 'Gesicht',
-    'filter.skin': 'Haut',
-    'filter.body': 'Körper',
-    'filter.hair': 'Haar',
-
-    't.botox.h': 'Botulinumtoxin',
-    't.botox.p': 'Mildert Mimikfalten, während die Bewegung Ihre bleibt. Niedrig dosiert, nach zwei Wochen kontrolliert, nur dort ergänzt, wo es nötig ist.',
-    't.botox.m1': '15 Minuten',
-    't.botox.m2': 'Keine Ausfallzeit',
-    't.botox.m3': '3–4 Monate',
-
-    't.lips.h': 'Lippenkonturierung',
-    't.lips.p': 'Form, Kontur und Feuchtigkeit über zwei bis drei Sitzungen aufgebaut statt in einer. Ziel ist eine Lippe, die in Ruhe als Ihre eigene gelesen wird.',
-    't.lips.m1': '30 Minuten',
-    't.lips.m2': '2–3 Tage Schwellung',
-    't.lips.m3': '6–12 Monate',
-
-    't.threads.h': 'Vektorlifting',
-    't.threads.p': 'Resorbierbare Fäden entlang der natürlichen Vektoren des Gesichts, um abgesunkenes Gewebe zu reponieren — ohne Volumen hinzuzufügen.',
-    't.threads.m1': '45–60 Minuten',
-    't.threads.m2': '3–5 Tage',
-    't.threads.m3': '12–18 Monate',
-
-    't.meso.h': 'Mesotherapie',
-    't.meso.p': 'Mikroinjektionen mit Hyaluronsäure, Vitaminen und Aminosäuren, die die Haut von innen versorgen. Eine Kur, kein einzelner Termin.',
-    't.meso.m1': '30 Minuten',
-    't.meso.m2': 'Rötung, Stunden',
-    't.meso.m3': 'Kur mit 4 Sitzungen',
-
-    't.boosters.h': 'Skinbooster & Polynukleotide',
-    't.boosters.p': 'Regenerative Injektionen, die Ihr eigenes Kollagen anregen. Sie verändern die Hautqualität und die Lichtreflexion, nicht die Form.',
-    't.boosters.m1': '30 Minuten',
-    't.boosters.m2': '1 Tag',
-    't.boosters.m3': '6–9 Monate',
-
-    't.cleansing.h': 'Medizinische Gesichtsreinigung',
-    't.cleansing.p': 'Tiefenreinigung unter klinischen Bedingungen, gefolgt von einem Wirkstoffprotokoll, das für Ihre Haut gewählt wird statt nach Schema.',
-    't.cleansing.m1': '60 Minuten',
-    't.cleansing.m2': 'Keine Ausfallzeit',
-    't.cleansing.m3': 'Alle 6 Wochen',
-
-    't.hair.h': 'Haarmesotherapie',
-    't.hair.p': 'Bei nachlassender Dichte und erschöpfter Kopfhaut. Wachstumsfaktoren in Follikeltiefe, nach einem Rhythmus, der dem Haarzyklus folgt.',
-    't.hair.m1': '30 Minuten',
-    't.hair.m2': 'Keine Ausfallzeit',
-    't.hair.m3': 'Kur mit 6 Sitzungen',
-
-    't.body.h': 'Körperkonturierung',
-    't.body.p': 'Lokale Behandlung für Areale, die Diät und Training nicht erreichen. Ehrlich beurteilt — wenn es bei Ihnen nicht wirkt, sagen wir das.',
-    't.body.m1': '45 Minuten',
-    't.body.m2': '2–4 Tage',
-    't.body.m3': 'Kur mit 3 Sitzungen',
-
-    't.men.h': 'Protokolle für Männer',
-    't.men.p': 'Strukturelle, pflegeleichte Behandlungen, die die männliche Anatomie respektieren: Kieferkontur, müde Augen, schwere Brauen. Bewusst diskret.',
-    't.men.m1': '20–45 Minuten',
-    't.men.m2': 'Minimal',
-    't.men.m3': '6–12 Monate',
 
     'results.eyebrow': 'Resultate',
     'results.h': 'Der Massstab ist, ob jemand die Behandlung bemerkt.',
@@ -256,6 +300,9 @@
     if (lang === 'de') { url.searchParams.set('lang', 'de'); }
     else { url.searchParams.delete('lang'); }
     if (history.replaceState) { history.replaceState(null, '', url.toString()); }
+
+    // German copy is longer; anything sized from its content must re-measure.
+    document.dispatchEvent(new CustomEvent('snow:languagechange', { detail: { lang: lang } }));
   }
 
   function preferred() {

@@ -120,9 +120,9 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
 
-    $$('.reveal, .draw-line').forEach(function (el) { io.observe(el); });
+    $$('.reveal').forEach(function (el) { io.observe(el); });
   } else {
-    $$('.reveal, .draw-line').forEach(function (el) { el.classList.add('is-in'); });
+    $$('.reveal').forEach(function (el) { el.classList.add('is-in'); });
   }
 
   /* Hero headline plays on load, not on scroll. */
@@ -226,26 +226,61 @@
   });
 
   /* ----------------------------------------------------------------------
-     5. Treatment filters
+     5. Treatment areas — a tablist, so one area is open at a time and the
+        panel morphs to its height instead of jumping to it.
      ---------------------------------------------------------------------- */
-  var filters = $$('.filter');
-  var grid = $('#treatment-grid');
-  var empty = $('.treatments__empty');
+  var tabs = $$('.category');
+  var panels = $$('.panel');
+  var panelWrap = $('#panels');
 
-  filters.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var area = btn.getAttribute('data-filter');
-      filters.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+  function sizePanels() {
+    if (!panelWrap) return;
+    var active = panelWrap.querySelector('.panel.is-active');
+    if (active) panelWrap.style.height = active.offsetHeight + 'px';
+  }
 
-      var shown = 0;
-      $$('.treatment', grid).forEach(function (item) {
-        var match = area === 'all' || item.getAttribute('data-area') === area;
-        item.classList.toggle('is-filtered', !match);
-        if (match) { shown++; item.classList.add('is-in'); }
-      });
-      if (empty) empty.hidden = shown > 0;
+  function selectArea(tab, moveFocus) {
+    var id = tab.getAttribute('aria-controls');
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(function (panel) {
+      panel.classList.toggle('is-active', panel.id === id);
+    });
+    sizePanels();
+    if (moveFocus) tab.focus();
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { selectArea(tab); });
+    tab.addEventListener('keydown', function (e) {
+      var next = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (e.key === 'Home') next = tabs[0];
+      if (e.key === 'End') next = tabs[tabs.length - 1];
+      if (!next) return;
+      e.preventDefault();
+      selectArea(next, true);
     });
   });
+
+  if (panelWrap) {
+    // The opening measurement must not animate from zero.
+    panelWrap.style.transition = 'none';
+    sizePanels();
+    requestAnimationFrame(function () { panelWrap.style.transition = ''; });
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(sizePanels, 120);
+    });
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(sizePanels); }
+    window.addEventListener('load', sizePanels);
+  }
 
   /* ----------------------------------------------------------------------
      6. Before / after comparison
@@ -382,6 +417,28 @@
       if (sent) { sent.setAttribute('tabindex', '-1'); sent.focus({ preventScroll: true }); }
     });
   }
+
+  /* ----------------------------------------------------------------------
+     10. Mobile action dock — present once the hero is past, absent once the
+         booking form is on screen and the offer is already in front of you.
+     ---------------------------------------------------------------------- */
+  var dock = $('#dock');
+  if (dock) {
+    var atContact = false;
+    if ('IntersectionObserver' in window) {
+      var contactWatch = new IntersectionObserver(function (entries) {
+        atContact = entries[0].isIntersecting;
+        dock.classList.toggle('is-visible', !atContact && window.scrollY > window.innerHeight * 0.6);
+      }, { rootMargin: '0px 0px -25% 0px' });
+      var contactEl = document.getElementById('contact');
+      if (contactEl) contactWatch.observe(contactEl);
+    }
+    window.addEventListener('scroll', function () {
+      dock.classList.toggle('is-visible', !atContact && window.scrollY > window.innerHeight * 0.6);
+    }, { passive: true });
+  }
+
+  document.addEventListener('snow:languagechange', sizePanels);
 
   /* ---------------------------------------------------------------------- */
   var top = $('#to-top');
