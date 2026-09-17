@@ -49,6 +49,15 @@ for label, body, tag in (("main.css", css, "</style"), ("i18n.js", i18n, "</scri
     if tag in body.lower():
         raise SystemExit(f"{label} contains {tag}> and cannot be inlined as-is")
 
+# A courier file carries one copy of each photograph, not two: the <source> is
+# dropped and the <img> points at the WebP, which every current browser reads.
+html = re.sub(r'\s*<source srcset="/assets/img/([\w-]+)\.webp" type="image/webp">',
+              "", html)
+html = re.sub(r'(src=")/assets/img/([\w-]+)\.jpg(")',
+              lambda m: m.group(1) + "/assets/img/" + m.group(2) + ".webp" + m.group(3)
+              if os.path.exists(os.path.join(ROOT, "assets", "img", m.group(2) + ".webp"))
+              else m.group(0), html)
+
 for name in sorted(os.listdir(os.path.join(ROOT, "assets", "img"))):
     if os.path.splitext(name)[1].lower() in MEDIA:
         html = html.replace("/assets/img/" + name, data_uri(("assets", "img", name)))

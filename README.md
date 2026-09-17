@@ -181,8 +181,8 @@ z zapasem ponad progiem WCAG. Po podmianie zdjęcia trzeba to przeliczyć.
 | Co | Gdzie |
 |---|---|
 | ~~Zdjęcie do hero~~ — **wstawione**, 1536×1024, WebP 64 KB + JPEG 133 KB | `assets/img/hero-portrait.*` |
-| **Cztery zdjęcia kafli zabiegów** — proporcje 3:4 | `assets/img/area-*.svg` |
-| **Portret Dr. Snow** — slot 4:5 | `assets/img/portrait-physician.svg` |
+| ~~Cztery zdjęcia kafli zabiegów~~ — **wstawione**, 900×1200, WebP 58–89 KB + JPEG | `assets/img/area-*.{webp,jpg}` |
+| ~~Portret Dr. Snow~~ — **wstawiony**, 1000×1250, WebP 48 KB + JPEG 94 KB | `assets/img/portrait-physician.*` |
 | **Domena** — wszędzie `https://snow-clinics.com` | `index.html`, `sitemap.xml`, `robots.txt` |
 | **Opinie pacjentek** — treści przykładowe, wymagają realnych za zgodą osób | `#proof`, klucze `q*` |
 | **Numer WhatsApp** — wpisany `+34 637 479 715` | linki `wa.me/` w całym pliku |

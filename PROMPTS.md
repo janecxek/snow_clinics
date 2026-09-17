@@ -152,15 +152,17 @@ is a portrait of a specific real person, not a generic model.` i wygeneruj ponow
 
 ---
 
-## Gdzie to wrzucić po wygenerowaniu
+## Stan
 
-| Plik | Co zastąpić |
+Wszystkie pięć zdjęć jest wygenerowanych i wstawionych na stronę.
+
+| Plik na stronie | Z promptu |
 | --- | --- |
-| `assets/img/area-lines.svg` | prompt 2 (twarz) |
-| `assets/img/area-contour.svg` | prompt 3 (usta) |
-| `assets/img/area-skin.svg` | prompt 4 (ramię) |
-| `assets/img/area-body.svg` | prompt 5 (od tyłu) |
-| `assets/img/portrait-physician.svg` | prompt 6 |
+| `assets/img/area-lines.{webp,jpg}` | 2 — twarz |
+| `assets/img/area-contour.{webp,jpg}` | 3 — usta |
+| `assets/img/area-skin.{webp,jpg}` | 4 — ramię i dłoń |
+| `assets/img/area-body.{webp,jpg}` | 5 — od tyłu |
+| `assets/img/portrait-physician.{webp,jpg}` | 6 — Dr. Snow |
 
-Przyślij mi pliki, a ja je przekonwertuję do WebP + JPEG (jak hero: 2 MB PNG → 64 KB),
-podepnę pod `<picture>` i przebuduję podgląd.
+Prompty zostają w tym pliku, żeby dało się dogenerować spójne zdjęcia do
+podstron, kampanii albo social mediów — wystarczy ten sam blok stylu.
