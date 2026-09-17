@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="59" fill="none" stroke="currentColor" stroke-opacity=".35"/>
+  <text x="60" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="currentColor">D</text>
+  <text x="60" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="16"
+        font-style="italic" fill="currentColor" fill-opacity=".8">Snow</text>
+</svg>
