@@ -314,8 +314,18 @@ ul, ol { list-style: none; padding: 0; }
   inset: 0 0 auto 0;
   z-index: 100;
   padding-block: clamp(.9rem, 1.8vw, 1.4rem);
-  transition: transform var(--t-mid) var(--ease), padding var(--t-mid) var(--ease);
+  transition: transform var(--t-mid) var(--ease), padding var(--t-mid) var(--ease),
+              background var(--t-mid) var(--ease), box-shadow var(--t-mid) var(--ease);
 }
+.nav.is-stuck {
+  padding-block: .6rem;
+  background: rgba(244, 246, 247, .86);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: 0 1px 0 rgba(14, 25, 34, .08), 0 14px 34px -28px rgba(14, 25, 34, .5);
+}
+.nav.is-stuck .nav__pill { background: transparent; box-shadow: none; backdrop-filter: none; }
+.nav.is-stuck .burger { background: transparent; box-shadow: none; backdrop-filter: none; }
 .nav.is-hidden { transform: translateY(-140%); }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); }
 
@@ -550,6 +560,10 @@ ul, ol { list-style: none; padding: 0; }
 @media (min-width: 1000px) {
   .slabs { grid-template-columns: repeat(4, minmax(0, 1fr)); min-height: clamp(27rem, 34vw, 32rem); }
 }
+/* Writing-mode cannot tween, so the area name is hidden for the frame in
+   which it turns on its side, then fades back in under the moving widths. */
+.slab__label { transition: opacity 280ms var(--ease) 170ms; }
+.slabs.is-switching .slab__label { opacity: 0; transition: none; }
 
 .slab {
   position: relative;
@@ -641,6 +655,7 @@ ul, ol { list-style: none; padding: 0; }
     justify-content: center;
   }
   .slab.is-open .slab__spine { right: auto; width: 5.5rem; }
+  .slabs.has-open .slab:not(.is-open) .slab__spine { padding-inline: .5rem; }
 }
 
 .slab__panel { position: relative; z-index: 2; }

@@ -160,6 +160,7 @@
       if (hero) {
         var overHero = y < hero.offsetHeight - nav.offsetHeight - 24;
         nav.classList.toggle('nav--light', overHero && !menuOpen);
+        nav.classList.toggle('is-stuck', !overHero);
       }
     }
 
@@ -247,18 +248,39 @@
   var spines = slabs.map(function (s) { return $('.slab__spine', s); });
   var WIDE = window.matchMedia('(min-width: 1000px)');
 
+  // A grid track cannot animate from a flex factor to a pixel length, so both
+  // states are expressed in fr. Eleven to one puts the closed spines at about
+  // the width of the label they carry, and it scales with the container.
+  var OPEN_FR = 11;
+
+  function columnsFor(openIndex) {
+    return slabs.map(function (s, i) {
+      return 'minmax(0, ' + (i === openIndex ? OPEN_FR : 1) + 'fr)';
+    }).join(' ');
+  }
+
   function layoutSlabs() {
     if (!slabWrap) return;
-    var anyOpen = slabs.some(function (s) { return s.classList.contains('is-open'); });
-    slabWrap.classList.toggle('has-open', anyOpen);
-    if (!WIDE.matches || !anyOpen) { slabWrap.style.gridTemplateColumns = ''; return; }
-    slabWrap.style.gridTemplateColumns = slabs.map(function (s) {
-      return s.classList.contains('is-open') ? 'minmax(0, 1fr)' : '5.5rem';
-    }).join(' ');
+    var openIndex = -1;
+    slabs.forEach(function (s, i) { if (s.classList.contains('is-open')) openIndex = i; });
+    slabWrap.classList.toggle('has-open', openIndex >= 0);
+    if (!WIDE.matches) { slabWrap.style.gridTemplateColumns = ''; return; }
+    slabWrap.style.gridTemplateColumns = columnsFor(openIndex);
   }
 
   function openSlab(index, moveFocus) {
     var wasOpen = index !== null && slabs[index].classList.contains('is-open');
+
+    // The area names turn on their side as a slab collapses, and writing-mode
+    // cannot tween. Hide them for the swap and fade them back in underneath
+    // the widths still moving.
+    if (slabWrap && WIDE.matches) {
+      slabWrap.classList.add('is-switching');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { slabWrap.classList.remove('is-switching'); });
+      });
+    }
+
     slabs.forEach(function (s, i) {
       var on = !wasOpen && i === index;
       s.classList.toggle('is-open', on);
