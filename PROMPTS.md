@@ -46,64 +46,73 @@ FORMAT: 3:2 horizontal, 1536x1024.
 
 ---
 
-## 2. Karta „Expression lines" (mimika, botoks)
+## 2. Karta „Expression lines" (mimika, botoks) — twarz
 
 ```
 [STYLE BLOCK]
 
-SUBJECT: Close-up of the same kind of woman — young, tanned, dark brunette hair,
-brown eyes. Head and shoulders, face turned slightly to the camera-left, chin
-lifted a few degrees, eyes calm and open, lips relaxed and closed, a soft neutral
-expression with no forced smile. The upper third of the face — forehead, brow and
-the area around the eyes — is the sharpest part of the frame and catches the key
-light cleanly. Hair pulled loosely back from the face so the brow is fully visible.
-Bare shoulders, no clothing detail in frame.
+SUBJECT: Head-and-shoulders portrait of a beautiful young Latina woman in her
+mid-20s, sun-tanned skin, long dark brunette hair, warm brown eyes. Three-quarter
+view, her face turned slightly to the camera-left, chin a touch lifted, looking
+straight into the lens with a calm, self-assured, closed-lip expression. The whole
+face is in the frame and in focus. Hair loose, swept back off the forehead so the
+brow and the area around the eyes read clearly. Bare shoulders, thin cream strap.
 
 FORMAT: 3:4 vertical portrait, 900x1200.
 ```
 
-## 3. Karta „Volume & contour" (usta, wolumetria, lifting)
+## 3. Karta „Volume & contour" (usta, wolumetria) — zbliżenie na usta
 
 ```
 [STYLE BLOCK]
 
-SUBJECT: Close-up profile-to-three-quarter view of the same kind of woman — young,
-tanned, dark brunette hair, brown eyes. The camera sits slightly below eye level so
-the jawline, cheekbone and the line from chin to ear read as the strongest shapes in
-the frame. Lips closed and relaxed, natural lip colour, no gloss, no lipstick.
-The key light rakes across the cheekbone and leaves a soft shadow under it.
-Hair swept behind the ear on the camera side. Bare shoulders.
+SUBJECT: Extreme close-up of the mouth of a beautiful young Latina woman in her
+mid-20s, sun-tanned skin. The frame is cropped tightly from just under the nose to
+the bottom of the chin, with the corners of the mouth well inside the frame — the
+eyes are not visible at all. Lips closed and completely relaxed, full and naturally
+shaped, natural lip colour with a soft matte finish, no gloss, no lipstick, no
+liner. The cupid's bow, the lip line and the philtrum are the sharpest details in
+the picture. The key light rakes in from the upper left so the upper lip casts a
+faint shadow and the lower lip catches a soft highlight. Skin around the mouth is
+real — fine texture, a little down, no airbrushing.
 
 FORMAT: 3:4 vertical portrait, 900x1200.
 ```
 
-## 4. Karta „Skin quality" (jakość skóry, mezoterapia, boostery)
+## 4. Karta „Skin quality" (jakość skóry) — ramię i dłoń
 
 ```
 [STYLE BLOCK]
 
-SUBJECT: Very tight close-up of the same kind of woman — young, tanned, dark
-brunette hair. The frame holds the cheek, the side of the nose and one eye, cropped
-at the top of the brow and at the corner of the mouth. Eyes looking softly off-frame.
-The point of the picture is the skin itself: fine pores, downy vellus hair catching
-the rim light, a scattering of freckles across the cheekbone, a healthy natural
-sheen on the high points, absolutely no airbrushing. Extremely sharp on the cheek,
-everything else falling away.
+SUBJECT: A beautiful young Latina woman in her mid-20s, sun-tanned skin, long dark
+brunette hair, wearing a simple cream ribbed tank top. She is seated, turned
+slightly away, and the frame holds her shoulder, her upper arm and her forearm —
+her face is cropped out above the chin or only softly visible at the very top edge.
+One hand rests on the opposite forearm and glides slowly along it, fingers relaxed
+and flat, the gesture of someone noticing how smooth their own skin is. The arm and
+the hand are the sharpest part of the frame. The key light from the upper left runs
+down the length of the arm so the skin reads as even, healthy and lit from within —
+fine texture and downy hair visible, absolutely no airbrushing. Short natural nails,
+no nail polish, no rings, no bracelets, no watch.
 
 FORMAT: 3:4 vertical portrait, 900x1200.
 ```
 
-## 5. Karta „Body & hair" (ciało i włosy)
+## 5. Karta „Body & hair" (ciało i włosy) — od tyłu
 
 ```
 [STYLE BLOCK]
 
-SUBJECT: The same kind of woman — young, tanned, dark brunette hair — photographed
-from behind and slightly to the side, cropped from the top of the head to just below
-the shoulder blades. Her back is bare apart from a thin cream strap, her long dark
-hair falls in loose waves down her back with the warm rim light running along it and
-along the line of the shoulder. Head turned a little away from the camera, face not
-visible or only a sliver of the cheek. Elegant, restrained, never suggestive.
+SUBJECT: A beautiful young Latina woman in her mid-20s, sun-tanned skin, photographed
+from behind, framed from the top of her head down to her waist. She wears a fitted
+cream-coloured top with a low, clean back and thin straps — clothed, tasteful,
+nothing revealing, an editorial beauty photograph and not a lingerie one. Her very
+long dark brunette hair falls in loose, healthy waves down her back; one hand is
+lifted and runs through it, gathering a section of hair and letting it slide through
+her fingers. Head turned a little to the side so only the line of the cheek and jaw
+is visible, face away from the camera. The warm rim light from the right runs along
+the hair and along the line of the shoulder and upper back, making the hair look
+dense and glossy. Calm, elegant, restrained.
 
 FORMAT: 3:4 vertical portrait, 900x1200.
 ```
@@ -147,10 +156,10 @@ is a portrait of a specific real person, not a generic model.` i wygeneruj ponow
 
 | Plik | Co zastąpić |
 | --- | --- |
-| `assets/img/area-lines.svg` | prompt 2 |
-| `assets/img/area-contour.svg` | prompt 3 |
-| `assets/img/area-skin.svg` | prompt 4 |
-| `assets/img/area-body.svg` | prompt 5 |
+| `assets/img/area-lines.svg` | prompt 2 (twarz) |
+| `assets/img/area-contour.svg` | prompt 3 (usta) |
+| `assets/img/area-skin.svg` | prompt 4 (ramię) |
+| `assets/img/area-body.svg` | prompt 5 (od tyłu) |
 | `assets/img/portrait-physician.svg` | prompt 6 |
 
 Przyślij mi pliki, a ja je przekonwertuję do WebP + JPEG (jak hero: 2 MB PNG → 64 KB),
