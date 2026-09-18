@@ -20,46 +20,46 @@ body{font-family:var(--font);color:var(--ink);background:var(--porcelain);-webki
 .page{width:210mm;height:297mm;margin:0 auto;background:var(--porcelain);position:relative;overflow:hidden;display:flex;flex-direction:column}
 
 /* ── Hero, wie auf der Website ─────────────────────────────────────────── */
-.hero{position:relative;height:118mm;flex:none;overflow:hidden;color:#fff}
+.hero{position:relative;height:74mm;flex:none;overflow:hidden;color:#fff}
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 26%}
 .hero__scrim{
   position:absolute;inset:0;
   background:linear-gradient(to right,rgba(10,22,30,.93) 0%,rgba(10,22,30,.8) 42%,rgba(10,22,30,.32) 78%,rgba(10,22,30,.22) 100%),
              linear-gradient(to bottom,rgba(10,22,30,.5) 0%,rgba(10,22,30,.1) 34%,rgba(10,22,30,.55) 100%)
 }
-.hero__in{position:relative;padding:15mm 13mm 0;height:100%}
+.hero__in{position:relative;padding:11mm 13mm 0;height:100%}
 .brand{display:flex;align-items:center;gap:10px}
 .brand img{position:static;width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(255,255,255,.45)}
 .brand b{font-size:15px;font-weight:700;letter-spacing:-.02em;display:block;line-height:1.2}
 .brand span{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.66);font-weight:600}
-h1{font-size:41px;font-weight:800;letter-spacing:-.04em;line-height:1.04;margin-top:14mm;max-width:17ch}
-.hero p{margin-top:9px;font-size:13px;line-height:1.55;color:rgba(255,255,255,.84);max-width:46ch}
+h1{font-size:33px;font-weight:800;letter-spacing:-.04em;line-height:1.06;margin-top:8mm;max-width:17ch}
+.hero p{margin-top:7px;font-size:11.5px;line-height:1.55;color:rgba(255,255,255,.84);max-width:46ch}
 
 /* ── Karten, halb im Bild ──────────────────────────────────────────────── */
-.tiers{position:relative;z-index:2;margin:-19mm 13mm 0;display:grid;grid-template-columns:1fr 1.17fr;gap:12px;align-items:start}
+.tiers{position:relative;z-index:2;margin:-8mm 11mm 0;display:grid;grid-template-columns:1fr 1.14fr;gap:10px;align-items:start}
 .tier{
-  border-radius:20px;padding:22px 21px 19px;background:var(--snow);
+  border-radius:18px;padding:19px 18px 17px;background:var(--snow);
   border:1px solid var(--line);box-shadow:0 18px 44px -26px rgba(14,25,34,.45);
   display:flex;flex-direction:column;position:relative
 }
 .tier__label{font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--slate)}
-.tier__name{font-size:19px;font-weight:700;letter-spacing:-.03em;margin-top:3px;line-height:1.15}
-.tier__price{font-size:38px;font-weight:800;letter-spacing:-.042em;margin:9px 0 0;line-height:1}
+.tier__name{font-size:17px;font-weight:700;letter-spacing:-.03em;margin-top:3px;line-height:1.15}
+.tier__price{font-size:33px;font-weight:800;letter-spacing:-.042em;margin:9px 0 0;line-height:1}
 .tier__unit{font-size:11px;font-weight:600;color:var(--slate);margin-top:4px}
-.tier ul{list-style:none;margin-top:17px;display:grid;gap:9px;font-size:12.1px;line-height:1.48}
-.tier li{position:relative;padding-left:17px}
+.tier ul{list-style:none;margin-top:13px;display:grid;gap:6.4px;font-size:10.8px;line-height:1.42}
+.tier li{position:relative;padding-left:15px}
 .tier li::before{content:"";position:absolute;left:1px;top:.4em;width:8.5px;height:4.5px;border-left:1.9px solid var(--brand);border-bottom:1.9px solid var(--brand);transform:rotate(-45deg)}
-.tier__foot{margin-top:auto;padding-top:16px;font-size:10.2px;color:var(--slate);line-height:1.5}
+.tier__foot{margin-top:auto;padding-top:9px;font-size:9.4px;color:var(--slate);line-height:1.5}
 
 .tier--hero{
   background:linear-gradient(156deg,var(--ink) 0%,var(--brand-deep) 64%,var(--brand) 100%);
   border-color:transparent;color:#fff;box-shadow:0 26px 54px -22px rgba(14,25,34,.7);
-  margin-top:-8mm;padding:26px 24px 22px;border-radius:23px;overflow:hidden
+  margin-top:-7mm;padding:20px 19px 17px;border-radius:21px;overflow:hidden
 }
 .tier--hero::after{content:"";position:absolute;right:-56px;top:-70px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06)}
 .tier--hero .tier__label{color:var(--frost)}
-.tier--hero .tier__name{font-size:22px}
-.tier--hero .tier__price{font-size:46px}
+.tier--hero .tier__name{font-size:19px}
+.tier--hero .tier__price{font-size:39px}
 .tier--hero .tier__unit{color:rgba(255,255,255,.72)}
 .tier--hero li,.tier--hero .tier__foot{color:rgba(255,255,255,.9)}
 .tier--hero li::before{border-color:var(--frost)}
@@ -68,12 +68,12 @@ h1{font-size:41px;font-weight:800;letter-spacing:-.04em;line-height:1.04;margin-
 .ribbon{position:absolute;top:17px;right:17px;z-index:1;background:#fff;color:var(--brand);border-radius:999px;padding:4px 11px;font-size:8.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
 .save{
   display:flex;align-items:baseline;gap:9px;margin-top:15px;
-  background:rgba(255,255,255,.15);border-radius:12px;padding:11px 14px
+  background:rgba(255,255,255,.15);border-radius:11px;padding:8px 12px
 }
-.save b{font-size:13px;font-weight:800;color:#fff}
+.save b{font-size:12px;font-weight:800;color:#fff}
 .save s{font-size:11px;color:rgba(255,255,255,.62);font-weight:600}
 
-.closer{margin:auto 13mm 9mm;text-align:center;font-size:11px;color:var(--slate);line-height:1.6}
+.closer{margin:auto 11mm 7mm;text-align:center;font-size:11px;color:var(--slate);line-height:1.6}
 .closer b{color:var(--ink);font-weight:700}
 
 @media print{ @page{size:A4;margin:0} body{background:#fff} .page{margin:0} *{-webkit-print-color-adjust:exact;print-color-adjust:exact} }
@@ -92,7 +92,7 @@ h1{font-size:41px;font-weight:800;letter-spacing:-.04em;line-height:1.04;margin-
         <div><span>Angebot</span><b>Snow Clinics</b></div>
       </div>
       <h1>Zwei Wege zu deiner neuen Website.</h1>
-      <p>Beide enden mit einer fertigen Seite, die Termine bringt. Einer bringt dich dabei schneller in die lokale Suche.</p>
+      <p>Beide enden mit einer fertigen Seite, die Termine bringt.</p>
     </div>
   </div>
 
@@ -105,14 +105,17 @@ h1{font-size:41px;font-weight:800;letter-spacing:-.04em;line-height:1.04;margin-
       <div class="tier__unit">einmalig, netto</div>
       <ul>
         <li>Startseite, ca. 9 Behandlungsseiten, 4 Standortseiten</li>
-        <li>Deutsch, Englisch und Spanisch</li>
-        <li>Buchung über WhatsApp und Instagram, ohne Formular</li>
+        <li>Deutsch, Englisch und Spanisch — je Sprache eigene Adressen für Google</li>
+        <li>Buchung über WhatsApp und Instagram, mit vorformulierter Nachricht</li>
+        <li>Standortwahl, die sich merkt, wo der Besucher hingehört</li>
         <li>Für's Handy gebaut, nicht nachträglich angepasst</li>
-        <li>Technisches SEO, Search Console und Sitemap</li>
-        <li>Messung bis zur Anfrage: Anzeige, Stadt, Behandlung</li>
+        <li>Ladezeit optimiert, alle Bilder in modernen Formaten</li>
+        <li>Technisches SEO: Titel, Struktur, Sitemap, Search Console</li>
+        <li>Strukturierte Daten für Praxis, Ärztin und alle vier Standorte</li>
+        <li>Messung bis zur Anfrage: Anzeige, Stadt und Behandlung sichtbar</li>
         <li>Analytics ohne Cookies, DSGVO-konform ab Tag eins</li>
-        <li>Zwei Korrekturrunden nach dem ersten Entwurf</li>
-        <li>Alle Zugänge auf deinen Namen, Übergabe inklusive</li>
+        <li>Einwilligungsbanner und Einbau der Rechtstexte deines Anwalts</li>
+        <li>Zwei Korrekturrunden, alle Zugänge auf deinen Namen, Übergabe inklusive</li>
       </ul>
       <div class="tier__foot">Betreuung danach optional: 79 € oder 149 € im Monat, monatlich kündbar.</div>
     </div>
@@ -125,19 +128,25 @@ h1{font-size:41px;font-weight:800;letter-spacing:-.04em;line-height:1.04;margin-
       <div class="tier__unit">einmalig, netto</div>
       <ul>
         <li>Startseite, ca. 9 Behandlungsseiten, 4 Standortseiten</li>
-        <li>Deutsch, Englisch und Spanisch</li>
-        <li>Buchung über WhatsApp und Instagram, ohne Formular</li>
+        <li>Deutsch, Englisch und Spanisch — je Sprache eigene Adressen für Google</li>
+        <li>Buchung über WhatsApp und Instagram, mit vorformulierter Nachricht</li>
+        <li>Standortwahl, die sich merkt, wo der Besucher hingehört</li>
         <li>Für's Handy gebaut, nicht nachträglich angepasst</li>
-        <li>Technisches SEO, Search Console und Sitemap</li>
-        <li>Messung bis zur Anfrage: Anzeige, Stadt, Behandlung</li>
+        <li>Ladezeit optimiert, alle Bilder in modernen Formaten</li>
+        <li>Technisches SEO: Titel, Struktur, Sitemap, Search Console</li>
+        <li>Strukturierte Daten für Praxis, Ärztin und alle vier Standorte</li>
+        <li>Messung bis zur Anfrage: Anzeige, Stadt und Behandlung sichtbar</li>
         <li>Analytics ohne Cookies, DSGVO-konform ab Tag eins</li>
-        <li>Zwei Korrekturrunden nach dem ersten Entwurf</li>
-        <li>Alle Zugänge auf deinen Namen, Übergabe inklusive</li>
-        <li><b>Google-Unternehmensprofile für alle vier Standorte</b></li>
-        <li><b>Drei Monate Betreuung Plus inklusive</b></li>
-        <li><b>Monatsbericht: Anfragen nach Stadt und Behandlung</b></li>
+        <li>Einwilligungsbanner und Einbau der Rechtstexte deines Anwalts</li>
+        <li>Zwei Korrekturrunden, alle Zugänge auf deinen Namen, Übergabe inklusive</li>
+        <li><b>Google-Unternehmensprofile für alle vier Standorte — eingerichtet oder übernommen und verifiziert</b></li>
+        <li><b>Kategorien, Zeiten, Leistungen und Fotos je Standort gepflegt</b></li>
+        <li><b>Bewertungslink je Klinik, damit Patientinnen dich in Google bewerten</b></li>
+        <li><b>WhatsApp-Kurzantworten für die häufigsten Fragen, fertig eingerichtet</b></li>
+        <li><b>Drei Monate Betreuung Plus: Hosting, Lizenzen, Backups, bis 3 Std. Änderungen im Monat</b></li>
+        <li><b>Monatsbericht: Anfragen nach Stadt und Behandlung, mit Empfehlung für den nächsten Schritt</b></li>
       </ul>
-      <div class="save"><b>Du sparst 447 €</b><s>einzeln 4.437 €</s></div>
+      <div class="save"><b>Du sparst 687 €</b><s>einzeln 4.677 €</s></div>
       <div class="tier__foot">Ab dem vierten Monat 149 € im Monat, monatlich kündbar — oder Basis für 79 €.</div>
     </div>
 
