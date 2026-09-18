@@ -47,8 +47,18 @@ Poppinsem, duże promienie i miękkie bloki.
 | `--tusz` | `#1E2015` | nagłówki |
 | `--tusz-tekst` | `#3F4136` | tekst |
 | `--tusz-cichy` | `#646458` | podpisy, meta |
-| `--glina` | `#A34E31` | terakota — akcja |
-| `--las` | `#41593C` | zieleń — przeciwwaga |
+| `--las` | `#41593C` | zieleń — kolor główny (przyciski, tagi, bloki) |
+| `--las-mgla` | `#E6EAE1` | zielony odcień tła |
+| `--woda` | `#26536E` | niebieski — przeciwwaga (pasmo „Dla kogo", ikony usług) |
+| `--woda-mgla` | `#E2E9ED` | niebieski odcień tła |
+
+Paleta to **beże + zieleń + niebieski** — kolory, które wskazała klientka.
+Pomarańczowy (terakota) z szablonu referencyjnego został usunięty w całości:
+z tokenów, z ikon, z zasłony nad hero i ze zdjęcia w sekcji „manifest"
+(zachód słońca zastąpiły góry — zieleń i błękit).
+
+Zieleń i niebieski mają **tę samą jasność** (29 % w HSL) i 92° różnicy
+w odcieniu, więc czytają się jak para, a nie jak kolor główny i podrzędny.
 
 Krój: **Lora** (nagłówki, waga zmienna 400–700) + **Poppins** (tekst, 400/500/600),
 self-hostowane, podzbiory latin + latin-ext.
