@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angebot — Snow Clinics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1922; --slate:#4E606C; --frost:#A9C5D6;
+  --brand:#2E6B85; --brand-deep:#24576D; --brand-tint:#EDF3F6;
+  --porcelain:#F4F6F7; --snow:#FFFFFF;
+  --line:rgba(14,25,34,.13);
+  --font:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);color:var(--ink);background:var(--porcelain);-webkit-font-smoothing:antialiased}
+.page{
+  width:210mm;min-height:297mm;margin:0 auto;background:var(--snow);
+  padding:13mm 12mm 10mm;display:flex;flex-direction:column;
+}
+
+/* ── Kopf ──────────────────────────────────────────────────────────────── */
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-bottom:9px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:9px}
+.brand img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+.brand b{font-size:14px;font-weight:700;letter-spacing:-.02em;display:block;line-height:1.2}
+.brand span{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);font-weight:600}
+.top .meta{text-align:right;font-size:9.5px;color:var(--slate);line-height:1.55}
+.top .meta b{color:var(--ink);font-weight:600}
+
+.intro{margin:16px 0 15px}
+.kicker{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:7px}
+.kicker::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+h1{font-size:29px;font-weight:800;letter-spacing:-.035em;line-height:1.1;margin:8px 0 6px}
+.intro p{font-size:12.5px;line-height:1.6;color:var(--slate);max-width:64ch}
+
+/* ── Pakete ────────────────────────────────────────────────────────────── */
+.tiers{display:grid;grid-template-columns:1fr 1fr 1.24fr;gap:10px;align-items:stretch}
+.tier{
+  position:relative;border:1px solid var(--line);border-radius:16px;
+  padding:16px 15px 15px;background:var(--snow);display:flex;flex-direction:column
+}
+.tier__label{font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--slate)}
+.tier__name{font-size:16.5px;font-weight:700;letter-spacing:-.025em;margin-top:3px;line-height:1.2;min-height:2.4em}
+.tier__price{font-size:31px;font-weight:800;letter-spacing:-.035em;margin:11px 0 3px;line-height:1}
+.tier__note{font-size:10.5px;color:var(--slate);line-height:1.5}
+.tier ul{list-style:none;margin-top:12px;display:grid;gap:6px;font-size:11.2px;line-height:1.5}
+.tier li{position:relative;padding-left:15px;color:var(--ink)}
+.tier li::before{
+  content:"";position:absolute;left:1px;top:.45em;width:8px;height:4px;
+  border-left:1.6px solid var(--brand);border-bottom:1.6px solid var(--brand);transform:rotate(-45deg)
+}
+.tier li.dim{color:var(--slate)}
+.tier li.dim::before{border-color:var(--slate);opacity:.6}
+
+/* Das Paket, das alles enthält — das Auge soll hier landen. */
+.tier--hero{
+  background:linear-gradient(158deg,var(--ink) 0%,var(--brand-deep) 68%,var(--brand) 100%);
+  border-color:transparent;color:#fff;
+  box-shadow:0 16px 40px -18px rgba(14,25,34,.62);
+  transform:translateY(-8px);padding:21px 18px 18px;border-radius:20px;overflow:hidden
+}
+.tier--hero::after{
+  content:"";position:absolute;right:-42px;top:-52px;width:150px;height:150px;border-radius:50%;
+  background:rgba(255,255,255,.055)
+}
+.tier--hero .tier__label{color:var(--frost)}
+.tier--hero .tier__name{font-size:19px}
+.tier--hero .tier__price{font-size:39px}
+.tier--hero .tier__note,.tier--hero li{color:rgba(255,255,255,.88)}
+.tier--hero li::before{border-color:var(--frost)}
+.tier--hero li b{color:#fff}
+.ribbon{
+  position:absolute;top:13px;right:13px;z-index:1;
+  background:#fff;color:var(--brand);border-radius:999px;
+  padding:3px 9px;font-size:8.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase
+}
+.strike{font-size:13.5px;font-weight:600;color:rgba(255,255,255,.55);text-decoration:line-through;margin-left:7px;letter-spacing:-.01em}
+.save{
+  display:inline-block;margin-top:7px;background:rgba(255,255,255,.14);color:#fff;
+  border-radius:999px;padding:3px 9px;font-size:9.5px;font-weight:700
+}
+
+/* ── Monatlich ─────────────────────────────────────────────────────────── */
+.band{margin-top:17px;display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:8px;align-items:stretch}
+.band__head{display:flex;flex-direction:column;justify-content:center}
+.band__head h2{font-size:16.5px;font-weight:700;letter-spacing:-.025em;line-height:1.25;margin-top:5px}
+.band__head p{font-size:11px;color:var(--slate);line-height:1.5;margin-top:5px}
+.care{border:1px solid var(--line);border-radius:15px;padding:12px 14px;background:var(--snow)}
+.care--pick{border-color:var(--brand);background:var(--brand-tint)}
+.care__top{display:flex;align-items:baseline;justify-content:space-between;gap:6px}
+.care__top b{font-size:14px;font-weight:700;letter-spacing:-.02em}
+.care__top span{font-size:19px;font-weight:800;letter-spacing:-.03em;white-space:nowrap}
+.care ul{list-style:none;margin-top:9px;display:grid;gap:5px;font-size:10.6px;line-height:1.5;color:var(--slate)}
+.care .tag{display:block;margin-top:7px;font-size:9px;font-weight:700;color:var(--brand);letter-spacing:.06em;text-transform:uppercase}
+
+/* ── Fuss ──────────────────────────────────────────────────────────────── */
+.direct{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.direct h3{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--slate)}
+.direct ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px;font-size:10.8px}
+.direct li{display:flex;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:11px;padding:8px 11px;line-height:1.4}
+.direct li b{white-space:nowrap;font-weight:700}
+
+.terms{
+  margin-top:13px;background:var(--brand-tint);border-radius:15px;padding:12px 14px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:9px
+}
+.terms div{font-size:10.6px;line-height:1.5;color:var(--slate)}
+.terms b{display:block;color:var(--ink);font-size:11.3px;font-weight:700;margin-bottom:1px}
+
+.sign{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.sign__l b{font-size:13px;font-weight:700;display:block;letter-spacing:-.02em}
+.sign__l span{font-size:10.6px;color:var(--slate)}
+.sign__r{font-size:10.6px;color:var(--slate);text-align:right;max-width:46ch;line-height:1.5}
+
+@media print{
+  @page{size:A4;margin:0}
+  body{background:#fff}
+  .page{width:auto;min-height:auto;margin:0;box-shadow:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media screen{ .page{box-shadow:0 20px 60px -30px rgba(14,25,34,.5);margin:18px auto} }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <div class="brand">
+      <img src="data:image/webp;base64,UklGRrIFAABXRUJQVlA4IKYFAACQGwCdASqEAIQAPjEYikOiIaESOXToIAMEtLdur9RW66H2eBXZm9NG3h55D0l71HTz3Y/P773lE3C/Xx9Tw/6/u/vZZ4m9LpNL8tP1R7B43tu7u7tkFQLNDv3bd2bP+HIOSy59o8G37na1NsX4GtlLaknZV9GJrTTJ1z+TTxT73hDLAabw6+mSrwo0I1zhVtknsr7k8cbgZ9eJk51Dds0hDfmh4oyAV3z8jNQcm8wV6dbzlTr58VRrpbuiF8D13YopaoplqSKMyvlLtHDXkr77+bKf7z+hZDdNaZmf4BoIiIiIiIgAAP739P//q3+T3655H//8X/jX+jdjgAGNrx9CZdI13GgKF6Qs1lgN03tcLUGWZCxCvKoveBhciYgNvMtC7EqTIVxr2jJ4tARo5yQLYSrpLz53zyWRdgPQR05e3VDt8TnKvtGEGumehdDWle9eY5zZbchvy4iv6fWimjSYO+m031AA2aBQSRhoJG5P0TWDRpdLyZ0qd6oBm6f4q7/r9kTQMyFYpvLPgjUZlhg4itv+GEW7O5yWuclwmObSfTXMAGTzpoBpbP1WmPUE6U5rV9plUXQKffFaOSsyp2kfXJwFvQeDYlbCYvZHwbEaJDbO1K7HAjLZqFXNNH5Y1RZMW9WoaeorGkFaa/cuwRbUNL21k1uKz/t4c33vJAcG574t4L7/UbQSABolsw16o2QIc28Y4Ss4zcOio4DCPv20guZOiMoIn1/TEdiEsKQX8R3Fh7vRHEiP4hmxVUtpyZsSg+f5HSZdtC5eojFrCz1b3h9KDqrLFy+wFuhP7o+2+ZtU0Cz+FGKLl8od/yav4urwM8Yjy4ZSeIFv5J82cBNDOoI8OEuencZyslK2BVY9IUh+HQLGNusCvdeXuVt11ChI9BbATnh54WidbaKtR4Bh7fS8l2GfMsA75DO4gpPx+qbtBW1TxQM8ia+oSynU6QySyXQrCiSQncSXy+gG7IovCVqRwi9GILikjV1UB7SW3T1SNKtxcU525Ki5BDv3cogKjwnqtuEdpFAMu8MLwKai4b0vietSrewGA/Ks02AqutOb88iBY4z5osJ9LkqYM/mtd42KbLeTuvKaNlDsuvKNbMQRDQTwa73GLnn3AvM/ydTcq6/n6PwZuntaM5EtPF3wXL9+xkHkNkFmQ+w3pvDViw6nUPTFZ3OS+WOt0w7kLIhhdGrbBwJN3MPt0zB15v13wUF7IvFZl6eYu0EErwx3AegFNLWSGn5+EsD4untkRZuuuujmJtj+wmctRgrukscYbX/I0IQkOZlK19RNUykf36KeaeUB3QvtywnyJLG2F6JaTDqVCA4cEO1dsnw/HQ4dJGd9wC153voVhRZQiRCln9azXxeq7U/4x8qx+m5tH30MZu/VGlFnJcD4ad4unMECX1kSqJ6eLIp0OYJowwPK1LjszVUQLehj7PzL+sznInRAz21R8QOZiR8xbeo/i8wt4E3/SkWiXx/1Flu4G3/68bJQDx0kYNSXTMommQ7V6AFrrfdqIEQY1mJlCi6ILcSwFlMAPy64KnHk8m7BFMWLmmwL56JipwEfpI9ma8wxn8bYHi9NMZ9qx+tPFMxN5s9HM/tY2bGUwW5NZic/rtPHSh8wNXzX4rnEdbj6+pr1Uc/OmGWUkrCYmm7K+y72/xf/bOE4Pi4053gevA1IIyGlSRteh0HWyFDkX783T3xFZIW+eTcVTkeCKR0KEFFThK6TcXXbmY/Da6z8luEHjHnBolAWfn+Abh5IcdRZOlAQ04qMN5H6TFv6a9D4zmqLCZZrNt7Ta10kzfaZeIxcQDE7/qLUjXRPPPV5w2cOxi9DitEN/1X4IM5XMiBJDpx9bva0Mt9RXWgfpknhaPIw4PTFAW/FfAh2ZfnsSGDwdmcTnUoLV5CS0tiS+qEOFFIapAAAAAAAAAA=" alt="">
+      <div>
+        <span>Angebot</span>
+        <b>Snow Clinics</b>
+      </div>
+    </div>
+    <div class="meta">
+      Von <b>[DEIN NAME]</b><br>
+      [DATUM] · gültig bis <b>[DATUM + 21 TAGE]</b>
+    </div>
+  </div>
+
+  <div class="intro">
+    <span class="kicker">Website &amp; Terminbuchungen</span>
+    <h1>Drei Wege zu starten. Einer davon ist fertig.</h1>
+    <p>Alle Preise netto und einmalig. Monatliches steht darunter, Fremdkosten ganz unten. Die Details zu jedem Punkt schicke ich dir separat.</p>
+  </div>
+
+  <div class="tiers">
+
+    <div class="tier">
+      <span class="tier__label">Paket 1</span>
+      <div class="tier__name">Website</div>
+      <div class="tier__price">3.600 €</div>
+      <div class="tier__note">Die Seite, auf der deine Anzeigen landen.</div>
+      <ul>
+        <li>Startseite, ca. 9 Behandlungs­seiten, 4 Standortseiten</li>
+        <li>Deutsch, Englisch, Spanisch</li>
+        <li>Buchung über WhatsApp und Instagram, ohne Formular</li>
+        <li>Technisches SEO und Messung bis zur Anfrage</li>
+        <li>2 Korrekturrunden, alle Zugänge auf deinen Namen</li>
+      </ul>
+    </div>
+
+    <div class="tier">
+      <span class="tier__label">Paket 2</span>
+      <div class="tier__name">Website + Sichtbarkeit</div>
+      <div class="tier__price">3.990 €</div>
+      <div class="tier__note">Dazu gefunden werden, ohne dafür zu zahlen.</div>
+      <ul>
+        <li>Alles aus Paket 1</li>
+        <li>Google-Unternehmens­profile für alle vier Standorte</li>
+        <li>Das, was in Google Maps und der lokalen Suche erscheint</li>
+        <li>Kategorien, Zeiten, Fotos, einheitliche Daten je Stadt</li>
+      </ul>
+    </div>
+
+    <div class="tier tier--hero">
+      <span class="ribbon">Alles drin</span>
+      <span class="tier__label">Paket 3</span>
+      <div class="tier__name">Komplett</div>
+      <div class="tier__price">4.190 €<span class="strike">4.440 €</span></div>
+      <div class="tier__note">Website, Sichtbarkeit und der Start deiner Anzeigen — aus einer Hand.</div>
+      <ul>
+        <li><b>Alles aus Paket 1 und 2</b></li>
+        <li>Meta-Werbekonto sauber aufgesetzt: Struktur, Pixel, Ereignisse</li>
+        <li>Zielgruppen und Radius für jede Stadt einzeln</li>
+        <li>2–3 Anzeigenmotive aus deinem Material, richtlinien­geprüft</li>
+        <li>Messung bis zur Anfrage: du siehst Anzeige, Stadt und Behandlung</li>
+      </ul>
+      <span class="save">Du sparst 250 €</span>
+    </div>
+
+  </div>
+
+  <div class="band">
+    <div class="band__head">
+      <span class="kicker">Monatlich</span>
+      <h2>Betreuung, damit die Seite nicht altert.</h2>
+      <p>Hosting, Lizenzen und Änderungen sind enthalten — eine Rechnung statt vier. Mindestens 3 Monate, danach monatlich kündbar.</p>
+    </div>
+    <div class="care">
+      <div class="care__top"><b>Basis</b><span>79 €</span></div>
+      <ul>
+        <li>Hosting, SSL, Backups, Monitoring</li>
+        <li>Analytics- und Consent-Lizenzen</li>
+        <li>bis 1 Std. Änderungen im Monat</li>
+      </ul>
+    </div>
+    <div class="care care--pick">
+      <div class="care__top"><b>Plus</b><span>149 €</span></div>
+      <ul>
+        <li>alles aus Basis</li>
+        <li>bis 3 Std. Änderungen im Monat</li>
+        <li>Monatsbericht: Anfragen nach Stadt und Behandlung</li>
+        <li>laufende SEO-Anpassungen</li>
+      </ul>
+      <span class="tag">Empfehlung für den Start</span>
+    </div>
+  </div>
+
+  <div class="direct">
+    <h3>Was du direkt zahlst — nicht über mich</h3>
+    <ul>
+      <li>Domain auf deinen Namen <b>ca. 15 €/Jahr</b></li>
+      <li>Werbebudget direkt an Meta <b>dein Budget</b></li>
+      <li>Rechtstexte von deinem Anwalt <b>nach Aufwand</b></li>
+    </ul>
+  </div>
+
+  <div class="terms">
+    <div><b>Zahlung</b>50 % bei Auftrag, 50 % vor dem Livegang</div>
+    <div><b>Umsetzung</b>3–4 Wochen ab Erhalt von Fotos, Texten und Preisen</div>
+    <div><b>Werbe-Pilot</b>4 Wochen Betreuung optional, 390 €/Monat</div>
+    <div><b>Enthalten</b>Zwei Korrekturrunden und die Übergabe aller Zugänge</div>
+  </div>
+
+  <div class="sign">
+    <div class="sign__l">
+      <b>[DEIN NAME]</b>
+      <span>[E-MAIL] · [TELEFON] · [INSTAGRAM]</span>
+    </div>
+    <div class="sign__r">
+      Kein Ergebnisversprechen: ich baue die Seite, die sauber misst und das Schreiben so leicht wie möglich macht. Wie viele Termine daraus werden, beantwortet der erste Monat.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
