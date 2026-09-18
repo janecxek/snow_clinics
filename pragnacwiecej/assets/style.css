@@ -267,11 +267,13 @@ h4 { font-size: var(--t-h4); }
    Hero — inset rounded photo filling the viewport, warm overlay, white type
    ========================================================================== */
 
-.hero { padding: 12px 12px 0; }
+/* Hero zostaje przyklejone, a sekcja z mottem wysuwa się spod niego —
+   stąd sticky tutaj i dodatni z-index plus własne tło na manifeście. */
+.hero { padding: 12px 12px 0; position: sticky; top: 0; z-index: 0; }
 
 .hero__kadr {
   position: relative; isolation: isolate;
-  min-height: min(92svh, 860px);
+  min-height: calc(100svh - 12px);
   display: flex; align-items: flex-end;
   padding: calc(var(--naglowek-h) + 4rem) 0 clamp(2.5rem, 5vw, 4rem);
   border-radius: 20px; overflow: hidden;
@@ -316,7 +318,24 @@ h4 { font-size: var(--t-h4); }
    Manifest — centred statement between two tilted photographs
    ========================================================================== */
 
-.manifest { position: relative; overflow: hidden; }
+.manifest {
+  --wyjscie: 0;                     /* 0 → 1, ustawiane z app.js */
+  position: relative; z-index: 1;
+  overflow: hidden;
+  background: var(--piasek);
+  border-radius: 28px 28px 0 0;
+  margin-top: -28px;
+  box-shadow: 0 -20px 44px -28px rgb(30 32 21 / .5);
+}
+/* Treść dochodzi z dołu z lekkim opóźnieniem względem panelu, przez co
+   naprawdę wygląda, jakby wychodziła spod zdjęcia. */
+.manifest__tresc {
+  transform: translateY(calc((1 - var(--wyjscie)) * 3.5rem));
+  opacity: calc(.25 + .75 * var(--wyjscie));
+  will-change: transform;
+}
+.manifest__polaroid--lewy  { transform: rotate(-7deg) translateY(calc((1 - var(--wyjscie)) * 5rem)); }
+.manifest__polaroid--prawy { transform: rotate(6deg)  translateY(calc((1 - var(--wyjscie)) * 6.5rem)); }
 .manifest__tresc { max-width: 40rem; margin-inline: auto; text-align: center; position: relative; z-index: 2; }
 .manifest__ikona { color: var(--las); margin-inline: auto; }
 .manifest__zdanie {
@@ -335,8 +354,8 @@ h4 { font-size: var(--t-h4); }
   z-index: 1;
 }
 .manifest__polaroid img { width: 100%; aspect-ratio: 1/1.15; object-fit: cover; }
-.manifest__polaroid--lewy  { left: clamp(-2rem, 2vw, 3rem); top: 14%;  transform: rotate(-7deg); }
-.manifest__polaroid--prawy { right: clamp(-2rem, 2vw, 3rem); bottom: 12%; transform: rotate(6deg); }
+.manifest__polaroid--lewy  { left: clamp(-2rem, 2vw, 3rem); top: 14%; }
+.manifest__polaroid--prawy { right: clamp(-2rem, 2vw, 3rem); bottom: 12%; }
 
 /* ==========================================================================
    About — portrait beside the story
@@ -359,11 +378,20 @@ h4 { font-size: var(--t-h4); }
 /* --- three stat cards ----------------------------------------------------- */
 .liczby { display: grid; gap: var(--s3); margin-top: var(--s6); list-style: none; padding: 0; }
 .liczba {
+  position: relative; isolation: isolate;
   padding: var(--s3); border-radius: var(--r-card);
   background: var(--karta);
-  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+  transition: transform .45s var(--ease);
+  will-change: transform;
 }
-.liczba:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -22px rgb(30 32 21 / .4); }
+.liczba::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit;
+  box-shadow: 0 18px 40px -22px rgb(30 32 21 / .45);
+  opacity: 0; transition: opacity .45s var(--ease);
+}
+.liczba:hover { transform: translateY(-4px); }
+.liczba:hover::after { opacity: 1; }
 .liczba__ikona {
   width: 46px; height: 46px; display: grid; place-items: center;
   border-radius: var(--r-pill); background: var(--las); color: #fff;
@@ -378,17 +406,27 @@ h4 { font-size: var(--t-h4); }
 
 .uslugi { display: grid; gap: var(--s3); margin-top: var(--s6); list-style: none; padding: 0; }
 .usluga {
+  position: relative; isolation: isolate;
   display: flex; flex-direction: column;
   padding: clamp(1.5rem, 2.6vw, 2rem);
   border-radius: var(--r-card);
   background: var(--piasek-jasny);
   border: 1px solid color-mix(in srgb, var(--kamien) 60%, transparent);
-  transition: transform .45s var(--ease), box-shadow .45s var(--ease), background .45s var(--ease);
+  transition: transform .5s var(--ease), background .5s var(--ease), border-color .5s var(--ease);
+  will-change: transform;
+}
+.usluga::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit;
+  box-shadow: 0 22px 48px -26px rgb(30 32 21 / .45);
+  opacity: 0; transition: opacity .5s var(--ease);
 }
 .usluga:hover {
-  transform: translateY(-6px); background: var(--karta);
-  box-shadow: 0 22px 48px -26px rgb(30 32 21 / .42);
+  transform: translateY(-6px);
+  background: var(--karta);
+  border-color: color-mix(in srgb, var(--kamien) 85%, transparent);
 }
+.usluga:hover::after { opacity: 1; }
 .usluga__ikona {
   width: 52px; height: 52px; display: grid; place-items: center;
   border-radius: var(--r-pill); background: var(--woda-mgla); color: var(--woda);
@@ -496,12 +534,21 @@ h4 { font-size: var(--t-h4); }
 
 .faq__lista { max-width: 46rem; margin: var(--s6) auto 0; display: grid; gap: .75rem; }
 .pytanie {
+  position: relative; isolation: isolate;
   border-radius: var(--r-card);
   background: var(--karta);
-  overflow: hidden;
-  transition: background .35s var(--ease);
+  transition: background .45s var(--ease);
 }
-.pytanie[open] { background: var(--piasek-jasny); box-shadow: 0 16px 40px -26px rgb(30 32 21 / .4); }
+.pytanie[open] { background: var(--piasek-jasny); }
+.pytanie::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit;
+  box-shadow: 0 16px 40px -26px rgb(30 32 21 / .45);
+  opacity: 0; transition: opacity .45s var(--ease);
+}
+.pytanie[open]::after { opacity: 1; }
+/* Podczas animacji rozwijania JS ustawia tu stałą wysokość i chowa nadmiar. */
+.pytanie.animuje { overflow: hidden; }
 .pytanie > summary {
   display: flex; align-items: center; justify-content: space-between; gap: var(--s3);
   padding: clamp(1rem, 2vw, 1.35rem) clamp(1.1rem, 2.2vw, 1.6rem);
@@ -525,8 +572,8 @@ h4 { font-size: var(--t-h4); }
   font-size: var(--t-small); color: var(--tusz-cichy); max-width: 58ch;
 }
 .pytanie__odpowiedz > * + * { margin-top: var(--s2); }
-.pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(--ease) both; }
 @keyframes odsloniecie { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(--ease) both; }
 
 /* ==========================================================================
    Closing CTA — big rounded terracotta block
@@ -607,12 +654,20 @@ h4 { font-size: var(--t-h4); }
 
 .sciezki { display: grid; gap: var(--s2); }
 .sciezka {
+  position: relative; isolation: isolate;
   display: grid; grid-template-columns: 46px 1fr auto; gap: var(--s3); align-items: center;
   padding: var(--s3); border-radius: var(--r-card);
   background: var(--karta); text-decoration: none;
-  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+  transition: transform .4s var(--ease);
 }
-.sciezka:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -20px rgb(30 32 21 / .45); }
+.sciezka::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit;
+  box-shadow: 0 16px 34px -20px rgb(30 32 21 / .5);
+  opacity: 0; transition: opacity .4s var(--ease);
+}
+.sciezka:hover { transform: translateY(-2px); }
+.sciezka:hover::after { opacity: 1; }
 .sciezka__ikona { width: 46px; height: 46px; display: grid; place-items: center; border-radius: var(--r-pill); background: var(--las); color: #fff; }
 .sciezka__nazwa { display: block; font-weight: 600; color: var(--tusz); }
 .sciezka__opis { display: block; font-size: var(--t-tag); color: var(--tusz-cichy); margin-top: .1rem; }
@@ -700,7 +755,7 @@ h4 { font-size: var(--t-h4); }
 @media (max-width: 39.99rem) {
   .przyciski .btn { width: 100%; }
   .manifest__polaroid { display: none; }
-  .hero__kadr { min-height: min(88svh, 720px); }
+  .hero__kadr { min-height: calc(100svh - 12px); }
 }
 
 /* ==========================================================================
@@ -716,9 +771,19 @@ h4 { font-size: var(--t-h4); }
   [data-odslon] { opacity: 1 !important; transform: none !important; }
   .hero__tresc > * { opacity: 1; transform: none; }
   .hero__foto { transform: none; }
+  .hero { position: static; }
+  .manifest { margin-top: 0; border-radius: 0; box-shadow: none; }
+  .manifest__tresc { transform: none !important; opacity: 1 !important; }
+  .manifest__polaroid--lewy  { transform: rotate(-7deg) !important; }
+  .manifest__polaroid--prawy { transform: rotate(6deg) !important; }
 }
 
 html.bez-js [data-odslon] { opacity: 1; transform: none; }
 html.bez-js .hero__tresc > * { opacity: 1; transform: none; }
 html.bez-js .hero__foto { transform: none; }
+html.bez-js .hero { position: static; }
+html.bez-js .manifest { margin-top: 0; border-radius: 0; box-shadow: none; }
+html.bez-js .manifest__tresc { transform: none; opacity: 1; }
+html.bez-js .manifest__polaroid--lewy  { transform: rotate(-7deg); }
+html.bez-js .manifest__polaroid--prawy { transform: rotate(6deg); }
 html.bez-js .nawigacja { position: static; opacity: 1; visibility: visible; pointer-events: auto; transform: none; box-shadow: none; background: transparent; }

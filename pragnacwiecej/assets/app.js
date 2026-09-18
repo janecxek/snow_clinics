@@ -289,15 +289,107 @@
   }
 
   /* =====================================================================
-     FAQ — tylko jedna odpowiedź otwarta naraz
+     FAQ — jedna odpowiedź naraz, z płynnym rozwijaniem.
+     <details> przełącza się skokowo, więc przejmujemy kliknięcie i sami
+     animujemy wysokość. Bez JS zostaje natywne zachowanie.
      ===================================================================== */
   var pytania = Array.prototype.slice.call(document.querySelectorAll('.pytanie'));
-  pytania.forEach(function (p) {
-    p.addEventListener('toggle', function () {
-      if (!p.open) return;
-      pytania.forEach(function (inne) { if (inne !== p) inne.open = false; });
+  var CZAS = 420;
+  var KRZYWA = 'cubic-bezier(.22,1,.36,1)';
+
+  pytania.forEach(function (det) {
+    var naglowek = det.querySelector('summary');
+    var odpowiedz = det.querySelector('.pytanie__odpowiedz');
+    if (!naglowek || !odpowiedz) return;
+    var ruch = null;
+
+    function posprzataj() {
+      det.style.height = '';
+      det.classList.remove('animuje');
+      ruch = null;
+    }
+
+    function animuj(od, doWysokosci, poZakonczeniu) {
+      if (ruch) ruch.cancel();
+      det.classList.add('animuje');
+      det.style.height = od + 'px';
+      ruch = det.animate(
+        { height: [od + 'px', doWysokosci + 'px'] },
+        { duration: CZAS, easing: KRZYWA }
+      );
+      odpowiedz.animate(
+        { opacity: [det.open ? 0 : 1, det.open ? 1 : 0],
+          transform: [det.open ? 'translateY(-6px)' : 'none',
+                      det.open ? 'none' : 'translateY(-6px)'] },
+        { duration: CZAS, easing: KRZYWA }
+      );
+      ruch.onfinish = function () { posprzataj(); if (poZakonczeniu) poZakonczeniu(); };
+      ruch.oncancel = posprzataj;
+    }
+
+    function otworz() {
+      // Wysokość zwiniętego trzeba zmierzyć PRZED `open` — potem element ma
+      // już pełne wymiary i animacja szłaby z docelowej do docelowej.
+      var od = det.offsetHeight;
+      det.open = true;
+      window.requestAnimationFrame(function () {
+        animuj(od, naglowek.offsetHeight + odpowiedz.offsetHeight);
+      });
+    }
+
+    function zamknij() {
+      animuj(det.offsetHeight, naglowek.offsetHeight, function () { det.open = false; });
+    }
+
+    det.zamknijPlynnie = zamknij;
+
+    naglowek.addEventListener('click', function (e) {
+      if (mniejRuchu.matches) return;   // natywne przełączanie
+      e.preventDefault();
+      if (det.open) { zamknij(); return; }
+      pytania.forEach(function (inne) {
+        if (inne !== det && inne.open && inne.zamknijPlynnie) inne.zamknijPlynnie();
+      });
+      otworz();
+    });
+
+    // Ścieżka bez animacji (reduced motion) nadal trzyma jedną odpowiedź.
+    det.addEventListener('toggle', function () {
+      if (!mniejRuchu.matches || !det.open) return;
+      pytania.forEach(function (inne) { if (inne !== det) inne.open = false; });
     });
   });
+
+  /* =====================================================================
+     Manifest wysuwa się spod przyklejonego hero. Postęp liczymy z tego,
+     ile panelu weszło już w kadr, i podajemy do CSS jako --wyjscie.
+     ===================================================================== */
+  var manifest = document.getElementById('manifest');
+
+  if (manifest && !mniejRuchu.matches) {
+    var czeka = false;
+
+    var przelicz = function () {
+      czeka = false;
+      var r = manifest.getBoundingClientRect();
+      // 0 gdy panel dopiero dotyka dolnej krawędzi ekranu, 1 gdy wjechał
+      // na wysokość mniej więcej połowy okna.
+      var droga = window.innerHeight * 0.55;
+      var p = (window.innerHeight - r.top) / droga;
+      p = p < 0 ? 0 : (p > 1 ? 1 : p);
+      manifest.style.setProperty('--wyjscie', (p * p * (3 - 2 * p)).toFixed(4));
+    };
+
+    var zaplanuj = function () {
+      if (czeka) return;
+      czeka = true;
+      window.requestAnimationFrame(przelicz);
+    };
+
+    przelicz();
+    window.addEventListener('scroll', zaplanuj, { passive: true });
+    window.addEventListener('resize', zaplanuj);
+  }
 
   /* =====================================================================
      Rok w stopce
