@@ -97,6 +97,20 @@ python3 -m http.server 8000
 # http://localhost:8000
 ```
 
+## Wersja w jednym pliku
+
+Do wysłania komuś na podgląd (działa po dwukliku, bez serwera i bez internetu):
+
+```sh
+python3 build-jeden-plik.py
+# -> ../pragnacwiecej-jeden-plik.html
+```
+
+Skrypt wszywa CSS, JavaScript, fonty i zdjęcia jako base64. Na produkcję
+idzie normalny katalog — przeglądarka cache'uje wtedy zasoby osobno.
+Wyniki (`pragnacwiecej-jeden-plik.html`, `pragnacwiecej-strona.zip`) są
+w `.gitignore`, bo odtwarza je ten skrypt.
+
 ## Zapasowe zdjęcia
 
 W `img/` leżą też kadry, których obecny układ nie używa
