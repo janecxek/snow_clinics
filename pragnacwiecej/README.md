@@ -4,7 +4,8 @@ Jednostronicowa witryna dla marki **pragnacwiecej** (coaching decyzji
 i ścieżki życiowej dla osób w swoich 20s).
 
 Statyczna strona — bez frameworka i bez kroku budowania. Wgraj zawartość
-tego katalogu na dowolny hosting i działa.
+tego katalogu na dowolny hosting i działa. Ścieżki do zasobów są
+**względne**, więc strona działa też w podkatalogu (np. GitHub Pages).
 
 ## Struktura
 
@@ -12,14 +13,11 @@ tego katalogu na dowolny hosting i działa.
 index.html            cała treść strony
 assets/style.css      system projektowy + wszystkie style
 assets/fonts.css      @font-face dla self-hostowanych fontów
-assets/fonts/         Fraunces + Manrope (woff2, latin + latin-ext)
-assets/app.js         menu, okno zapisu, odsłanianie, manifest
+assets/fonts/         Lora + Poppins (woff2, latin + latin-ext)
+assets/app.js         płynne przewijanie, nawigacja, okno zapisu, animacje
 img/                  zdjęcia (webp) + og.jpg + apple-touch-icon.png
 favicon.svg  robots.txt  sitemap.xml  site.webmanifest
 ```
-
-Ścieżki do zasobów są **względne**, więc strona działa zarówno pod
-własną domeną, jak i w podkatalogu (np. GitHub Pages).
 
 ## Zanim wejdzie na produkcję
 
@@ -27,40 +25,60 @@ własną domeną, jak i w podkatalogu (np. GitHub Pages).
    w: `<link rel="canonical">`, `og:url`, `og:image`, `twitter:image`
    oraz w blokach JSON-LD. To samo w `sitemap.xml` i `robots.txt`.
 2. **Cena i długość sesji.** Nigdzie nie podajemy kwoty — w oknie zapisu
-   i w FAQ jest sformułowanie „ustalamy przed pierwszą sesją”. Jeśli
-   cennik ma być jawny, trzeba dopisać sekcję (i dodać `offers` do
-   JSON-LD `Service`).
-3. **Link do DM.** Przycisk Instagrama prowadzi do `https://ig.me/m/pragnacwiecej`.
-   Warto to kliknąć i sprawdzić, czy otwiera wiadomość do właściwego konta.
+   i w FAQ jest „ustalamy przed pierwszą sesją”. Jeśli cennik ma być jawny,
+   trzeba dopisać sekcję (i dodać `offers` do JSON-LD `Service`).
+3. **Link do DM.** Przycisk Instagrama prowadzi do `https://ig.me/m/pragnacwiecej` —
+   warto kliknąć i sprawdzić, czy otwiera wiadomość do właściwego konta.
+4. **Zdjęcia.** Wszystkie pochodzą z karuzel z Instagrama i mają maks. 1170 px
+   szerokości. Oryginały z sesji dałyby ostrzejsze hero na dużych ekranach.
 
 ## Design system
 
+Kierunek wizualny zaadaptowany z szablonu referencyjnego (Holina): piaskowe
+tło, terakota jako kolor akcji, głęboka zieleń jako przeciwwaga, Lora nad
+Poppinsem, duże promienie i miękkie bloki.
+
 | token | wartość | rola |
 |---|---|---|
-| `--len` | `#EDE8DF` | len — tło bazowe |
-| `--len-jasny` | `#F6F3ED` | jaśniejsze pasmo sekcji |
-| `--popiol` | `#DCD5C9` | popiół — pasmo „poza rozmowami” |
-| `--atrament` | `#23262B` | atrament — chłodna czerń |
-| `--atrament-70` | `#4C515A` | tekst drugoplanowy |
-| `--atrament-45` | `#585D65` | podpisy, „brwi” sekcji |
-| `--ocean` | `#1E4F73` | akcent główny |
-| `--sygnal` | `#1F63E8` | błękit z Instagrama — tylko włoskowate akcenty |
-| `--mech` | `#4E6B52` | zieleń marynarki — sekcja „czym jest coaching” |
+| `--piasek` | `#F0E8DB` | tło strony |
+| `--piasek-jasny` | `#FCF6EA` | jaśniejsze pasmo sekcji |
+| `--karta` | `#F5E7D0` | karty, wiersze FAQ, pigułka nawigacji |
+| `--kamien` | `#CFC3B9` | włoskowate linie |
+| `--tusz` | `#1E2015` | nagłówki |
+| `--tusz-tekst` | `#3F4136` | tekst |
+| `--tusz-cichy` | `#646458` | podpisy, meta |
+| `--glina` | `#A34E31` | terakota — akcja |
+| `--las` | `#41593C` | zieleń — przeciwwaga |
 
-Krój pisma: **Fraunces** (nagłówki, oś `opsz`) + **Manrope** (tekst).
-Fraunces jest zinstancjonowany do samej osi `opsz` — 494 KB → 144 KB.
+Krój: **Lora** (nagłówki, waga zmienna 400–700) + **Poppins** (tekst, 400/500/600),
+self-hostowane, podzbiory latin + latin-ext.
 
-Wszystkie pary kolor/tło przechodzą **WCAG AA (4.5:1)** dla tekstu
-i 3:1 dla elementów nietekstowych. Zmieniając kolory, przelicz kontrast.
+Wszystkie pary kolor/tło przechodzą **WCAG AA** (4.5:1 dla tekstu, 3:1 dla
+elementów nietekstowych) — łącznie z półprzezroczystą bielą na terakocie
+i zieleni. Zmieniając kolory, przelicz kontrast.
+
+## Animacje
+
+- **Płynne przewijanie z bezwładnością** (`assets/app.js`, moduł `Plynne`) —
+  własna implementacja w stylu lenis, ~60 linii, bez zależności. Włącza się
+  tylko dla myszy; na dotyku i touchpadzie zostaje natywne przewijanie.
+  Kotwice jadą tym samym silnikiem, więc mają tę samą bezwładność.
+- **Odsłanianie przy przewijaniu** — opacity + translateY, kaskadowo,
+  sterowane `IntersectionObserver`; opóźnienie ustawia się per element
+  przez `style="--zwloka:120ms"`.
+- **Wejście hero** — kaskada tekstu plus powolne odjechanie zdjęcia ze skali.
+- **Nagłówek** — chowa się przy przewijaniu w dół, wraca przy przewijaniu w górę.
+- **Hover** — karty unoszą się, przyciski wypełniają się od dołu.
 
 ## Dostępność i degradacja
 
-- Bez JavaScriptu: cała treść jest widoczna, nawigacja działa, FAQ działa
-  (natywne `<details>`), a oba sposoby zapisu są dostępne bezpośrednio
-  w sekcji „Jak się zapisać”.
-- `prefers-reduced-motion`: sekcja „manifest” zamienia się w statyczny
-  blok, animacje odsłaniania są wyłączone.
+- Bez JavaScriptu: cała treść widoczna, nawigacja działa, FAQ działa
+  (natywne `<details>`), oba sposoby zapisu dostępne bezpośrednio w sekcji
+  końcowej.
+- `prefers-reduced-motion`: bezwładne przewijanie wyłączone, animacje
+  wyłączone, wszystko od razu widoczne.
 - Okno zapisu: pułapka focusu, Esc, przywrócenie focusu po zamknięciu.
+- Kotwice przenoszą focus do sekcji, nie tylko widok.
 
 ## Podgląd lokalny
 
@@ -68,3 +86,9 @@ i 3:1 dla elementów nietekstowych. Zmieniając kolory, przelicz kontrast.
 python3 -m http.server 8000
 # http://localhost:8000
 ```
+
+## Zapasowe zdjęcia
+
+W `img/` leżą też kadry, których obecny układ nie używa
+(`iga-portret`, `iga-studio`, `iga-sylwetka`, `ocean`). Przeglądarka ich nie
+pobiera — są na wypadek kolejnej iteracji układu. Można je usunąć.
