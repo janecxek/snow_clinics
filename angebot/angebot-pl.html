@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oferta — Snow Clinics (wersja polska, do wglądu)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1922; --ink-2:#16303F; --slate:#4E606C; --frost:#A9C5D6;
+  --brand:#2E6B85; --brand-deep:#24576D; --brand-tint:#EDF3F6;
+  --porcelain:#F4F6F7; --snow:#FFFFFF; --sand:#E6DCD2;
+  --line:rgba(14,25,34,.12);
+  --font:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --font-accent:"Playfair Display",Georgia,serif;
+  --r-sm:12px; --r-md:20px; --r-lg:28px; --r-pill:999px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font); font-size:16px; line-height:1.65;
+  color:var(--ink); background:var(--porcelain);
+  -webkit-font-smoothing:antialiased;
+}
+.sheet{max-width:860px;margin:0 auto;padding:clamp(1.25rem,4vw,3rem) clamp(1.1rem,4vw,2.5rem) 5rem}
+h1,h2,h3{letter-spacing:-.03em;line-height:1.12;font-weight:700}
+h1{font-size:clamp(2.1rem,1.4rem+3vw,3.4rem)}
+h2{font-size:clamp(1.45rem,1.2rem+1.1vw,2rem);letter-spacing:-.028em}
+h3{font-size:1.06rem;letter-spacing:-.02em;line-height:1.3}
+p{max-width:64ch}
+em{font-family:var(--font-accent);font-style:italic}
+a{color:var(--brand)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);
+}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.muted{color:var(--slate)}
+.small{font-size:.9rem}
+
+/* ── cover ─────────────────────────────────────────────────────────────── */
+.cover{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,var(--ink) 0%,var(--brand-deep) 70%,var(--brand) 100%);
+  color:#fff;border-radius:var(--r-lg);
+  padding:clamp(1.75rem,4vw,3.25rem);
+  margin-bottom:2.25rem;
+}
+.cover::after{
+  content:"SNOW CLINICS";position:absolute;right:-3%;bottom:-.52em;
+  font-size:clamp(3rem,11vw,7rem);font-weight:700;letter-spacing:-.045em;
+  color:rgba(255,255,255,.055);white-space:nowrap;pointer-events:none;
+}
+.cover .eyebrow{color:var(--frost)}
+.cover h1{margin:.85rem 0 1rem;max-width:16ch}
+.cover p{color:rgba(255,255,255,.88);max-width:52ch}
+.cover__mark{width:54px;height:54px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(255,255,255,.4)}
+.cover__top{display:flex;align-items:center;gap:.9rem;position:relative;z-index:1}
+.cover__inner{position:relative;z-index:1}
+.facts{
+  position:relative;z-index:1;
+  display:grid;gap:.9rem 2rem;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  margin-top:2rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.22);
+  font-size:.9rem
+}
+.facts dt{color:rgba(255,255,255,.62);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.facts dd{color:#fff;font-weight:600;margin-top:.15rem}
+
+/* ── blocks ────────────────────────────────────────────────────────────── */
+.lead{font-size:1.1rem;line-height:1.6}
+.card{
+  background:var(--snow);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:clamp(1.15rem,2.5vw,1.85rem);margin-bottom:.9rem;
+  break-inside:avoid;page-break-inside:avoid;
+}
+.qa{display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.1rem;align-items:start}
+.qa__n{
+  grid-row:span 2;width:38px;height:38px;border-radius:50%;
+  background:var(--brand-tint);color:var(--brand);
+  display:grid;place-items:center;font-weight:700;font-size:.95rem
+}
+.qa__q{align-self:center}
+.qa__body{grid-column:2;margin-top:.55rem}
+.qa__body p+p{margin-top:.7rem}
+.section-head{margin:2.75rem 0 1.1rem}
+.section-head h2{margin-top:.5rem}
+
+ul.ticks{list-style:none;display:grid;gap:.5rem;margin:.85rem 0}
+ul.ticks li{position:relative;padding-left:1.7rem;font-size:.97rem;line-height:1.55}
+ul.ticks li::before{
+  content:"";position:absolute;left:.1rem;top:.55em;width:12px;height:6px;
+  border-left:1.8px solid var(--brand);border-bottom:1.8px solid var(--brand);
+  transform:rotate(-45deg)
+}
+ul.crosses{list-style:none;display:grid;gap:.5rem;margin:.85rem 0}
+ul.crosses li{position:relative;padding-left:1.7rem;font-size:.97rem;line-height:1.55;color:var(--slate)}
+ul.crosses li::before{
+  content:"";position:absolute;left:.35rem;top:.62em;width:11px;height:1.8px;
+  background:var(--slate);opacity:.55
+}
+
+/* ── price ─────────────────────────────────────────────────────────────── */
+.price-table{width:100%;border-collapse:collapse;margin-top:.4rem;font-size:.97rem}
+.price-table th{
+  text-align:left;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--slate);font-weight:600;padding:0 0 .6rem
+}
+.price-table td{padding:.75rem 0;border-top:1px solid var(--line);vertical-align:top}
+.price-table td:last-child{text-align:right;white-space:nowrap;font-weight:600}
+.price-table tr.total td{border-top:1.5px solid var(--ink);font-weight:700;font-size:1.06rem;padding-top:.9rem}
+.price-table .opt td:first-child span{display:block;color:var(--slate);font-size:.87rem;font-weight:400;margin-top:.15rem}
+.badge{
+  display:inline-block;padding:.2rem .6rem;border-radius:var(--r-pill);
+  background:var(--brand-tint);color:var(--brand);
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-left:.45rem
+}
+.plans{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:.9rem}
+.plan{border:1px solid var(--line);border-radius:var(--r-sm);padding:1.05rem}
+.plan--pick{border-color:var(--brand);background:var(--brand-tint)}
+.plan h3{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem}
+.plan .amount{font-size:1.25rem;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.plan ul{list-style:none;margin-top:.6rem;display:grid;gap:.3rem;font-size:.9rem;color:var(--slate)}
+
+/* ── steps ─────────────────────────────────────────────────────────────── */
+.steps{counter-reset:s;display:grid;gap:.6rem;margin-top:.9rem}
+.step{
+  counter-increment:s;position:relative;padding-left:3rem;
+  font-size:.97rem;line-height:1.55
+}
+.step::before{
+  content:counter(s);position:absolute;left:0;top:-.1rem;
+  width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;
+  display:grid;place-items:center;font-size:.85rem;font-weight:700
+}
+.step b{display:block}
+
+/* ── access ────────────────────────────────────────────────────────────── */
+.access{width:100%;border-collapse:collapse;font-size:.95rem;margin-top:.7rem}
+.access td{padding:.55rem 0;border-top:1px solid var(--line)}
+.access td:last-child{text-align:right;color:var(--slate);white-space:nowrap}
+.access tr:first-child td{border-top:0}
+
+.note{
+  background:var(--brand-tint);border-radius:var(--r-sm);
+  padding:1rem 1.15rem;font-size:.94rem;line-height:1.6;margin-top:1rem
+}
+.closing{
+  background:var(--ink);color:#fff;border-radius:var(--r-lg);
+  padding:clamp(1.5rem,3.5vw,2.5rem);margin-top:2.25rem
+}
+.closing h2{color:#fff}
+.closing p{color:rgba(255,255,255,.85)}
+.closing a{color:var(--frost)}
+.sign{margin-top:1.6rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.2);font-size:.95rem}
+.sign b{display:block;font-size:1.05rem}
+.sign span{color:rgba(255,255,255,.7)}
+
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:11.5pt}
+  .sheet{max-width:none;padding:0}
+  .cover,.closing,.plan--pick,.qa__n,.note,.step::before{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card{box-shadow:none}
+  .section-head{break-after:avoid;page-break-after:avoid}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="cover">
+    <div class="cover__top">
+      <img class="cover__mark" src="data:image/webp;base64,UklGRrIFAABXRUJQVlA4IKYFAACQGwCdASqEAIQAPjEYikOiIaESOXToIAMEtLdur9RW66H2eBXZm9NG3h55D0l71HTz3Y/P773lE3C/Xx9Tw/6/u/vZZ4m9LpNL8tP1R7B43tu7u7tkFQLNDv3bd2bP+HIOSy59o8G37na1NsX4GtlLaknZV9GJrTTJ1z+TTxT73hDLAabw6+mSrwo0I1zhVtknsr7k8cbgZ9eJk51Dds0hDfmh4oyAV3z8jNQcm8wV6dbzlTr58VRrpbuiF8D13YopaoplqSKMyvlLtHDXkr77+bKf7z+hZDdNaZmf4BoIiIiIiIgAAP739P//q3+T3655H//8X/jX+jdjgAGNrx9CZdI13GgKF6Qs1lgN03tcLUGWZCxCvKoveBhciYgNvMtC7EqTIVxr2jJ4tARo5yQLYSrpLz53zyWRdgPQR05e3VDt8TnKvtGEGumehdDWle9eY5zZbchvy4iv6fWimjSYO+m031AA2aBQSRhoJG5P0TWDRpdLyZ0qd6oBm6f4q7/r9kTQMyFYpvLPgjUZlhg4itv+GEW7O5yWuclwmObSfTXMAGTzpoBpbP1WmPUE6U5rV9plUXQKffFaOSsyp2kfXJwFvQeDYlbCYvZHwbEaJDbO1K7HAjLZqFXNNH5Y1RZMW9WoaeorGkFaa/cuwRbUNL21k1uKz/t4c33vJAcG574t4L7/UbQSABolsw16o2QIc28Y4Ss4zcOio4DCPv20guZOiMoIn1/TEdiEsKQX8R3Fh7vRHEiP4hmxVUtpyZsSg+f5HSZdtC5eojFrCz1b3h9KDqrLFy+wFuhP7o+2+ZtU0Cz+FGKLl8od/yav4urwM8Yjy4ZSeIFv5J82cBNDOoI8OEuencZyslK2BVY9IUh+HQLGNusCvdeXuVt11ChI9BbATnh54WidbaKtR4Bh7fS8l2GfMsA75DO4gpPx+qbtBW1TxQM8ia+oSynU6QySyXQrCiSQncSXy+gG7IovCVqRwi9GILikjV1UB7SW3T1SNKtxcU525Ki5BDv3cogKjwnqtuEdpFAMu8MLwKai4b0vietSrewGA/Ks02AqutOb88iBY4z5osJ9LkqYM/mtd42KbLeTuvKaNlDsuvKNbMQRDQTwa73GLnn3AvM/ydTcq6/n6PwZuntaM5EtPF3wXL9+xkHkNkFmQ+w3pvDViw6nUPTFZ3OS+WOt0w7kLIhhdGrbBwJN3MPt0zB15v13wUF7IvFZl6eYu0EErwx3AegFNLWSGn5+EsD4untkRZuuuujmJtj+wmctRgrukscYbX/I0IQkOZlK19RNUykf36KeaeUB3QvtywnyJLG2F6JaTDqVCA4cEO1dsnw/HQ4dJGd9wC153voVhRZQiRCln9azXxeq7U/4x8qx+m5tH30MZu/VGlFnJcD4ad4unMECX1kSqJ6eLIp0OYJowwPK1LjszVUQLehj7PzL+sznInRAz21R8QOZiR8xbeo/i8wt4E3/SkWiXx/1Flu4G3/68bJQDx0kYNSXTMommQ7V6AFrrfdqIEQY1mJlCi6ILcSwFlMAPy64KnHk8m7BFMWLmmwL56JipwEfpI9ma8wxn8bYHi9NMZ9qx+tPFMxN5s9HM/tY2bGUwW5NZic/rtPHSh8wNXzX4rnEdbj6+pr1Uc/OmGWUkrCYmm7K+y72/xf/bOE4Pi4053gevA1IIyGlSRteh0HWyFDkX783T3xFZIW+eTcVTkeCKR0KEFFThK6TcXXbmY/Da6z8luEHjHnBolAWfn+Abh5IcdRZOlAQ04qMN5H6TFv6a9D4zmqLCZZrNt7Ta10kzfaZeIxcQDE7/qLUjXRPPPV5w2cOxi9DitEN/1X4IM5XMiBJDpx9bva0Mt9RXWgfpknhaPIw4PTFAW/FfAh2ZfnsSGDwdmcTnUoLV5CS0tiS+qEOFFIapAAAAAAAAAA=" alt="">
+      <div>
+        <span class="eyebrow">Oferta</span>
+        <div class="small" style="color:rgba(255,255,255,.7)">dla Snow Clinics · Zurych · Konstancja · Paryż · Marbella</div>
+      </div>
+    </div>
+
+    <div class="cover__inner">
+      <h1>Strona, która przynosi terminy.</h1>
+      <p>Chcesz reklamy, która naprawdę działa, i konkretnych rezerwacji terminów w Niemczech i Szwajcarii. Reklamy przyprowadzają ludzi — o tym, czy napiszą, decyduje strona, na którą trafiają. Dokładnie taką stronę buduję, i buduję ją tak, żebyś na koniec widziała, która reklama przyniosła który termin.</p>
+
+      <dl class="facts">
+        <div><dt>Dla</dt><dd>Snow Clinics</dd></div>
+        <div><dt>Od</dt><dd>[TWOJE IMIĘ]</dd></div>
+        <div><dt>Data</dt><dd>[DATA]</dd></div>
+        <div><dt>Ważne do</dt><dd>[DATA + 21 DNI]</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <p class="lead">Zadałaś osiem pytań. Poniżej osiem odpowiedzi, w twojej kolejności — a na końcu to, czego potrzebuję od ciebie, żebyśmy mogli zacząć.</p>
+
+  <div class="section-head"><span class="eyebrow">Twoje pytania</span></div>
+
+  <section class="card">
+    <div class="qa">
+      <div class="qa__n">1</div>
+      <h2 class="qa__q">Co jest zawarte w cenie?</h2>
+      <div class="qa__body">
+        <p>Kompletna strona, gotowa, online, na twoich dostępach:</p>
+        <ul class="ticks">
+          <li><b>Strona główna</b> ze zdjęciem, pozycjonowaniem i ścieżkami rezerwacji</li>
+          <li><b>Osobna strona dla każdego zabiegu</b> (ok. 9 stron) — żeby każda reklama lądowała dokładnie tam, gdzie powinna</li>
+          <li><b>Osobna strona dla każdej lokalizacji</b> — Zurych, Konstancja, Paryż, Marbella</li>
+          <li><b>Wybór lokalizacji w menu</b>, który pamięta, dokąd należy odwiedzający: numer telefonu, dni przyjęć i gotowa wiadomość na WhatsApp ustawiają się pod niego</li>
+          <li><b>Strona o tobie</b>, FAQ, strony Impressum i polityki prywatności (tekst od twojego prawnika, wdrożenie po mojej stronie)</li>
+          <li><b>Trzy języki: niemiecki, angielski, hiszpański.</b> Wykonanie po mojej stronie, tłumaczenie po twojej albo od tłumacza</li>
+          <li><b>Rezerwacja bez formularza</b> — każdy przycisk prowadzi prosto na WhatsApp albo w wiadomość prywatną na Instagramie, z gotową wstępnie napisaną treścią</li>
+          <li><b>SEO techniczne</b>: tytuły stron, struktura, czas ładowania, oznaczenia zgodne z wymogami Google dla praktyki i lokalizacji, mapa strony, konfiguracja Google Search Console</li>
+          <li><b>Pomiar</b>: analityka, piksel Meta, zdarzenia per zabieg i lokalizacja (szczegóły w punkcie 4)</li>
+          <li><b>Zbudowane pod telefon</b>, a nie dopasowane po fakcie — ruch z reklam idzie prawie wyłącznie z telefonów</li>
+          <li><b>Dwie rundy poprawek</b> po pierwszym projekcie</li>
+          <li><b>Przekazanie</b>: wszystkie dostępy, krótkie wprowadzenie, potem wszystko należy do ciebie</li>
+        </ul>
+        <p class="small muted">Narzędzie analityczne i narzędzie zgód są wliczone w miesięczną opiekę — licencje opłacam ja, ty dostajesz jedną fakturę zamiast czterech.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="qa">
+      <div class="qa__n">2</div>
+      <h2 class="qa__q">Ile to kosztuje w sumie?</h2>
+      <div class="qa__body">
+        <table class="price-table">
+          <thead><tr><th>Jednorazowo</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Strona kompletna, jak opisano w punkcie 1</td><td>3.600 €</td></tr>
+            <tr class="opt"><td>Profile firmowe Google dla wszystkich czterech lokalizacji<span>Opcjonalnie — to jest to, co pojawia się w Mapach Google i w wyszukiwaniu lokalnym</span></td><td>390 €</td></tr>
+            <tr class="total"><td>Strona wraz z profilami</td><td>3.990 €</td></tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top:1.5rem"><b>Miesięcznie — opieka</b></p>
+        <div class="plans">
+          <div class="plan">
+            <h3>Basis <span class="amount">79 €</span></h3>
+            <ul>
+              <li>hosting, SSL, kopie zapasowe, monitoring</li>
+              <li>licencje analityki i narzędzia zgód</li>
+              <li>do 1 godz. zmian miesięcznie</li>
+            </ul>
+          </div>
+          <div class="plan plan--pick">
+            <h3>Plus <span class="amount">149 €</span></h3>
+            <ul>
+              <li>wszystko z pakietu Basis</li>
+              <li>do 3 godz. zmian miesięcznie</li>
+              <li>raport miesięczny: odwiedzający, zapytania wg miasta i zabiegu</li>
+              <li>bieżące korekty SEO</li>
+            </ul>
+            <p class="small" style="margin-top:.6rem;color:var(--brand);font-weight:600">Rekomendacja na pierwsze miesiące</p>
+          </div>
+        </div>
+        <p class="small muted" style="margin-top:.7rem">Minimalny okres 3 miesiące, potem wypowiedzenie w każdym miesiącu. Praca ponad limit: 75 €/godz.</p>
+
+        <p style="margin-top:1.5rem"><b>Co płacisz bezpośrednio — nie przeze mnie</b></p>
+        <table class="price-table">
+          <tbody>
+            <tr><td>Domena, zarejestrowana na twoje nazwisko</td><td>ok. 15 €/rok</td></tr>
+            <tr><td>Budżet reklamowy, bezpośrednio do Meta z twojego konta</td><td>twój budżet</td></tr>
+            <tr><td>Impressum i polityka prywatności od twojego prawnika</td><td>wg nakładu</td></tr>
+          </tbody>
+        </table>
+
+        <div class="note">
+          <b>Płatność i harmonogram.</b> 50 % przy potwierdzeniu zlecenia, 50 % przy akceptacji przed uruchomieniem.
+          Realizacja w 3 do 4 tygodni, licząc od dnia, w którym otrzymam zdjęcia, teksty i ceny.
+          Wszystkie ceny netto.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="qa">
+      <div class="qa__n">3</div>
+      <h2 class="qa__q">Tylko strona czy także reklama?</h2>
+      <div class="qa__body">
+        <p>Jedno i drugie jest możliwe, ale świadomie to rozdzielam — i mówię ci otwarcie, gdzie stoję.</p>
+        <p><b>Strona i pomiar</b> to moje rzemiosło. To jest oferta powyżej.</p>
+        <p><b>Reklamy Meta</b> stawiałem i prowadziłem, ale nie w medycynie estetycznej. Ta branża ma własne zasady i nie obiecuję ci niczego, czego nie mogę udowodnić. Dlatego proponuję wyraźnie ograniczony pilotaż, po uruchomieniu strony:</p>
+        <table class="price-table">
+          <tbody>
+            <tr class="opt"><td>Konfiguracja Meta<span>struktura konta, piksel, zdarzenia, grupy odbiorców i promień wokół każdego miasta, 2–3 kreacje reklamowe z twoich materiałów</span></td><td>450 €</td></tr>
+            <tr class="opt"><td>Prowadzenie w trakcie pilotażu<span>4 tygodnie, cotygodniowy raport pisemny</span></td><td>390 €/mies.</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1rem"><b>Google Ads nie robię.</b> To osobne rzemiosło i nie uczę się go na twoim budżecie. Jeśli Google stanie się tematem później, dobierzemy kogoś, kto robi tylko to.</p>
+        <p><b>Twój budżet reklamowy nigdy nie przechodzi przeze mnie.</b> Leży na twoim własnym koncie reklamowym i idzie bezpośrednio do Meta. Ja dostaję dostęp do konta reklamowego jako partner — twoich danych płatniczych nie widzę.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="qa">
+      <div class="qa__n">4</div>
+      <h2 class="qa__q">Jak będziemy mierzyć sukces?</h2>
+      <div class="qa__body">
+        <p>Chcesz widzieć całą drogę. Poniżej uczciwie, która jej część jest technicznie mierzalna, a która nie.</p>
+        <div class="steps">
+          <div class="step"><b>Reklama → strona</b> Mierzalne. Każda wizyta niesie informację, z której reklamy, z jakiego miasta i z jakiego zabiegu pochodzi.</div>
+          <div class="step"><b>Strona → WhatsApp</b> Mierzalne. Każde kliknięcie przycisku rezerwacji to osobne zdarzenie.</div>
+          <div class="step"><b>WhatsApp → zapytanie</b> Tu kończy się każde narzędzie do śledzenia — Meta nie udostępnia treści rozmów. Dlatego rozwiązuję to inaczej: wiadomość jest wstępnie napisana i niesie krótki kod. Na twoim telefonie pojawia się wtedy <em>„Interesują mnie usta — Zurych [ZH-LIP-IG]"</em>. Widzisz bez zastanowienia: Instagram, Zurych, usta.</div>
+          <div class="step"><b>Zapytanie → termin → zabieg</b> To dzieje się w twoim kalendarzu, nie na stronie. Wystarczy prosta lista, w której zaznaczasz, z którego zapytania powstał termin. W pakiecie Plus zestawiam to co miesiąc z danymi ze strony.</div>
+        </div>
+        <div class="note">
+          <b>Ważne, i to jest powód, dla którego buduje się to właśnie tak:</b> do Meta nigdy nie trafia informacja, jakim zabiegiem ktoś się interesuje. To są dane o zdrowiu w rozumieniu RODO i zabrania tego zarówno prawo, jak i własny regulamin Meta. Zabieg widnieje w wiadomości, która przychodzi do ciebie — i tylko tam.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="qa">
+      <div class="qa__n">5</div>
+      <h2 class="qa__q">Osobne landing page'e dla lokalizacji?</h2>
+      <div class="qa__body">
+        <p>Tak — ale na jednej domenie, nie jako cztery osobne witryny. Cztery domeny oznaczają czterokrotne zaczynanie w Google od zera, czterokrotne utrzymanie, a do tego Google widzi cztery podobne strony tej samej praktyki jako duplikaty.</p>
+        <p>Struktura wygląda tak: jedna strona na zabieg, jedna strona na lokalizację, a później w razie potrzeby połączenia w rodzaju „usta Zurych". Każda reklama dostaje dokładnie tę stronę, na którą pasuje. Kto trafi na stronę główną z Instagrama albo z Google, wybiera swoją lokalizację w menu — bez strony pośredniej, która najpierw pyta o miasto.</p>
+        <p>Potrzebuję od ciebie jednej odpowiedzi: <b>czy zabiegi, ceny albo dni przyjęć różnią się w zależności od lokalizacji?</b> Jeśli tak, każde miasto dostaje własną, treściowo prawdziwą stronę. Jeśli wszędzie obowiązuje to samo, lepiej zbudować jedną mocną stronę lokalizacji niż cztery niemal identyczne — to lepsze dla Google i uczciwsze wobec odwiedzającego.</p>
+        <p class="small muted">Uwaga co do Paryża: z niemieckim, angielskim i hiszpańskim nie dotrzesz tam do wyszukiwania po francusku. Jeśli Paryż ma aktywnie rosnąć, dołożymy francuski później.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="qa">
+      <div class="qa__n">6</div>
+      <h2 class="qa__q">Faza testowa z prawdziwym ruchem reklamowym?</h2>
+      <div class="qa__body">
+        <p>Tak, wręcz to zalecam. Ale powiem ci wcześniej, co test może dać, a czego nie.</p>
+        <p><b>Dwa tygodnie to za krótko.</b> Sama faza uczenia Meta zajmuje około tygodnia, do tego dochodzą zwykłe wahania tygodniowe. Wszystko poniżej czterech tygodni daje liczby, z których nic nie wynika — a podejmowanie na ich podstawie decyzji jest droższe niż sam test.</p>
+        <p><b>Moja propozycja:</b> cztery tygodnie, jedno miasto, jeden do dwóch zabiegów. Lepiej jeden czysty test niż cztery równoległe, które odbierają sobie nawzajem budżet.</p>
+        <p><b>Budżet:</b> jako rząd wielkości 50 € dziennie, czyli około 1.400 € przez cztery tygodnie. To wystarczy na tyle kliknięć, żeby zobaczyć, czy strona generuje zapytania. Ta liczba jest założeniem planistycznym, a nie obietnicą — koszty mocno zależą od miasta i promienia, a Szwajcaria jest wyraźnie droższa niż Niemcy. Po pierwszym tygodniu będziemy wiedzieć, gdzie naprawdę jesteś.</p>
+        <p><b>Czego nie obiecuję:</b> ceny za zapytanie ani liczby terminów. To jest właśnie pytanie, na które odpowiada pilotaż. Kto podaje ci tę liczbę wcześniej, ten ją wymyślił.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="qa">
+      <div class="qa__n">7</div>
+      <h2 class="qa__q">Własność i dostępy</h2>
+      <div class="qa__body">
+        <p>Wszystko idzie na twoje nazwisko i twoje konta. Ja dostaję dostęp jako zarządzający, nie jako właściciel — i możesz mnie w każdej chwili usunąć, bez żadnej przerwy w działaniu.</p>
+        <table class="access">
+          <tr><td>Domena u rejestratora</td><td>twoje konto, twoja karta</td></tr>
+          <tr><td>Hosting</td><td>twoje konto, ja jako członek</td></tr>
+          <tr><td>Analityka</td><td>twoje konto</td></tr>
+          <tr><td>Meta Business Manager i konto reklamowe</td><td>twoja własność, ja jako partner</td></tr>
+          <tr><td>Google Search Console i profile firmowe</td><td>twoja własność, ja jako użytkownik</td></tr>
+          <tr><td>Kod źródłowy strony</td><td>przekazany tobie przy odbiorze</td></tr>
+        </table>
+        <p style="margin-top:1rem">I co do drugiej połowy twojego pytania: tak. Strona powstaje w powszechnie stosowanych, standardowych technologiach, bez zamkniętego systemu i bez kreatora, do którego byłabyś przywiązana. Każdy webdeveloper może ją przejąć. <b>Jeśli jutro zechcesz kontynuować z kimś innym, nie będziesz potrzebowała ode mnie niczego.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="qa">
+      <div class="qa__n">8</div>
+      <h2 class="qa__q">Ochrona danych</h2>
+      <div class="qa__body">
+        <p>Przy usługach estetycznych i medycznych obowiązują surowsze zasady niż w zwykłej firmie, ponieważ już samo zainteresowanie zabiegiem jest traktowane jako dana o zdrowiu. Realizuję to tak:</p>
+        <ul class="ticks">
+          <li><b>Żadnego śledzenia przed wyrażeniem zgody.</b> Piksel Meta ładuje się dopiero wtedy, gdy odwiedzający wyrazi zgodę — wcześniej w ogóle.</li>
+          <li><b>Statystyka bez ciasteczek.</b> Do liczby odwiedzin używam narzędzia, które hostuje w Niemczech, nie ustawia ciasteczek i nie zapisuje adresów IP. Nie wymaga zgody — a ty widzisz swoje prawdziwe liczby zamiast połowy.</li>
+          <li><b>Neutralne nazwy zdarzeń.</b> Do Meta idzie „rozpoczęto kontakt", nigdy nazwa zabiegu.</li>
+          <li><b>Brak formularza na stronie</b>, więc nie leżą tam żadne dane pacjentek.</li>
+          <li><b>WhatsApp nazwany wprost:</b> kto tam napisze, tego dane przetwarza Meta. To musi jasno wynikać z polityki prywatności.</li>
+          <li><b>Umowa powierzenia przetwarzania</b> z hostingodawcą; RODO i szwajcarska ustawa o ochronie danych obowiązują tu równolegle.</li>
+        </ul>
+        <p><b>Czego nie robię: sam nie piszę tekstów prawnych.</b> Impressum i polityka prywatności dla praktyki medycznej należą do twojego prawnika. Przekazuję mu dokładnie, co technicznie dzieje się na stronie, i wdrażam jego tekst.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-head"><span class="eyebrow">Przebieg</span><h2>Cztery tygodnie, cztery kroki.</h2></div>
+  <section class="card">
+    <div class="steps">
+      <div class="step"><b>Tydzień 1 — treści i struktura</b> Dostarczasz zdjęcia, zabiegi i ceny. Buduję strukturę strony i teksty, dostajesz je do akceptacji.</div>
+      <div class="step"><b>Tydzień 2–3 — realizacja</b> Wszystkie podstrony, trzy języki, wybór lokalizacji, ścieżki rezerwacji. Postęp widzisz pod adresem podglądowym, a nie dopiero na końcu.</div>
+      <div class="step"><b>Tydzień 4 — pomiar, prawo, szlify</b> Analityka, piksel, zgody, teksty prawne twojego prawnika, dwie rundy poprawek.</div>
+      <div class="step"><b>Uruchomienie i przekazanie</b> Domena przełączona, dostępy przekazane, krótkie wprowadzenie. Potem decydujesz, czy startujemy z pilotażem reklamowym.</div>
+    </div>
+  </section>
+
+  <div class="section-head"><span class="eyebrow">Czego potrzebuję od ciebie</span><h2>Sześć odpowiedzi i mogę zaczynać.</h2></div>
+  <section class="card">
+    <ul class="ticks">
+      <li><b>Czy zabiegi, ceny albo dni przyjęć różnią się w zależności od lokalizacji?</b> Od tego zależy, czy każde miasto dostanie własną stronę.</li>
+      <li><b>Czy ceny mają być widoczne na stronie?</b> „od CHF X" wstępnie filtruje zapytania i oszczędza ci rozmów — albo zostajemy przy tym, że cena pojawia się w pisemnym planie po konsultacji. Twoja decyzja, oba warianty są spójne.</li>
+      <li><b>Czy masz profile firmowe Google dla wszystkich czterech lokalizacji, zweryfikowane i uzupełnione?</b> Jeśli nie albo jeśli to niejasne: w wyszukiwaniu lokalnym jest to często ważniejsze niż sama strona, i konfiguruję to razem z resztą.</li>
+      <li><b>Czy masz własny Meta Business Manager z kontem reklamowym</b>, czy reklamy szły dotąd przez „promuj post" z aplikacji? To robi różnicę na starcie, o której warto wiedzieć wcześniej.</li>
+      <li><b>Czy instagramowe konto kliniki jest połączone z tym Business Managerem?</b></li>
+      <li><b>Kto przychodzi do ciebie w Marbelli</b> — przeważnie pacjentki międzynarodowe czy hiszpańskojęzyczne? Od tego zależy, czy hiszpański jest tam naprawdę właściwym trzecim językiem.</li>
+    </ul>
+    <p class="small muted">Do tego zdjęcia twoje i wnętrz. Jeśli nie ma ich jeszcze w dobrej jakości, daj znać — to jedyny punkt, który najpewniej opóźnia projekt.</p>
+  </section>
+
+  <div class="section-head"><span class="eyebrow">Mówiąc otwarcie</span><h2>Trzy rzeczy, które powinnaś wiedzieć wcześniej.</h2></div>
+  <section class="card">
+    <ul class="crosses">
+      <li><b>Meta jest surowa wobec medycyny estetycznej.</b> Reklamy, które grają na niepewności („Przeszkadzają ci zmarszczki?"), są odrzucane — to najczęstszy powód odrzucenia w tej branży. Zdjęcia przed/po są od lipca 2026 znowu dozwolone, pod warunkami takimi jak pisemna zgoda pokazanej osoby i brak obietnicy rezultatu. Sprawdzam to przy każdej kreacji względem aktualnych wytycznych Meta.</li>
+      <li><b>W Niemczech obowiązuje dodatkowo Heilmittelwerbegesetz</b> (ustawa o reklamie produktów i usług leczniczych). Reguluje, jak wolno reklamować usługi medyczne. Teksty na stronie układam zgodnie z nią.</li>
+      <li><b>Żadnej obietnicy rezultatu.</b> Mogę zbudować ci stronę, która czysto mierzy i maksymalnie ułatwia rezerwację. Ile powstanie z tego terminów, zależy też od ceny, lokalizacji i rynku. Kto gwarantuje ci tu liczbę, ten ci coś sprzedaje.</li>
+    </ul>
+  </section>
+
+  <section class="closing">
+    <span class="eyebrow" style="color:var(--frost)">Następny krok</span>
+    <h2 style="margin:.8rem 0 .9rem">Jedno „tak" i sześć odpowiedzi.</h2>
+    <p>Więcej nie potrzebuję. Powiedz mi, który pakiet opieki wybierasz i czy dochodzą profile Google, odpowiedz na sześć pytań powyżej — a zaczynam w tym samym tygodniu. O reklamie zdecydujesz później, na spokojnie, gdy strona będzie stała.</p>
+    <p style="margin-top:.9rem">Pytania wcześniej? Napisz po prostu, choćby między dwiema pacjentkami.</p>
+    <div class="sign">
+      <b>[TWOJE IMIĘ]</b>
+      <span>[E-MAIL] · [TELEFON] · [STRONA ALBO INSTAGRAM]</span>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
