@@ -1,4 +1,6 @@
+# Rendered output — regenerate from the sources beside them.
 snow-clinics-preview.html
-angebot/angebot.pdf
-angebot/oferta-pl.pdf
-angebot/preise.pdf
+angebot/*.pdf
+angebot/*.png
+angebot/*.jpg
+!angebot/logo-mark.webp
