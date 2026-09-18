@@ -130,7 +130,7 @@ h4 { font-size: var(--t-h4); }
    ========================================================================== */
 
 .obszar { width: 100%; max-width: var(--miara); margin-inline: auto; padding-inline: var(--rynna); }
-.sekcja { padding-block: var(--sekcja); position: relative; }
+.sekcja { padding-block: var(--sekcja); position: relative; background: var(--piasek); }
 .sekcja--jasna { background: var(--piasek-jasny); }
 
 /* Section header: small terracotta tag, serif title, muted sub-line. */
@@ -267,9 +267,10 @@ h4 { font-size: var(--t-h4); }
    Hero — inset rounded photo filling the viewport, warm overlay, white type
    ========================================================================== */
 
-/* Hero zostaje przyklejone, a sekcja z mottem wysuwa się spod niego —
-   stąd sticky tutaj i dodatni z-index plus własne tło na manifeście. */
-.hero { padding: 12px 12px 0; position: sticky; top: 0; z-index: 0; }
+/* Hero leży NAD sekcją z mottem, dzięki czemu motto wysuwa się spod zdjęcia,
+   a nie nasuwa na nie. Bez sticky — przyklejone prześwitywało przez sekcje
+   bez własnego tła. */
+.hero { padding: 12px 12px 0; position: relative; z-index: 2; }
 
 .hero__kadr {
   position: relative; isolation: isolate;
@@ -328,19 +329,18 @@ h4 { font-size: var(--t-h4); }
   position: relative; z-index: 1;
   overflow: hidden;
   background: var(--piasek);
-  border-radius: 28px 28px 0 0;
-  margin-top: -28px;
-  box-shadow: 0 -20px 44px -28px rgb(30 32 21 / .5);
+  margin-top: -3.5rem;              /* górna krawędź chowa się za zdjęciem */
+  padding-top: calc(var(--sekcja) + 3.5rem);
 }
 /* Treść dochodzi z dołu z lekkim opóźnieniem względem panelu, przez co
    naprawdę wygląda, jakby wychodziła spod zdjęcia. */
 .manifest__tresc {
-  transform: translateY(calc((1 - var(--wyjscie)) * 3.5rem));
-  opacity: calc(.25 + .75 * var(--wyjscie));
+  transform: translateY(calc((1 - var(--wyjscie)) * 5rem));
+  opacity: calc(.15 + .85 * var(--wyjscie));
   will-change: transform;
 }
-.manifest__polaroid--lewy  { transform: rotate(-7deg) translateY(calc((1 - var(--wyjscie)) * 5rem)); }
-.manifest__polaroid--prawy { transform: rotate(6deg)  translateY(calc((1 - var(--wyjscie)) * 6.5rem)); }
+.manifest__polaroid--lewy  { transform: rotate(-7deg) translateY(calc((1 - var(--wyjscie)) * 7rem)); }
+.manifest__polaroid--prawy { transform: rotate(6deg)  translateY(calc((1 - var(--wyjscie)) * 9rem)); }
 .manifest__tresc { max-width: 40rem; margin-inline: auto; text-align: center; position: relative; z-index: 2; }
 .manifest__ikona { color: var(--las); margin-inline: auto; }
 .manifest__zdanie {
@@ -584,7 +584,7 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
    Closing CTA — big rounded terracotta block
    ========================================================================== */
 
-.zapis { padding-block: 0 var(--sekcja); }
+.zapis { padding-block: 0 var(--sekcja); background: var(--piasek); position: relative; }
 .zapis__blok {
   position: relative; overflow: hidden;
   padding: clamp(3rem, 7vw, 6.25rem) clamp(1.5rem, 4vw, 2.5rem);
@@ -614,7 +614,7 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
    Footer
    ========================================================================== */
 
-.stopka { padding-bottom: var(--s5); font-size: var(--t-small); }
+.stopka { padding-bottom: var(--s5); font-size: var(--t-small); background: var(--piasek); position: relative; }
 .stopka__gora {
   display: flex; flex-wrap: wrap; gap: var(--s3) var(--s4);
   align-items: center; justify-content: space-between;
@@ -781,8 +781,7 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
   [data-odslon] { opacity: 1 !important; transform: none !important; }
   .hero__tresc > * { opacity: 1; transform: none; }
   .hero__foto { transform: none; }
-  .hero { position: static; }
-  .manifest { margin-top: 0; border-radius: 0; box-shadow: none; }
+  .manifest { margin-top: 0; padding-top: var(--sekcja); }
   .manifest__tresc { transform: none !important; opacity: 1 !important; }
   .manifest__polaroid--lewy  { transform: rotate(-7deg) !important; }
   .manifest__polaroid--prawy { transform: rotate(6deg) !important; }
@@ -791,8 +790,7 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
 html.bez-js [data-odslon] { opacity: 1; transform: none; }
 html.bez-js .hero__tresc > * { opacity: 1; transform: none; }
 html.bez-js .hero__foto { transform: none; }
-html.bez-js .hero { position: static; }
-html.bez-js .manifest { margin-top: 0; border-radius: 0; box-shadow: none; }
+html.bez-js .manifest { margin-top: 0; padding-top: var(--sekcja); }
 html.bez-js .manifest__tresc { transform: none; opacity: 1; }
 html.bez-js .manifest__polaroid--lewy  { transform: rotate(-7deg); }
 html.bez-js .manifest__polaroid--prawy { transform: rotate(6deg); }
