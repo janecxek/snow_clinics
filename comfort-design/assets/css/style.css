@@ -457,9 +457,8 @@ p{text-wrap:pretty}
   stroke:var(--brass-lt);stroke-width:1.5;
   stroke-dasharray:96;stroke-dashoffset:0;
   transform-origin:50% 50%;
-  animation:spin 22s linear infinite;
+  rotate:-38deg;
 }
-@keyframes spin{to{rotate:360deg}}
 .brand__name{
   font-family:var(--f-display);font-size:.95rem;
   letter-spacing:.3em;text-transform:uppercase;line-height:1.1;
@@ -761,6 +760,9 @@ p{text-wrap:pretty}
 }
 .marq__i::after{content:"";width:5px;height:5px;background:var(--brass-lt);rotate:45deg;flex:none}
 @keyframes marq{to{translate:-50% 0}}
+
+/* looping decoration is paused while its section is off-screen */
+.anim-off,.anim-off *,.anim-off *::before,.anim-off *::after{animation-play-state:paused!important}
 
 /* ---------- 11. REVEALS ---------- */
 [data-reveal]{

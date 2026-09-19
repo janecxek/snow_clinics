@@ -46,6 +46,15 @@
     revealTargets().forEach((el) => io.observe(el));
   }
 
+  /* ---------- 3b. PAUSE LOOPING DECOR WHEN IT LEAVES THE SCREEN ---------- */
+  const looping = $$('[data-anim]');
+  if (looping.length) {
+    const aio = new IntersectionObserver((entries) => {
+      entries.forEach((e) => e.target.classList.toggle('anim-off', !e.isIntersecting));
+    }, { rootMargin: '150px 0px' });
+    looping.forEach((el) => aio.observe(el));
+  }
+
   /* ---------- 4. FRAMES: чертёж → фотография ---------- */
   // A frame ships as a line drawing. It upgrades only when a real photo loads.
   $$('.frame, .hero, .light__layer').forEach((f) => {
@@ -450,39 +459,4 @@
       });
     }, { passive: true });
   });
-})();
-
-/* =========================================================================
-   20. SMOOTH SCROLL — weighted wheel, native everywhere else
-   Keeps the real scroll position, so sticky/fixed/observers all behave.
-   ========================================================================= */
-(() => {
-  'use strict';
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return; // touch has its own momentum
-
-  let target = window.scrollY, current = target, raf = 0, running = false;
-  const limit = () => Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-
-  const tick = () => {
-    current += (target - current) * 0.115;
-    if (Math.abs(target - current) < 0.5) { current = target; running = false; }
-    window.scrollTo(0, current);
-    raf = running ? requestAnimationFrame(tick) : 0;
-  };
-
-  addEventListener('wheel', (e) => {
-    if (e.ctrlKey || e.shiftKey) return;                       // zoom / horizontal intent
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-    if (document.body.classList.contains('is-locked')) return; // drawer open
-    if (e.target.closest('dialog[open], [data-native-scroll]')) return;
-    e.preventDefault();
-    const px = e.deltaMode === 1 ? e.deltaY * 24 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
-    target = Math.min(limit(), Math.max(0, target + px));
-    if (!running) { running = true; raf = requestAnimationFrame(tick); }
-  }, { passive: false });
-
-  // anything else that scrolls (keyboard, anchors, scrollbar) becomes the new truth
-  addEventListener('scroll', () => { if (!running) { target = current = window.scrollY; } }, { passive: true });
-  addEventListener('resize', () => { target = current = window.scrollY; });
 })();
