@@ -113,6 +113,7 @@ w `.gitignore`, bo odtwarza je ten skrypt.
 
 ## Zapasowe zdjęcia
 
-W `img/` leżą też kadry, których obecny układ nie używa
-(`iga-portret`, `iga-studio`, `iga-sylwetka`, `ocean`). Przeglądarka ich nie
-pobiera — są na wypadek kolejnej iteracji układu. Można je usunąć.
+W `img/` leżą też kadry, których obecny układ nie używa: `iga-portret`,
+`iga-studio`, `iga-sylwetka`, `ocean`, a od usunięcia polaroidów z sekcji
+z mottem także `klif` i `gory`. Przeglądarka ich nie pobiera — zostają na
+wypadek kolejnej iteracji układu. Można je usunąć.

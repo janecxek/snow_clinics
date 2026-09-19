@@ -339,28 +339,24 @@ h4 { font-size: var(--t-h4); }
   opacity: calc(.15 + .85 * var(--wyjscie));
   will-change: transform;
 }
-.manifest__polaroid--lewy  { transform: rotate(-7deg) translateY(calc((1 - var(--wyjscie)) * 7rem)); }
-.manifest__polaroid--prawy { transform: rotate(6deg)  translateY(calc((1 - var(--wyjscie)) * 9rem)); }
-.manifest__tresc { max-width: 40rem; margin-inline: auto; text-align: center; position: relative; z-index: 2; }
+.manifest__tresc { max-width: 46rem; margin-inline: auto; text-align: center; position: relative; z-index: 2; }
 .manifest__ikona { color: var(--las); margin-inline: auto; }
 .manifest__zdanie {
   margin-top: var(--s4);
-  font-family: var(--serif); font-size: clamp(1.4rem, 2.8vw, 2.15rem);
-  line-height: 1.32; letter-spacing: -.03em; color: var(--tusz);
+  font-family: var(--serif); font-size: clamp(1.55rem, 3.6vw, 2.9rem);
+  line-height: 1.26; letter-spacing: -.035em; color: var(--tusz);
+  text-wrap: balance;
 }
 .manifest__zdanie em { font-style: italic; color: var(--las); }
-.manifest__podpis { margin-top: var(--s3); font-size: var(--t-small); color: var(--tusz-cichy); }
-
-.manifest__polaroid {
-  position: absolute; width: clamp(120px, 14vw, 190px);
-  border-radius: 10px; overflow: hidden;
-  border: 8px solid #fff;
-  box-shadow: 0 18px 40px -18px rgb(30 32 21 / .35);
-  z-index: 1;
+.manifest__podpis {
+  display: inline-flex; align-items: center; gap: .85rem;
+  margin-top: var(--s4); font-size: var(--t-small); color: var(--tusz-cichy);
 }
-.manifest__polaroid img { width: 100%; aspect-ratio: 1/1.15; object-fit: cover; }
-.manifest__polaroid--lewy  { left: clamp(-2rem, 2vw, 3rem); top: 14%; }
-.manifest__polaroid--prawy { right: clamp(-2rem, 2vw, 3rem); bottom: 12%; }
+.manifest__podpis::before {
+  content: ''; width: 2.25rem; height: 1px;
+  background: color-mix(in srgb, var(--tusz) 28%, transparent);
+}
+
 
 /* ==========================================================================
    About — portrait beside the story
@@ -763,11 +759,7 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
 
 @media (max-width: 39.99rem) {
   .przyciski .btn { width: 100%; }
-  .manifest__polaroid { display: none; }
-  .hero__kadr { min-height: calc(100svh - 12px); }
-  .hero__foto { object-position: 72% 46%; }
-}
-
+  
 /* ==========================================================================
    Reduced motion & no-JS
    ========================================================================== */
@@ -783,15 +775,11 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
   .hero__foto { transform: none; }
   .manifest { margin-top: 0; padding-top: var(--sekcja); }
   .manifest__tresc { transform: none !important; opacity: 1 !important; }
-  .manifest__polaroid--lewy  { transform: rotate(-7deg) !important; }
-  .manifest__polaroid--prawy { transform: rotate(6deg) !important; }
-}
+    }
 
 html.bez-js [data-odslon] { opacity: 1; transform: none; }
 html.bez-js .hero__tresc > * { opacity: 1; transform: none; }
 html.bez-js .hero__foto { transform: none; }
 html.bez-js .manifest { margin-top: 0; padding-top: var(--sekcja); }
 html.bez-js .manifest__tresc { transform: none; opacity: 1; }
-html.bez-js .manifest__polaroid--lewy  { transform: rotate(-7deg); }
-html.bez-js .manifest__polaroid--prawy { transform: rotate(6deg); }
-html.bez-js .nawigacja { position: static; opacity: 1; visibility: visible; pointer-events: auto; transform: none; box-shadow: none; background: transparent; }
+html.bez-js html.bez-js html.bez-js .nawigacja { position: static; opacity: 1; visibility: visible; pointer-events: auto; transform: none; box-shadow: none; background: transparent; }
