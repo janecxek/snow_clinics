@@ -361,25 +361,36 @@
   });
 
   /* =====================================================================
-     Manifest: przyklejony kadr, w którym zdanie składa się słowo po słowie.
-     Liczymy, ile toru już przewinięto, i zapisujemy to w --p (0 → 1).
-     Pierwsze 14% toru to celowo pusty kadr, ostatnie ~14% to pauza na
-     przeczytanie całości, zanim sekcja odklei się i pojedzie dalej.
+     Hero jako kurtyna nad manifestem.
+
+     Jedna miara: ile toru manifestu już przewinięto (0 → 1). Z niej robimy
+     trzy postępy, zapisywane na wspólnym rodzicu:
+       --z  gaśnie tekst hero          (żeby coś się działo od razu)
+       --h  kurtyna jedzie w górę      (start mniej więcej w połowie toru)
+       --p  zdanie zjeżdża spod niej   (rusza tuż po kurtynie)
      ===================================================================== */
-  var manifest = document.getElementById('manifest');
-  var tor = manifest && manifest.querySelector('[data-manifest-tor]');
+  var scena = document.querySelector('[data-scena]');
+  var tor = scena && scena.querySelector('[data-manifest-tor]');
 
   if (tor && !mniejRuchu.matches) {
     var czeka = false;
+
+    // 0 poniżej `od`, 1 powyżej `do`, po drodze smoothstep
+    var odcinek = function (x, od, dowg) {
+      var t = (x - od) / (dowg - od);
+      t = t < 0 ? 0 : (t > 1 ? 1 : t);
+      return t * t * (3 - 2 * t);
+    };
 
     var przelicz = function () {
       czeka = false;
       var r = tor.getBoundingClientRect();
       var droga = r.height - window.innerHeight;   // ile da się przewinąć w przyklejeniu
-      var surowy = droga > 0 ? (-r.top) / droga : 1;
-      var p = (surowy - 0.14) / 0.72;
-      p = p < 0 ? 0 : (p > 1 ? 1 : p);
-      manifest.style.setProperty('--p', p.toFixed(4));
+      var x = droga > 0 ? (-r.top) / droga : 1;
+      x = x < 0 ? 0 : (x > 1 ? 1 : x);
+      scena.style.setProperty('--z', odcinek(x, 0.06, 0.34).toFixed(4));
+      scena.style.setProperty('--h', odcinek(x, 0.42, 0.78).toFixed(4));
+      scena.style.setProperty('--p', odcinek(x, 0.46, 0.96).toFixed(4));
     };
 
     var zaplanuj = function () {

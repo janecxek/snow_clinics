@@ -139,6 +139,9 @@
 <main id="tresc">
 
   <!-- ============================ HERO ============================ -->
+  <!-- Hero i manifest dzielą jednego rodzica: zdjęcie klei się do ekranu
+       tylko na czas manifestu, a potem odjeżdża razem z nim. -->
+  <div class="scena-startowa" data-scena>
   <section class="hero" id="gora">
     <div class="hero__kadr">
       <img class="hero__foto" src="img/hero.webp"
@@ -184,8 +187,8 @@
                     stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
 
-            <p class="manifest__zdanie" id="manifest-zdanie" style="--kroki:27">
-              <span class="s" style="--i:0">Chcę</span> <span class="s" style="--i:1">od</span> <span class="s" style="--i:2">życia</span> <span class="s" style="--i:3">czegoś</span> <span class="s" style="--i:4">więcej</span> <span class="s" style="--i:5">—</span> <span class="s" style="--i:6">choć</span> <span class="s" style="--i:7">często</span> <span class="s" style="--i:8">to</span> <span class="s" style="--i:9">„więcej”</span> <span class="s" style="--i:10">oznacza</span> <span class="s" style="--i:11">tak</span> <span class="s" style="--i:12">naprawdę</span> <span class="s" style="--i:13"><em>mniej</em>:</span> <span class="s" style="--i:14">stresu,</span> <span class="s" style="--i:15">presji,</span> <span class="s" style="--i:16">wiecznego</span> <span class="s" style="--i:17">pędu</span> <span class="s" style="--i:18">i</span> <span class="s" style="--i:19">pogoni</span> <span class="s" style="--i:20">za</span> <span class="s" style="--i:21">sukcesem.</span>
+            <p class="manifest__zdanie" id="manifest-zdanie">
+              Chcę od życia czegoś więcej — choć często to „więcej” oznacza tak naprawdę <em>mniej</em>: stresu, presji, wiecznego pędu i pogoni za sukcesem.
             </p>
 
             <p class="manifest__podpis">Iga Pawlak</p>
@@ -194,6 +197,7 @@
       </div>
     </div>
   </section>
+  </div><!-- /.scena-startowa -->
 
   <!-- ============================ O MNIE ============================ -->
   <section class="sekcja sekcja--jasna" id="o-mnie">
