@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Pragnąc Więcej — Iga Pawlak
+   Pragnąc Więcej - Iga Pawlak
    Visual system adapted from the Holina reference template: warm sand ground,
    terracotta as the working accent, forest green as its counterweight,
    Lora over Poppins, generous radii, soft rounded blocks.
@@ -18,10 +18,10 @@
   --tusz-cichy:    #646458;  /* captions, meta (AA on every surface) */
 
   /* --- accents ----------------------------------------------------------- */
-  --las:           #41593C;  /* forest green — primary action */
+  --las:           #41593C;  /* forest green - primary action */
   --las-ciemny:    #35492F;  /* green hover */
   --las-mgla:      #E6EAE1;  /* green tint */
-  --woda:          #26536E;  /* deep blue — counterweight, same lightness as the green */
+  --woda:          #26536E;  /* deep blue - counterweight, same lightness as the green */
   --woda-ciemna:   #1D4257;
   --woda-mgla:     #E2E9ED;  /* blue tint */
 
@@ -262,11 +262,11 @@ h4 { font-size: var(--t-h4); }
 .menu-przycisk[aria-expanded='true'] .menu-przycisk__kreski::after  { top: 3.75px; transform: rotate(-45deg); }
 
 /* ==========================================================================
-   Hero — inset rounded photo filling the viewport, warm overlay, white type
+   Hero - inset rounded photo filling the viewport, warm overlay, white type
    ========================================================================== */
 
 /* Hero leży NAD sekcją z mottem, dzięki czemu motto wysuwa się spod zdjęcia,
-   a nie nasuwa na nie. Bez sticky — przyklejone prześwitywało przez sekcje
+   a nie nasuwa na nie. Bez sticky - przyklejone prześwitywało przez sekcje
    bez własnego tła. */
 .hero { padding: 12px 12px 0; position: relative; z-index: 2; }
 
@@ -319,7 +319,7 @@ h4 { font-size: var(--t-h4); }
 }
 
 /* ==========================================================================
-   Manifest — zdanie składa się słowo po słowie w przyklejonym kadrze
+   Manifest - zdanie składa się słowo po słowie w przyklejonym kadrze
 
    Sekcja to długi tor (.manifest__tor), po którym przesuwa się przyklejona
    scena wysokości ekranu. Na starcie kadr jest pusty; app.js liczy postęp
@@ -331,7 +331,7 @@ h4 { font-size: var(--t-h4); }
   --p: 1;                            /* 0 → 1, nadpisywane z app.js */
   padding-block: 0;
   position: relative; z-index: 1;
-  /* UWAGA: bez overflow — dowolny overflow inny niż visible zrobiłby
+  /* UWAGA: bez overflow - dowolny overflow inny niż visible zrobiłby
      z .manifest kontener przewijania i position: sticky przestałoby działać. */
   background: var(--piasek);
   margin-top: -3.5rem;               /* górna krawędź chowa się za zdjęciem */
@@ -344,7 +344,7 @@ h4 { font-size: var(--t-h4); }
 }
 .manifest__tresc { max-width: 46rem; margin-inline: auto; text-align: center; position: relative; z-index: 2; }
 
-/* Listek pojawia się pierwszy — sam w pustym kadrze — i zostaje. */
+/* Listek pojawia się pierwszy - sam w pustym kadrze - i zostaje. */
 .manifest__ikona {
   color: var(--las); margin-inline: auto;
   opacity: clamp(0, calc(var(--p) * 14), 1);
@@ -379,7 +379,7 @@ h4 { font-size: var(--t-h4); }
   background: color-mix(in srgb, var(--tusz) 28%, transparent);
 }
 
-/* Niskie okna (telefon w poziomie) — zdanie musi się zmieścić w kadrze. */
+/* Niskie okna (telefon w poziomie) - zdanie musi się zmieścić w kadrze. */
 @media (max-height: 34rem) {
   .manifest__zdanie { font-size: clamp(1.15rem, 4.6vh, 1.7rem); margin-top: var(--s3); }
   .manifest__ikona { width: 26px; height: 26px; }
@@ -388,7 +388,7 @@ h4 { font-size: var(--t-h4); }
 
 
 /* ==========================================================================
-   About — portrait beside the story
+   About - portrait beside the story
    ========================================================================== */
 
 .o-mnie__siatka { display: grid; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
@@ -431,7 +431,7 @@ h4 { font-size: var(--t-h4); }
 .liczba dd { margin: .4rem 0 0; font-size: var(--t-small); color: var(--tusz-cichy); }
 
 /* ==========================================================================
-   Services — icon cards
+   Services - icon cards
    ========================================================================== */
 
 .uslugi { display: grid; gap: var(--s3); margin-top: var(--s6); list-style: none; padding: 0; }
@@ -468,7 +468,7 @@ h4 { font-size: var(--t-h4); }
 .usluga p { color: var(--tusz-cichy); font-size: var(--t-small); }
 
 /* ==========================================================================
-   Process — numbered columns split by hairlines
+   Process - numbered columns split by hairlines
    ========================================================================== */
 
 .proces__kroki { display: grid; gap: var(--s5); margin-top: var(--s6); list-style: none; padding: 0; align-items: stretch; }
@@ -494,7 +494,7 @@ h4 { font-size: var(--t-h4); }
 .proces__stopka { margin-top: var(--s6); }
 
 /* ==========================================================================
-   Coaching is / is not — terracotta block beside two lists
+   Coaching is / is not - terracotta block beside two lists
    ========================================================================== */
 
 .czym__siatka { display: grid; gap: var(--s3); margin-top: 0; }
@@ -606,7 +606,7 @@ h4 { font-size: var(--t-h4); }
 html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(--ease) both; }
 
 /* ==========================================================================
-   Closing CTA — big rounded terracotta block
+   Closing CTA - big rounded terracotta block
    ========================================================================== */
 
 .zapis { padding-block: 0 var(--sekcja); background: var(--piasek); position: relative; }
@@ -829,7 +829,7 @@ html.bez-js .manifest__scena { position: static; height: auto; padding-block: va
     opacity: 1; visibility: visible; pointer-events: auto;
     transform: none; box-shadow: none; background: transparent;
   }
-  /* poziomy, zawijany rząd — nagłówek nie zjada pół ekranu */
+  /* poziomy, zawijany rząd - nagłówek nie zjada pół ekranu */
   html.bez-js .nawigacja__lista { flex-direction: row; flex-wrap: wrap; gap: 2px; }
   html.bez-js .nawigacja__lista a { padding: .4rem .7rem; font-size: var(--t-small); }
   html.bez-js .nawigacja > .btn { margin-top: 0; min-height: 44px; }

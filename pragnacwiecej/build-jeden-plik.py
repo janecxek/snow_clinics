@@ -2,7 +2,7 @@
 """Buduje wersję strony w jednym pliku HTML.
 
 CSS, JavaScript, fonty i zdjęcia trafiają do środka jako base64, więc plik
-działa po dwukliku, bez serwera i bez internetu — do wysłania komuś na
+działa po dwukliku, bez serwera i bez internetu - do wysłania komuś na
 podgląd. Na produkcję idzie normalny katalog, nie to.
 
     python3 build-jeden-plik.py [plik-wyjsciowy.html]
@@ -35,7 +35,7 @@ def zbuduj(wyjscie):
     style = open('assets/style.css', encoding='utf-8').read()
     app = open('assets/app.js', encoding='utf-8').read()
 
-    # Jedna kopia zdjęcia wystarczy — srcset tylko podwoiłby wagę pliku.
+    # Jedna kopia zdjęcia wystarczy - srcset tylko podwoiłby wagę pliku.
     for atrybut in ('srcset', 'sizes', 'imagesrcset', 'imagesizes'):
         html = re.sub(rf'\s*{atrybut}="[^"]*"', '', html)
 
@@ -68,7 +68,7 @@ def zbuduj(wyjscie):
         '<script src="assets/app.js" defer></script>',
         '<script>\n' + app + '\n</script>')
 
-    # Nic nie może zostać wskazaniem na plik obok — inaczej podgląd się sypie.
+    # Nic nie może zostać wskazaniem na plik obok - inaczej podgląd się sypie.
     zostalo = [w for w in re.findall(r'(?:src|href)="((?!https?:|#|data:|mailto:)[^"]+)"', html)]
     if zostalo:
         raise SystemExit(f'Niewszyte odwołania: {zostalo}')

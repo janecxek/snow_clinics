@@ -1,4 +1,4 @@
-/* Pragnąc Więcej — interakcje. Bez zależności; strona działa też bez JS. */
+/* Pragnąc Więcej - interakcje. Bez zależności; strona działa też bez JS. */
 (function () {
   'use strict';
 
@@ -54,7 +54,7 @@
     }
 
     // Cokolwiek przewinie stronę poza nami (klawiatura, pasek, kotwica,
-    // przywrócenie pozycji) ma pierwszeństwo — dorównujemy, zamiast walczyć.
+    // przywrócenie pozycji) ma pierwszeństwo - dorównujemy, zamiast walczyć.
     function naPrzewijanie() {
       if (Math.abs(window.scrollY - biezaca) > 2) {
         stop();
@@ -111,7 +111,7 @@
   });
 
   /* =====================================================================
-     Nagłówek stoi na ekranie przez cały czas — nie chowa się przy
+     Nagłówek stoi na ekranie przez cały czas - nie chowa się przy
      przewijaniu w dół. Po zjechaniu z hero pigułka tylko gęstnieje
      i dostaje cień, żeby odcinała się od jasnych sekcji.
      ===================================================================== */
@@ -281,7 +281,7 @@
   }
 
   /* =====================================================================
-     FAQ — jedna odpowiedź naraz, z płynnym rozwijaniem.
+     FAQ - jedna odpowiedź naraz, z płynnym rozwijaniem.
      <details> przełącza się skokowo, więc przejmujemy kliknięcie i sami
      animujemy wysokość. Bez JS zostaje natywne zachowanie.
      ===================================================================== */
@@ -320,7 +320,7 @@
     }
 
     function otworz() {
-      // Wysokość zwiniętego trzeba zmierzyć PRZED `open` — potem element ma
+      // Wysokość zwiniętego trzeba zmierzyć PRZED `open` - potem element ma
       // już pełne wymiary i animacja szłaby z docelowej do docelowej.
       var od = det.offsetHeight;
       det.open = true;
@@ -358,7 +358,7 @@
      Pierwsze 18% toru to celowo pusty kadr, ostatnie ~20% to pauza na
      przeczytanie całości, zanim sekcja odklei się i pojedzie dalej.
      Tor jest krótki (160svh), a okno postępu ciasne, żeby zdanie składało
-     się szybko — na jedno słowo wypada niecałe 2% wysokości ekranu.
+     się szybko - na jedno słowo wypada niecałe 2% wysokości ekranu.
      ===================================================================== */
   var manifest = document.getElementById('manifest');
   var tor = manifest && manifest.querySelector('[data-manifest-tor]');
