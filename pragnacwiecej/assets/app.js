@@ -111,23 +111,16 @@
   });
 
   /* =====================================================================
-     Nagłówek: cień po odklejeniu, chowanie przy przewijaniu w dół
+     Nagłówek stoi na ekranie przez cały czas — nie chowa się przy
+     przewijaniu w dół. Po zjechaniu z hero pigułka tylko gęstnieje
+     i dostaje cień, żeby odcinała się od jasnych sekcji.
      ===================================================================== */
   if (naglowek) {
-    var ostatniY = window.scrollY;
     var tykanie = false;
 
     var aktualizuj = function () {
       tykanie = false;
-      var y = window.scrollY;
-      naglowek.dataset.przypiety = y > 12 ? 'true' : 'false';
-
-      var wDol = y > ostatniY && y > 320;
-      var menuOtwarte = przyciskMenu && przyciskMenu.getAttribute('aria-expanded') === 'true';
-      if (!menuOtwarte && !naglowek.contains(document.activeElement)) {
-        naglowek.dataset.schowany = wDol ? 'true' : 'false';
-      }
-      ostatniY = y;
+      naglowek.dataset.przypiety = window.scrollY > 12 ? 'true' : 'false';
     };
 
     window.addEventListener('scroll', function () {
@@ -136,7 +129,7 @@
       window.requestAnimationFrame(aktualizuj);
     }, { passive: true });
 
-    naglowek.addEventListener('focusin', function () { naglowek.dataset.schowany = 'false'; });
+    aktualizuj();
   }
 
   /* =====================================================================
@@ -150,7 +143,6 @@
       przyciskMenu.setAttribute('aria-expanded', String(otwarte));
       przyciskMenu.setAttribute('aria-label', otwarte ? 'Zamknij menu' : 'Otwórz menu');
       nawigacja.dataset.otwarte = String(otwarte);
-      if (otwarte && naglowek) naglowek.dataset.schowany = 'false';
     };
 
     przyciskMenu.addEventListener('click', function () {

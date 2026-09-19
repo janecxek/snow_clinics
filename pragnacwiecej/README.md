@@ -95,7 +95,9 @@ i zieleni. Zmieniając kolory, przelicz kontrast.
   `prefers-reduced-motion` całe zdanie jest widoczne, a tor się rozkleja.
   Dopisując lub usuwając słowa, przenumeruj `--i` i ustaw `--kroki` na
   liczbę słów + 5.
-- **Nagłówek** — chowa się przy przewijaniu w dół, wraca przy przewijaniu w górę.
+- **Nagłówek** — stoi na ekranie przez cały czas, nie chowa się przy
+  przewijaniu w dół. Po zjechaniu z hero (`scrollY > 12`) pigułka gęstnieje
+  i dostaje mocniejszy cień, żeby odcinała się od jasnych sekcji.
 - **Hover** — karty unoszą się, przyciski wypełniają się od dołu.
 
 ## Dostępność i degradacja

@@ -203,9 +203,7 @@ h4 { font-size: var(--t-h4); }
 .naglowek {
   position: fixed; inset: 0 0 auto 0; z-index: 90;
   padding: 18px var(--rynna) 0;
-  transition: transform .5s var(--ease);
 }
-.naglowek[data-schowany='true'] { transform: translateY(-140%); }
 
 .naglowek__pigulka {
   max-width: var(--miara); margin-inline: auto;
