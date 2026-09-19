@@ -439,26 +439,3 @@
   }
   paint();
 })();
-
-/* =========================================================================
-   19. PROJECT CARDS — the open cue rides with the pointer
-   ========================================================================= */
-(() => {
-  'use strict';
-  if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-  document.querySelectorAll('.frame-link').forEach((card) => {
-    const cue = card.querySelector('.frame__open');
-    if (!cue) return;
-    let raf = 0, x = 0, y = 0;
-    card.addEventListener('pointermove', (e) => {
-      const r = card.getBoundingClientRect();
-      x = e.clientX - r.left; y = e.clientY - r.top;
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        cue.style.setProperty('--px', x + 'px');
-        cue.style.setProperty('--py', y + 'px');
-        raf = 0;
-      });
-    }, { passive: true });
-  });
-})();
