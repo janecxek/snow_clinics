@@ -270,34 +270,7 @@ h4 { font-size: var(--t-h4); }
 /* Hero leży NAD sekcją z mottem, dzięki czemu motto wysuwa się spod zdjęcia,
    a nie nasuwa na nie. Bez sticky — przyklejone prześwitywało przez sekcje
    bez własnego tła. */
-/* Wspólny rodzic hero i manifestu. Dzięki niemu zdjęcie klei się do ekranu
-   tylko na czas manifestu — potem kończy się rodzic i sticky puszcza. */
-.scena-startowa {
-  --z: 0; --h: 0; --p: 1;
-  --kurtyna: 58svh;        /* ile dolnej części zdjęcia znika przy przyklejeniu */
-  --pasmo: 42svh;          /* co zostaje na górze — tyle samo, ile wyżej */
-  --zjazd: 20svh;          /* ile zdanie przejeżdża w dół; krótko, żeby jego
-                              dolna krawędź trzymała się krawędzi zdjęcia
-                              i pod spodem nie otwierał się pusty pas */
-  position: relative;
-}
-
-/* Hero klei się do ekranu i mniej więcej w połowie toru manifestu podciąga
-   swoją dolną krawędź w górę (clip-path, więc kadrowanie zostaje na twarzy,
-   a nie na butach). Spod tej krawędzi wyjeżdża zdanie. */
-.hero {
-  padding: 12px 12px 0;
-  position: sticky; top: 0; z-index: 2;
-}
-.hero__kadr {
-  clip-path: inset(0 0 calc(var(--h) * var(--kurtyna)) 0 round 20px);
-}
-/* Zanim kurtyna ruszy, tekst hero gaśnie — inaczej przez pół ekranu
-   przewijania nic by się nie działo. */
-.hero__tresc {
-  opacity: calc(1 - var(--z));
-  transform: translateY(calc(var(--z) * -2.5rem));
-}
+.hero { padding: 12px 12px 0; position: relative; z-index: 2; }
 
 .hero__kadr {
   position: relative; isolation: isolate;
@@ -310,16 +283,10 @@ h4 { font-size: var(--t-h4); }
 .hero__foto {
   position: absolute; inset: 0; z-index: -2;
   width: 100%; height: 100%; object-fit: cover;
-  /* Sylwetka jest po prawej stronie kadru. Gdy zdjęcie przycina się do
-     pasma, przesuwamy kadrowanie w prawo, żeby w pasmie została ona,
-     a nie sama ściana. */
-  object-position: calc(62% + var(--h, 0) * 14%) 52%;
+  object-position: 62% 52%;   /* sylwetka jest po prawej stronie kadru */
 }
 .hero__zaslona {
   position: absolute; inset: 0; z-index: -1;
-  /* przyciemnienie istnieje dla czytelności tekstu hero; gdy tekst gaśnie,
-     schodzi razem z nim i w pasmie zostaje czyste zdjęcie */
-  opacity: calc(1 - var(--z, 0) * .88);
   background:
     linear-gradient(to top, rgb(44 34 24 / .84) 0%, rgb(44 34 24 / .48) 55%, rgb(44 34 24 / .08) 100%),
     linear-gradient(to right, rgb(44 34 24 / .70) 0%, rgb(44 34 24 / .30) 55%, rgb(44 34 24 / 0) 82%);
@@ -354,40 +321,37 @@ h4 { font-size: var(--t-h4); }
 }
 
 /* ==========================================================================
-   Manifest — zdanie zjeżdża spod zdjęcia hero
+   Manifest — zdanie składa się słowo po słowie w przyklejonym kadrze
 
-   Tor (.manifest__tor) daje drogę przewijania, a scena (.manifest__scena)
-   klei się do ekranu i leży POD hero (z-index 1 vs 2). Przez pierwszą
-   połowę toru nie dzieje się nic poza gaśnięciem tekstu hero. Mniej więcej
-   w połowie zdjęcie podciąga dolną krawędź, a zdanie — do tej pory
-   schowane za nim — zjeżdża w dół na wolne miejsce.
-   Postęp liczy app.js i zapisuje w --z / --h / --p na .scena-startowa.
+   Sekcja to długi tor (.manifest__tor), po którym przesuwa się przyklejona
+   scena wysokości ekranu. Na starcie kadr jest pusty; app.js liczy postęp
+   toru i zapisuje go w --p (0 → 1), a każde słowo ma swój próg --i.
+   Bez JS i przy prefers-reduced-motion --p zostaje na 1, a tor się rozkleja.
    ========================================================================== */
 
 .manifest {
+  --p: 1;                            /* 0 → 1, nadpisywane z app.js */
   padding-block: 0;
   position: relative; z-index: 1;
-  /* UWAGA: bez overflow — cokolwiek innego niż visible zrobiłoby z .manifest
-     kontener przewijania i position: sticky przestałoby działać. */
+  /* UWAGA: bez overflow — dowolny overflow inny niż visible zrobiłby
+     z .manifest kontener przewijania i position: sticky przestałoby działać. */
   background: var(--piasek);
   margin-top: -3.5rem;               /* górna krawędź chowa się za zdjęciem */
 }
-.manifest__tor { height: 210svh; padding-top: 3.5rem; }
+.manifest__tor { height: 160svh; padding-top: 3.5rem; }
 .manifest__scena {
   position: sticky; top: 0;
   height: 100svh;
-  padding-top: var(--pasmo);         /* zdanie ląduje pod pasmem zdjęcia */
   display: grid; align-items: center;
 }
-.manifest__tresc {
-  max-width: 46rem; margin-inline: auto; text-align: center;
-  position: relative; z-index: 2;
-  /* na starcie wysoko ponad swoim miejscem, czyli schowane za zdjęciem */
-  transform: translateY(calc((var(--p) - 1) * var(--zjazd)));
-  will-change: transform;
-}
+.manifest__tresc { max-width: 46rem; margin-inline: auto; text-align: center; position: relative; z-index: 2; }
 
-.manifest__ikona { color: var(--las); margin-inline: auto; }
+/* Listek pojawia się pierwszy — sam w pustym kadrze — i zostaje. */
+.manifest__ikona {
+  color: var(--las); margin-inline: auto;
+  opacity: clamp(0, calc(var(--p) * 14), 1);
+  transform: scale(calc(.82 + .18 * clamp(0, calc(var(--p) * 14), 1)));
+}
 
 .manifest__zdanie {
   margin-top: var(--s4);
@@ -397,18 +361,27 @@ h4 { font-size: var(--t-h4); }
 }
 .manifest__zdanie em { font-style: italic; color: var(--las); }
 
+/* Każde słowo ma własne okno: zaczyna się przy --i kroków postępu i trwa
+   2 kroki, więc sąsiednie słowa lekko na siebie zachodzą i całość płynie
+   falą, zamiast strzelać literami. */
+.manifest__zdanie .s {
+  --o: clamp(0, calc((var(--p) * var(--kroki) - var(--i)) / 2), 1);
+  display: inline-block;
+  opacity: var(--o);
+  transform: translateY(calc((1 - var(--o)) * .5em));
+}
+
 .manifest__podpis {
   display: inline-flex; align-items: center; gap: .85rem;
   margin-top: var(--s4); font-size: var(--t-small); color: var(--tusz-cichy);
-  /* podpis wyjeżdża pierwszy (jest na dole bloku), więc trzymamy go do końca */
-  opacity: clamp(0, calc((var(--p) - .72) * 5), 1);
+  opacity: clamp(0, calc((var(--p) - .78) * 7), 1);
 }
 .manifest__podpis::before {
   content: ''; width: 2.25rem; height: 1px;
   background: color-mix(in srgb, var(--tusz) 28%, transparent);
 }
 
-/* Niskie okna (telefon w poziomie) — zdanie musi się zmieścić pod pasmem. */
+/* Niskie okna (telefon w poziomie) — zdanie musi się zmieścić w kadrze. */
 @media (max-height: 34rem) {
   .manifest__zdanie { font-size: clamp(1.15rem, 4.6vh, 1.7rem); margin-top: var(--s3); }
   .manifest__ikona { width: 26px; height: 26px; }
@@ -817,9 +790,6 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
 
 @media (max-width: 39.99rem) {
   .przyciski .btn { width: 100%; }
-  /* Wąski kadr przycina zdjęcie w poziomie, więc w paśmie zostaje mniej
-     sylwetki — dajemy paśmie więcej wysokości. */
-  .scena-startowa { --kurtyna: 48svh; --pasmo: 52svh; }
 }
 
 /* ==========================================================================
@@ -835,24 +805,20 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
   [data-odslon] { opacity: 1 !important; transform: none !important; }
   .hero__tresc > * { opacity: 1; transform: none; }
   .hero__foto { transform: none; }
-  .hero { position: relative; }
-  .hero__kadr { clip-path: none; }
-  .hero__tresc { opacity: 1; transform: none; }
-  .manifest { margin-top: 0; }
+  .manifest { --p: 1; margin-top: 0; }
   .manifest__tor { height: auto; padding-top: 0; }
-  .manifest__scena { position: static; height: auto; padding: var(--sekcja) 0; }
-  .manifest__tresc { transform: none !important; }
+  .manifest__scena { position: static; height: auto; padding-block: var(--sekcja); }
+  .manifest__ikona, .manifest__zdanie .s, .manifest__podpis {
+    opacity: 1 !important; transform: none !important;
+  }
 }
 
 html.bez-js [data-odslon] { opacity: 1; transform: none; }
 html.bez-js .hero__tresc > * { opacity: 1; transform: none; }
 html.bez-js .hero__foto { transform: none; }
-html.bez-js .hero { position: relative; }
-html.bez-js .hero__kadr { clip-path: none; }
-html.bez-js .manifest { margin-top: 0; }
+html.bez-js .manifest { --p: 1; margin-top: 0; }
 html.bez-js .manifest__tor { height: auto; padding-top: 0; }
-html.bez-js .manifest__scena { position: static; height: auto; padding: var(--sekcja) 0; }
-html.bez-js .manifest__tresc { transform: none; }
+html.bez-js .manifest__scena { position: static; height: auto; padding-block: var(--sekcja); }
 /* Bez JS burger niczego nie otworzy, więc menu rozwijamy w układ statyczny
    pod pigułką (selektor był wcześniej martwy: html nie bywa potomkiem html). */
 @media (max-width: 59.99rem) {

@@ -77,28 +77,24 @@ i zieleni. Zmieniając kolory, przelicz kontrast.
   sterowane `IntersectionObserver`; opóźnienie ustawia się per element
   przez `style="--zwloka:120ms"`.
 - **Wejście hero** — kaskada tekstu plus powolne odjechanie zdjęcia ze skali.
-- **Manifest (zdanie pod hero)** — zdanie wyjeżdża spod zdjęcia hero.
-  Hero i manifest siedzą we wspólnym rodzicu `.scena-startowa`, dzięki czemu
-  zdjęcie (`position: sticky`) klei się do ekranu tylko na czas manifestu.
-  Manifest to tor `210svh` (`.manifest__tor`) z przyklejoną sceną wysokości
-  ekranu (`.manifest__scena`), leżącą pod hero (z-index 1 vs 2).
-  `app.js` liczy jedną miarę — ile toru przewinięto — i robi z niej trzy
-  postępy zapisywane na `.scena-startowa`:
-  `--z` gasi tekst hero i zasłonę (0,06 → 0,34 toru), `--h` przycina zdjęcie
-  od dołu do pasma (0,42 → 0,78), `--p` zjeżdża zdaniem w dół (0,46 → 0,96).
-  Przycinanie robi `clip-path: inset(...)` na `.hero__kadr`, więc kadrowanie
-  zostaje na twarzy, a nie na butach; `object-position` przesuwa się w prawo
-  razem z `--h`. Wysokość pasma to `--kurtyna` / `--pasmo` (na wąskich
-  ekranach więcej, bo wąski kadr przycina zdjęcie w poziomie).
-  `--zjazd` jest celowo krótki (20svh): gdyby zdanie jechało z daleka, jego
-  dolna krawędź odklejałaby się od krawędzi zdjęcia i pod spodem otwierałby
-  się pusty pas piasku.
-  Uwagi przy edycji: `.manifest` nie może dostać `overflow` innego niż
+- **Manifest (zdanie pod hero)** — sekcja to tor wysokości `260svh`
+  (`.manifest__tor`), po którym przesuwa się przyklejona scena wysokości
+  ekranu (`.manifest__scena`, `position: sticky`). `app.js` liczy postęp
+  toru i zapisuje go w `--p` (0 → 1) na `#manifest`; każde słowo ma własny
+  próg `--i`, a `--kroki` na akapicie mówi, na ile kroków podzielony jest
+  postęp. Kadr startuje pusty, potem zdanie składa się słowo po słowie.
+  Tempo: tor ma `160svh`, więc do przewinięcia w przyklejeniu zostaje
+  `60svh`. Pierwsze 18% to pusty kadr, zdanie składa się przez kolejne ~47%
+  wysokości ekranu (ok. 14 px przewijania na słowo), resztę toru zajmuje
+  pauza na przeczytanie. Chcąc przyspieszyć lub zwolnić, ruszaj wysokością
+  toru i oknem `(surowy - 0.18) / 0.70` w `app.js` — dzielnik `2` w `--o`
+  odpowiada tylko za to, jak miękko wchodzi pojedyncze słowo.
+  Uwaga przy edycji: `.manifest` nie może dostać `overflow` innego niż
   `visible` — zrobiłoby z siebie kontener przewijania i `sticky` przestałoby
-  działać. Zdanie wyjeżdża dołem do przodu, więc nie warto dokładać do niego
-  animacji słowo-po-słowie (idzie od pierwszego słowa) — te dwa ruchy się
-  biją i pod zdjęciem robi się pusto. Wersja słowo-po-słowie jest w historii
-  gita, gdyby kiedyś wróciła.
+  działać. Domyślne `--p` w CSS to `1`, więc bez JS i przy
+  `prefers-reduced-motion` całe zdanie jest widoczne, a tor się rozkleja.
+  Dopisując lub usuwając słowa, przenumeruj `--i` i ustaw `--kroki` na
+  liczbę słów + 5.
 - **Nagłówek** — chowa się przy przewijaniu w dół, wraca przy przewijaniu w górę.
 - **Hover** — karty unoszą się, przyciski wypełniają się od dołu.
 
