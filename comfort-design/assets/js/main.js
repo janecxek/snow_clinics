@@ -344,10 +344,11 @@
     if (bar) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; }
     pre.classList.add('is-curtain');
     pre.classList.remove('is-done');
+    // swap once the curtain has actually covered the page, then lift straight away
     setTimeout(() => {
       swap();
-      setTimeout(() => pre.classList.add('is-done'), 300);
-    }, 520);
+      setTimeout(() => pre.classList.add('is-done'), 150);
+    }, 360);
   };
 
   const apply = (lang) => {
