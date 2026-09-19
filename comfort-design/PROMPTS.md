@@ -40,6 +40,30 @@ Co wybrać: kadr pionowy albo kwadratowy, do pasa, twarz dobrze oświetlona,
 bez mocnego filtra i bez innych osób w kadrze. Im ostrzejszy oryginał,
 tym mniej model kombinuje.
 
+### Prompt uniwersalny — wklej razem ze zdjęciami
+
+Jeden blok, radzi sobie z dowolnym kadrem. Wgrywasz 1–5 zdjęć i wklejasz to:
+
+```
+I'm attaching photos of a real person — Elena, an interior designer. I need one portrait for the "about the author" section of her studio website.
+
+If I attached several photos, pick the one with the sharpest and best-lit face, work from that one only, and tell me which one you chose and why.
+
+Absolute rule: keep her face, hair, body shape and clothing exactly as they are. Do not smooth skin, slim the face, enlarge eyes, change the nose or jawline, remove lines, or "beautify" anything. She must be immediately recognisable as the same person to someone who knows her. Treat the face as a locked region.
+
+Everything else you may change:
+
+1. Framing — output a vertical 3:4 portrait, cropped roughly at the waist, with her placed slightly off-centre and clear empty space above her head. If the source is horizontal or full-body, extend the background naturally to gain height rather than stretching her.
+
+2. Background — replace whatever is behind her with a calm interior wall in soft greige microcement plaster, gently out of focus. You may add a subtle hint of a tall arched niche, or the edge of a white oak surface, at the very edge of the frame. Nothing busy, no furniture clutter, no plants, no visible room detail competing with her.
+
+3. Light — soft warm daylight coming from one side, gentle falloff across the wall, no harsh shadow cutting across her face, no on-camera flash look, no rim light or glow effects.
+
+4. Colour — grade to a warm neutral palette: beige, taupe, cream, warm brown. Natural, warm skin tones. Remove any blue, green or magenta cast. Soft natural contrast, no heavy filter, no HDR.
+
+Keep the result fully photographic and realistic — it must look like a photograph taken in a real room, not a render or an illustration. No text, no logos, no watermark, no border. Final output: vertical 3:4.
+```
+
 ### Prompt główny — zdjęcie ma dobry kadr, ale tło i kolory nie pasują
 
 ```
