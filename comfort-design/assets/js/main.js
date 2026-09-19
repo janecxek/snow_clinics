@@ -70,6 +70,8 @@
   /* ---------- 5. HEADER ---------- */
   const hdr = $('#hdr');
   const hero = $('#top');
+  const prog = $('#hdrProgress');
+  const fab = $('#fab');
   let lastY = window.scrollY, ticking = false;
 
   const onScroll = () => {
@@ -78,6 +80,11 @@
     hdr.classList.toggle('is-solid', past);
     lastY = y;
     const tt = $('#totop'); if (tt) tt.classList.toggle('is-on', y > 900);
+    if (fab) fab.classList.toggle('is-on', y > 700);
+    if (prog) {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      prog.style.setProperty('--p', max > 0 ? (y / max).toFixed(4) : 0);
+    }
     ticking = false;
   };
   addEventListener('scroll', () => {
@@ -274,48 +281,25 @@
   totop && totop.addEventListener('click', () =>
     scrollTo({ top: 0, behavior: reduced() ? 'auto' : 'smooth' }));
 
-  /* ---------- 15. FORM ---------- */
-  const form = $('#lead');
-  if (form) {
-    const phone = form.elements.phone;
-    // Belarusian-friendly phone formatting, non-destructive
-    phone && phone.addEventListener('input', () => {
-      let v = phone.value.replace(/[^\d+]/g, '');
-      if (v && !v.startsWith('+')) v = '+' + v;
-      phone.value = v.slice(0, 16);
+  /* ---------- 15. CTA POPUP ---------- */
+  const pop = $('#ctaPop');
+  if (pop && typeof pop.showModal === 'function') {
+    let opener = null;
+    $$('[data-cta]').forEach((btn) => btn.addEventListener('click', () => {
+      opener = btn;
+      if (drawerOpen) setDrawer(false);
+      pop.showModal();
+      modalOpen = true;
+    }));
+    const close = () => pop.close();
+    const x = $('#popClose'); if (x) x.addEventListener('click', close);
+    pop.addEventListener('click', (e) => { if (e.target === pop) close(); });
+    pop.addEventListener('close', () => {
+      modalOpen = false;
+      if (opener && document.contains(opener)) opener.focus();
     });
-
-    const bad = (field, state) => {
-      const wrap = field.closest('.field') || field.closest('.check');
-      if (wrap) wrap.classList.toggle('is-bad', state);
-    };
-    const valid = (el) => {
-      if (el.type === 'checkbox') return el.checked;
-      if (el.name === 'phone') return el.value.replace(/\D/g, '').length >= 9;
-      return el.value.trim().length >= 2;
-    };
-    const required = () => Array.from(form.elements).filter((el) => el.required);
-
-    required().forEach((el) => {
-      el.addEventListener('blur', () => bad(el, !valid(el)));
-      el.addEventListener('input', () => { if (valid(el)) bad(el, false); });
-      el.addEventListener('change', () => { if (valid(el)) bad(el, false); });
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const bads = required().filter((el) => !valid(el));
-      bads.forEach((el) => bad(el, true));
-      if (bads.length) {
-        bads[0].focus();
-        bads[0].scrollIntoView({ block: 'center', behavior: reduced() ? 'auto' : 'smooth' });
-        return;
-      }
-      // ── Подключите здесь отправку: fetch('/api/lead'), Formspree, Telegram-бот, CRM ──
-      form.classList.add('is-sent');
-      const ok = form.querySelector('.form__ok');
-      if (ok) { ok.setAttribute('tabindex', '-1'); ok.focus(); }
-    });
+    // a channel was picked — close behind it so returning to the tab is clean
+    pop.querySelectorAll('.chan').forEach((a) => a.addEventListener('click', () => setTimeout(close, 120)));
   }
 
   /* ---------- 16. SMOOTH ANCHORS WITH HEADER OFFSET ---------- */
@@ -352,6 +336,20 @@
   const dict = (window.CD_I18N && window.CD_I18N.en) || {};
   const buttons = Array.from(document.querySelectorAll('.lang__b'));
 
+  // drop a curtain over the swap so the text never changes in plain sight
+  const pre = document.getElementById('pre');
+  const curtain = (swap) => {
+    if (!pre || matchMedia('(prefers-reduced-motion: reduce)').matches) { swap(); return; }
+    const bar = pre.querySelector('.pre__bar');
+    if (bar) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; }
+    pre.classList.add('is-curtain');
+    pre.classList.remove('is-done');
+    setTimeout(() => {
+      swap();
+      setTimeout(() => pre.classList.add('is-done'), 300);
+    }, 520);
+  };
+
   const apply = (lang) => {
     const en = lang === 'en';
     document.documentElement.lang = lang;
@@ -379,10 +377,13 @@
 
   buttons.forEach((b) => b.addEventListener('click', () => {
     const lang = b.dataset.lang;
-    apply(lang);
-    const url = new URL(location.href);
-    if (lang === 'en') url.searchParams.set('lang', 'en'); else url.searchParams.delete('lang');
-    history.replaceState(null, '', url);
+    if (document.documentElement.lang === lang) return;
+    curtain(() => {
+      apply(lang);
+      const url = new URL(location.href);
+      if (lang === 'en') url.searchParams.set('lang', 'en'); else url.searchParams.delete('lang');
+      history.replaceState(null, '', url);
+    });
   }));
 })();
 
