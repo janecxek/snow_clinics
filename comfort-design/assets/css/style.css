@@ -207,9 +207,13 @@ p{text-wrap:pretty}
 .section--tight{padding-block:clamp(3.5rem,2rem + 6vw,7rem)}
 .section--inset,.light{
   margin-inline:clamp(.5rem,1.6vw,1.5rem);
+  margin-block:clamp(.5rem,1.6vw,1.5rem);
   border-radius:var(--r-xl);
   overflow:hidden;
 }
+/* the closing card and the footer are both dark — keep a plaster band between them
+   so they read as two blocks rather than one long brown one */
+#contact{margin-bottom:clamp(2.5rem,5.5vw,5rem)}
 
 .grid{display:grid;gap:var(--s-4)}
 @media (min-width:60rem){
