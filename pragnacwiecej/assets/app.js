@@ -361,23 +361,25 @@
   });
 
   /* =====================================================================
-     Manifest wysuwa się spod przyklejonego hero. Postęp liczymy z tego,
-     ile panelu weszło już w kadr, i podajemy do CSS jako --wyjscie.
+     Manifest: przyklejony kadr, w którym zdanie składa się słowo po słowie.
+     Liczymy, ile toru już przewinięto, i zapisujemy to w --p (0 → 1).
+     Pierwsze 14% toru to celowo pusty kadr, ostatnie ~14% to pauza na
+     przeczytanie całości, zanim sekcja odklei się i pojedzie dalej.
      ===================================================================== */
   var manifest = document.getElementById('manifest');
+  var tor = manifest && manifest.querySelector('[data-manifest-tor]');
 
-  if (manifest && !mniejRuchu.matches) {
+  if (tor && !mniejRuchu.matches) {
     var czeka = false;
 
     var przelicz = function () {
       czeka = false;
-      var r = manifest.getBoundingClientRect();
-      // 0 gdy panel dopiero dotyka dolnej krawędzi ekranu, 1 gdy wjechał
-      // na wysokość mniej więcej połowy okna.
-      var droga = window.innerHeight * 0.55;
-      var p = (window.innerHeight - r.top) / droga;
+      var r = tor.getBoundingClientRect();
+      var droga = r.height - window.innerHeight;   // ile da się przewinąć w przyklejeniu
+      var surowy = droga > 0 ? (-r.top) / droga : 1;
+      var p = (surowy - 0.14) / 0.72;
       p = p < 0 ? 0 : (p > 1 ? 1 : p);
-      manifest.style.setProperty('--wyjscie', (p * p * (3 - 2 * p)).toFixed(4));
+      manifest.style.setProperty('--p', p.toFixed(4));
     };
 
     var zaplanuj = function () {

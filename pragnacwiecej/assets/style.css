@@ -321,26 +321,38 @@ h4 { font-size: var(--t-h4); }
 }
 
 /* ==========================================================================
-   Manifest — centred statement between two tilted photographs
+   Manifest — zdanie składa się słowo po słowie w przyklejonym kadrze
+
+   Sekcja to długi tor (.manifest__tor), po którym przesuwa się przyklejona
+   scena wysokości ekranu. Na starcie kadr jest pusty; app.js liczy postęp
+   toru i zapisuje go w --p (0 → 1), a każde słowo ma swój próg --i.
+   Bez JS i przy prefers-reduced-motion --p zostaje na 1, a tor się rozkleja.
    ========================================================================== */
 
 .manifest {
-  --wyjscie: 0;                     /* 0 → 1, ustawiane z app.js */
+  --p: 1;                            /* 0 → 1, nadpisywane z app.js */
+  padding-block: 0;
   position: relative; z-index: 1;
-  overflow: hidden;
+  /* UWAGA: bez overflow — dowolny overflow inny niż visible zrobiłby
+     z .manifest kontener przewijania i position: sticky przestałoby działać. */
   background: var(--piasek);
-  margin-top: -3.5rem;              /* górna krawędź chowa się za zdjęciem */
-  padding-top: calc(var(--sekcja) + 3.5rem);
+  margin-top: -3.5rem;               /* górna krawędź chowa się za zdjęciem */
 }
-/* Treść dochodzi z dołu z lekkim opóźnieniem względem panelu, przez co
-   naprawdę wygląda, jakby wychodziła spod zdjęcia. */
-.manifest__tresc {
-  transform: translateY(calc((1 - var(--wyjscie)) * 5rem));
-  opacity: calc(.15 + .85 * var(--wyjscie));
-  will-change: transform;
+.manifest__tor { height: 260svh; padding-top: 3.5rem; }
+.manifest__scena {
+  position: sticky; top: 0;
+  height: 100svh;
+  display: grid; align-items: center;
 }
 .manifest__tresc { max-width: 46rem; margin-inline: auto; text-align: center; position: relative; z-index: 2; }
-.manifest__ikona { color: var(--las); margin-inline: auto; }
+
+/* Listek pojawia się pierwszy — sam w pustym kadrze — i zostaje. */
+.manifest__ikona {
+  color: var(--las); margin-inline: auto;
+  opacity: clamp(0, calc(var(--p) * 14), 1);
+  transform: scale(calc(.82 + .18 * clamp(0, calc(var(--p) * 14), 1)));
+}
+
 .manifest__zdanie {
   margin-top: var(--s4);
   font-family: var(--serif); font-size: clamp(1.55rem, 3.6vw, 2.9rem);
@@ -348,13 +360,32 @@ h4 { font-size: var(--t-h4); }
   text-wrap: balance;
 }
 .manifest__zdanie em { font-style: italic; color: var(--las); }
+
+/* Każde słowo ma własne okno: zaczyna się przy --i kroków postępu i trwa
+   2,5 kroku, więc sąsiednie słowa lekko na siebie zachodzą i całość płynie
+   falą, zamiast strzelać literami. */
+.manifest__zdanie .s {
+  --o: clamp(0, calc((var(--p) * var(--kroki) - var(--i)) / 2.5), 1);
+  display: inline-block;
+  opacity: var(--o);
+  transform: translateY(calc((1 - var(--o)) * .5em));
+}
+
 .manifest__podpis {
   display: inline-flex; align-items: center; gap: .85rem;
   margin-top: var(--s4); font-size: var(--t-small); color: var(--tusz-cichy);
+  opacity: clamp(0, calc((var(--p) - .78) * 7), 1);
 }
 .manifest__podpis::before {
   content: ''; width: 2.25rem; height: 1px;
   background: color-mix(in srgb, var(--tusz) 28%, transparent);
+}
+
+/* Niskie okna (telefon w poziomie) — zdanie musi się zmieścić w kadrze. */
+@media (max-height: 34rem) {
+  .manifest__zdanie { font-size: clamp(1.15rem, 4.6vh, 1.7rem); margin-top: var(--s3); }
+  .manifest__ikona { width: 26px; height: 26px; }
+  .manifest__podpis { margin-top: var(--s3); }
 }
 
 
@@ -759,7 +790,8 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
 
 @media (max-width: 39.99rem) {
   .przyciski .btn { width: 100%; }
-  
+}
+
 /* ==========================================================================
    Reduced motion & no-JS
    ========================================================================== */
@@ -773,13 +805,34 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
   [data-odslon] { opacity: 1 !important; transform: none !important; }
   .hero__tresc > * { opacity: 1; transform: none; }
   .hero__foto { transform: none; }
-  .manifest { margin-top: 0; padding-top: var(--sekcja); }
-  .manifest__tresc { transform: none !important; opacity: 1 !important; }
-    }
+  .manifest { --p: 1; margin-top: 0; }
+  .manifest__tor { height: auto; padding-top: 0; }
+  .manifest__scena { position: static; height: auto; padding-block: var(--sekcja); }
+  .manifest__ikona, .manifest__zdanie .s, .manifest__podpis {
+    opacity: 1 !important; transform: none !important;
+  }
+}
 
 html.bez-js [data-odslon] { opacity: 1; transform: none; }
 html.bez-js .hero__tresc > * { opacity: 1; transform: none; }
 html.bez-js .hero__foto { transform: none; }
-html.bez-js .manifest { margin-top: 0; padding-top: var(--sekcja); }
-html.bez-js .manifest__tresc { transform: none; opacity: 1; }
-html.bez-js html.bez-js html.bez-js .nawigacja { position: static; opacity: 1; visibility: visible; pointer-events: auto; transform: none; box-shadow: none; background: transparent; }
+html.bez-js .manifest { --p: 1; margin-top: 0; }
+html.bez-js .manifest__tor { height: auto; padding-top: 0; }
+html.bez-js .manifest__scena { position: static; height: auto; padding-block: var(--sekcja); }
+/* Bez JS burger niczego nie otworzy, więc menu rozwijamy w układ statyczny
+   pod pigułką (selektor był wcześniej martwy: html nie bywa potomkiem html). */
+@media (max-width: 59.99rem) {
+  html.bez-js .naglowek { position: absolute; }
+  html.bez-js .naglowek__pigulka { height: auto; flex-wrap: wrap; padding: 10px 10px 14px 24px; }
+  html.bez-js .menu-przycisk { display: none; }
+  html.bez-js .naglowek__pigulka { border-radius: 24px; }
+  html.bez-js .nawigacja {
+    position: static; flex-basis: 100%; padding: 0; gap: var(--s1);
+    opacity: 1; visibility: visible; pointer-events: auto;
+    transform: none; box-shadow: none; background: transparent;
+  }
+  /* poziomy, zawijany rząd — nagłówek nie zjada pół ekranu */
+  html.bez-js .nawigacja__lista { flex-direction: row; flex-wrap: wrap; gap: 2px; }
+  html.bez-js .nawigacja__lista a { padding: .4rem .7rem; font-size: var(--t-small); }
+  html.bez-js .nawigacja > .btn { margin-top: 0; min-height: 44px; }
+}

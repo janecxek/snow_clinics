@@ -77,6 +77,18 @@ i zieleni. Zmieniając kolory, przelicz kontrast.
   sterowane `IntersectionObserver`; opóźnienie ustawia się per element
   przez `style="--zwloka:120ms"`.
 - **Wejście hero** — kaskada tekstu plus powolne odjechanie zdjęcia ze skali.
+- **Manifest (zdanie pod hero)** — sekcja to tor wysokości `260svh`
+  (`.manifest__tor`), po którym przesuwa się przyklejona scena wysokości
+  ekranu (`.manifest__scena`, `position: sticky`). `app.js` liczy postęp
+  toru i zapisuje go w `--p` (0 → 1) na `#manifest`; każde słowo ma własny
+  próg `--i`, a `--kroki` na akapicie mówi, na ile kroków podzielony jest
+  postęp. Kadr startuje pusty, potem zdanie składa się słowo po słowie.
+  Uwaga przy edycji: `.manifest` nie może dostać `overflow` innego niż
+  `visible` — zrobiłoby z siebie kontener przewijania i `sticky` przestałoby
+  działać. Domyślne `--p` w CSS to `1`, więc bez JS i przy
+  `prefers-reduced-motion` całe zdanie jest widoczne, a tor się rozkleja.
+  Dopisując lub usuwając słowa, przenumeruj `--i` i ustaw `--kroki` na
+  liczbę słów + 5.
 - **Nagłówek** — chowa się przy przewijaniu w dół, wraca przy przewijaniu w górę.
 - **Hover** — karty unoszą się, przyciski wypełniają się od dołu.
 
