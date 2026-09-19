@@ -234,48 +234,6 @@
     sync();
   }
 
-  /* ---------- 13. LIGHTBOX ---------- */
-  const lb = $('#lb');
-  if (lb && typeof lb.showModal === 'function') {
-    const stage = $('#lbStage'), cap = $('#lbCap'), idx = $('#lbIdx');
-    const items = $$('[data-lb]');
-    let cur = 0;
-    const render = (i) => {
-      cur = (i + items.length) % items.length;
-      const src = items[cur];
-      const art = src.closest('.work__i');
-      const clone = src.cloneNode(true);
-      clone.classList.remove('frame-link');
-      clone.removeAttribute('href'); clone.removeAttribute('data-lb');
-      stage.replaceChildren(clone);
-      const img = clone.querySelector('.frame__photo');
-      if (img) {
-        if (img.complete && img.naturalWidth > 0) clone.classList.add('has-photo');
-        else if (img.complete) clone.classList.add('no-photo');
-      }
-      clone.classList.add('is-in');
-      const title = art ? art.querySelector('.work__t') : null;
-      const dl = art ? art.querySelector('.work__dl') : null;
-      cap.replaceChildren();
-      if (title) { const h = document.createElement('p'); h.className = 'lb__t'; h.textContent = title.textContent; cap.append(h); }
-      if (dl) {
-        const meta = [...dl.querySelectorAll('div')].map((r) => r.querySelector('dd').textContent.trim()).join(' · ');
-        const m = document.createElement('p'); m.className = 'micro'; m.textContent = meta; cap.append(m);
-      }
-      idx.textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(items.length).padStart(2, '0');
-    };
-    items.forEach((el, i) => el.addEventListener('click', (e) => { e.preventDefault(); render(i); lb.showModal(); modalOpen = true; }));
-    lb.addEventListener('close', () => { modalOpen = false; });
-    $('#lbPrev').addEventListener('click', () => render(cur - 1));
-    $('#lbNext').addEventListener('click', () => render(cur + 1));
-    $('#lbClose').addEventListener('click', () => lb.close());
-    lb.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') render(cur - 1);
-      if (e.key === 'ArrowRight') render(cur + 1);
-    });
-    lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
-  }
-
   /* ---------- 14. BACK TO TOP ---------- */
   const totop = $('#totop');
   totop && totop.addEventListener('click', () =>
@@ -438,4 +396,28 @@
     stage.closest('.light').classList.add('is-touched');
   }
   paint();
+})();
+
+/* =========================================================================
+   19. PROJECT CARDS — the hover label follows the pointer
+   ========================================================================= */
+(() => {
+  'use strict';
+  if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.frame-link').forEach((card) => {
+    const cue = card.querySelector('.frame__open');
+    if (!cue) return;
+    let raf = 0, x = 0, y = 0;
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      x = e.clientX - r.left; y = e.clientY - r.top;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        cue.style.setProperty('--px', x + 'px');
+        cue.style.setProperty('--py', y + 'px');
+        raf = 0;
+      });
+    }, { passive: true });
+  });
 })();
