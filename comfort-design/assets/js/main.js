@@ -67,7 +67,6 @@
     const y = window.scrollY;
     const past = y > (hero ? hero.offsetHeight * 0.72 : 400);
     hdr.classList.toggle('is-solid', past);
-    hdr.classList.toggle('is-hidden', past && y > lastY + 6 && y > 600 && !drawerOpen);
     lastY = y;
     const tt = $('#totop'); if (tt) tt.classList.toggle('is-on', y > 900);
     ticking = false;
@@ -122,7 +121,6 @@
     document.body.classList.toggle('is-locked', open);
     if (open) { drawer.removeAttribute('inert'); }
     else { drawer.setAttribute('inert', ''); }
-    if (open) hdr.classList.remove('is-hidden');
   };
   if (burger && drawer) {
     burger.addEventListener('click', () => setDrawer(!drawerOpen));
