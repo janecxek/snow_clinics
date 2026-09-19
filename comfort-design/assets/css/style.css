@@ -366,11 +366,12 @@ p{text-wrap:pretty}
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;
   opacity:0;
-  clip-path:inset(0 0 100% 0);
-  transition:opacity var(--d-3) var(--e-soft),clip-path var(--d-4) var(--e-inout),scale 1.6s var(--e-out);
+  /* no clip-path here: a zero-area image is never lazy-loaded, so it could never
+     reach the state that reveals it. The wipe is the .frame::before curtain. */
+  transition:opacity var(--d-3) var(--e-soft),scale 1.6s var(--e-out);
   scale:1.06;
 }
-.frame.has-photo .frame__photo{opacity:1;clip-path:inset(0 0 0 0);scale:1}
+.frame.has-photo .frame__photo{opacity:1;scale:1}
 .frame.has-photo .frame__draft{opacity:0}
 .frame.no-photo .frame__photo{display:none}
 
@@ -405,7 +406,7 @@ p{text-wrap:pretty}
   border-radius:var(--r-md);
   box-shadow:var(--shadow-lg);
 }
-.frame-link .frame__photo{transition:opacity var(--d-3) var(--e-soft),clip-path var(--d-4) var(--e-inout),scale 1.2s var(--e-out)}
+.frame-link .frame__photo{transition:opacity var(--d-3) var(--e-soft),scale 1.2s var(--e-out)}
 .frame-link:hover .frame__photo{scale:1.06}
 
 .frame__open{
