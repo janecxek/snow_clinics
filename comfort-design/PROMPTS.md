@@ -19,9 +19,9 @@ prawdziwych zdjęć** — przy 312 postach na Instagramie materiał raczej jest.
 Jeśli mają zostać na dłużej, usuń ze strony metryki (tip, metraż, rok) i zmień
 podpis sekcji, żeby nie obiecywała realizacji.
 
-`elena.jpg` to portret realnej osoby — tego **nie generuj**. Poniżej masz
-zamiennik: kadr pracowni bez twarzy, który działa w tym miejscu do czasu
-sesji zdjęciowej.
+`elena.jpg` to portret realnej osoby. Nie generuj jej od zera — pracuj na
+prawdziwym zdjęciu z Instagrama (prompty w sekcji `elena.jpg`). Jest tam też
+wariant bez postaci, gdyby dobrego zdjęcia nie było.
 
 ---
 
@@ -31,15 +31,61 @@ sesji zdjęciowej.
 A photorealistic architectural interior photograph of a serene contemporary living space at dusk. Warm minimalism: microcement plaster walls in a soft greige tone, a tall arched niche built into the wall, white oak herringbone floor, a low boucle sofa in cream, a slim brushed-brass floor lamp casting a warm pool of light, a travertine coffee table. Large window on the left with sheer linen curtains, the last cool daylight outside contrasting against warm interior lamplight. Deep chocolate-brown wood veneer on a built-in unit to the right. Palette limited to beige, taupe, cream, warm brown and antique brass. Shot on a 28mm lens at eye level, perfectly straight vertical lines, wide composition with generous empty space on the left third for text overlay. Editorial interior magazine quality, soft natural contrast, no harsh shadows. No people, no text, no logos, no watermark. 16:9 aspect ratio.
 ```
 
-## `elena.jpg` — miejsce portretu autorki (3:4, 1200 × 1600)
+## `elena.jpg` — portret autorki (3:4, 1200 × 1600)
 
-> Docelowo ma tu być prawdziwe zdjęcie Eleny — pionowy kadr, najlepiej
-> w pracowni lub na obiekcie, naturalne światło. Poniższy prompt tworzy
-> zamiennik bez postaci.
+**Pracujesz na prawdziwym zdjęciu Eleny z Instagrama — nie generujesz postaci.**
+Wgrywasz zdjęcie do ChatGPT i dopisujesz prompt poniżej.
+
+Co wybrać: kadr pionowy albo kwadratowy, do pasa, twarz dobrze oświetlona,
+bez mocnego filtra i bez innych osób w kadrze. Im ostrzejszy oryginał,
+tym mniej model kombinuje.
+
+### Prompt główny — zdjęcie ma dobry kadr, ale tło i kolory nie pasują
+
+```
+Here is a photo of a real person — an interior designer. Keep her face, hair, body and clothing exactly as they are. Do not smooth, slim, beautify, restyle or alter her features in any way. She must remain clearly and recognisably the same person.
+
+Edit only the surroundings and the light:
+- Recompose to a vertical 3:4 portrait, waist-up, with her slightly off-centre and clear empty space above her head.
+- Replace the background with a calm interior wall in soft greige microcement plaster, gently out of focus, with a hint of a tall arched niche or a white oak surface at the edge of the frame.
+- Relight to match: soft warm daylight from one side, gentle falloff, no harsh shadow across the face, no on-camera flash look.
+- Grade the colours to a warm neutral palette — beige, taupe, cream, warm brown — with natural skin tones. Remove any blue, green or magenta colour cast.
+- Keep it fully photographic and realistic. No illustration, no airbrushing, no glow or bloom effects.
+
+No text, no logos, no watermark. 3:4 vertical aspect ratio.
+```
+
+### Wariant A — zdjęcie jest poziome albo całą sylwetką
+
+Dopisz zamiast pierwszego punktu:
+
+```
+The source photo is wider than it needs to be. Recompose it into a vertical 3:4 portrait cropped at the waist, extending the background naturally where the frame needs more height. Do not stretch or distort the person — extend the surroundings only.
+```
+
+### Wariant B — tło już jest dobre, chodzi tylko o spójność kolorów
+
+```
+Here is a photo of a real person. Do not change her face, hair, clothing or the background content in any way — no retouching of features. Only crop to a vertical 3:4 portrait, waist-up with space above the head, and colour-grade the image to a warm neutral palette: beige, taupe, cream and warm brown, natural skin tones, no blue or green cast, soft natural contrast. Keep it photographic. No text, no logos, no watermark.
+```
+
+### Wariant C — bez postaci, na czas do sesji zdjęciowej
+
+Jeśli nie ma dobrego zdjęcia, ten kadr wypełnia miejsce i nie udaje portretu:
 
 ```
 A photorealistic vertical interior photograph of an interior designer's studio corner, no people visible. A light oak desk against a greige microcement wall, an open roll of architectural drawings and a few material samples laid out — travertine, brushed brass, oak veneer, a folded boucle fabric swatch. A brass desk lamp switched on, casting warm light across the drawings. A tall window just out of frame on the left provides soft daylight. A single arched mirror on the wall behind. Calm, warm minimalism, palette of beige, taupe, cream and antique brass. Shot on a 35mm lens, straight verticals, shallow depth of field with the drawings sharp. Editorial magazine quality. No people, no faces, no text, no logos, no watermark. 3:4 vertical aspect ratio.
 ```
+
+### Zanim to zaakceptujesz
+
+Porównaj wynik z oryginałem obok siebie. Modele obrabiające zdjęcia
+regularnie podmieniają rysy twarzy — zwężają nos, zmieniają kształt oczu,
+wygładzają skórę do plastiku. Jeśli to już nie wygląda na tę samą osobę,
+nie używaj: albo powtórz z dopiskiem `do not modify the face at all, treat
+the face as a locked region`, albo zostaw oryginalne zdjęcie i zrób samo
+kadrowanie i korektę kolorów w zwykłym edytorze. To jej wizerunek na jej
+własnej stronie — lepszy nieidealny prawdziwy kadr niż ładny cudzy.
 
 ## `work-1.jpg` — Светлая квартира для семьи (4:3, 1800 × 1350)
 
