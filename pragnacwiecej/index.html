@@ -117,14 +117,19 @@
     </a>
 
     <nav class="nawigacja" id="nawigacja" aria-label="Główna">
-      <ul class="nawigacja__lista">
-        <li><a href="#o-mnie">O mnie</a></li>
-        <li><a href="#pomoc">Pomoc</a></li>
-        <li><a href="#proces">Jak to działa</a></li>
-        <li><a href="#coaching">Coaching</a></li>
-        <li><a href="#faq">Pytania</a></li>
-      </ul>
-      <button class="btn" type="button" data-otwiera-okno>Umów rozmowę</button>
+      <!-- Rolka zbiera treść menu w jeden blok, żeby na telefonie dało się
+           animować jego wysokość. Na desktopie ma display: contents, więc
+           nie wchodzi w układ. -->
+      <div class="nawigacja__rolka">
+        <ul class="nawigacja__lista">
+          <li><a href="#o-mnie">O mnie</a></li>
+          <li><a href="#pomoc">Pomoc</a></li>
+          <li><a href="#proces">Jak to działa</a></li>
+          <li><a href="#coaching">Coaching</a></li>
+          <li><a href="#faq">Pytania</a></li>
+        </ul>
+        <button class="btn" type="button" data-otwiera-okno>Umów rozmowę</button>
+      </div>
     </nav>
 
     <button class="btn naglowek__cta" type="button" data-otwiera-okno>Umów rozmowę</button>

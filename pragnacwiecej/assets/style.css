@@ -233,6 +233,9 @@ h4 { font-size: var(--t-h4); }
 .logo svg { color: var(--las); flex: none; }
 
 .nawigacja { display: flex; align-items: center; gap: var(--s4); }
+/* Na desktopie rolka znika z układu; na telefonie staje się blokiem,
+   którego wysokość da się animować. */
+.nawigacja__rolka { display: contents; }
 .nawigacja__lista { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
 .nawigacja__lista a {
   position: relative; display: block;
@@ -747,7 +750,7 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
 
 @media (min-width: 60rem) {
   :root { --naglowek-h: 72px; }
-  .nawigacja > .btn { display: none; }
+  .nawigacja .btn { display: none; }
   .o-mnie__siatka  { grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); }
   .proces__kroki   { grid-template-columns: repeat(3, 1fr); gap: 0; }
   .krok            { border-top: 0; border-left: 1px solid var(--kamien); padding: 0 var(--s4); }
@@ -759,24 +762,52 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
 
 @media (max-width: 59.99rem) {
   .naglowek__pigulka { padding-right: 10px; }
+  /* Menu rozwija się w dół spod pigułki. Wiersz siatki 0fr -> 1fr animuje
+     wysokość płynnie i bez mierzenia jej w JS, a overflow na .nawigacja
+     przycina treść do zaokrąglonego panelu w trakcie rozwijania. */
   .nawigacja {
     position: fixed; inset: calc(var(--naglowek-h) + 30px) var(--rynna) auto;
-    flex-direction: column; align-items: stretch; gap: 0;
-    padding: var(--s2);
+    display: grid; grid-template-rows: 0fr;
+    /* stretch, nie center: align-items z reguły bazowej .nawigacja centrowało
+       treść w kurczącym się wierszu, więc w trakcie rozwijania obcięta była
+       góra menu i widać było ostatnie pozycje zamiast pierwszych. */
+    align-items: stretch; gap: 0;
     border-radius: 24px;
     background: var(--karta);
     box-shadow: 0 20px 50px -20px rgb(30 32 21 / .35);
+    overflow: hidden;
     opacity: 0; visibility: hidden; pointer-events: none;
-    transform: translateY(-10px) scale(.98); transform-origin: top center;
-    transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s .3s;
+    /* Miękkie przyspieszenie i wyhamowanie - przy ostrym --ease rozwinięcie
+       mijało 95% drogi w pierwszej piątej czasu i wyglądało jak przeskok. */
+    transition: grid-template-rows .4s cubic-bezier(.4,0,.2,1),
+                opacity .2s var(--ease), visibility 0s .4s;
+  }
+  /* Zwykły blok - lista i przycisk mają się układać jeden pod drugim
+     i wystawać poza przycięty wiersz, a nie kurczyć się razem z nim. */
+  /* flow-root, żeby margines przycisku nie wyciekł poza rolkę. Odstępy w
+     pionie siedzą w środku: padding rodzica nie zwija się razem z wierszem
+     0fr i zostawiałby pasek tła przy zamkniętym menu. Boczne mogą zostać.
+     Bez własnego overflow: rolka nie rozciąga się do wysokości wiersza,
+     więc sama przycinałaby treść za wysoko - robi to .nawigacja. */
+  .nawigacja__rolka {
+    display: flow-root;
+    min-height: 0;        /* bez tego wiersz 0fr i tak by się rozpychał */
+    padding-inline: var(--s2);
   }
   .nawigacja[data-otwarte='true'] {
-    opacity: 1; visibility: visible; pointer-events: auto; transform: none;
-    transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s;
+    grid-template-rows: 1fr;
+    opacity: 1; visibility: visible; pointer-events: auto;
+    transition: grid-template-rows .4s cubic-bezier(.4,0,.2,1),
+                opacity .2s var(--ease), visibility 0s;
   }
-  .nawigacja__lista { flex-direction: column; align-items: stretch; gap: 2px; }
+  /* Odstępy siedzą w środku rolki, nie na niej - padding rodzica nie zwija
+     się razem z wierszem 0fr i zostawiał 32 px paska przy zamkniętym menu. */
+  .nawigacja__lista {
+    flex-direction: column; align-items: stretch; gap: 2px;
+    padding: var(--s2) 0 0;
+  }
   .nawigacja__lista a { padding: .8rem 1rem; font-size: 1.05rem; }
-  .nawigacja > .btn { margin-top: var(--s2); width: 100%; }
+  .nawigacja .btn { display: flex; margin: var(--s2) 0; width: 100%; }
   .menu-przycisk { display: inline-flex; }
   .naglowek__cta { display: none; }
   .hero__kadr { padding-inline: clamp(1.25rem, 5vw, 2rem); }
@@ -788,6 +819,10 @@ html.bez-js .pytanie[open] .pytanie__odpowiedz { animation: odsloniecie .4s var(
 
 @media (max-width: 39.99rem) {
   .przyciski .btn { width: 100%; }
+  /* Zdjęcie hero na pełną szerokość - bez marginesu po bokach. Dolne rogi
+     zostają zaokrąglone, żeby przejście w piasek było miękkie jak wyżej. */
+  .hero { padding: 0; }
+  .hero__kadr { min-height: 100svh; border-radius: 0 0 20px 20px; }
 }
 
 /* ==========================================================================
@@ -825,12 +860,14 @@ html.bez-js .manifest__scena { position: static; height: auto; padding-block: va
   html.bez-js .menu-przycisk { display: none; }
   html.bez-js .naglowek__pigulka { border-radius: 24px; }
   html.bez-js .nawigacja {
-    position: static; flex-basis: 100%; padding: 0; gap: var(--s1);
+    position: static; flex-basis: 100%;
+    display: flex; flex-direction: column; padding: 0; gap: var(--s1);
     opacity: 1; visibility: visible; pointer-events: auto;
-    transform: none; box-shadow: none; background: transparent;
+    overflow: visible; box-shadow: none; background: transparent;
   }
+  html.bez-js .nawigacja__rolka { display: contents; }
   /* poziomy, zawijany rząd - nagłówek nie zjada pół ekranu */
   html.bez-js .nawigacja__lista { flex-direction: row; flex-wrap: wrap; gap: 2px; }
   html.bez-js .nawigacja__lista a { padding: .4rem .7rem; font-size: var(--t-small); }
-  html.bez-js .nawigacja > .btn { margin-top: 0; min-height: 44px; }
+  html.bez-js .nawigacja .btn { margin-top: 0; min-height: 44px; }
 }

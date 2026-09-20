@@ -99,6 +99,19 @@ i zieleni. Zmieniając kolory, przelicz kontrast.
   przewijaniu w dół. Po zjechaniu z hero (`scrollY > 12`) pigułka gęstnieje
   i dostaje mocniejszy cień, żeby odcinała się od jasnych sekcji.
 - **Hover** - karty unoszą się, przyciski wypełniają się od dołu.
+- **Menu mobilne** - rozwija się w dół spod pigułki. Wysokość animuje
+  wiersz siatki `0fr` -> `1fr` na `.nawigacja`, więc nie trzeba jej mierzyć
+  w JS. Trzy rzeczy, na które trzeba uważać przy edycji: odstępy w pionie
+  muszą siedzieć wewnątrz `.nawigacja__rolka`, bo padding samego elementu
+  siatki nie zwija się razem z wierszem i zostawia pasek tła przy
+  zamkniętym menu; `.nawigacja` potrzebuje `align-items: stretch`, bo
+  `center` z reguły bazowej obcinał górę menu zamiast dołu; a rolka nie
+  może mieć własnego `overflow`, bo nie rozciąga się do wysokości wiersza
+  i przycinałaby treść za wysoko - robi to `.nawigacja`.
+  Na desktopie rolka ma `display: contents`, więc nie wchodzi w układ.
+
+Na telefonie (do 640 px) zdjęcie hero idzie na pełną szerokość okna -
+bez bocznego marginesu, z zaokrąglonymi tylko dolnymi rogami.
 
 ## Dostępność i degradacja
 
