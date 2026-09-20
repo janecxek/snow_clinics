@@ -602,14 +602,18 @@ p{text-wrap:pretty}
   transition:clip-path .75s var(--e-inout),visibility 0s linear .75s;
 }
 .drawer.is-open{clip-path:inset(0 0 0 0);visibility:visible;transition-delay:0s}
-.drawer__nav{display:grid;align-content:center;gap:clamp(.4rem,1.6vw,1rem)}
+.drawer__nav{display:grid;align-content:center;gap:0}
 .drawer__a{
+  position:relative;
   font-family:var(--f-display);
-  font-size:clamp(1.9rem,9vw,3rem);line-height:1.15;
-  display:flex;align-items:baseline;gap:1rem;
+  font-size:clamp(1.55rem,7vw,2.2rem);line-height:1.1;letter-spacing:-.02em;
+  display:grid;grid-template-columns:2.6rem 1fr auto;align-items:center;gap:.6rem;
+  padding-block:clamp(.85rem,2.6vw,1.15rem);
+  border-bottom:var(--hair) solid rgba(239,233,224,.12);
   opacity:0;translate:0 1.2rem;
   transition:opacity .5s var(--e-out),translate .6s var(--e-out),color var(--d-1) linear;
 }
+.drawer__a:first-child{border-top:var(--hair) solid rgba(239,233,224,.12)}
 .drawer.is-open .drawer__a{
   opacity:1;translate:0 0;
   transition-delay:calc(160ms + var(--i,0) * 55ms);
@@ -617,9 +621,41 @@ p{text-wrap:pretty}
 .drawer__a:hover,.drawer__a:focus-visible{color:var(--brass-lt)}
 .drawer__a i{
   font-style:normal;font-family:var(--f-body);
-  font-size:.6875rem;letter-spacing:.16em;color:var(--brass-lt);opacity:.7;
+  font-size:.625rem;letter-spacing:.16em;color:var(--brass-lt);opacity:.65;
+  align-self:center;
 }
-.drawer__foot{display:grid;gap:1.1rem;justify-items:start;padding-top:1.5rem;border-top:var(--hair) solid rgba(239,233,224,.16)}
+.drawer__go{
+  width:15px;height:15px;color:var(--brass-lt);opacity:.45;
+  transition:translate var(--d-2) var(--e-out),opacity var(--d-1) linear;
+}
+.drawer__a:hover .drawer__go{translate:.25rem 0;opacity:1}
+
+.drawer__foot{display:grid;gap:1rem;justify-items:start;padding-top:clamp(1.25rem,4vw,1.75rem)}
+
+/* the enquiry is an action, not a menu row — a button, not a link in the list.
+   As a <button> it needs its own reset: the UA default gave it a white box. */
+.drawer__cta{
+  display:flex;align-items:center;justify-content:center;gap:.7rem;
+  width:100%;min-height:58px;padding:1rem 1.5rem;
+  border:0;border-radius:var(--r-pill);
+  background:var(--brass-lt);color:var(--graphite);
+  font-family:var(--f-body);font-size:var(--fs-small);font-weight:600;
+  letter-spacing:.02em;cursor:pointer;
+  box-shadow:0 14px 30px -14px rgba(0,0,0,.7);
+  transition:background var(--d-2) var(--e-out),translate var(--d-2) var(--e-out);
+}
+.drawer__cta:hover,.drawer__cta:focus-visible{background:#d4b78d;translate:0 -2px}
+.drawer__cta-go{width:15px;height:15px;flex:none}
+.drawer__cta-dot{
+  width:8px;height:8px;border-radius:50%;background:#1f8f4a;flex:none;
+  box-shadow:0 0 0 0 rgba(37,211,102,.55);
+  animation:ping 2.4s var(--e-soft) infinite;
+}
+.drawer__note{
+  font-size:var(--fs-small);color:#a79c8c;line-height:1.5;
+  max-width:34ch;
+}
+@media (prefers-reduced-motion:reduce){.drawer__cta-dot{animation:none}}
 
 /* ---------- 9. HERO ---------- */
 .hero{

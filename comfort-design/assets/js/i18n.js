@@ -12,7 +12,8 @@ window.CD_I18N = {
   "nav.reviews": "Reviews",
   "nav.faq": "FAQ",
   "cta.short": "Enquire",
-  "nav.contact": "Write to us",
+  "cta.fab": "Message us",
+  "drawer.note": "Instagram, WhatsApp or a call — we reply within one working day",
   "foot.city": "Brest, Belarus · working across the country",
   "cta.discuss": "Discuss your project",
   "cta.work": "See the work",
@@ -208,7 +209,6 @@ window.CD_I18N = {
   "pop.t3": "Email",
   "pop.s3": "hello@comfortdesign.by",
   "pop.note": "Brest, Belarus · Mon–Sat 10:00–19:00",
-  "cta.fab": "Message us",
   "hero.l1": "From the first drawing",
   "hero.l2": "to the last <em>lamp</em>"
  }
