@@ -856,10 +856,18 @@ p{text-wrap:pretty}
 /* ---------- 15. PROCESS (dusk, sticky) ---------- */
 .proc{display:grid;gap:clamp(2rem,5vw,4rem)}
 @media (max-width:63.99em){
+  /* The pinned block carries its own backdrop all the way to the top of the
+     viewport, so steps scrolling up vanish behind it instead of passing
+     through the strip between the header and the image. The padding grows the
+     box upward; the negative margin keeps the image where it sits in flow. */
+  .proc{--proc-pin:76px;padding-top:var(--proc-pin)}
+  #process .section__head{margin-bottom:0}
   .proc__aside{
-    position:sticky;top:calc(64px + .75rem);align-self:start;z-index:2;
-    background:var(--bg);
+    position:sticky;top:0;align-self:start;z-index:2;
+    margin-top:calc(var(--proc-pin) * -1);
+    padding-top:var(--proc-pin);
     padding-bottom:.9rem;
+    background:var(--bg);
     margin-inline:calc(var(--gutter) * -1);
     padding-inline:var(--gutter);
   }
